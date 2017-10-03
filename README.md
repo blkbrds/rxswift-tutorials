@@ -6,7 +6,7 @@ Nội dung bài này yêu cầu một số căn cơ nhất định, võ sinh vui
 
 ### Programming paradigm [?](https://en.wikipedia.org/wiki/Programming_paradigm)
 
-<details><summary>**imperative programming** - lập trình điều khiển</summary>
+<details><summary><b>imperative programming</b> - lập trình điều khiển</summary>
 Mẫu hình lập trình sử dụng câu lệnh để thay đổi trạng thái của chương trình.
 
 ```swift
@@ -25,7 +25,7 @@ func fib(_ n: Int) -> Int {
 ```
 </details>
 
-<details><summary>**functional programming** - lập trình hàm</summary>
+<details><summary><b>functional programming</b> - lập trình hàm</summary>
 Lập trình hàm nhấn mạnh việc ứng dụng hàm số / hàm dựng sẵn, trái với phong cách lập trình mệnh lệnh, nhấn mạnh vào sự thay đổi trạng thái.
 
 Nguyên tắc của *functional programming*  là không thay đổi / duy trì ảnh hưởng đến trạng thái bên ngoài scope của nó (side effect).
@@ -40,19 +40,19 @@ func fib(_ n: Int) -> Int {
 ```
 </details>
 
-<details><summary>**declarative programming** - which does not state the order in which operations execute</summary>
+<details><summary><b>declarative programming</b> - which does not state the order in which operations execute</summary>
 </details>
 
-<details><summary>**object-oriented programming** - which groups code together with the state the code modifies</summary>
+<details><summary><b>object-oriented programming</b> - which groups code together with the state the code modifies</summary>
 </details>
 
-<details><summary>**procedural programming** - which groups code into functions</summary>
+<details><summary><b>procedural programming</b> - which groups code into functions</summary>
 </details>
 
-<details><summary>**logic programming** - which has a particular style of execution model coupled to a particular style of syntax and grammar</summary>
+<details><summary><b>logic programming</b> - which has a particular style of execution model coupled to a particular style of syntax and grammar</summary>
 </details>
 
-<details><summary>**symbolic programming** - which has a particular style of syntax and grammar</summary>
+<details><summary><b>symbolic programming</b> - which has a particular style of syntax and grammar</summary>
 </details>
 
 ### Software design pattern** [?](https://en.wikipedia.org/wiki/Software_design_pattern)
