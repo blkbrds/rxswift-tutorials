@@ -4,10 +4,9 @@
 
 Nội dung bài này yêu cầu một số căn cơ nhất định, võ sinh vui lòng đọc lại trước khi bắt đầu, tránh tẩu hỏa nhập ma hoặc trách người ra đề đánh đố thí sinh.
 
-### 0.1. Programming paradigm [?](https://en.wikipedia.org/wiki/Programming_paradigm)
+### Programming paradigm [?](https://en.wikipedia.org/wiki/Programming_paradigm)
 
-- **imperative programming** - lập trình điều khiển
-
+<details><summary><b>imperative programming</b> - lập trình điều khiển</summary>
 Mẫu hình lập trình sử dụng câu lệnh để thay đổi trạng thái của chương trình.
 
 ```swift
@@ -24,8 +23,9 @@ func fib(_ n: Int) -> Int {
     return c
 }
 ```
-- **functional programming** - lập trình hàm
+</details>
 
+<details><summary><b>functional programming</b> - lập trình hàm</summary>
 Lập trình hàm nhấn mạnh việc ứng dụng hàm số / hàm dựng sẵn, trái với phong cách lập trình mệnh lệnh, nhấn mạnh vào sự thay đổi trạng thái.
 
 Nguyên tắc của *functional programming*  là không thay đổi / duy trì ảnh hưởng đến trạng thái bên ngoài scope của nó (side effect).
@@ -38,20 +38,26 @@ func fib(_ n: Int) -> Int {
     return fib(n-1) + fib(n-2)
 }
 ```
+</details>
 
-- **declarative programming** - which does not state the order in which operations execute
+<details><summary><b>declarative programming</b> - which does not state the order in which operations execute</summary>
+</details>
 
-- **object-oriented programming** - which groups code together with the state the code modifies
+<details><summary><b>object-oriented programming</b> - which groups code together with the state the code modifies</summary>
+</details>
 
-- **procedural programming** - which groups code into functions
+<details><summary><b>procedural programming</b> - which groups code into functions</summary>
+</details>
 
-- **logic programming** - which has a particular style of execution model coupled to a particular style of syntax and grammar
+<details><summary><b>logic programming</b> - which has a particular style of execution model coupled to a particular style of syntax and grammar</summary>
+</details>
 
-- **symbolic programming** - which has a particular style of syntax and grammar
+<details><summary><b>symbolic programming</b> - which has a particular style of syntax and grammar</summary>
+</details>
 
-- **Software design pattern** [?](https://en.wikipedia.org/wiki/Software_design_pattern)
-    Thường là một template mô tả cách giải quyết một vấn đề mà có thể được dùng trong nhiều tình huống khác nhau.
-    > Các giải thuật không được xem là các mẫu thiết kế, vì chúng giải quyết các vấn đề về tính toán hơn là các vấn đề về thiết kế.
+### Software design pattern** [?](https://en.wikipedia.org/wiki/Software_design_pattern)
+Thường là một template mô tả cách giải quyết một vấn đề mà có thể được dùng trong nhiều tình huống khác nhau.
+> Các giải thuật không được xem là các mẫu thiết kế, vì chúng giải quyết các vấn đề về tính toán hơn là các vấn đề về thiết kế.
 
 ## 1. Approach
 
