@@ -72,26 +72,87 @@ func fib(_ n: Int) -> Int {
 
 ### 2.1. Observables
 
-- **Lifecycle**
+Trước tiên ta cần tìm hiểu Stream là gì? Stream là những dòng dữ liệu, để truyền tải dữ liệu trả về, lỗi và tín hiệu kết thúc của một tác vụ theo trình tự thời gian từ nơi phát ra tín hiệu tới nơi lắng nge (Subscribe).
+
+Trong thế giới của RxSwift thì Stream nói trên được gọi là Observables.
+
+Observables là một cái có thể phát ra thông báo khi có sự thay đổi.
 
 - **Create**
 
-- **Next**
+  Array, String, Int, Dictionary,… trong RxSwift sẽ được convert sang observable sequence. Chúng ta có thể tạo observable sequence của bất cứ object nào conform Sequence protocol.
 
-- **Error**
+  ```swift
+  let helloSequence = Observable.just("Hello Rx")
+  let fibonacciSequence = Observable.from([0, 1, 1, 2, 3, 5, 8])
+  let dictSequence = Observable.from([1: "Hello", 2: "World"])
+  ```
 
-- **Complete**
+- **Lifecycle**
 
-- **Desposed**
+  Trong vòng đời của 1 Observables, nó có thể không phát ra hoặc phát ra nhiều event.
 
+  Trong RxSwift, một event là một enum type với 3 trạng thái:  
+
+  - **.next(value: T):** Khi một giá trị hoặc một tập hợp các giá trị được thêm vào Observable sequence, nó sẽ tự động gởi next event đến các subscriber của nó.
+  - **.error(error: Error)**: Nếu một lỗi bị gặp phải trong quá trình thực thi, một error event sẽ được phát đi. Điều nãy cũng sẽ ngắt luôn sequence. 
+  - **.completed**: Nếu một sequence  kết thúc bình thường, nó sẽ gởi completed event đến subcriber.
+
+  ```swift
+  let helloSequence = Observable.from(["H", "e", "l", "l", "o"])
+  let subscription = helloSequence.subscribe { event in
+    switch event {
+        case .next(let value):
+            print(value)
+        case .error(let error):
+            print(error)
+        case .completed:
+            print("completed")
+    }
+  }
+  /* Output:
+  H e l l o 
+  completed
+  */
+  ```
+
+- **Dispose**
+
+  Để giải phóng bộ nhớ, RxSwift sử dụng dispose hoặc disposeBag. 
+
+  Nếu muốn cancel	 một subcription, chúng ta có thể gọi dispose trên nó hoặc chúng ta thêm subscription vào DisposeBag, DisposeBag sẽ cancel subcription một cách tự động trong phương thức deinit. 
+
+  ```swift
+  let bag = DisposeBag()
+  let helloSequence = Observable.just("Hello Rx")
+  let subscription = helloSequence.subscribe { (event) in
+  	print(event.element)
+  }
+  // option 1
+  subscription.dispose()
+  // option 2
+  subscription.addDisposableTo(bag)
+  ```
 
 ### 2.2 Subject
 
-- **Publish Subjects**
+Một subject là một trạng thái của Observable Sequence, chúng ta có thể subscribe và thêm các element vào nó một cách linh hoạt. Trong Rx có 4 loại Subject. 
+
+- **2.2.1 Publish Subjects**
+
+  Nhận được tất cả các event xảy ra sau khi subscribe.
 
 - **2.2.2 Behavior Subjects**
 
+  Một behavior subject sẽ gởi element mới nhất đến bất kỳ subscribe nào sau khi tiến hành subscribe nó.
+
 - **2.2.3 Replay Subjects**
+
+  Ta có thể lấy được nhiều hơn một trạng thái của sequence, có thể định nghĩa được bao nhiêu trạng thái thay đổi mình sẽ nhận được sau khi subscribe.
+
+- **2.2.4 Variable **
+
+  Variable là Behavior Subject được gói lại.
 
 
 ### 2.3. Operators
