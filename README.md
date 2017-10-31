@@ -113,6 +113,14 @@ let worker =
 
 
 
+### 2.1. from Observable
+
+### 2.2. to Sequence
+
+### 2.3. then, Observer - who listen the changes
+
+
+
 ## 3. Chú thích và tài liệu tham khảo
 
 
