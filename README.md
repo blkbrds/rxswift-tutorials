@@ -82,7 +82,10 @@ Thường là một template mô tả cách giải quyết một vấn đề mà
 
 ### 1.1. Delegation pattern (*Object-oriented programming*)
 
-
+```swift
+let app = App()
+let worker = 
+```
 
 ### 1.2. Callback programming
 
