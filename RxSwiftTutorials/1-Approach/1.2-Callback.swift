@@ -21,9 +21,7 @@ private func test() {
         case .merged:
             dev.start(.drinkBeer, completion: nil)
         case .rejected:
-            dev.start(.report, completion: { _ in
-                dev.start(.drinkBeer, completion: nil)
-            })
+            dev.start(.report, completion: nil)
         }
     })
 }
@@ -38,9 +36,7 @@ private enum TaskResult {
 }
 
 private class Developer {
-    func start(_ task: Task, completion: ((TaskResult) -> Void)?) {
-
-    }
+    func start(_ task: Task, completion: ((TaskResult) -> Void)?) { }
 }
 
 //------------------------------------------------------------
@@ -50,3 +46,12 @@ private enum Task {
     case report
     case drinkBeer
 }
+
+private enum Issue: Error {
+    case bug
+    case feature
+}
+
+private typealias YesNo = Bool
+private let Yes = true
+private let No = false

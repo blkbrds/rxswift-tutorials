@@ -51,15 +51,15 @@ private class Developer {
 
 //------------------------------------------------------------
 
-private enum Issue: Error {
-    case bug
-    case feature
-}
-
 private enum Task {
     case implement(taskId: String)
     case report
     case drinkBeer
+}
+
+private enum Issue: Error {
+    case bug
+    case feature
 }
 
 private typealias YesNo = Bool
