@@ -18,8 +18,12 @@ private func test() {
     let dev = Developer()
     dev.start(.implement(taskId: "123"), completion: { result in
         switch result {
-        case .merged:       dev.start(.drinkBeer, completion: nil)
-        case .rejected:     dev.start(.report, completion: nil)
+        case .merged:
+            dev.start(.drinkBeer, completion: nil)
+        case .rejected:
+            dev.start(.report, completion: { _ in
+                dev.start(.drinkBeer, completion: nil)
+            })
         }
     })
 }
@@ -35,7 +39,7 @@ private enum TaskResult {
 
 private class Developer {
     func start(_ task: Task, completion: ((TaskResult) -> Void)?) {
-        
+
     }
 }
 
