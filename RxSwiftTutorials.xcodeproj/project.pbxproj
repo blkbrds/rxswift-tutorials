@@ -8,25 +8,38 @@
 
 /* Begin PBXBuildFile section */
 		08704267EBB53661E87A8C65 /* Pods_RxSwiftTutorials.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 375841F4BCA5663AF299C617 /* Pods_RxSwiftTutorials.framework */; };
-		EA7BE3001F78EB72008A494A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7BE2FF1F78EB72008A494A /* AppDelegate.swift */; };
-		EA7BE3021F78EB72008A494A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7BE3011F78EB72008A494A /* ViewController.swift */; };
-		EA7BE3051F78EB72008A494A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA7BE3031F78EB72008A494A /* Main.storyboard */; };
-		EA7BE3071F78EB72008A494A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA7BE3061F78EB72008A494A /* Assets.xcassets */; };
-		EA7BE30A1F78EB72008A494A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA7BE3081F78EB72008A494A /* LaunchScreen.storyboard */; };
+		EA6E92EA1FA8E6130042EBF8 /* 1.1-Delegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E92DB1FA8E5C00042EBF8 /* 1.1-Delegation.swift */; };
+		EA6E92EB1FA8E6130042EBF8 /* 1.2-Callback.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E92DC1FA8E5C00042EBF8 /* 1.2-Callback.swift */; };
+		EA6E92EC1FA8E6130042EBF8 /* 1.3-Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E92DD1FA8E5C00042EBF8 /* 1.3-Promise.swift */; };
+		EA6E92ED1FA8E6130042EBF8 /* 1.4-Functional.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E92DE1FA8E5C00042EBF8 /* 1.4-Functional.swift */; };
+		EA6E92EE1FA8E6130042EBF8 /* 1.5-Reactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E92DF1FA8E5C00042EBF8 /* 1.5-Reactive.swift */; };
+		EA6E92EF1FA8E6130042EBF8 /* 1.6-FunctionalReactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E92E01FA8E5C00042EBF8 /* 1.6-FunctionalReactive.swift */; };
+		EADE84981FA95D9E001DD029 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E92E21FA8E5F70042EBF8 /* AppDelegate.swift */; };
+		EADE84991FA95DA1001DD029 /* 2.1-Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E92D91FA8E5C00042EBF8 /* 2.1-Observable.swift */; };
+		EADE849A1FA95DA4001DD029 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA6E92E31FA8E5F70042EBF8 /* Assets.xcassets */; };
+		EADE849B1FA95DB2001DD029 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA6E92E41FA8E5F70042EBF8 /* LaunchScreen.storyboard */; };
+		EADE849C1FA95DB2001DD029 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA6E92E61FA8E5F70042EBF8 /* Main.storyboard */; };
+		EADE849E1FA95DB5001DD029 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E92E91FA8E5F70042EBF8 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		291D3F0777DE23565023DF3B /* Pods-RxSwiftTutorials.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftTutorials.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftTutorials/Pods-RxSwiftTutorials.release.xcconfig"; sourceTree = "<group>"; };
 		375841F4BCA5663AF299C617 /* Pods_RxSwiftTutorials.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwiftTutorials.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9A80A06A4E3B3248AF3DCEC /* Pods-RxSwiftTutorials.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftTutorials.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftTutorials/Pods-RxSwiftTutorials.debug.xcconfig"; sourceTree = "<group>"; };
+		EA6E92D91FA8E5C00042EBF8 /* 2.1-Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "2.1-Observable.swift"; sourceTree = "<group>"; };
+		EA6E92DB1FA8E5C00042EBF8 /* 1.1-Delegation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "1.1-Delegation.swift"; sourceTree = "<group>"; };
+		EA6E92DC1FA8E5C00042EBF8 /* 1.2-Callback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "1.2-Callback.swift"; sourceTree = "<group>"; };
+		EA6E92DD1FA8E5C00042EBF8 /* 1.3-Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "1.3-Promise.swift"; sourceTree = "<group>"; };
+		EA6E92DE1FA8E5C00042EBF8 /* 1.4-Functional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "1.4-Functional.swift"; sourceTree = "<group>"; };
+		EA6E92DF1FA8E5C00042EBF8 /* 1.5-Reactive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "1.5-Reactive.swift"; sourceTree = "<group>"; };
+		EA6E92E01FA8E5C00042EBF8 /* 1.6-FunctionalReactive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "1.6-FunctionalReactive.swift"; sourceTree = "<group>"; };
+		EA6E92E21FA8E5F70042EBF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EA6E92E31FA8E5F70042EBF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EA6E92E51FA8E5F70042EBF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EA6E92E71FA8E5F70042EBF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EA6E92E81FA8E5F70042EBF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA6E92E91FA8E5F70042EBF8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EA7BE2FC1F78EB72008A494A /* RxSwiftTutorials.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSwiftTutorials.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA7BE2FF1F78EB72008A494A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EA7BE3011F78EB72008A494A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EA7BE3041F78EB72008A494A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		EA7BE3061F78EB72008A494A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		EA7BE3091F78EB72008A494A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		EA7BE30B1F78EB72008A494A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EA7BE3121F791917008A494A /* Sample */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sample; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +71,40 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		EA6E92D81FA8E5C00042EBF8 /* 2-Concepts */ = {
+			isa = PBXGroup;
+			children = (
+				EA6E92D91FA8E5C00042EBF8 /* 2.1-Observable.swift */,
+			);
+			path = "2-Concepts";
+			sourceTree = "<group>";
+		};
+		EA6E92DA1FA8E5C00042EBF8 /* 1-Approach */ = {
+			isa = PBXGroup;
+			children = (
+				EA6E92DB1FA8E5C00042EBF8 /* 1.1-Delegation.swift */,
+				EA6E92DC1FA8E5C00042EBF8 /* 1.2-Callback.swift */,
+				EA6E92DD1FA8E5C00042EBF8 /* 1.3-Promise.swift */,
+				EA6E92DE1FA8E5C00042EBF8 /* 1.4-Functional.swift */,
+				EA6E92DF1FA8E5C00042EBF8 /* 1.5-Reactive.swift */,
+				EA6E92E01FA8E5C00042EBF8 /* 1.6-FunctionalReactive.swift */,
+			);
+			path = "1-Approach";
+			sourceTree = "<group>";
+		};
+		EA6E92E11FA8E5F70042EBF8 /* _ */ = {
+			isa = PBXGroup;
+			children = (
+				EA6E92E21FA8E5F70042EBF8 /* AppDelegate.swift */,
+				EA6E92E31FA8E5F70042EBF8 /* Assets.xcassets */,
+				EA6E92E41FA8E5F70042EBF8 /* LaunchScreen.storyboard */,
+				EA6E92E61FA8E5F70042EBF8 /* Main.storyboard */,
+				EA6E92E81FA8E5F70042EBF8 /* Info.plist */,
+				EA6E92E91FA8E5F70042EBF8 /* ViewController.swift */,
+			);
+			path = _;
+			sourceTree = "<group>";
+		};
 		EA7BE2F31F78EB72008A494A = {
 			isa = PBXGroup;
 			children = (
@@ -79,13 +126,9 @@
 		EA7BE2FE1F78EB72008A494A /* RxSwiftTutorials */ = {
 			isa = PBXGroup;
 			children = (
-				EA7BE3121F791917008A494A /* Sample */,
-				EA7BE2FF1F78EB72008A494A /* AppDelegate.swift */,
-				EA7BE3011F78EB72008A494A /* ViewController.swift */,
-				EA7BE3031F78EB72008A494A /* Main.storyboard */,
-				EA7BE3061F78EB72008A494A /* Assets.xcassets */,
-				EA7BE3081F78EB72008A494A /* LaunchScreen.storyboard */,
-				EA7BE30B1F78EB72008A494A /* Info.plist */,
+				EA6E92DA1FA8E5C00042EBF8 /* 1-Approach */,
+				EA6E92D81FA8E5C00042EBF8 /* 2-Concepts */,
+				EA6E92E11FA8E5F70042EBF8 /* _ */,
 			);
 			path = RxSwiftTutorials;
 			sourceTree = "<group>";
@@ -152,9 +195,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA7BE30A1F78EB72008A494A /* LaunchScreen.storyboard in Resources */,
-				EA7BE3071F78EB72008A494A /* Assets.xcassets in Resources */,
-				EA7BE3051F78EB72008A494A /* Main.storyboard in Resources */,
+				EADE849C1FA95DB2001DD029 /* Main.storyboard in Resources */,
+				EADE849A1FA95DA4001DD029 /* Assets.xcassets in Resources */,
+				EADE849B1FA95DB2001DD029 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,10 +244,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-RxSwiftTutorials/Pods-RxSwiftTutorials-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,28 +264,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA7BE3021F78EB72008A494A /* ViewController.swift in Sources */,
-				EA7BE3001F78EB72008A494A /* AppDelegate.swift in Sources */,
+				EA6E92EB1FA8E6130042EBF8 /* 1.2-Callback.swift in Sources */,
+				EA6E92EA1FA8E6130042EBF8 /* 1.1-Delegation.swift in Sources */,
+				EADE84991FA95DA1001DD029 /* 2.1-Observable.swift in Sources */,
+				EADE849E1FA95DB5001DD029 /* ViewController.swift in Sources */,
+				EA6E92ED1FA8E6130042EBF8 /* 1.4-Functional.swift in Sources */,
+				EA6E92EE1FA8E6130042EBF8 /* 1.5-Reactive.swift in Sources */,
+				EADE84981FA95D9E001DD029 /* AppDelegate.swift in Sources */,
+				EA6E92EC1FA8E6130042EBF8 /* 1.3-Promise.swift in Sources */,
+				EA6E92EF1FA8E6130042EBF8 /* 1.6-FunctionalReactive.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		EA7BE3031F78EB72008A494A /* Main.storyboard */ = {
+		EA6E92E41FA8E5F70042EBF8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				EA7BE3041F78EB72008A494A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		EA7BE3081F78EB72008A494A /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EA7BE3091F78EB72008A494A /* Base */,
+				EA6E92E51FA8E5F70042EBF8 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		EA6E92E61FA8E5F70042EBF8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA6E92E71FA8E5F70042EBF8 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -359,12 +411,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = RxSwiftTutorials/Info.plist;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "$(SRCROOT)/RxSwiftTutorials/_/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = vn.asiantech.RxSwiftTutorials;
+				PRODUCT_BUNDLE_IDENTIFIER = "github.blkbrds.rxswift-tutorials";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -374,12 +427,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = RxSwiftTutorials/Info.plist;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "$(SRCROOT)/RxSwiftTutorials/_/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = vn.asiantech.RxSwiftTutorials;
+				PRODUCT_BUNDLE_IDENTIFIER = "github.blkbrds.rxswift-tutorials";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

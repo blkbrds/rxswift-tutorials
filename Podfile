@@ -3,5 +3,6 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'RxSwiftTutorials' do
-  pod 'RxSwift', '4.0.0'
+  pod 'PromiseKit/Foundation', '~> 4.4'
+  pod 'RxSwift', '~> 4.0'
 end
