@@ -19,42 +19,58 @@ private func test() {
 import Foundation
 
 private class Leader: DeveloperDelegation {
-    func me(_ me: Developer, shouldStart task: Task) -> YesNo {
-        switch task {
-        case .implement(_): return Yes
-        case .report:       return Yes
-        case .drinkBeer:    return No
+    func dev(_ dev: Developer, shouldStart task: Task) -> YesNo {
+        switch task.id {
+        case "123": return Yes
+        default: return No
+        }
+    }
+
+    func dev(_ dev: Developer, complete task: Task, result: TaskResult) {
+        switch result {
+        case .merged: dev.drinkBeer()
+        case .rejected: dev.report()
         }
     }
 }
 
 private protocol DeveloperDelegation {
-    func me(_ me: Developer, shouldStart task: Task) -> YesNo
+    func dev(_ dev: Developer, shouldStart task: Task) -> YesNo
+    func dev(_ dev: Developer, complete task: Task, result: TaskResult)
 }
 
 private class Developer {
     var leader: DeveloperDelegation!
-    var tasks: [Task] = [.implement(taskId: "123"), .implement(taskId: "456"), .report, .drinkBeer]
-    
+    let tasks: [Task] = [Task(id: "123"), Task(id: "456")]
+
     func start() {
         for task in tasks {
-            guard leader.me(self, shouldStart: task) else { continue }
-            start(task)
+            guard leader.dev(self, shouldStart: task) else { continue }
+            let result = start(task)
+            leader.dev(self, complete: task, result: result)
         }
         stop()
     }
-    
-    func start(_ task: Task) { }
-    
+
+    func start(_ task: Task) -> TaskResult { return .merged }
+
     func stop() { }
+    func report() { }
+    func drinkBeer() { }
 }
 
 //------------------------------------------------------------
 
-private enum Task {
-    case implement(taskId: String)
-    case report
-    case drinkBeer
+private class Task {
+    let id: String
+    init(id: String) {
+        self.id = id
+    }
+}
+
+private enum TaskResult {
+    case merged
+    case rejected
 }
 
 private enum Issue: Error {

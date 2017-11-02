@@ -10,41 +10,71 @@
 //
 //    The delegation is clear enough.
 //    But, sometime:
-//      - there's only one case in definition
-//      - the refer's process only, no referenced subject is needed
+//      - There's only one case in definition
+//      - The refer's process only, no referenced subject is needed
 //    Callback (completion block) is created for this.
 
 private func test() {
     let dev = Developer()
-    dev.start(.implement(taskId: "123"), completion: { result in
-        switch result {
-        case .merged:
-            dev.start(.drinkBeer, completion: nil)
-        case .rejected:
-            dev.start(.report, completion: nil)
+    dev.start(
+        shouldStart: { (task) -> Bool in
+            switch task.id {
+            case "123": return Yes
+            default: return No
+            }
+        },
+        completion: { (report) in
+            switch report {
+            case .allFine:
+                dev.drinkBeer()
+            case .hasProblems:
+                dev.report()
+            }
         }
-    })
+    )
 }
 
 //------------------------------------------------------------
 
 import Foundation
 
+private class Developer {
+    let tasks: [Task] = [Task(id: "123"), Task(id: "456")]
+
+    func start(shouldStart: (Task) -> Bool, completion: (TodayReport) -> Void) {
+        var report = TodayReport.allFine
+        for task in tasks {
+            let result = start(task)
+            if result == .rejected {
+                report = .hasProblems
+            }
+        }
+        completion(report)
+    }
+
+    func start(_ task: Task) -> TaskResult { return .merged }
+    func stop() { }
+    func report() { }
+    func drinkBeer() { }
+}
+
+//------------------------------------------------------------
+
+private class Task {
+    let id: String
+    init(id: String) {
+        self.id = id
+    }
+}
+
 private enum TaskResult {
     case merged
     case rejected
 }
 
-private class Developer {
-    func start(_ task: Task, completion: ((TaskResult) -> Void)?) { }
-}
-
-//------------------------------------------------------------
-
-private enum Task {
-    case implement(taskId: String)
-    case report
-    case drinkBeer
+private enum TodayReport {
+    case allFine
+    case hasProblems
 }
 
 private enum Issue: Error {

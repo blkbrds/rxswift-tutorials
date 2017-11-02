@@ -12,14 +12,16 @@
 
 private func test() {
     let dev = Developer()
-//    dev.start(.implement(taskId: "123"), completion: { result in
-//        switch result {
-//        case .merged:
-//            dev.start(.drinkBeer, completion: nil)
-//        case .rejected:
-//            dev.start(.report, completion: nil)
-//        }
-//    })
+    // via regular way
+    dev.start(.implement(taskId: "123"), completion: { result in
+        switch result {
+        case .merged:
+            dev.start(.drinkBeer, completion: nil)
+        case .rejected:
+            dev.start(.report, completion: nil)
+        }
+    })
+    // via promise
     dev.start(.implement(taskId: "123"))
         .then { _ in dev.start(.drinkBeer) }
         .catch { _ in dev.start(.report) }
@@ -32,12 +34,17 @@ import PromiseKit
 
 private enum TaskResult {
     case merged
-//    case rejected
+    case rejected // converted to error in promise
 }
 
 private class Developer {
-    func start(_ task: Task, completion: ((TaskResult) -> Void)?) { }
+    // via regular way
+    func start(_ task: Task, completion: ((TaskResult) -> Void)?) {
+        completion?(.merged) // or
+        completion?(.rejected)
+    }
 
+    // via promise
     @discardableResult
     func start(_ task: Task) -> Promise<TaskResult> {
         return Promise { fulfill, reject in

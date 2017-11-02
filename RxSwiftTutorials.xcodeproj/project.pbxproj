@@ -8,14 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		08704267EBB53661E87A8C65 /* Pods_RxSwiftTutorials.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 375841F4BCA5663AF299C617 /* Pods_RxSwiftTutorials.framework */; };
-		EA6E92EA1FA8E6130042EBF8 /* 1.1-Delegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E92DB1FA8E5C00042EBF8 /* 1.1-Delegation.swift */; };
-		EA6E92EB1FA8E6130042EBF8 /* 1.2-Callback.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E92DC1FA8E5C00042EBF8 /* 1.2-Callback.swift */; };
-		EA6E92EC1FA8E6130042EBF8 /* 1.3-Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E92DD1FA8E5C00042EBF8 /* 1.3-Promise.swift */; };
-		EA6E92ED1FA8E6130042EBF8 /* 1.4-Functional.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E92DE1FA8E5C00042EBF8 /* 1.4-Functional.swift */; };
-		EA6E92EE1FA8E6130042EBF8 /* 1.5-Reactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E92DF1FA8E5C00042EBF8 /* 1.5-Reactive.swift */; };
-		EA6E92EF1FA8E6130042EBF8 /* 1.6-FunctionalReactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E92E01FA8E5C00042EBF8 /* 1.6-FunctionalReactive.swift */; };
+		EA41626B1FAAD5F000DF29FF /* 1.1-Delegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4162641FAAD5E300DF29FF /* 1.1-Delegation.swift */; };
+		EA41626C1FAAD5F000DF29FF /* 1.2-Callback.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4162651FAAD5E300DF29FF /* 1.2-Callback.swift */; };
+		EA41626D1FAAD5F000DF29FF /* 1.3-Functional.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4162661FAAD5E300DF29FF /* 1.3-Functional.swift */; };
+		EA41626E1FAAD5F000DF29FF /* 1.4-Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4162671FAAD5E300DF29FF /* 1.4-Promise.swift */; };
+		EA41626F1FAAD5F300DF29FF /* 2.1-Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA41626A1FAAD5E300DF29FF /* 2.1-Observable.swift */; };
+		EA4162731FAAD77B00DF29FF /* 4.1-RxTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4162721FAAD77B00DF29FF /* 4.1-RxTest.swift */; };
+		EA4162751FAAD78C00DF29FF /* 4.2-RxNimble.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4162741FAAD78C00DF29FF /* 4.2-RxNimble.swift */; };
+		EA41627B1FAAD80D00DF29FF /* 3.1-Creation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4162791FAAD80A00DF29FF /* 3.1-Creation.swift */; };
+		EA41627C1FAAD80F00DF29FF /* 3.2-Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA41627A1FAAD80A00DF29FF /* 3.2-Operators.swift */; };
+		EA41627E1FAAD88500DF29FF /* 1.5-Reactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA41627D1FAAD88500DF29FF /* 1.5-Reactive.swift */; };
 		EADE84981FA95D9E001DD029 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E92E21FA8E5F70042EBF8 /* AppDelegate.swift */; };
-		EADE84991FA95DA1001DD029 /* 2.1-Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E92D91FA8E5C00042EBF8 /* 2.1-Observable.swift */; };
 		EADE849A1FA95DA4001DD029 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA6E92E31FA8E5F70042EBF8 /* Assets.xcassets */; };
 		EADE849B1FA95DB2001DD029 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA6E92E41FA8E5F70042EBF8 /* LaunchScreen.storyboard */; };
 		EADE849C1FA95DB2001DD029 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA6E92E61FA8E5F70042EBF8 /* Main.storyboard */; };
@@ -26,13 +29,16 @@
 		291D3F0777DE23565023DF3B /* Pods-RxSwiftTutorials.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftTutorials.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftTutorials/Pods-RxSwiftTutorials.release.xcconfig"; sourceTree = "<group>"; };
 		375841F4BCA5663AF299C617 /* Pods_RxSwiftTutorials.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwiftTutorials.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9A80A06A4E3B3248AF3DCEC /* Pods-RxSwiftTutorials.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftTutorials.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftTutorials/Pods-RxSwiftTutorials.debug.xcconfig"; sourceTree = "<group>"; };
-		EA6E92D91FA8E5C00042EBF8 /* 2.1-Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "2.1-Observable.swift"; sourceTree = "<group>"; };
-		EA6E92DB1FA8E5C00042EBF8 /* 1.1-Delegation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "1.1-Delegation.swift"; sourceTree = "<group>"; };
-		EA6E92DC1FA8E5C00042EBF8 /* 1.2-Callback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "1.2-Callback.swift"; sourceTree = "<group>"; };
-		EA6E92DD1FA8E5C00042EBF8 /* 1.3-Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "1.3-Promise.swift"; sourceTree = "<group>"; };
-		EA6E92DE1FA8E5C00042EBF8 /* 1.4-Functional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "1.4-Functional.swift"; sourceTree = "<group>"; };
-		EA6E92DF1FA8E5C00042EBF8 /* 1.5-Reactive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "1.5-Reactive.swift"; sourceTree = "<group>"; };
-		EA6E92E01FA8E5C00042EBF8 /* 1.6-FunctionalReactive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "1.6-FunctionalReactive.swift"; sourceTree = "<group>"; };
+		EA4162641FAAD5E300DF29FF /* 1.1-Delegation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "1.1-Delegation.swift"; sourceTree = "<group>"; };
+		EA4162651FAAD5E300DF29FF /* 1.2-Callback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "1.2-Callback.swift"; sourceTree = "<group>"; };
+		EA4162661FAAD5E300DF29FF /* 1.3-Functional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "1.3-Functional.swift"; sourceTree = "<group>"; };
+		EA4162671FAAD5E300DF29FF /* 1.4-Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "1.4-Promise.swift"; sourceTree = "<group>"; };
+		EA41626A1FAAD5E300DF29FF /* 2.1-Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "2.1-Observable.swift"; sourceTree = "<group>"; };
+		EA4162721FAAD77B00DF29FF /* 4.1-RxTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "4.1-RxTest.swift"; sourceTree = "<group>"; };
+		EA4162741FAAD78C00DF29FF /* 4.2-RxNimble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "4.2-RxNimble.swift"; sourceTree = "<group>"; };
+		EA4162791FAAD80A00DF29FF /* 3.1-Creation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "3.1-Creation.swift"; sourceTree = "<group>"; };
+		EA41627A1FAAD80A00DF29FF /* 3.2-Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "3.2-Operators.swift"; sourceTree = "<group>"; };
+		EA41627D1FAAD88500DF29FF /* 1.5-Reactive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "1.5-Reactive.swift"; sourceTree = "<group>"; };
 		EA6E92E21FA8E5F70042EBF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA6E92E31FA8E5F70042EBF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA6E92E51FA8E5F70042EBF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -71,25 +77,42 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		EA6E92D81FA8E5C00042EBF8 /* 2-Concepts */ = {
+		EA4162631FAAD5E300DF29FF /* 1-Approach */ = {
 			isa = PBXGroup;
 			children = (
-				EA6E92D91FA8E5C00042EBF8 /* 2.1-Observable.swift */,
-			);
-			path = "2-Concepts";
-			sourceTree = "<group>";
-		};
-		EA6E92DA1FA8E5C00042EBF8 /* 1-Approach */ = {
-			isa = PBXGroup;
-			children = (
-				EA6E92DB1FA8E5C00042EBF8 /* 1.1-Delegation.swift */,
-				EA6E92DC1FA8E5C00042EBF8 /* 1.2-Callback.swift */,
-				EA6E92DD1FA8E5C00042EBF8 /* 1.3-Promise.swift */,
-				EA6E92DE1FA8E5C00042EBF8 /* 1.4-Functional.swift */,
-				EA6E92DF1FA8E5C00042EBF8 /* 1.5-Reactive.swift */,
-				EA6E92E01FA8E5C00042EBF8 /* 1.6-FunctionalReactive.swift */,
+				EA4162641FAAD5E300DF29FF /* 1.1-Delegation.swift */,
+				EA4162651FAAD5E300DF29FF /* 1.2-Callback.swift */,
+				EA4162661FAAD5E300DF29FF /* 1.3-Functional.swift */,
+				EA4162671FAAD5E300DF29FF /* 1.4-Promise.swift */,
+				EA41627D1FAAD88500DF29FF /* 1.5-Reactive.swift */,
 			);
 			path = "1-Approach";
+			sourceTree = "<group>";
+		};
+		EA4162681FAAD5E300DF29FF /* 4-Testing */ = {
+			isa = PBXGroup;
+			children = (
+				EA4162721FAAD77B00DF29FF /* 4.1-RxTest.swift */,
+				EA4162741FAAD78C00DF29FF /* 4.2-RxNimble.swift */,
+			);
+			path = "4-Testing";
+			sourceTree = "<group>";
+		};
+		EA4162691FAAD5E300DF29FF /* 2-GettingStarted */ = {
+			isa = PBXGroup;
+			children = (
+				EA41626A1FAAD5E300DF29FF /* 2.1-Observable.swift */,
+			);
+			path = "2-GettingStarted";
+			sourceTree = "<group>";
+		};
+		EA4162781FAAD80A00DF29FF /* 3-DeepDiving */ = {
+			isa = PBXGroup;
+			children = (
+				EA4162791FAAD80A00DF29FF /* 3.1-Creation.swift */,
+				EA41627A1FAAD80A00DF29FF /* 3.2-Operators.swift */,
+			);
+			path = "3-DeepDiving";
 			sourceTree = "<group>";
 		};
 		EA6E92E11FA8E5F70042EBF8 /* _ */ = {
@@ -126,8 +149,10 @@
 		EA7BE2FE1F78EB72008A494A /* RxSwiftTutorials */ = {
 			isa = PBXGroup;
 			children = (
-				EA6E92DA1FA8E5C00042EBF8 /* 1-Approach */,
-				EA6E92D81FA8E5C00042EBF8 /* 2-Concepts */,
+				EA4162631FAAD5E300DF29FF /* 1-Approach */,
+				EA4162691FAAD5E300DF29FF /* 2-GettingStarted */,
+				EA4162781FAAD80A00DF29FF /* 3-DeepDiving */,
+				EA4162681FAAD5E300DF29FF /* 4-Testing */,
 				EA6E92E11FA8E5F70042EBF8 /* _ */,
 			);
 			path = RxSwiftTutorials;
@@ -264,15 +289,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA6E92EB1FA8E6130042EBF8 /* 1.2-Callback.swift in Sources */,
-				EA6E92EA1FA8E6130042EBF8 /* 1.1-Delegation.swift in Sources */,
-				EADE84991FA95DA1001DD029 /* 2.1-Observable.swift in Sources */,
+				EA41627C1FAAD80F00DF29FF /* 3.2-Operators.swift in Sources */,
+				EA41627E1FAAD88500DF29FF /* 1.5-Reactive.swift in Sources */,
+				EA41626F1FAAD5F300DF29FF /* 2.1-Observable.swift in Sources */,
+				EA4162731FAAD77B00DF29FF /* 4.1-RxTest.swift in Sources */,
+				EA41626C1FAAD5F000DF29FF /* 1.2-Callback.swift in Sources */,
+				EA41627B1FAAD80D00DF29FF /* 3.1-Creation.swift in Sources */,
 				EADE849E1FA95DB5001DD029 /* ViewController.swift in Sources */,
-				EA6E92ED1FA8E6130042EBF8 /* 1.4-Functional.swift in Sources */,
-				EA6E92EE1FA8E6130042EBF8 /* 1.5-Reactive.swift in Sources */,
+				EA4162751FAAD78C00DF29FF /* 4.2-RxNimble.swift in Sources */,
+				EA41626B1FAAD5F000DF29FF /* 1.1-Delegation.swift in Sources */,
 				EADE84981FA95D9E001DD029 /* AppDelegate.swift in Sources */,
-				EA6E92EC1FA8E6130042EBF8 /* 1.3-Promise.swift in Sources */,
-				EA6E92EF1FA8E6130042EBF8 /* 1.6-FunctionalReactive.swift in Sources */,
+				EA41626D1FAAD5F000DF29FF /* 1.3-Functional.swift in Sources */,
+				EA41626E1FAAD5F000DF29FF /* 1.4-Promise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

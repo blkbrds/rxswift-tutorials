@@ -6,11 +6,7 @@
 //  Copyright © 2017 Asian Tech Co., Ltd. All rights reserved.
 //
 
-//------------------------------------------------------------
-//    Riding game scheduler
-//------------------------------------------------------------
-
-import UIKit
+import Foundation
 
 extension Array where Element == Ride {
     // imperative programming with insertion sort

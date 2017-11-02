@@ -1,127 +1,206 @@
 [TOC]
 
-## 0. Căn cơ
-
-Nội dung bài này yêu cầu một số căn cơ nhất định, võ sinh vui lòng đọc lại trước khi bắt đầu, tránh tẩu hỏa nhập ma hoặc trách người ra đề đánh đố thí sinh.
-
-
-
-### Programming paradigm [?](https://en.wikipedia.org/wiki/Programming_paradigm)
-
-<details><summary><b>imperative programming</b> - lập trình điều khiển</summary>
-Mẫu hình lập trình sử dụng câu lệnh để thay đổi trạng thái của chương trình.
-
-```swift
-func main(_ n: Int) -> Int {
-  guard n > 1 else return n
-  let a = 1
-  let b = 1
-  var c = 0
-  for i in 1..<n {
-    c = a + b
-    a = b
-    b = c
-  }
-  return c
-}
-```
-</details>
-
-<details><summary><b>functional programming</b> - lập trình hàm</summary>
-Lập trình hàm nhấn mạnh việc ứng dụng hàm số / hàm dựng sẵn, trái với phong cách lập trình mệnh lệnh, nhấn mạnh vào sự thay đổi trạng thái.
-
-Nguyên tắc của *functional programming*  là không thay đổi / duy trì ảnh hưởng đến trạng thái bên ngoài scope của nó (side effect).
-
-*Functional programming* là một dạng của *declarative programming*.
-
-```swift
-func fib(_ n: Int) -> Int {
-  guard n > 1 else return n
-  return fib(n-1) + fib(n-2)
-}
-
-func main(_ n: Int) -> Int {
-  return fib(n)
-}
-```
-</details>
-
-<details><summary><b>declarative programming</b> - ngược lại với <b>imperative programming</b>, dùng các hàm dựng sẵn để ẩn đi tiến trình thực hiện, chỉ quan tâm đến đầu vào, đầu ra</summary>
-
-```swift
-let a = [1, 2, 3]
-let b = a.map{ fib($0) }
-```
-
-</details>
-
-<details><summary><b>object-oriented programming</b> - which groups code together with the state the code modifies</summary>
-</details>
-
-<details><summary><b>procedural programming</b> - which groups code into functions</summary>
-</details>
-
-<details><summary><b>logic programming</b> - which has a particular style of execution model coupled to a particular style of syntax and grammar</summary>
-</details>
-
-<details><summary><b>symbolic programming</b> - which has a particular style of syntax and grammar</summary>
-</details>
-
-
-
-### Software design pattern [?](https://en.wikipedia.org/wiki/Software_design_pattern)
-
-Thường là một template mô tả cách giải quyết một vấn đề mà có thể được dùng trong nhiều tình huống khác nhau.
-> Các giải thuật không được xem là các mẫu thiết kế, vì chúng giải quyết các vấn đề về tính toán hơn là các vấn đề về thiết kế.
-
-
-
 ## 1. Approach
 
 
 
-### 1.1. Delegation pattern (*Object-oriented programming*)
+### 1.1. Delegation
 
 ```swift
-let app = App()
-let worker = 
+let dev = Developer()
+// dev.leader = Leader()
+dev.start() // How can developer refer leader for decision making? 
 ```
 
-### 1.2. Callback programming
+```swift
+private protocol DeveloperDelegation {
+    func me(_ me: Developer, shouldStart task: Task) -> YesNo
+}
+```
+
+```swift
+private class Leader: DeveloperDelegation {
+    func me(_ me: Developer, shouldStart task: Task) -> YesNo {
+        switch task {
+        case .implement(_): return Yes
+        case .report:       return Yes
+        case .drinkBeer:    return No
+        }
+    }
+}
+```
+
+```swift
+private class Developer {
+    var leader: DeveloperDelegation!
+    var tasks: [Task] = [.implement(taskId: "123"), .implement(taskId: "456"), .report, .drinkBeer]
+    
+    func start() {
+        for task in tasks {
+            guard leader.me(self, shouldStart: task) else { continue }
+            start(task)
+        }
+        stop()
+    }
+    
+    func start(_ task: Task) { }
+    
+    func stop() { }
+}
+```
 
 
 
-### 1.3. Promise programming
+### 1.2. Callback
+
+The delegation is clear enough.
+
+But, sometime:
+
+- There's only one case in definition
+- The refer's process only, no referenced subject is needed
+
+Callback (completion block) is created for this.
+
+```swift
+let dev = Developer()
+dev.start(.implement(taskId: "123"), completion: { result in
+    switch result {
+    case .merged:
+        dev.start(.drinkBeer, completion: nil)
+    case .rejected:
+        dev.start(.report, completion: nil)
+    }
+})
+```
 
 
 
-### 1.4. Functional programming
+### 1.3. Functional
+
+```swift
+typealias Minutes = Double
+struct Ride {
+    let name: String
+    let categories: Set<RideCategory>
+    let waitTime: Minutes
+}
+```
+
+```swift
+extension Array where Element == Ride {
+    // imperative programming with insertion sort
+    func _sortedNames() -> [String] {
+        var names = [String]()
+        for ride in self {
+            names.append(ride.name)
+        }
+        for (i, name) in names.enumerated() {
+            for j in stride(from: i, to: -1, by: -1) {
+                if name.localizedCompare(names[j]) == .orderedAscending {
+                    names.remove(at: i)
+                    names.insert(name, at: j)
+                }
+            }
+        }
+        return names
+    }
+
+    // functional programming - what's order rule? that's all
+    func sortedNames() -> [String] {
+        return map { ride in ride.name }
+            .sorted { s1, s2 in s1.localizedCompare(s2) == .orderedAscending }
+    }
+}
+```
 
 
 
-### 1.5. Reactive programming
+### 1.4. Promise
+
+Promise - the golden path keeper & nested callback avoiding.
+
+Implementation:
+
+```swift
+private class Developer {
+    // via regular way
+    func start(_ task: Task, completion: ((TaskResult) -> Void)?) {
+        completion(.merged) // or
+        completion(.rejected)
+    }
+
+    // via promise
+    @discardableResult
+    func start(_ task: Task) -> Promise<TaskResult> {
+        return Promise { fulfill, reject in
+            fulfill(.merged) // or
+            reject(Issue.bug)
+        }
+    }
+}
+```
+
+Usage:
+
+```swift
+let dev = Developer()
+// via regular way
+dev.start(.implement(taskId: "123"), completion: { result in
+    switch result {
+    case .merged:
+        dev.start(.drinkBeer, completion: nil)
+    case .rejected:
+        dev.start(.report, completion: nil)
+    }
+})
+// via promise
+dev.start(.implement(taskId: "123"))
+    .then { _ in dev.start(.drinkBeer) }
+    .catch { _ in dev.start(.report) }
+```
 
 
 
-### 1.6. Functional Reactive programming
+### 1.5. Reactive
 
 
 
-## 2. Concepts
+## 2. Getting Started
 
-> put the diagram here
+### 2.1. Observable - starter
 
+### 2.2. Observer - handler
 
+### 2.3. Operator - man in the middle
 
-### 2.1. from Observable
+## 3. Deep Dive
 
-### 2.2. to Sequence
+### 3.1. Creation
 
-### 2.3. then, Observer - who listen the changes
+### 3.2. Operators
 
+#### 3.2.1. Conditional
 
+#### 3.2.2. Combination
 
-## 3. Chú thích và tài liệu tham khảo
+#### 3.2.3. Filtering
+
+#### 3.2.4. Mathematical
+
+#### 3.2.5. Transformation
+
+#### 3.2.6. Time Based
+
+## 4. Testing
+
+### 4.1. RxTest
+
+### 4.2. RxNimble
+
+https://academy.realm.io/posts/testing-functional-reactive-programming-code/
+
+## 5. References
 
 
 
