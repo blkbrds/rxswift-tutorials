@@ -28,6 +28,7 @@
 /* Begin PBXFileReference section */
 		291D3F0777DE23565023DF3B /* Pods-RxSwiftTutorials.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftTutorials.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftTutorials/Pods-RxSwiftTutorials.release.xcconfig"; sourceTree = "<group>"; };
 		375841F4BCA5663AF299C617 /* Pods_RxSwiftTutorials.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwiftTutorials.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8B623911FB2B73600DAA201 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		D9A80A06A4E3B3248AF3DCEC /* Pods-RxSwiftTutorials.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftTutorials.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftTutorials/Pods-RxSwiftTutorials.debug.xcconfig"; sourceTree = "<group>"; };
 		EA4162641FAAD5E300DF29FF /* 1.1-Delegation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "1.1-Delegation.swift"; sourceTree = "<group>"; };
 		EA4162651FAAD5E300DF29FF /* 1.2-Callback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "1.2-Callback.swift"; sourceTree = "<group>"; };
@@ -111,6 +112,7 @@
 			children = (
 				EA4162791FAAD80A00DF29FF /* 3.1-Creation.swift */,
 				EA41627A1FAAD80A00DF29FF /* 3.2-Operators.swift */,
+				C8B623911FB2B73600DAA201 /* MyPlayground.playground */,
 			);
 			path = "3-DeepDiving";
 			sourceTree = "<group>";
@@ -270,11 +272,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-RxSwiftTutorials/Pods-RxSwiftTutorials-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
