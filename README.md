@@ -174,6 +174,7 @@ dev.start(.implement(taskId: "123"))
 
 ### 2.3. Operator - man in the middle
 
+
 ## 3. Deep Dive
 
 ### 3.1. Creation
