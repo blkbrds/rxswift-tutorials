@@ -194,7 +194,7 @@ This chapter will show you several different ways to assemble sequences, and how
 
   Let's see the diagram below:
 
-  ![Screen Shot 2017-11-06 at 4.37.06 PM](/Users/ntschip/Desktop/Screen Shot 2017-11-06 at 4.37.06 PM.png)
+  ![start_width](./resources/images/3.2.2/start_width.png)
 
   Implement and usage:
 
@@ -234,7 +234,7 @@ This chapter will show you several different ways to assemble sequences, and how
 
     Emit the emissions from two or more Observables without interleaving them.
 
-  ![Screen Shot 2017-11-06 at 4.47.33 PM](/Users/ntschip/Desktop/Screen Shot 2017-11-06 at 4.47.33 PM.png)
+  ![concat](./resources/images/3.2.2/concat.png)
 
   ​
 
@@ -268,86 +268,141 @@ This chapter will show you several different ways to assemble sequences, and how
 
   Combine multiple Observables into one.
 
-  ![Screen Shot 2017-11-06 at 5.03.01 PM](/Users/ntschip/Desktop/Screen Shot 2017-11-06 at 5.03.01 PM.png)
+  ![merge](./resources/images/3.2.2/merge.png)
 
   ​
 
   Usage:
 
   ```Swift
-  example(of: "merge") {
-    	// 1
-    	let left = PublishSubject<String>()
-    	let right = PublishSubject<String>()
+  // 1
+  let left = PublishSubject<String>()
+  let right = PublishSubject<String>()
   ```
 
-  Now create a source observable of observable:
+  Now create a source observable of observable and create a merge observable:
 
   ```Swift
-  	// 2
-  	let source = Observable.of(left.asObservable(), right.asObservable())
+  // 2
+  let source = Observable.of(left, right)
+  let observable = source.merge()
+  let disposable = observable.subscribe(onNext: { (value) in
+      print(value)
+  })
   ```
 
-  Next, create a merge observable:
+  Next, push some value for each observable:
 
   ```swift
-  	// 3
-  	let observable = source.merge()
-  	let disposable = observable.subscribe(onNext: { value in
-    		print(value)
-  	})
-  ```
-
-  Then you need to randomly pick and push values to either observable. The loop uses up all values from `leftValues` and `rightValues` array then exist:
-
-  ```swift
-  	// 4
-      var leftValues = ["Berlin", "Munich", "Frankfurt"]
-      var rightValues = ["Madrid", "Barcelona", "Valencia"]
-      repeat {
-        	if arc4random_uniform(2) == 0 {
-          	if !leftValues.isEmpty {
-          	  	left.onNext("Left:  " + leftValues.removeFirst())
-          	}
-        	} else if !rightValues.isEmpty {
-          	right.onNext("Right: " + rightValues.removeFirst())
-        	}
-      } while !leftValues.isEmpty || !rightValues.isEmpty
+  // 3
+  print("> Sending a value to Left")
+  left.onNext("1")
+  print("> Sending a value to Right")
+  right.onNext("4")
+  print("> Sending another value to Right")
+  right.onNext("5")
+  print("> Sending another value to Left")
+  left.onNext("2")
+  print("> Sending another value to Right")
+  right.onNext("6")
+  print("> Sending another value to Left")
+  left.onNext("3")
   ```
 
   One last bit before you're done.
 
   ```Swift
-  	// 5
-    	disposable.dispose()
-  }
+  disposable.dispose()
   ```
 
   Run code and see the result:
 
   ```Swift
-  --- Example of: merge ---
-  Right: Madrid
-  Left:  Berlin
-  Right: Barcelona
-  Right: Valencia
-  Left:  Munich
-  Left:  Frankfürt
+  > Sending a value to Left
+  1
+  > Sending a value to Right
+  4
+  > Sending another value to Right
+  5
+  > Sending another value to Left
+  2
+  > Sending another value to Right
+  6
+  > Sending another value to Left
+  3
   ```
 
   Let's see the diagram below, following the code above:
 
-  ![Screen Shot 2017-11-06 at 5.51.40 PM](/Users/ntschip/Desktop/Screen Shot 2017-11-06 at 5.51.40 PM.png)
+  ![merge2](./resources/images/3.2.2/merge2.png)
 
 
 
 * **Combining elements**:
 
-  ![Screen Shot 2017-11-06 at 5.55.46 PM](/Users/ntschip/Desktop/Screen Shot 2017-11-06 at 5.55.46 PM.png)
+  ![combine_last](./resources/images/3.2.2/combine_last.png)
+
+  As diagram above, if we need to combine values from serveral sequences, RxSwift provides `combineLatest`operator to do it.
+
+  Let's follow the code below:
+
+  Setup two observables, it's used to push values then.
+
+  ```swift
+  // 1
+  let first = PublishSubject<String>()
+  let second = PublishSubject<String>()
+  ```
+
+  Next, create an observable that `combines` the latest values from both sequence (main idea of `combineLatest` section).
+
+  ```Swift
+  // 2
+  let observable = Observable.combineLatest(first, second, resultSelector: { (lastFirst, lastSecond) in
+  	print(lastFirst + " - " + lastSecond)
+  })
+  let disposable = observable.subscribe()
+  ```
+
+  Now, start to push values for each sequence:
+
+  ```swift
+  // 3
+  print("> Sending a value to First")
+  first.onNext("Hello,")
+  print("> Sending a value to Second")
+  second.onNext("world")
+  print("> Sending another value to Second")
+  second.onNext("RxSwift")
+  print("> Sending another value to First")
+  first.onNext("So easy to learn,")
+  ```
+
+  Finally, dispose our observable.
+
+  ```swift
+  disposable.dispose()
+  ```
+
+  Let's try it by yourself and see the result:
+
+  ```swift
+  > Sending a value to First
+  > Sending a value to Second
+  Hello, - world
+  > Sending another value to Second
+  Hello, - RxSwift
+  > Sending another value to First
+  Have a good day, - RxSwift
+  ```
 
   ​
 
 * **Triggers**:
+
+  ​
+
+  ![with_latest_from](./resources/images/3.2.2/with_latest_from.png)
 
 * **Switches**:
 
