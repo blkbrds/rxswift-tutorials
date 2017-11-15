@@ -13,7 +13,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let combining = Combination()
-        combining.merge()
     }
 }
 

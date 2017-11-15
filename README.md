@@ -186,156 +186,151 @@ dev.start(.implement(taskId: "123"))
 
 This chapter will show you several different ways to assemble sequences, and how to combine the data within each sequence. Some operators you'll work with are similar to `Swift` collection operators.
 
-* **Prefixing and concatenating**:
+**Prefixing and concatenating**:
 
-  - **``startWith()``**:
+- **``startWith()``**:
 
-  Emit a specified sequence of items before beginning to emit the items from the Observable.
+Emit a specified sequence of items before beginning to emit the items from the Observable.
 
-  Let's see the diagram below:
+Let's see the diagram below:
 
-  ![start_width](./resources/images/3.2.2/start_width.png)
+![start_width](./resources/images/3.2.2/start_width.png)
 
-  Implement and usage:
+Implement and usage:
 
-  ```swift
-  example(of: "startWith") {
-      // 1
-      let numbers = Observable.of(2, 3)
-    	// 2
-    	let observable = numbers.startWith(1)
-    	observable.subscribe(onNext: { value in
-      	print(value)
-    	})
-  }
-  ```
+```swift
+// 1
+let numbers = Observable.of(2, 3)
+// 2
+let observable = numbers.startWith(1)
+observable.subscribe(onNext: { value in
+    print(value)
+})
+```
 
-  The startWith(_:) operator prefixes an observable sequence with the given initial value. This value must be of the same type as the observable elements.
+The startWith(_:) operator prefixes an observable sequence with the given initial value. This value must be of the same type as the observable elements.
 
-  Here’s what’s going on in the code above:
+Here’s what’s going on in the code above:
 
-  1. Create a sequence of numbers.
-  2. Create a sequence starting with the value 1, then continue with the original sequence of numbers.
+1. Create a sequence of numbers.
+2. Create a sequence starting with the value 1, then continue with the original sequence of numbers.
 
-  Don’t get fooled by the position of the startWith(_:) operator! Although you chainit to the numbers sequence, the observable it creates emits the initial value,followed by the values from the numbers sequence.
+Don’t get fooled by the position of the startWith(_:) operator! Although you chainit to the numbers sequence, the observable it creates emits the initial value,followed by the values from the numbers sequence.
 
-  Look at the debug area in the playground to confirm this:
+Look at the debug area in the playground to confirm this:
 
-  ```swift
-  --- Example of: startWith ---
-  1
-  2
-  3
-  ```
+```swift
+1
+2
+3
+```
 
-  ​
+​
 
-  * **``concat()``**:
+* **``concat()``**:
 
-    Emit the emissions from two or more Observables without interleaving them.
+  Emit the emissions from two or more Observables without interleaving them.
 
-  ![concat](./resources/images/3.2.2/concat.png)
+![concat](./resources/images/3.2.2/concat.png)
 
-  ​
+​
 
-  Usage:
+Usage:
 
-  ```swift
-  example(of: "Observable.concat") {
-    	// 1
-    	let first = Observable.of(1, 1, 1)
-    	let second = Observable.of(2, 2)
-  	// 2
-    	let observable = Observable.concat([first, second])
-    	observable.subscribe(onNext: { value in
-      	print(value)
-  	}) 
-  }
-  ```
+```swift
+// 1
+let first = Observable.of(1, 1, 1)
+let second = Observable.of(2, 2)
+// 2
+let observable = Observable.concat([first, second])
+observable.subscribe(onNext: { value in
+    print(value)
+}) 
+```
 
-  ```swift
-  --- Example of: Observable.concat ---
-  1
-  1
-  1
-  2
-  2
-  ```
+```swift
+1
+1
+1
+2
+2
+```
 
-  ​
+​
 
-* **Merging**:
+**Merging**: 
 
-  Combine multiple Observables into one.
+`merge`
 
-  ![merge](./resources/images/3.2.2/merge.png)
+Combine multiple Observables into one.
 
-  ​
+![merge](./resources/images/3.2.2/merge.png)
 
-  Usage:
+​
 
-  ```Swift
-  // 1
-  let left = PublishSubject<String>()
-  let right = PublishSubject<String>()
-  ```
+Usage:
 
-  Now create a source observable of observable and create a merge observable:
+```Swift
+// 1
+let left = PublishSubject<String>()
+let right = PublishSubject<String>()
+```
 
-  ```Swift
-  // 2
-  let source = Observable.of(left, right)
-  let observable = source.merge()
-  let disposable = observable.subscribe(onNext: { (value) in
-      print(value)
-  })
-  ```
+Now create a source observable of observable and create a merge observable:
 
-  Next, push some value for each observable:
+```Swift
+// 2
+let source = Observable.of(left, right)
+let observable = source.merge()
+let disposable = observable.subscribe(onNext: { (value) in
+    print(value)
+})
+```
 
-  ```swift
-  // 3
-  print("> Sending a value to Left")
-  left.onNext("1")
-  print("> Sending a value to Right")
-  right.onNext("4")
-  print("> Sending another value to Right")
-  right.onNext("5")
-  print("> Sending another value to Left")
-  left.onNext("2")
-  print("> Sending another value to Right")
-  right.onNext("6")
-  print("> Sending another value to Left")
-  left.onNext("3")
-  ```
+Next, push some value for each observable:
 
-  One last bit before you're done.
+```swift
+// 3
+print("> Sending a value to Left")
+left.onNext("1")
+print("> Sending a value to Right")
+right.onNext("4")
+print("> Sending another value to Right")
+right.onNext("5")
+print("> Sending another value to Left")
+left.onNext("2")
+print("> Sending another value to Right")
+right.onNext("6")
+print("> Sending another value to Left")
+left.onNext("3")
+```
 
-  ```Swift
-  disposable.dispose()
-  ```
+One last bit before you're done.
 
-  Run code and see the result:
+```Swift
+disposable.dispose()
+```
 
-  ```Swift
-  > Sending a value to Left
-  1
-  > Sending a value to Right
-  4
-  > Sending another value to Right
-  5
-  > Sending another value to Left
-  2
-  > Sending another value to Right
-  6
-  > Sending another value to Left
-  3
-  ```
+Run code and see the result:
 
-  Let's see the diagram below, following the code above:
+```Swift
+> Sending a value to Left
+1
+> Sending a value to Right
+4
+> Sending another value to Right
+5
+> Sending another value to Left
+2
+> Sending another value to Right
+6
+> Sending another value to Left
+3
+```
 
-  ![merge2](./resources/images/3.2.2/merge2.png)
+Let's see the diagram below, following the code above:
 
+![merge2](./resources/images/3.2.2/merge2.png)
 
 
 * **Combining elements**:
@@ -398,13 +393,188 @@ This chapter will show you several different ways to assemble sequences, and how
 
   ​
 
-* **Triggers**:
+* **Triggers** (`withLatestFrom`):
 
-  ​
+  Similarly `combineLatest`, the function is called by`withLatestFrom` is being *trigger*.
+
+  Why? Because we'll often need to accept data from serveral *observables* when another *observable* emits a event.
+
+  Easier to understand, let's think about a `TextField` and a `Button`. We'll only be got the input from `TextField` until the `Button` is pressed.
+
+  So, see the example below:
+
+  ```swift
+  // 1
+  let button = PublishSubject<Any>()
+  let textField = PublishSubject<String>()
+  ```
+
+  Now, create an observable with `withLatestFrom`, so when *button* emits a value, ignore it but instead emit the latest value received from the *textField*
+
+  ```swift
+  // 2
+  let observable = button.withLatestFrom(textField)
+  let disposable = observable.subscribe(onNext: { (value) in
+      print(value)
+  })
+  ```
+
+  Ok next, emit values for *button* and *textField* follow then and terminate the sequence:
+
+  ```swift
+  // 3
+  textField.onNext("Rx")
+  textField.onNext("RxSw")
+  button.onNext("tap")
+  textField.onNext("RxSwift")
+  button.onNext("tap")
+  button.onNext("tap")
+
+  disposable.dispose()
+  ```
+
+  Let's see the result:
+
+  ```swift
+  RxSw
+  RxSwift
+  RxSwift
+  ```
+
+  No need diagram for above code??? That'll be fine...
+
+  But look at here, with two observables *x* and *y*, same as *button* and *textField*. Just figure out by yourself.
 
   ![with_latest_from](./resources/images/3.2.2/with_latest_from.png)
 
+  ​
+
 * **Switches**:
+
+
+  * `amb` - *ambiguous*:
+
+    Or be known by `race`, given two or more source Observables, emit all of the items from only the first of these Observables to emit an event.
+
+    ![amb](./resources/images/3.2.2/amb.png)
+
+    You see, the second observable will be *chosen*. It means that the event will be emited by the second observable.
+
+    Try the example below to understand:
+
+    ```swift
+    let left = PublishSubject<String>()
+    let right = PublishSubject<String>()
+    // 1
+
+    let observable = left.amb(right)
+    let disposable = observable.subscribe(onNext: { value in
+        print(value)
+    })
+
+    // 2
+    left.onNext("London")
+    right.onNext("Copenhagen")
+    left.onNext("Lisbon")
+    left.onNext("Madrid")
+    right.onNext("Vienna")
+    right.onNext("Ha Noi")
+    right.onNext("HCM")
+    disposable.dispose()
+    ```
+
+    And the result:
+
+    ```
+    London
+    Lisbon
+    Madrid
+    ```
+
+    ​
+
+  * `switchLatest`:
+
+    Convert an Observable that emits Observables into a single Observable that emits the items emitted by the most-recently-emitted of those Observables.
+
+    ![switch_latest](./resources/images/3.2.2/switch_latest.png)
+
+    Following example below:
+
+    ```swift
+    // 1
+    let one = PublishSubject<String>()
+    let two = PublishSubject<String>()
+    let three = PublishSubject<String>()
+    let source = PublishSubject<Observable<String>>()
+
+    // 2
+    let observable = source.switchLatest()
+    let disposable = observable.subscribe(onNext: { value in
+        print(value)
+    })
+
+    // 3
+    source.onNext(one)
+    one.onNext("Some text from sequence one")
+    two.onNext("Some text from sequence two")
+    source.onNext(two)
+    two.onNext("More text from sequence two")
+    one.onNext("and also from sequence one")
+    source.onNext(three)
+    two.onNext("Why don't you see me?")
+    one.onNext("I'm alone, help me")
+    three.onNext("Hey it's three. I win.")
+    source.onNext(one)
+    one.onNext("Nope. It's me, one!")
+
+    disposable.dispose()
+    ```
+
+    ```
+    Some text from sequence one
+    More text from sequence two
+    Hey it's three. I win.
+    Nope. It's me, one!
+    ```
+
+    > Note: third section, when we switch to another observable, that will unsubscribe from the previously emitted observable.
+
+* **Zip**:
+
+  Such as `combineLatest`, but it combines the emissions of multiple Observables together via a specified function and emit single items for each combination based on the results of this function
+
+  ![zip](./resources/images/3.2.2/zip.png)
+
+  Now, let's see what’s going on in the code above:
+
+  ```swift
+  // 1
+  let first = PublishSubject<String>()
+  let second = PublishSubject<String>()
+
+  // 2
+  let observable = Observable.zip(first, second, resultSelector: { (lastFirst, lastSecond) in
+      print(lastFirst + " - " + lastSecond)
+  })
+  let disposable = observable.subscribe()
+
+  // 3
+  print("> Sending a value to First")
+  first.onNext("Hello,")
+  print("> Sending a value to Second")
+  second.onNext("world")
+  print("> Sending another value to Second")
+  second.onNext("RxSwift")
+  print("> Sending another value to First")
+  first.onNext("Have a good day,")
+
+  disposable.dispose()
+  ```
+
+  > Note: compare with example of `combineLatest`, and figure out the difference.
+
+
 
 #### 3.2.3. Filtering
 
