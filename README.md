@@ -173,6 +173,24 @@ dev.start(.implement(taskId: "123"))
 ### 2.2. Observer - handler
 
 ### 2.3. Operator - man in the middle
+Operators là những phép toán cho phép biển đổi `observable sequence` thành nhiều dạng khác nhau để phù hợp với nhu cầu sử dụng. 
+
+Một số `operators` cơ bản trong RxSwift được liệt kê tại mục `3.2`.
+
+**Example:**
+
+![Filter](./3.2.2.png)
+
+```swift
+Observable.of(2,30,22,5,60,1).filter{$0 > 10}.subscribe(onNext:{
+      print($0)
+})
+```
+**OUTPUT: 30 22 60**
+
+1. Khởi tạo `observable` là mảng các số nguyên [2,30,22,5,60,1]
+2. Ở đây sử dụng phép `filter` của `Transforming Operators`
+3. Qua phép `filter` với điều kiện `$0 > 10`. Chúng ta đã có được một `observable` mới là mảng các số nguyên [30 22 60]
 
 
 ## 3. Deep Dive
