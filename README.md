@@ -172,6 +172,45 @@ dev.start(.implement(taskId: "123"))
 
 ### 2.2. Observer - handler
 
+Sau khi đã khởi tạo **Observable**, thì subcribes **Observer** để nhận các sự kiện (events) từ **Observable** sequence.
+
+**Observers** có thể nhận 3 kiểu sự kiện:
+
+- **next**: Observable có thể có không hoặc nhiều elements nên sẽ có không hoặc nhiều `next` events được gửi tới **Observer** và đây là nơi để **Observer** nhận dữ liệu từ Observable.
+- **completed**: nhận sự kiện này khi Observable hoàn thành life-cycle của nó, và không còn phát ra bất kỳ events nào nữa (không vào sự kiện **next** nữa)
+- **error**: nhận sự kiện này khi Observable kết thúc với một error và tương tự như *completed*, **Observer** không nhận một sự kiện `next` nào nữa
+
+> Note: Các events có thể được được gửi từ các threads khác nhau nhưng 2 events không thể gửi đồng thời với nhau.
+
+Sau khi nhận sự kiện *completed* và *error*, thì các dữ liệu của **Observable** sẽ được giải phóng
+
+**return** hàm `subscribe(_ observer: O)`  là **Disposable** dùng để cancel Observable và giải phóng bộ nhớ
+
+Example
+
+```swift
+let obj = Observable.from(["🐶", "🐱", "🐭", "🐹"]) // Khởi tạo một Observable
+obj.subscribe( // Thực hiện subscribe Observable
+  onNext: { data in
+    print(data) // Nơi nhận dữ liệu của Observer được gửi đi từ Observable
+  }, 
+  onError: { error in
+    print(error) // Nơi nhận error và Observable được giải phóng
+  }, 
+  onCompleted: {
+    print("Completed") // Nhận được sự kiện khi Observable hoàn thành life-cycle và Observable được giải phóng
+  })
+   .disposed(by: bags)
+```
+
+```swift
+🐶
+🐱
+🐭
+🐹
+Completed
+```
+
 ### 2.3. Operator - man in the middle
 
 ## 3. Deep Dive
