@@ -170,6 +170,8 @@ dev.start(.implement(taskId: "123"))
 
 ### 2.1. Observable - starter
 
+> Khái niệm observable đến từ observer design pattern là một đối tượng thông báo cho các đối tượng theo dõi về một điều gì đó đang diễn ra. [source](https://xgrommx.github.io/rx-book/content/observable/index.html#)
+
 ### 2.2. Observer - handler
 
 ### 2.3. Operator - man in the middle
