@@ -196,7 +196,7 @@ dev.start(.implement(taskId: "123"))
 
 Lấy lại được nhiều event của sequence.
 
-![replay-diagram](/Users/linhvod./AT-iOS/rxswift-tutorials/resources/images/3.2.6/replay-diagram.png)
+![replay-diagram](./resources/images/3.2.6/replay-diagram.png)
 
 ```swift
 let replayedElements = 3
@@ -229,7 +229,9 @@ Giải thích:
 
 - **Buffer**
 
-![buffer-diagram](/Users/linhvod./AT-iOS/rxswift-tutorials/resources/images/3.2.6/buffer-diagram.png)
+The Buffer operator transforms an Observable that emits items into an Observable that emits buffered collections of those items.
+
+![buffer-diagram](./resources/images/3.2.6/buffer-diagram.png)
 
 ```swift
 let bufferTimeSpan: RxTimeInterval = 3
@@ -257,7 +259,7 @@ Giải thích:
 
 Tách observable từ observable sau 1 khoảng thời gian (timespan) và số lượng event cho phép tối đa (count).
 
-![window-diagram](/Users/linhvod./AT-iOS/rxswift-tutorials/resources/images/3.2.6/window-diagram.png)
+![window-diagram](./resources/images/3.2.6/window-diagram.png)
 
 ```swift
 let bufferTimeSpan: RxTimeInterval = 3
@@ -285,7 +287,7 @@ Giải thích:
 
 Observable được phát ra sau 1 khoảng delay.
 
-![delay-diagram](/Users/linhvod./AT-iOS/rxswift-tutorials/resources/images/3.2.6/delay-diagram.png)
+![delay-diagram](./resources/images/3.2.6/delay-diagram.png)
 
 ```swift
 let delayInSeconds: RxTimeInterval = 3
@@ -316,7 +318,7 @@ Giải thích:
 
 Cho 1 khoảng thời gian Timeout, nếu trong khoảng timeout đó không có event nào được phát ra thì sẽ ngắt observable và trả về Error.
 
-![timeout-diagram](/Users/linhvod./AT-iOS/rxswift-tutorials/resources/images/3.2.6/timeout-diagram.png)
+![timeout-diagram](./resources/images/3.2.6/timeout-diagram.png)
 
 ```swift
 let dueTime: RxTimeInterval = 3
@@ -326,7 +328,7 @@ _ = publicSubject.timeout(dueTime, scheduler: MainScheduler.instance)
 	.subscribe(onNext: {
 		print($0)
 	}, onError: {
-      // 2
+      	// 2
 		print("error")
 		print($0)
 	})
