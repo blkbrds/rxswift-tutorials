@@ -200,32 +200,38 @@ Lấy lại được nhiều event của sequence.
 
 ```swift
 let replayedElements = 3
-// 1
-let replaySubject = ReplaySubject<Int>.create(bufferSize: replayedElements)
+let replayDelay: TimeInterval = 5
+let publicSubject = PublishSubject<Int>()
 
-_ = replaySubject.subscribe({
+_ = publicSubject.subscribe({
 	print($0)
 })
+
+// 1
+let replayObservable = publicSubject.replay(replayedElements)
+_ = replayObservable.connect()
+
 // 2
 let timer = Observable<Int>.interval(1, scheduler: MainScheduler.instance)
 _ = timer.subscribe({
 	if let e = $0.element {
-		replaySubject.onNext(e)
+		publicSubject.onNext(e)
 	}
 })
+
 // 3
-DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-	replaySubject.subscribe({
-		print("replay:", $0)
+DispatchQueue.main.asyncAfter(deadline: .now() + replayDelay) {
+	replayObservable.subscribe({
+		print("replay: ", $0)
 	}).dispose()
 }
 ```
 
 Giải thích:
 
-1. Tạo 1 ReplaySubject với `bufferSize = 3  `
-2. Cứ mỗi giây phát ra một event.
-3. Phát lại sau 5s 
+1. Tạo 1 replayObservable với `bufferSize = 3  `
+2. Cứ mỗi giây publishSubject phát ra một event.
+3. replayObservable sẽ phát lại 3 elements sau 5s.
 
 - **Buffer**
 
@@ -237,10 +243,12 @@ The Buffer operator transforms an Observable that emits items into an Observable
 let bufferTimeSpan: RxTimeInterval = 3
 let bufferMaxCount = 5
 let publicSubject = PublishSubject<Int>()
+
 // 1
 _ = publicSubject.buffer(timeSpan: bufferTimeSpan, count: bufferMaxCount, scheduler: MainScheduler.instance).subscribe({
 	print($0)
 })
+
 // 2
 let timer = Observable<Int>.interval(1, scheduler: MainScheduler.instance)
 _ = timer.subscribe({
@@ -253,7 +261,7 @@ _ = timer.subscribe({
 Giải thích:
 
 1. Đăng ký observable có buffer với `timeSpan = 3`  và `count = 5 `
-2. Cứ mỗi giây phát ra một event.
+2. Cứ mỗi giây publishSubject phát ra một event.
 
 - **Window**
 
@@ -265,10 +273,12 @@ Tách observable từ observable sau 1 khoảng thời gian (timespan) và số 
 let bufferTimeSpan: RxTimeInterval = 3
 let bufferMaxCount = 5
 let publicSubject = PublishSubject<Int>()
+
 // 1
 _ = publicSubject.window(timeSpan: bufferTimeSpan, count: bufferMaxCount, scheduler: MainScheduler.instance).subscribe({
 	print($0)
 })
+
 // 2
 let timer = Observable<Int>.interval(1, scheduler: MainScheduler.instance)
 _ = timer.subscribe({
@@ -281,7 +291,7 @@ _ = timer.subscribe({
 Giải thích:
 
 1. Đăng ký observable có timeout với `timeSpan = 3`  và `count = 5 `
-2. Cứ mỗi giây phát ra một event.
+2. Cứ mỗi giây publishSubject phát ra một event.
 
 - **Delay**
 
@@ -292,6 +302,7 @@ Observable được phát ra sau 1 khoảng delay.
 ```swift
 let delayInSeconds: RxTimeInterval = 3
 let publicSubject = PublishSubject<Int>()
+
 // 1
 _ = publicSubject.delay(delayInSeconds, scheduler: MainScheduler.instance).subscribe({
 	print($0)
@@ -300,11 +311,12 @@ _ = publicSubject.delay(delayInSeconds, scheduler: MainScheduler.instance).subsc
 _ = publicSubject.subscribe({
 	print($0)
 })
+
 // 2
 let timer = Observable<Int>.interval(1, scheduler: MainScheduler.instance)
 _ = timer.subscribe({
 	if let e = $0.element {
-    	publicSubject.onNext(e)
+      	publicSubject.onNext(e)
 	}
 })
 ```
@@ -312,7 +324,7 @@ _ = timer.subscribe({
 Giải thích:
 
 1. Đăng ký observable có delay với ```delayInSeconds = 3```. Có nghĩa là sau khoảng 3s kể từ khi observable phát ra event thì observer sẽ nhận được event. 
-2. Cứ mỗi giây phát ra một event.
+2. Cứ mỗi giây publishSubject phát ra một event.
 
 - **Timeout**
 
@@ -323,6 +335,7 @@ Cho 1 khoảng thời gian Timeout, nếu trong khoảng timeout đó không có
 ```swift
 let dueTime: RxTimeInterval = 3
 let publicSubject = PublishSubject<Int>()
+
 // 1
 _ = publicSubject.timeout(dueTime, scheduler: MainScheduler.instance)
 	.subscribe(onNext: {
@@ -332,6 +345,7 @@ _ = publicSubject.timeout(dueTime, scheduler: MainScheduler.instance)
 		print("error")
 		print($0)
 	})
+
 // 3
 let timer = Observable<Int>.interval(1, scheduler: MainScheduler.instance)
 _ = timer.subscribe({
@@ -345,7 +359,7 @@ Giải thích:
 
 1. Đăng ký observable có timeout với ```dueTime = 3```.
 2. Trả về Error nếu event lỗi hoặc trong khoảng timeout không có event nào được phát ra.
-3. Cứ mỗi giây phát ra một event.
+3. Cứ mỗi giây publishSubject phát ra một event.
 
 ## 4. Testing
 

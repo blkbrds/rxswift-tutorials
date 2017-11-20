@@ -15,22 +15,26 @@ final class TimeBased {
 
     func replay() {
         let replayedElements = 3
-        let replaySubject = ReplaySubject<Int>.create(bufferSize: replayedElements)
+        let replayDelay: TimeInterval = 5
+        let publicSubject = PublishSubject<Int>()
 
-        _ = replaySubject.subscribe({
+        _ = publicSubject.subscribe({
             print($0)
         })
+
+        let replayObservable = publicSubject.replay(replayedElements)
+        _ = replayObservable.connect()
 
         let timer = Observable<Int>.interval(1, scheduler: MainScheduler.instance)
         _ = timer.subscribe({
             if let e = $0.element {
-                replaySubject.onNext(e)
+                publicSubject.onNext(e)
             }
         })
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-            replaySubject.subscribe({
-                print("replay:", $0)
+        DispatchQueue.main.asyncAfter(deadline: .now() + replayDelay) {
+            replayObservable.subscribe({
+                print("replay: ", $0)
             }).dispose()
         }
     }
@@ -40,8 +44,12 @@ final class TimeBased {
         let bufferMaxCount = 5
         let publicSubject = PublishSubject<Int>()
 
-        _ = publicSubject.buffer(timeSpan: bufferTimeSpan, count: bufferMaxCount, scheduler: MainScheduler.instance).subscribe({
-            print($0)
+        _ = publicSubject.buffer(timeSpan: bufferTimeSpan, count: bufferMaxCount, scheduler: MainScheduler.instance).subscribe({ (event) in
+            if let element = event.element {
+                for e in element {
+                    print(e)
+                }
+            }
         })
 
         let timer = Observable<Int>.interval(1, scheduler: MainScheduler.instance)
