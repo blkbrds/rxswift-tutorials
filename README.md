@@ -184,7 +184,7 @@ Sau khi phát sự kiện *completed* và *error*, thì các dữ liệu của *
 
 **return** hàm `subscribe(_ observer: O)`  là **Disposable** dùng để cancel Observable và giải phóng bộ nhớ
 
-Example
+**Example**
 
 ```swift
 let obj = Observable.from(["🐶", "🐱", "🐭", "🐹"]) // Khởi tạo một Observable
@@ -208,6 +208,23 @@ obj.subscribe( // Thực hiện subscribe Observable
 🐹
 Completed
 ```
+
+**iOS**
+
+```swift
+@IBOutlet weak var textField: UITextField!
+
+override func viewDidLoad() {
+  super.viewDidLoad()
+  let observable = textField.rx.text.orEmpty // Khởi tạo observable
+  observable.subscribe(onNext: { (text) in 
+  // Mỗi lần thay đổi text trong textField, Observer sẽ nhận được giá trị text mới của textField.
+    print(text)
+  })
+}
+```
+
+
 
 ### 2.3. Operator - man in the middle
 
