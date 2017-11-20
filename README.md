@@ -186,81 +186,7 @@ dev.start(.implement(taskId: "123"))
 
 This chapter will show you several different ways to assemble sequences, and how to combine the data within each sequence. Some operators you'll work with are similar to `Swift` collection operators.
 
-**Prefixing and concatenating**:
-
-- **``startWith()``**:
-
-Emit a specified sequence of items before beginning to emit the items from the Observable.
-
-Let's see the diagram below:
-
-![start_width](./resources/images/3.2.2/start_width.png)
-
-Implement and usage:
-
-```swift
-// 1
-let numbers = Observable.of(2, 3)
-// 2
-let observable = numbers.startWith(1)
-observable.subscribe(onNext: { value in
-    print(value)
-})
-```
-
-The startWith(_:) operator prefixes an observable sequence with the given initial value. This value must be of the same type as the observable elements.
-
-Here’s what’s going on in the code above:
-
-1. Create a sequence of numbers.
-2. Create a sequence starting with the value 1, then continue with the original sequence of numbers.
-
-Don’t get fooled by the position of the startWith(_:) operator! Although you chainit to the numbers sequence, the observable it creates emits the initial value,followed by the values from the numbers sequence.
-
-Look at the debug area in the playground to confirm this:
-
-```swift
-1
-2
-3
-```
-
-​
-
-* **``concat()``**:
-
-  Emit the emissions from two or more Observables without interleaving them.
-
-![concat](./resources/images/3.2.2/concat.png)
-
-​
-
-Usage:
-
-```swift
-// 1
-let first = Observable.of(1, 1, 1)
-let second = Observable.of(2, 2)
-// 2
-let observable = Observable.concat([first, second])
-observable.subscribe(onNext: { value in
-    print(value)
-}) 
-```
-
-```swift
-1
-1
-1
-2
-2
-```
-
-​
-
 **Merging**: 
-
-`merge`
 
 Combine multiple Observables into one.
 
@@ -333,124 +259,124 @@ Let's see the diagram below, following the code above:
 ![merge2](./resources/images/3.2.2/merge2.png)
 
 
-* **Combining elements**:
 
-  ![combine_last](./resources/images/3.2.2/combine_last.png)
+**Combining elements**:
 
-  As diagram above, if we need to combine values from serveral sequences, RxSwift provides `combineLatest`operator to do it.
+![combine_last](./resources/images/3.2.2/combine_last.png)
 
-  Let's follow the code below:
+As diagram above, if we need to combine values from serveral sequences, RxSwift provides `combineLatest`operator to do it.
 
-  Setup two observables, it's used to push values then.
+Let's follow the code below:
 
-  ```swift
-  // 1
-  let first = PublishSubject<String>()
-  let second = PublishSubject<String>()
-  ```
+Setup two observables, it's used to push values then.
 
-  Next, create an observable that `combines` the latest values from both sequence (main idea of `combineLatest` section).
+```swift
+// 1
+let first = PublishSubject<String>()
+let second = PublishSubject<String>()
+```
 
-  ```Swift
-  // 2
-  let observable = Observable.combineLatest(first, second, resultSelector: { (lastFirst, lastSecond) in
-  	print(lastFirst + " - " + lastSecond)
-  })
-  let disposable = observable.subscribe()
-  ```
+Next, create an observable that `combines` the latest values from both sequence (main idea of `combineLatest` section).
 
-  Now, start to push values for each sequence:
+```swift
+// 2
+let observable = Observable.combineLatest(first, second, resultSelector: { (lastFirst, lastSecond) in
+	print(lastFirst + " - " + lastSecond)
+})
+let disposable = observable.subscribe()
+```
 
-  ```swift
-  // 3
-  print("> Sending a value to First")
-  first.onNext("Hello,")
-  print("> Sending a value to Second")
-  second.onNext("world")
-  print("> Sending another value to Second")
-  second.onNext("RxSwift")
-  print("> Sending another value to First")
-  first.onNext("So easy to learn,")
-  ```
+Now, start to push values for each sequence:
 
-  Finally, dispose our observable.
+```swift
+// 3
+print("> Sending a value to First")
+first.onNext("Hello,")
+print("> Sending a value to Second")
+second.onNext("world")
+print("> Sending another value to Second")
+second.onNext("RxSwift")
+print("> Sending another value to First")
+first.onNext("So easy to learn,")
+```
 
-  ```swift
-  disposable.dispose()
-  ```
+Finally, dispose our observable.
 
-  Let's try it by yourself and see the result:
+```swift
+disposable.dispose()
+```
 
-  ```swift
-  > Sending a value to First
-  > Sending a value to Second
-  Hello, - world
-  > Sending another value to Second
-  Hello, - RxSwift
-  > Sending another value to First
-  Have a good day, - RxSwift
-  ```
+Let's try it by yourself and see the result:
 
-  ​
+```swift
+> Sending a value to First
+> Sending a value to Second
+Hello, - world
+> Sending another value to Second
+Hello, - RxSwift
+> Sending another value to First
+Have a good day, - RxSwift
+```
 
-* **Triggers** (`withLatestFrom`):
 
-  Similarly `combineLatest`, the function is called by`withLatestFrom` is being *trigger*.
 
-  Why? Because we'll often need to accept data from serveral *observables* when another *observable* emits a event.
+**Triggers** (`withLatestFrom`):
 
-  Easier to understand, let's think about a `TextField` and a `Button`. We'll only be got the input from `TextField` until the `Button` is pressed.
+Similarly `combineLatest`, the function is called by`withLatestFrom` is being *trigger*.
 
-  So, see the example below:
+Why? Because we'll often need to accept data from serveral *observables* when another *observable* emits a event.
 
-  ```swift
-  // 1
-  let button = PublishSubject<Any>()
-  let textField = PublishSubject<String>()
-  ```
+Easier to understand, let's think about a `TextField` and a `Button`. We'll only be got the input from `TextField` until the `Button` is pressed.
 
-  Now, create an observable with `withLatestFrom`, so when *button* emits a value, ignore it but instead emit the latest value received from the *textField*
+So, see the example below:
 
-  ```swift
-  // 2
-  let observable = button.withLatestFrom(textField)
-  let disposable = observable.subscribe(onNext: { (value) in
-      print(value)
-  })
-  ```
+```swift
+// 1
+let button = PublishSubject<Any>()
+let textField = PublishSubject<String>()
+```
 
-  Ok next, emit values for *button* and *textField* follow then and terminate the sequence:
+Now, create an observable with `withLatestFrom`, so when *button* emits a value, ignore it but instead emit the latest value received from the *textField*
 
-  ```swift
-  // 3
-  textField.onNext("Rx")
-  textField.onNext("RxSw")
-  button.onNext("tap")
-  textField.onNext("RxSwift")
-  button.onNext("tap")
-  button.onNext("tap")
+```swift
+// 2
+let observable = button.withLatestFrom(textField)
+let disposable = observable.subscribe(onNext: { (value) in
+    print(value)
+})
+```
 
-  disposable.dispose()
-  ```
+Ok next, emit values for *button* and *textField* follow then and terminate the sequence:
 
-  Let's see the result:
+```swift
+// 3
+textField.onNext("Rx")
+textField.onNext("RxSw")
+button.onNext("tap")
+textField.onNext("RxSwift")
+button.onNext("tap")
+button.onNext("tap")
 
-  ```swift
-  RxSw
-  RxSwift
-  RxSwift
-  ```
+disposable.dispose()
+```
 
-  No need diagram for above code??? That'll be fine...
+Let's see the result:
 
-  But look at here, with two observables *x* and *y*, same as *button* and *textField*. Just figure out by yourself.
+```swift
+RxSw
+RxSwift
+RxSwift
+```
 
-  ![with_latest_from](./resources/images/3.2.2/with_latest_from.png)
+No need diagram for above code??? That'll be fine...
 
-  ​
+But look at here, with two observables *x* and *y*, same as *button* and *textField*. Just figure out by yourself.
 
-* **Switches**:
+![with_latest_from](./resources/images/3.2.2/with_latest_from.png)
 
+
+
+**Switches**:
 
   * `amb` - *ambiguous*:
 
@@ -540,39 +466,113 @@ Let's see the diagram below, following the code above:
 
     > Note: third section, when we switch to another observable, that will unsubscribe from the previously emitted observable.
 
-* **Zip**:
+    ​
 
-  Such as `combineLatest`, but it combines the emissions of multiple Observables together via a specified function and emit single items for each combination based on the results of this function
+    **Prefixing and concatenating**:
 
-  ![zip](./resources/images/3.2.2/zip.png)
+    - **``startWith()``**:
 
-  Now, let's see what’s going on in the code above:
+    Emit a specified sequence of items before beginning to emit the items from the Observable.
 
-  ```swift
-  // 1
-  let first = PublishSubject<String>()
-  let second = PublishSubject<String>()
+    Let's see the diagram below:
 
-  // 2
-  let observable = Observable.zip(first, second, resultSelector: { (lastFirst, lastSecond) in
-      print(lastFirst + " - " + lastSecond)
-  })
-  let disposable = observable.subscribe()
+    ![start_width](./resources/images/3.2.2/start_width.png)
 
-  // 3
-  print("> Sending a value to First")
-  first.onNext("Hello,")
-  print("> Sending a value to Second")
-  second.onNext("world")
-  print("> Sending another value to Second")
-  second.onNext("RxSwift")
-  print("> Sending another value to First")
-  first.onNext("Have a good day,")
+    Implement and usage:
 
-  disposable.dispose()
-  ```
+    ```swift
+    // 1
+    let numbers = Observable.of(2, 3)
+    // 2
+    let observable = numbers.startWith(1)
+    observable.subscribe(onNext: { value in
+        print(value)
+    })
+    ```
 
-  > Note: compare with example of `combineLatest`, and figure out the difference.
+    The startWith(_:) operator prefixes an observable sequence with the given initial value. This value must be of the same type as the observable elements.
+
+    Here’s what’s going on in the code above:
+
+    1. Create a sequence of numbers.
+    2. Create a sequence starting with the value 1, then continue with the original sequence of numbers.
+
+    Don’t get fooled by the position of the startWith(_:) operator! Although you chainit to the numbers sequence, the observable it creates emits the initial value,followed by the values from the numbers sequence.
+
+    Look at the debug area in the playground to confirm this:
+
+    ```swift
+    1
+    2
+    3
+    ```
+
+    ​
+
+    - **``concat()``**:
+
+      Emit the emissions from two or more Observables without interleaving them.
+
+    ![concat](./resources/images/3.2.2/concat.png)
+
+    ​
+
+    Usage:
+
+    ```swift
+    // 1
+    let first = Observable.of(1, 1, 1)
+    let second = Observable.of(2, 2)
+    // 2
+    let observable = Observable.concat([first, second])
+    observable.subscribe(onNext: { value in
+        print(value)
+    }) 
+    ```
+
+    ```swift
+    1
+    1
+    1
+    2
+    2
+    ```
+
+    ​
+
+    **Zip**:
+
+    Such as `combineLatest`, but it combines the emissions of multiple Observables together via a specified function and emit single items for each combination based on the results of this function
+
+    ![zip](./resources/images/3.2.2/zip.png)
+
+    Now, let's see what’s going on in the code above:
+
+    ```swift
+    // 1
+    let first = PublishSubject<String>()
+    let second = PublishSubject<String>()
+
+    // 2
+    let observable = Observable.zip(first, second, resultSelector: { (lastFirst, lastSecond) in
+        print(lastFirst + " - " + lastSecond)
+    })
+    let disposable = observable.subscribe()
+
+    // 3
+    print("> Sending a value to First")
+    first.onNext("Hello,")
+    print("> Sending a value to Second")
+    second.onNext("world")
+    print("> Sending another value to Second")
+    second.onNext("RxSwift")
+    print("> Sending another value to First")
+    first.onNext("Have a good day,")
+
+    disposable.dispose()
+    ```
+
+    > Note: compare with example of `combineLatest`, and figure out the difference.
 
 
 
