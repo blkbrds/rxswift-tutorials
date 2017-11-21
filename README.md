@@ -173,11 +173,11 @@ dev.start(.implement(taskId: "123"))
 ### 2.2. Observer - handler
 
 ### 2.3. Operator - man in the middle
-Operators là những phép toán cho phép biển đổi `observable sequence` thành `observable sequence` mới để phù hợp với nhu cầu sử dụng. 
+Operators là những phép toán cho phép biển đổi `observable` thành `observable` mới để phù hợp với nhu cầu sử dụng. 
 
 Một số `operators` cơ bản trong RxSwift được liệt kê tại mục `3.2`.
 
-**Example:**
+**Example 1:**
 
 ![Filter](./3.2.2.png)
 
@@ -188,10 +188,23 @@ Observable.of(2,30,22,5,60,1).filter{$0 > 10}.subscribe(onNext:{
 ```
 **OUTPUT: 30 22 60**
 
-1. Khởi tạo `observable sequence` các số nguyên --2--30--22--5--60--1
-2. Ở đây sử dụng phép `filter` của `Transforming Operators`
-3. Qua phép `filter` với điều kiện `$0 > 10`. Chúng ta đã có được một `observable sequence` mới là --30--22--60
+1. Khởi tạo `observable` các số nguyên --2--30--22--5--60--1
+2. Qua phép `filter` với điều kiện `$0 > 10`. Chúng ta đã có được một `observable` mới là --30--22--60
 
+
+**Example 2:**
+	Ở ví dụ này chúng ta sử dụng phép `filter` vào việc tìm kiếm bằng `UISearchBar` control.
+	
+```swift	
+let observable = searchBar.rx.text.orEmpty.asObservable() // 1   
+// 2
+observable.subscribe(onNext: { (text) in
+	// Do something when emit events
+})
+.disposed(by: disposeBag) // dispose it on deinit.
+```
+1. Khởi tạo `observable` thể hiện cho sự thay đổi `text` của `searchBar`
+2. `Subcrible` một `observable` để có thể xử lý mỗi khi nội dung `searchBar` thay đổi.
 
 ## 3. Deep Dive
 
