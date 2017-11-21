@@ -172,7 +172,7 @@ dev.start(.implement(taskId: "123"))
 
 ### 2.2. Observer - handler
 
-Sau khi đã khởi tạo **Observable**, thì subcribes **Observable** để nhận các sự kiện (events).
+Sau khi đã khởi tạo **Observable**, thì subcribes **Observable** để nhận các sự kiện (events). Và ở đây, **Observer** dùng để nhận sự kiện mỗi khi có sự kiện phát ra.
 
 **Observers** có thể nhận 3 kiểu sự kiện:
 
