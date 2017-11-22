@@ -204,7 +204,7 @@ dev.start(.implement(taskId: "123"))
 
 - **onNext, onCompleted, và onErrror**
 
-  ​	[The `Subscribe` method](http://reactivex.io/documentation/operators/subscribe.html)  là cách bạn kết nối `observer` với `Observable`. 		observer implement của bạn là tập hợp các methods dưới đây:
+  ​	[The `Subscribe` method](http://reactivex.io/documentation/operators/subscribe.html) là cách bạn kết nối `observer` với `Observable`. observer implement của bạn là tập hợp các methods dưới đây:
 
   `onNext`: `Observable` gọi hàm này bất cứ khi nào `Observable` phát đi item. Hàm này có tham số là item được phát ra bởi `Observable`.
 
@@ -225,7 +225,7 @@ dev.start(.implement(taskId: "123"))
 
 - **"Hot" và "Cold" Observable**
 
-  Khi nào observable phát ra chuối các items? Điều đó phụ thuộc vào observable. Một "hot" Observable có thể bắt đầu phát các items ngay khi nó được tạo ra, và sau đó bất kỳ observer sau đó đăng ký tới observable có thể bắt đầu observing. "Cold" observable
+  Khi nào observable phát ra chuối các items? Điều đó phụ thuộc vào observable. Một "hot" Observable có thể bắt đầu phát các items ngay khi nó được tạo ra, và sau đó bất kỳ observer sau đó đăng ký tới observable có thể bắt đầu observing. "Cold" observable thì chờ cho đến khi một observer đăng kí vào observable trước khi nó bắt đầu phát ra các items.
 
   [Read more](http://reactivex.io/documentation/observable.html)
 
