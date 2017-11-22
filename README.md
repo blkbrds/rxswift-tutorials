@@ -258,6 +258,12 @@ Let's see the diagram below, following the code above:
 
 ![merge2](./resources/images/3.2.2/merge2.png)
 
+**iOS**:
+
+```swift
+
+```
+
 
 
 **Combining elements**:
@@ -318,6 +324,30 @@ Hello, - RxSwift
 Have a good day, - RxSwift
 ```
 
+**iOS**:
+
+```swift
+// 1: First, set up 3 outlets: 2 textfield `username`, `password` and a button `login`
+@IBOutlet private weak var usernameTextField: UITextField!
+@IBOutlet private weak var passwordTextField: UITextField!
+@IBOutlet private weak var loginButton: UIButton!
+
+// 2: Now, create 2 observable of username and password
+let userName = usernameTextField.rx.text.orEmpty
+let password = passwordTextField.rx.text.orEmpty
+
+// 3: Next, create validate observable (Observable<Bool>)
+let validateUserName = userName.map({ $0.characters.count >= 6 })
+let validatePassword = password.map({ $0.characters.count >= 6 })
+
+// 4: Using `combineLatest` to check valid
+// Then, binding into `loginButton` to enable or not.
+Observable.combineLatest(validateUserName, validatePassword) { $0 && $1 }
+	.bind({ valid in
+    	loginButton.isEnable = valid
+	})
+```
+
 
 
 **Triggers** (`withLatestFrom`):
@@ -373,6 +403,31 @@ No need diagram for above code??? That'll be fine...
 But look at here, with two observables *x* and *y*, same as *button* and *textField*. Just figure out by yourself.
 
 ![with_latest_from](./resources/images/3.2.2/with_latest_from.png)
+
+**iOS**:
+
+```swift
+// 1: First, set up 3 outlets: 2 textfield `username`, `password` and a button `login`
+@IBOutlet private weak var usernameTextField: UITextField!
+@IBOutlet private weak var passwordTextField: UITextField!
+@IBOutlet private weak var loginButton: UIButton!
+
+// 2: Now, create 2 Observable<String>, and a Observable<Void>
+let userName = usernameTextField.rx.text.orEmpty
+let password = passwordTextField.rx.text.orEmpty
+let buttonTap = loginButton.rx.tap.asObserable()
+
+// 3: Next, combine 2 observables
+let userAndPassword = Observable.combineLatest(input.userName, input.pw) {($0, $1)}
+
+
+// 4: Using `withLatestFrom` to get latest values
+buttonTap.withLatestFrom(userAndPassword)
+	.flatMapLatest { (user, password) in
+    	// get latest user and password to login.
+	}
+
+```
 
 
 

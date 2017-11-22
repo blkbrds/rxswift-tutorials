@@ -19,7 +19,7 @@ final class Combination {
         zip()
     }
 
-    func merge() {
+    private func merge() {
         // 1
         let left = PublishSubject<String>()
         let right = PublishSubject<String>()
@@ -48,7 +48,7 @@ final class Combination {
         disposable.dispose()
     }
 
-    func conbineLatest() {
+    private func conbineLatest() {
         // 1
         let first = PublishSubject<String>()
         let second = PublishSubject<String>()
@@ -72,7 +72,7 @@ final class Combination {
         disposable.dispose()
     }
 
-    func trigger() {
+    private func trigger() {
         // 1
         let button = PublishSubject<Any>()
         let textField = PublishSubject<String>()
@@ -94,7 +94,7 @@ final class Combination {
         disposable.dispose()
     }
 
-    func amb() {
+    private func amb() {
         let left = PublishSubject<String>()
         let right = PublishSubject<String>()
         // 1
@@ -115,7 +115,7 @@ final class Combination {
         disposable.dispose()
     }
 
-    func switchLatest() {
+    private func switchLatest() {
         // 1
         let one = PublishSubject<String>()
         let two = PublishSubject<String>()
@@ -145,7 +145,7 @@ final class Combination {
         disposable.dispose()
     }
 
-    func zip() {
+    private func zip() {
         // 1
         let first = PublishSubject<String>()
         let second = PublishSubject<String>()
