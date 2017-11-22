@@ -182,9 +182,8 @@ Một số operators cơ bản trong RxSwift được liệt kê tại mục 3.2
 ![Filter](./3.2.2.png)
 
 ```swift
-Observable.of(2,30,22,5,60,1).filter{$0 > 10}.subscribe(onNext:{
-      print($0)
-})
+let observable = Observable.of(2,30,22,5,60,1) // 1
+let newObservable = observable.filter { $0 > 10 } // 2
 ```
 **OUTPUT: 30 22 60**
 
@@ -205,8 +204,8 @@ observable.filter { $0.hasPrefix("Number") } // 2
 .disposed(by: disposeBag) // dispose it on deinit.
 ```
 1. Khởi tạo observable thể hiện cho sự thay đổi nội dung của search bar
-2. Lọc nôi dụng bắt đầu bằng chuỗi `Number`
-2. Subcrible một observable để có thể xử lý mỗi khi nội dung search bar thay đổi
+2. Lọc nội dụng bắt đầu bằng chuỗi `Number`
+3. Subcrible một observable để có thể xử lý mỗi khi nội dung search bar thay đổi
 
 ## 3. Deep Dive
 

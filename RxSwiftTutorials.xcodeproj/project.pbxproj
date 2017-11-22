@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		08704267EBB53661E87A8C65 /* Pods_RxSwiftTutorials.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 375841F4BCA5663AF299C617 /* Pods_RxSwiftTutorials.framework */; };
+		0B0DFA561FC528A4002A1D7E /* 2.3-Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0DFA551FC528A4002A1D7E /* 2.3-Operator.swift */; };
 		EA41626B1FAAD5F000DF29FF /* 1.1-Delegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4162641FAAD5E300DF29FF /* 1.1-Delegation.swift */; };
 		EA41626C1FAAD5F000DF29FF /* 1.2-Callback.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4162651FAAD5E300DF29FF /* 1.2-Callback.swift */; };
 		EA41626D1FAAD5F000DF29FF /* 1.3-Functional.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4162661FAAD5E300DF29FF /* 1.3-Functional.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B0DFA551FC528A4002A1D7E /* 2.3-Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "2.3-Operator.swift"; sourceTree = "<group>"; };
 		291D3F0777DE23565023DF3B /* Pods-RxSwiftTutorials.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftTutorials.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftTutorials/Pods-RxSwiftTutorials.release.xcconfig"; sourceTree = "<group>"; };
 		375841F4BCA5663AF299C617 /* Pods_RxSwiftTutorials.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwiftTutorials.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9A80A06A4E3B3248AF3DCEC /* Pods-RxSwiftTutorials.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftTutorials.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftTutorials/Pods-RxSwiftTutorials.debug.xcconfig"; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				EA41626A1FAAD5E300DF29FF /* 2.1-Observable.swift */,
+				0B0DFA551FC528A4002A1D7E /* 2.3-Operator.swift */,
 			);
 			path = "2-GettingStarted";
 			sourceTree = "<group>";
@@ -270,11 +273,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-RxSwiftTutorials/Pods-RxSwiftTutorials-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,6 +297,7 @@
 				EA41627C1FAAD80F00DF29FF /* 3.2-Operators.swift in Sources */,
 				EA41627E1FAAD88500DF29FF /* 1.5-Reactive.swift in Sources */,
 				EA41626F1FAAD5F300DF29FF /* 2.1-Observable.swift in Sources */,
+				0B0DFA561FC528A4002A1D7E /* 2.3-Operator.swift in Sources */,
 				EA4162731FAAD77B00DF29FF /* 4.1-RxTest.swift in Sources */,
 				EA41626C1FAAD5F000DF29FF /* 1.2-Callback.swift in Sources */,
 				EA41627B1FAAD80D00DF29FF /* 3.1-Creation.swift in Sources */,
