@@ -192,6 +192,104 @@ dev.start(.implement(taskId: "123"))
 
 #### 3.2.6. Time Based
 
+- **Timeout**
+
+Cho 1 khoảng thời gian Timeout, nếu trong khoảng timeout đó không có event nào được phát ra thì sẽ ngắt observable và trả về Error.
+
+![timeout-diagram](./resources/images/3.2.6/timeout-diagram.png)
+
+```swift
+let dueTime: RxTimeInterval = 3
+let publicSubject = PublishSubject<Int>()
+
+// 1
+_ = publicSubject.timeout(dueTime, scheduler: MainScheduler.instance)
+	.subscribe(onNext: {
+		print($0)
+	}, onError: {
+      	// 2
+		print("error")
+		print($0)
+	})
+
+// 3
+let timer = Observable<Int>.interval(1, scheduler: MainScheduler.instance)
+_ = timer.subscribe({
+	if let e = $0.element, e <= 10 {
+		publicSubject.onNext(e)
+	}
+})
+```
+
+Giải thích:
+
+1. Đăng ký observable có timeout với ```dueTime = 3```.
+2. Trả về Error nếu event lỗi hoặc trong khoảng timeout không có event nào được phát ra.
+3. Cứ mỗi giây publishSubject phát ra một event.
+
+- **Delay**
+
+Observable được phát ra sau 1 khoảng delay.
+
+![delay-diagram](./resources/images/3.2.6/delay-diagram.png)
+
+```swift
+let delayInSeconds: RxTimeInterval = 3
+let publicSubject = PublishSubject<Int>()
+
+// 1
+_ = publicSubject.delay(delayInSeconds, scheduler: MainScheduler.instance).subscribe({
+	print($0)
+})
+
+_ = publicSubject.subscribe({
+	print($0)
+})
+
+// 2
+let timer = Observable<Int>.interval(1, scheduler: MainScheduler.instance)
+_ = timer.subscribe({
+	if let e = $0.element {
+      	publicSubject.onNext(e)
+	}
+})
+```
+
+Giải thích:
+
+1. Đăng ký observable có delay với ```delayInSeconds = 3```. Có nghĩa là sau 3s thì observer sẽ được phát ra.
+2. Cứ mỗi giây publishSubject phát ra một event.
+
+- **Window**
+
+Tách observable từ observable sau 1 khoảng thời gian (timespan) và số lượng event cho phép tối đa (count).
+
+![window-diagram](./resources/images/3.2.6/window-diagram.png)
+
+```swift
+let bufferTimeSpan: RxTimeInterval = 3
+let bufferMaxCount = 2
+let publicSubject = PublishSubject<Int>()
+
+// 1
+_ = publicSubject.window(timeSpan: bufferTimeSpan, count: bufferMaxCount, scheduler: MainScheduler.instance).subscribe({
+	print($0)
+})
+
+// 2
+let timer = Observable<Int>.interval(1, scheduler: MainScheduler.instance)
+_ = timer.subscribe({
+	if let e = $0.element {
+		publicSubject.onNext(e)
+	}
+})
+```
+
+Giải thích:
+
+1. Đăng ký observable có timeout với `timeSpan = 3`  và `count = 2 `. Có nghĩa là sau 3s sẽ tách ra 1 observable con chứa những event được phát ra trong khoảng 3s đó (Tối đa là 2 event)
+2. Cứ mỗi giây publishSubject phát ra một event.
+
 - **Replay**
 
 Lấy lại được nhiều event của sequence.
@@ -241,7 +339,7 @@ The Buffer operator transforms an Observable that emits items into an Observable
 
 ```swift
 let bufferTimeSpan: RxTimeInterval = 3
-let bufferMaxCount = 5
+let bufferMaxCount = 3
 let publicSubject = PublishSubject<Int>()
 
 // 1
@@ -260,106 +358,8 @@ _ = timer.subscribe({
 
 Giải thích:
 
-1. Đăng ký observable có buffer với `timeSpan = 3`  và `count = 5 `
+1. Đăng ký observable có buffer với `timeSpan = 3`  và `count = 3 `. Có nghĩa là sau khoảng 3s sẽ tạo ra một observable mới chứa những mảng các event nhận được trong 3s đó (Tối đa mỗi mảng là 3 event).
 2. Cứ mỗi giây publishSubject phát ra một event.
-
-- **Window**
-
-Tách observable từ observable sau 1 khoảng thời gian (timespan) và số lượng event cho phép tối đa (count).
-
-![window-diagram](./resources/images/3.2.6/window-diagram.png)
-
-```swift
-let bufferTimeSpan: RxTimeInterval = 3
-let bufferMaxCount = 5
-let publicSubject = PublishSubject<Int>()
-
-// 1
-_ = publicSubject.window(timeSpan: bufferTimeSpan, count: bufferMaxCount, scheduler: MainScheduler.instance).subscribe({
-	print($0)
-})
-
-// 2
-let timer = Observable<Int>.interval(1, scheduler: MainScheduler.instance)
-_ = timer.subscribe({
-	if let e = $0.element {
-		publicSubject.onNext(e)
-	}
-})
-```
-
-Giải thích:
-
-1. Đăng ký observable có timeout với `timeSpan = 3`  và `count = 5 `
-2. Cứ mỗi giây publishSubject phát ra một event.
-
-- **Delay**
-
-Observable được phát ra sau 1 khoảng delay.
-
-![delay-diagram](./resources/images/3.2.6/delay-diagram.png)
-
-```swift
-let delayInSeconds: RxTimeInterval = 3
-let publicSubject = PublishSubject<Int>()
-
-// 1
-_ = publicSubject.delay(delayInSeconds, scheduler: MainScheduler.instance).subscribe({
-	print($0)
-})
-
-_ = publicSubject.subscribe({
-	print($0)
-})
-
-// 2
-let timer = Observable<Int>.interval(1, scheduler: MainScheduler.instance)
-_ = timer.subscribe({
-	if let e = $0.element {
-      	publicSubject.onNext(e)
-	}
-})
-```
-
-Giải thích:
-
-1. Đăng ký observable có delay với ```delayInSeconds = 3```. Có nghĩa là sau khoảng 3s kể từ khi observable phát ra event thì observer sẽ nhận được event. 
-2. Cứ mỗi giây publishSubject phát ra một event.
-
-- **Timeout**
-
-Cho 1 khoảng thời gian Timeout, nếu trong khoảng timeout đó không có event nào được phát ra thì sẽ ngắt observable và trả về Error.
-
-![timeout-diagram](./resources/images/3.2.6/timeout-diagram.png)
-
-```swift
-let dueTime: RxTimeInterval = 3
-let publicSubject = PublishSubject<Int>()
-
-// 1
-_ = publicSubject.timeout(dueTime, scheduler: MainScheduler.instance)
-	.subscribe(onNext: {
-		print($0)
-	}, onError: {
-      	// 2
-		print("error")
-		print($0)
-	})
-
-// 3
-let timer = Observable<Int>.interval(1, scheduler: MainScheduler.instance)
-_ = timer.subscribe({
-	if let e = $0.element, e <= 10 {
-		publicSubject.onNext(e)
-	}
-})
-```
-
-Giải thích:
-
-1. Đăng ký observable có timeout với ```dueTime = 3```.
-2. Trả về Error nếu event lỗi hoặc trong khoảng timeout không có event nào được phát ra.
-3. Cứ mỗi giây publishSubject phát ra một event.
 
 ## 4. Testing
 

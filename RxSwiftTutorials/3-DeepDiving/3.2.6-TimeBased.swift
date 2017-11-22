@@ -41,7 +41,7 @@ final class TimeBased {
 
     func buffer() {
         let bufferTimeSpan: RxTimeInterval = 3
-        let bufferMaxCount = 5
+        let bufferMaxCount = 3
         let publicSubject = PublishSubject<Int>()
 
         _ = publicSubject.buffer(timeSpan: bufferTimeSpan, count: bufferMaxCount, scheduler: MainScheduler.instance).subscribe({ (event) in
@@ -62,7 +62,7 @@ final class TimeBased {
 
     func window() {
         let bufferTimeSpan: RxTimeInterval = 3
-        let bufferMaxCount = 5
+        let bufferMaxCount = 2
         let publicSubject = PublishSubject<Int>()
 
         _ = publicSubject.window(timeSpan: bufferTimeSpan, count: bufferMaxCount, scheduler: MainScheduler.instance).subscribe({
