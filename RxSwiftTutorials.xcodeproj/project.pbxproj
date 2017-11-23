@@ -15,6 +15,7 @@
 		857EE14B1FC5BEDE00C9F6E2 /* DeepDiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857EE1491FC5BEDE00C9F6E2 /* DeepDiveViewController.swift */; };
 		857EE14C1FC5BEDE00C9F6E2 /* DeepDiveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 857EE14A1FC5BEDE00C9F6E2 /* DeepDiveViewController.xib */; };
 		85C133B31FB9F8E200079229 /* 3.2.2-Combination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C133B21FB9F8E200079229 /* 3.2.2-Combination.swift */; };
+		990755E31FB9AA4F006FB2C5 /* 2.2-Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990755E21FB9AA4F006FB2C5 /* 2.2-Observer.swift */; };
 		EA41626B1FAAD5F000DF29FF /* 1.1-Delegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4162641FAAD5E300DF29FF /* 1.1-Delegation.swift */; };
 		EA41626C1FAAD5F000DF29FF /* 1.2-Callback.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4162651FAAD5E300DF29FF /* 1.2-Callback.swift */; };
 		EA41626D1FAAD5F000DF29FF /* 1.3-Functional.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4162661FAAD5E300DF29FF /* 1.3-Functional.swift */; };
@@ -39,6 +40,7 @@
 		857EE1491FC5BEDE00C9F6E2 /* DeepDiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepDiveViewController.swift; sourceTree = "<group>"; };
 		857EE14A1FC5BEDE00C9F6E2 /* DeepDiveViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeepDiveViewController.xib; sourceTree = "<group>"; };
 		85C133B21FB9F8E200079229 /* 3.2.2-Combination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "3.2.2-Combination.swift"; sourceTree = "<group>"; };
+		990755E21FB9AA4F006FB2C5 /* 2.2-Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "2.2-Observer.swift"; sourceTree = "<group>"; };
 		D9A80A06A4E3B3248AF3DCEC /* Pods-RxSwiftTutorials.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftTutorials.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftTutorials/Pods-RxSwiftTutorials.debug.xcconfig"; sourceTree = "<group>"; };
 		EA4162641FAAD5E300DF29FF /* 1.1-Delegation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "1.1-Delegation.swift"; sourceTree = "<group>"; };
 		EA4162651FAAD5E300DF29FF /* 1.2-Callback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "1.2-Callback.swift"; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				EA41626A1FAAD5E300DF29FF /* 2.1-Observable.swift */,
+				990755E21FB9AA4F006FB2C5 /* 2.2-Observer.swift */,
 			);
 			path = "2-GettingStarted";
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				EA4162751FAAD78C00DF29FF /* 4.2-RxNimble.swift in Sources */,
 				85C133B31FB9F8E200079229 /* 3.2.2-Combination.swift in Sources */,
 				EA41626B1FAAD5F000DF29FF /* 1.1-Delegation.swift in Sources */,
+				990755E31FB9AA4F006FB2C5 /* 2.2-Observer.swift in Sources */,
 				EADE84981FA95D9E001DD029 /* AppDelegate.swift in Sources */,
 				EA41626D1FAAD5F000DF29FF /* 1.3-Functional.swift in Sources */,
 				EA41626E1FAAD5F000DF29FF /* 1.4-Promise.swift in Sources */,
