@@ -12,6 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CombinationCocoa" customModule="RxSwiftTutorials" customModuleProvider="target">
             <connections>
+                <outlet property="finalResultLabel" destination="VQd-DL-BsE" id="u5z-3r-MGZ"/>
+                <outlet property="resultLabel" destination="1Ye-uy-u4u" id="wVY-ni-F5j"/>
+                <outlet property="tapMeButton" destination="KIS-9D-xaP" id="Ft9-5W-tve"/>
                 <outlet property="textField1" destination="rbD-Cr-RXD" id="tRR-eo-FqI"/>
                 <outlet property="textField2" destination="BvU-VC-6Jh" id="jTw-h6-0uU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -28,9 +31,8 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KIS-9D-xaP">
-                    <rect key="frame" x="160" y="243" width="55" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KIS-9D-xaP">
+                    <rect key="frame" x="160" y="318" width="55" height="30"/>
                     <state key="normal" title="Tap me!"/>
                 </button>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BvU-VC-6Jh">
@@ -39,18 +41,36 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ye-uy-u4u">
+                    <rect key="frame" x="187" y="210" width="0.0" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQd-DL-BsE">
+                    <rect key="frame" x="187" y="288" width="0.0" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="rbD-Cr-RXD" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="200:375" id="4RK-BJ-VqB"/>
+                <constraint firstItem="1Ye-uy-u4u" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="9Ln-Dz-EqG"/>
                 <constraint firstItem="rbD-Cr-RXD" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="B38-g5-dQn"/>
+                <constraint firstItem="VQd-DL-BsE" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Buz-kD-61m"/>
+                <constraint firstItem="KIS-9D-xaP" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Fw5-1c-Ykd"/>
+                <constraint firstItem="KIS-9D-xaP" firstAttribute="top" secondItem="VQd-DL-BsE" secondAttribute="bottom" constant="30" id="Icf-5k-SzY"/>
                 <constraint firstItem="rbD-Cr-RXD" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="70" id="Lqn-g5-FTc"/>
+                <constraint firstItem="KIS-9D-xaP" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="OdB-3w-yn9"/>
+                <constraint firstItem="1Ye-uy-u4u" firstAttribute="top" secondItem="BvU-VC-6Jh" secondAttribute="bottom" constant="30" id="eWC-Wg-3Va"/>
                 <constraint firstItem="BvU-VC-6Jh" firstAttribute="top" secondItem="rbD-Cr-RXD" secondAttribute="bottom" constant="30" id="exC-Dh-D8b"/>
                 <constraint firstItem="BvU-VC-6Jh" firstAttribute="width" secondItem="rbD-Cr-RXD" secondAttribute="width" id="jeL-Sb-p9I"/>
                 <constraint firstItem="BvU-VC-6Jh" firstAttribute="centerX" secondItem="rbD-Cr-RXD" secondAttribute="centerX" id="mp0-l4-tmW"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="-110" y="-34"/>
+            <point key="canvasLocation" x="-367" y="-43"/>
         </view>
     </objects>
 </document>
