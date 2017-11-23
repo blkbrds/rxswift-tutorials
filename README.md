@@ -178,6 +178,62 @@ dev.start(.implement(taskId: "123"))
 
 ### 3.1. Creation
 
+Có một vài cách để tạo **Observable**
+
+#### 3.1.1. just
+
+Tạo một *Observable* với một *single element*.
+
+![just.c](resources/imgs/just.c.png)
+
+`just` chuyển đổi một *item* vào trong một **Observable** mà sẽ phát ra chính *item* đó.
+
+**Examples**
+
+```swift
+import RxSwift
+
+Observable.just("🔴")
+    .subscribe { event in
+        print(event)
+    }.dispose()
+```
+
+```swift
+// Kết quả
+next(🔴)
+completed
+```
+
+```swift
+import RxSwift
+import RxCocoa
+import UIKit
+
+weak var label: UILabel!
+
+func setupLabel() {
+	let observable = Observable.just("This is text")
+    .subscribe(onNext: { text in
+        label.text = text
+    })
+}
+```
+
+#### 3.1.2. of
+
+
+
+
+
+#### 3.1.x. empty
+
+Tạo một *Observable* mà chỉ phát ra một **Completed** event.
+
+#### 3.1.x. never
+
+Tạo một *Observable* mà không phát ra bất kì events và cũng không kết thúc
+
 ### 3.2. Operators
 
 #### 3.2.1. Conditional
