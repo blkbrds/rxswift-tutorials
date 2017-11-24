@@ -238,14 +238,12 @@ override func viewDidLoad() {
 
 #### 3.2.2. Combination
 
-Ở phần này, chúng ta sẽ đi qua một số cách để có thể **combine** các observable. Và một số **operator** sẽ tương tự và quen thuộc trong *swift*.
+Ở phần này, chúng ta sẽ đi qua một số cách để có thể **combine** các observable. Có  một số **operator** sẽ tương tự và quen thuộc trong *swift*.
 Ok, đầu tiên chúng ta đến với `combineLatest`:
 
 **Combining elements**:
 
 ![combine_last](./resources/images/3.2.2/combine_last.png)
-
-As diagram above, if we need to combine values from serveral sequences, RxSwift provides `combineLatest`operator to do it.
 
 Như *diagram* ở trên, thì mỗi khi chúng ta muốn *combine* các **observable** lại với nhau, và mong muốn rằng **observable** mới này sẽ có dữ liệu được coi là cuối cùng từ những **observable** được đem đi *conbine*.
 
@@ -282,7 +280,7 @@ second.onNext("world")
 print("> Sending another value to Second")
 second.onNext("RxSwift")
 print("> Sending another value to First")
-first.onNext("So easy to learn,")
+first.onNext("Have a good day,")
 ```
 
 Đừng quên *dispose* nó nhé:
@@ -335,11 +333,9 @@ Thử để biết kết quả nha.
 
 **Triggers** (`withLatestFrom`):
 
-Cũng gần giống như `combineLatest`, function `withLatestFrom này được xem như là trigger.
+Cũng gần giống như `combineLatest`, function `withLatestFrom` này được xem như là trigger.
 
 Tại vì sao nhĩ? Dễ thôi, bởi vì khi chúng ta cần nhận dữ liệu từ 1 **observable** nào đó mà cần phải thõa mãn điều kiện gì đó, để dẽ hiểu hơn thì giả sử thỏa mản này là dấu hiệu phát ra từ 1 **observable** khác.
-
-Easier to understand, let's think about a `TextField` and a `Button`. We'll only be got the input from `TextField` until the `Button` is pressed.
 
 Ví dụ đơn giản là hãy nghĩ rằng chúng ta đang có 1 `TextField` và 1`Button` nhé, OK. Chúng ta sẽ lấy được *text* từ `TextField` chỉ khi nào `Button` được *tap*. Vậy đó, hành động tap của `Button` mà lại thỏa mản điều kiện để chúng ta được phép lấy *text* thì gọi hành động đó là trigger.
 

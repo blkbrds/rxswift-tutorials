@@ -16,7 +16,7 @@ final class Combination {
 
     func execute() {
         // change the function that you want to run.
-        zip()
+        combineLatest()
     }
 
     private func startWith() {
@@ -56,7 +56,7 @@ final class Combination {
         disposable.dispose()
     }
 
-    private func conbineLatest() {
+    private func combineLatest() {
         // 1
         let first = PublishSubject<String>()
         let second = PublishSubject<String>()
