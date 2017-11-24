@@ -239,6 +239,16 @@ override func viewDidLoad() {
 #### 3.2.2. Combination
 
 #### 3.2.3. Filtering
+Cũng giống như filter trong swift. **Filtering** cho phép loại bỏ những elements(events) không mong đợi được phát ra để được **observable** mới phù hợp với mục đích của người dùng.
+
+Nhắc đến *Filtering* trong RxSwift thì ta có một số phép toán sau: **Ignoring**, **Skipping**, **Taking**, **Distinct**. 
+
+Sau đây là một số ví dụ để hiểu rõ hơn về các phép toán này
+
+-	**Ignoring operators**
+- 	**Skipping operators**
+-  **Taking operators**
+-  **Distinct operators**
 
 #### 3.2.4. Mathematical
 
