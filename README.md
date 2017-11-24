@@ -238,87 +238,8 @@ override func viewDidLoad() {
 
 #### 3.2.2. Combination
 
-This chapter will show you several different ways to assemble sequences, and how to combine the data within each sequence. Some operators you'll work with are similar to `Swift` collection operators.
-
-**Merging**: 
-
-Combine multiple Observables into one.
-
-![merge](./resources/images/3.2.2/merge.png)
-
-​
-
-Usage:
-
-```Swift
-// 1
-let left = PublishSubject<String>()
-let right = PublishSubject<String>()
-```
-
-Now create a source observable of observable and create a merge observable:
-
-```Swift
-// 2
-let source = Observable.of(left, right)
-let observable = source.merge()
-let disposable = observable.subscribe(onNext: { (value) in
-    print(value)
-})
-```
-
-Next, push some value for each observable:
-
-```swift
-// 3
-print("> Sending a value to Left")
-left.onNext("1")
-print("> Sending a value to Right")
-right.onNext("4")
-print("> Sending another value to Right")
-right.onNext("5")
-print("> Sending another value to Left")
-left.onNext("2")
-print("> Sending another value to Right")
-right.onNext("6")
-print("> Sending another value to Left")
-left.onNext("3")
-```
-
-One last bit before you're done.
-
-```Swift
-disposable.dispose()
-```
-
-Run code and see the result:
-
-```Swift
-> Sending a value to Left
-1
-> Sending a value to Right
-4
-> Sending another value to Right
-5
-> Sending another value to Left
-2
-> Sending another value to Right
-6
-> Sending another value to Left
-3
-```
-
-Let's see the diagram below, following the code above:
-
-![merge2](./resources/images/3.2.2/merge2.png)
-
-**iOS**:
-
-```swift
-
-```
-
-
+Ở phần này, chúng ta sẽ đi qua một số cách để có thể **combine** các observable. Và một số **operator** sẽ tương tự và quen thuộc trong *swift*.
+Ok, đầu tiên chúng ta đến với `combineLatest`:
 
 **Combining elements**:
 
@@ -326,27 +247,31 @@ Let's see the diagram below, following the code above:
 
 As diagram above, if we need to combine values from serveral sequences, RxSwift provides `combineLatest`operator to do it.
 
-Let's follow the code below:
+Như *diagram* ở trên, thì mỗi khi chúng ta muốn *combine* các **observable** lại với nhau, và mong muốn rằng **observable** mới này sẽ có dữ liệu được coi là cuối cùng từ những **observable** được đem đi *conbine*.
 
-Setup two observables, it's used to push values then.
+Toán tử được sử dụng đó là `conbineLatest`.
+
+Hãy xem 1 đoạn code ví dụ sau đây: 
+
+Đầu tiên khởi tạo 2 **observable**:
 
 ```swift
-// 1
+// 1 setup observable
 let first = PublishSubject<String>()
 let second = PublishSubject<String>()
 ```
 
-Next, create an observable that `combines` the latest values from both sequence (main idea of `combineLatest` section).
+Tiếp theo, dùng `combineLatest` để có thể có 1 **observable** mà chúng ta cần là *combining* dữ liệu:
 
 ```swift
-// 2
+// 2 using combineLatest
 let observable = Observable.combineLatest(first, second, resultSelector: { (lastFirst, lastSecond) in
 	print(lastFirst + " - " + lastSecond)
 })
 let disposable = observable.subscribe()
 ```
 
-Now, start to push values for each sequence:
+Bây giờ, *emit* dữ liệu nào:
 
 ```swift
 // 3
@@ -360,13 +285,13 @@ print("> Sending another value to First")
 first.onNext("So easy to learn,")
 ```
 
-Finally, dispose our observable.
+Đừng quên *dispose* nó nhé:
 
 ```swift
 disposable.dispose()
 ```
 
-Let's try it by yourself and see the result:
+OK, giờ thì xem thử kết quả và…:
 
 ```swift
 > Sending a value to First
@@ -378,7 +303,9 @@ Hello, - RxSwift
 Have a good day, - RxSwift
 ```
 
-**iOS**:
+**iOS**: 
+
+Sau đây là ví dụ thường gặp trong iOS mà sử dụng `combineLatest`:
 
 ```swift
 // 1: First, set up 3 outlets: 2 textfield `username`, `password` and a button `login`
@@ -402,25 +329,31 @@ Observable.combineLatest(validateUserName, validatePassword) { $0 && $1 }
 	})
 ```
 
+Thử để biết kết quả nha.
+
 
 
 **Triggers** (`withLatestFrom`):
 
-Similarly `combineLatest`, the function is called by`withLatestFrom` is being *trigger*.
+Cũng gần giống như `combineLatest`, function `withLatestFrom này được xem như là trigger.
 
-Why? Because we'll often need to accept data from serveral *observables* when another *observable* emits a event.
+Tại vì sao nhĩ? Dễ thôi, bởi vì khi chúng ta cần nhận dữ liệu từ 1 **observable** nào đó mà cần phải thõa mãn điều kiện gì đó, để dẽ hiểu hơn thì giả sử thỏa mản này là dấu hiệu phát ra từ 1 **observable** khác.
 
 Easier to understand, let's think about a `TextField` and a `Button`. We'll only be got the input from `TextField` until the `Button` is pressed.
 
-So, see the example below:
+Ví dụ đơn giản là hãy nghĩ rằng chúng ta đang có 1 `TextField` và 1`Button` nhé, OK. Chúng ta sẽ lấy được *text* từ `TextField` chỉ khi nào `Button` được *tap*. Vậy đó, hành động tap của `Button` mà lại thỏa mản điều kiện để chúng ta được phép lấy *text* thì gọi hành động đó là trigger.
+
+Rồi, tiếp theo là code ví dụ nha:
 
 ```swift
-// 1
+// 1 Tạo button và textfield ^^
 let button = PublishSubject<Any>()
 let textField = PublishSubject<String>()
 ```
 
-Now, create an observable with `withLatestFrom`, so when *button* emits a value, ignore it but instead emit the latest value received from the *textField*
+Bây giờ dùng *button* như trigger nào, nghĩa là khi nào button được *tap* thì lấy *text* mới nhất của textfield.
+
+**subscribe** MY YOUTUBE CHANEL, à không, **obserable** vừa tạo ra để nhận dữ liệu thôi.
 
 ```swift
 // 2
@@ -430,7 +363,7 @@ let disposable = observable.subscribe(onNext: { (value) in
 })
 ```
 
-Ok next, emit values for *button* and *textField* follow then and terminate the sequence:
+Rồi, giờ thì *bắn* vài phát để kiểm tra hì
 
 ```swift
 // 3
@@ -444,7 +377,7 @@ button.onNext("tap")
 disposable.dispose()
 ```
 
-Let's see the result:
+Ai da, kết quả ai hiểu nạ.
 
 ```swift
 RxSw
@@ -452,13 +385,17 @@ RxSwift
 RxSwift
 ```
 
-No need diagram for above code??? That'll be fine...
+Không cần *diagram* cho ví dụ trên đâu. Dễ hiểu quá mà
 
-But look at here, with two observables *x* and *y*, same as *button* and *textField*. Just figure out by yourself.
+Nhưng sẽ có *diagram* tường mình hơn cho `withLatestFrom` nha.
+
+Ở đây, *x* (trên) là trigger, *x*  mà bắn thì  **observable** dưới cùng mới nhận được dữ liệu nha.
 
 ![with_latest_from](./resources/images/3.2.2/with_latest_from.png)
 
 **iOS**:
+
+Và đây là ví dụ cho trường hợp dùng `withLatestFrom` trong iOS
 
 ```swift
 // 1: First, set up 3 outlets: 2 textfield `username`, `password` and a button `login`
@@ -485,29 +422,102 @@ buttonTap.withLatestFrom(userAndPassword)
 
 
 
+**Merging**: 
+
+*Diagram* dưới nói lên tất cả cho `merge` nhĩ.
+
+![merge](./resources/images/3.2.2/merge.png)
+
+
+
+Bây vô ví dụ luôn:
+
+Tạo 2 **observable**
+
+```swift
+// 1
+let left = PublishSubject<String>()
+let right = PublishSubject<String>()
+```
+
+Bây giờ, sử dụng `merge` và subscribe để tí nữa xem kết quả
+
+```swift
+// 2
+let source = Observable.of(left, right)
+let observable = source.merge()
+let disposable = observable.subscribe(onNext: { (value) in
+    print(value)
+})
+```
+
+*Bắn* như mọi khi
+
+```swift
+// 3
+print("> Sending a value to Left")
+left.onNext("1")
+print("> Sending a value to Right")
+right.onNext("4")
+print("> Sending another value to Right")
+right.onNext("5")
+print("> Sending another value to Left")
+left.onNext("2")
+print("> Sending another value to Right")
+right.onNext("6")
+print("> Sending another value to Left")
+left.onNext("3")
+```
+
+Chạy code trên ta được điều cần chứng minh: :D
+
+```swift
+> Sending a value to Left
+1
+> Sending a value to Right
+4
+> Sending another value to Right
+5
+> Sending another value to Left
+2
+> Sending another value to Right
+6
+> Sending another value to Left
+3
+```
+
+Đây, *diagram* cho ví dụ trên:
+
+![merge2](./resources/images/3.2.2/merge2.png)
+
+
+
 **Switches**:
 
   * `amb` - *ambiguous*:
 
-    Or be known by `race`, given two or more source Observables, emit all of the items from only the first of these Observables to emit an event.
+    Hoặc được biết tới với tên là `race`, được sử dụng cho 2 hoặc nhiều **observable**, và nó *bắn* ra *event* từ **observable** bắn event ra đầu tiên.
+
+    Haiza, khó hiểu hì :S, đơn giản là cái **observable** được sinh ra từ thằng `amb` này sẽ *bắn* ra event từ cái **observable** thành viên nào có thời điểm *bắn* là sớm nhất. Đấy đôi khi *sớm* mới được người ta thấy. :D
 
     ![amb](./resources/images/3.2.2/amb.png)
 
-    You see, the second observable will be *chosen*. It means that the event will be emited by the second observable.
+    Với *diagram* trên, chúng ta thấy là **observable** thứ 2 sẽ *bắn* đầu tiên, thì **observable** được sinh ra sẽ chỉ *bắn* các event của **observable** thứ 2 này.
 
-    Try the example below to understand:
+    ​
+
+    Thử đoạn code demo sau:
 
     ```swift
     let left = PublishSubject<String>()
     let right = PublishSubject<String>()
-    // 1
 
+    // 1 observable mới sinh ra từ `left` và `right` sau khi dùng `amb`
     let observable = left.amb(right)
     let disposable = observable.subscribe(onNext: { value in
         print(value)
     })
 
-    // 2
     left.onNext("London")
     right.onNext("Copenhagen")
     left.onNext("Lisbon")
@@ -518,7 +528,7 @@ buttonTap.withLatestFrom(userAndPassword)
     disposable.dispose()
     ```
 
-    And the result:
+    Kết quả in ra sẽ là:
 
     ```
     London
@@ -530,20 +540,27 @@ buttonTap.withLatestFrom(userAndPassword)
 
   * `switchLatest`:
 
-    Convert an Observable that emits Observables into a single Observable that emits the items emitted by the most-recently-emitted of those Observables.
+    Tất nhiên vẫn sẽ là *combine* các **observable** lại với nhau và thành 1 **observable** mới, và **observable** này sẽ *emit* ra những event mà thuộc **observable** gần nhất *emit* ra.
+
+    Khó hiểu thật, đọc xong câu đó ngơ lun.
+
+    Dễ hiểu là thế này, từ `switch` đúng nghĩa của nó luôn là giả sử có 1 cái công tắc (không phải bật và tắt) mà là để thông dòng điện chẳng hạn, gạt lên gạt xuống thì dòng 1 hoặc dòng 2 được thông.
+
+    Vậy đó…. dòng mới sẽ là điện từ 1 trong 2 dòng trước đó được gạt từ cái công tắc. :D Thế này mà không hiểu nữa thì…. đọc lại lần nữa nha.
 
     ![switch_latest](./resources/images/3.2.2/switch_latest.png)
 
-    Following example below:
+    Xem luôn cái code ví dụ này:
 
     ```swift
-    // 1
+    // 1: Có 3 dòng điện, ý... 3 observable (one, two, three).
     let one = PublishSubject<String>()
     let two = PublishSubject<String>()
     let three = PublishSubject<String>()
+    // 1 observable với kiểu là 1 observable kiểu String... não đâu rồi...
     let source = PublishSubject<Observable<String>>()
 
-    // 2
+    // 2 tạo 1 observable mới từ switchLatest
     let observable = source.switchLatest()
     let disposable = observable.subscribe(onNext: { value in
         print(value)
@@ -564,6 +581,7 @@ buttonTap.withLatestFrom(userAndPassword)
     one.onNext("Nope. It's me, one!")
 
     disposable.dispose()
+    // Xem kết quả nha...
     ```
 
     ```
@@ -573,7 +591,7 @@ buttonTap.withLatestFrom(userAndPassword)
     Nope. It's me, one!
     ```
 
-    > Note: third section, when we switch to another observable, that will unsubscribe from the previously emitted observable.
+    > Chú ý: đoạn thứ 3, khi chúng ta *switch* các **observable** khác nhau, tất nhiên mỗi lần chỉ 1, thì event được bắn ra là event của **observable** đó, còn các **observable** còn lại có bắn ra bao nhiêu đi nữa cũng bị ignore, bị nằm trong black list, bị friend zone hết.
 
     ​
 
@@ -581,13 +599,11 @@ buttonTap.withLatestFrom(userAndPassword)
 
     - **``startWith()``**:
 
-    Emit a specified sequence of items before beginning to emit the items from the Observable.
-
-    Let's see the diagram below:
+      Với function này, chúng ta sẽ chỉ định **observable** *emit* ra một số *event* nhất định nào đó trước khi  *emit* ra các *event* của nó.
 
     ![start_width](./resources/images/3.2.2/start_width.png)
 
-    Implement and usage:
+    ​	Xem đoạn ví dụ sau đây:
 
     ```swift
     // 1
@@ -599,16 +615,14 @@ buttonTap.withLatestFrom(userAndPassword)
     })
     ```
 
-    The startWith(_:) operator prefixes an observable sequence with the given initial value. This value must be of the same type as the observable elements.
+    ​	Đối với   `startWith`, nó tạo ra 1 **observable** mới với giá trị khởi tạo ban đầu, và giá trị ban đầu này phải cùng kiểu với giá trị của **observable** trước đó.
 
-    Here’s what’s going on in the code above:
+    ​	Sau đây là những gì xảy ra với code ví dụ ở trên:
 
-    1. Create a sequence of numbers.
-    2. Create a sequence starting with the value 1, then continue with the original sequence of numbers.
+    1. Tạo 1 **observable** kiểu `Int`.
+    2. Dùng `startWith` để tạo một **observable** mới với giá trị ban đầu là 1.
 
-    Don’t get fooled by the position of the startWith(_:) operator! Although you chainit to the numbers sequence, the observable it creates emits the initial value,followed by the values from the numbers sequence.
-
-    Look at the debug area in the playground to confirm this:
+    Kết quả sau khi run code:
 
     ```swift
     1
@@ -620,13 +634,15 @@ buttonTap.withLatestFrom(userAndPassword)
 
     - **``concat()``**:
 
-      Emit the emissions from two or more Observables without interleaving them.
+      Tất nhiên toán tử này vẫn là **combine** hai hoặc nhiều **observable** lại với nhau, nhưng theo một trình tự liên tiếp nhau.
+
+      Nhìn *diagram* sau để có thể hiểu hơn nha:
 
     ![concat](./resources/images/3.2.2/concat.png)
 
     ​
 
-    Usage:
+    ​	Đoạn code ví dụ cho *diagram* trên:
 
     ```swift
     // 1
@@ -651,11 +667,11 @@ buttonTap.withLatestFrom(userAndPassword)
 
     **Zip**:
 
-    Such as `combineLatest`, but it combines the emissions of multiple Observables together via a specified function and emit single items for each combination based on the results of this function
+    Cũng như `combineLatest`, nhưng lần này khác biệt ở chổ, nó *combine* những **observable** lại với nhau một cách tuần tự (element thứ nhất của **observable** 1 sẽ được *combine* với element thứ nhất của **observable** 2 tương tự như vậy nếu có nhiều hơn 2).
 
     ![zip](./resources/images/3.2.2/zip.png)
 
-    Now, let's see what’s going on in the code above:
+    Bây giờ, xem ví dụ sau:
 
     ```swift
     // 1
@@ -681,7 +697,7 @@ buttonTap.withLatestFrom(userAndPassword)
     disposable.dispose()
     ```
 
-    > Note: compare with example of `combineLatest`, and figure out the difference.
+    > Chú ý: so sánh với ví dụ `combineLatest` để xem sự khác biệt nha.
 
 
 

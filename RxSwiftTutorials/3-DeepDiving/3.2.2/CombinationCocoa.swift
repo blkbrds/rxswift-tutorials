@@ -22,6 +22,7 @@ final class CombinationCocoa: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        _ = Combination()
     }
 
     private func setup() {

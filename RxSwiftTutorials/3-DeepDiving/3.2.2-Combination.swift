@@ -19,6 +19,14 @@ final class Combination {
         zip()
     }
 
+    private func startWith() {
+        let observable = Observable.of(1, 2, 3)
+        let newObservable = observable.startWith(-1, 0)
+        newObservable.subscribe(onNext: { value in
+            print(value)
+        })
+    }
+
     private func merge() {
         // 1
         let left = PublishSubject<String>()
