@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		08704267EBB53661E87A8C65 /* Pods_RxSwiftTutorials.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 375841F4BCA5663AF299C617 /* Pods_RxSwiftTutorials.framework */; };
 		C8F5C30C1FBD6BA800FBCFA6 /* 3.2.6-TimeBased.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F5C30B1FBD6BA800FBCFA6 /* 3.2.6-TimeBased.swift */; };
+		990755E31FB9AA4F006FB2C5 /* 2.2-Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990755E21FB9AA4F006FB2C5 /* 2.2-Observer.swift */; };
 		EA41626B1FAAD5F000DF29FF /* 1.1-Delegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4162641FAAD5E300DF29FF /* 1.1-Delegation.swift */; };
 		EA41626C1FAAD5F000DF29FF /* 1.2-Callback.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4162651FAAD5E300DF29FF /* 1.2-Callback.swift */; };
 		EA41626D1FAAD5F000DF29FF /* 1.3-Functional.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4162661FAAD5E300DF29FF /* 1.3-Functional.swift */; };
@@ -30,6 +31,7 @@
 		291D3F0777DE23565023DF3B /* Pods-RxSwiftTutorials.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftTutorials.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftTutorials/Pods-RxSwiftTutorials.release.xcconfig"; sourceTree = "<group>"; };
 		375841F4BCA5663AF299C617 /* Pods_RxSwiftTutorials.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwiftTutorials.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8F5C30B1FBD6BA800FBCFA6 /* 3.2.6-TimeBased.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "3.2.6-TimeBased.swift"; sourceTree = "<group>"; };
+		990755E21FB9AA4F006FB2C5 /* 2.2-Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "2.2-Observer.swift"; sourceTree = "<group>"; };
 		D9A80A06A4E3B3248AF3DCEC /* Pods-RxSwiftTutorials.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftTutorials.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftTutorials/Pods-RxSwiftTutorials.debug.xcconfig"; sourceTree = "<group>"; };
 		EA4162641FAAD5E300DF29FF /* 1.1-Delegation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "1.1-Delegation.swift"; sourceTree = "<group>"; };
 		EA4162651FAAD5E300DF29FF /* 1.2-Callback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "1.2-Callback.swift"; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				EA41626A1FAAD5E300DF29FF /* 2.1-Observable.swift */,
+				990755E21FB9AA4F006FB2C5 /* 2.2-Observer.swift */,
 			);
 			path = "2-GettingStarted";
 			sourceTree = "<group>";
@@ -273,11 +276,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-RxSwiftTutorials/Pods-RxSwiftTutorials-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,6 +306,7 @@
 				EADE849E1FA95DB5001DD029 /* ViewController.swift in Sources */,
 				EA4162751FAAD78C00DF29FF /* 4.2-RxNimble.swift in Sources */,
 				EA41626B1FAAD5F000DF29FF /* 1.1-Delegation.swift in Sources */,
+				990755E31FB9AA4F006FB2C5 /* 2.2-Observer.swift in Sources */,
 				EADE84981FA95D9E001DD029 /* AppDelegate.swift in Sources */,
 				EA41626D1FAAD5F000DF29FF /* 1.3-Functional.swift in Sources */,
 				EA41626E1FAAD5F000DF29FF /* 1.4-Promise.swift in Sources */,
