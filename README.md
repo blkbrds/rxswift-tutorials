@@ -186,12 +186,12 @@ dev.start(.implement(taskId: "123"))
 
 - Trong mô hình bất đồng bộ, flow sẽ giống như sau:
 
-  1. Define a method that does something useful with the return value from the asynchronous call; this method is part of the `*observer*`.
-  2. Define the asynchronous call itself as an `*Observable*`.
-  3. Attach the observer to that Observable by *subscribing* it (this also initiates the actions of the Observable).
-  4. Go on with your business; whenever the call returns, the observer’s method will begin to operate on its return value or values — the *items* emitted by the Observable.
+  1. Khai báo một method có giá trị được trả về từ một hàm gọi bất đồng bộ; method này là một phần của `*observer*`.
+  2. Khai báo một `*Observable*`, 
+  3. Gán `observer` vào `Observable` bằng cách đăng kí nó (*subscribing* it) .
+  4. Xử lý các business logic bất cứ khi nào cuộc gọi trả về(whenever the call returns), method của `observer`  sẽ bắt đầu xử lý trên dựa trên giá trị trả về hoặc các giá trị (items) được phát ra bởi `Observerble`.
 
-  ```
+  ```groovy
   // Khai báo, nhưng không gọi, handler onNext của Subscriber
   // Trong ví dụ này, observer rất đơn giản và chỉ có onNext handler
   def myOnNext = { it -> do sth usefull with it }
@@ -214,7 +214,7 @@ dev.start(.implement(taskId: "123"))
 
   A more complete `subscribe` call example looks like this:
 
-  ```
+  ```groovy
   def myOnNext = { item -> /* do something useful with item */ };
   def myError = { throwable -> /* react sensibly to a failed call */ };
   def myComplete = { /* clean up after the final response */ };
