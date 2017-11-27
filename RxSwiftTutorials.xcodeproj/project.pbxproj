@@ -15,6 +15,7 @@
 		857EE14B1FC5BEDE00C9F6E2 /* DeepDiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857EE1491FC5BEDE00C9F6E2 /* DeepDiveViewController.swift */; };
 		857EE14C1FC5BEDE00C9F6E2 /* DeepDiveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 857EE14A1FC5BEDE00C9F6E2 /* DeepDiveViewController.xib */; };
 		85C133B31FB9F8E200079229 /* 3.2.2-Combination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C133B21FB9F8E200079229 /* 3.2.2-Combination.swift */; };
+		0B791FBC1FC67F1B00B559A3 /* 2.3-Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B791FBB1FC67F1A00B559A3 /* 2.3-Operator.swift */; };
 		990755E31FB9AA4F006FB2C5 /* 2.2-Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990755E21FB9AA4F006FB2C5 /* 2.2-Observer.swift */; };
 		EA41626B1FAAD5F000DF29FF /* 1.1-Delegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4162641FAAD5E300DF29FF /* 1.1-Delegation.swift */; };
 		EA41626C1FAAD5F000DF29FF /* 1.2-Callback.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4162651FAAD5E300DF29FF /* 1.2-Callback.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B791FBB1FC67F1A00B559A3 /* 2.3-Operator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "2.3-Operator.swift"; sourceTree = "<group>"; };
 		291D3F0777DE23565023DF3B /* Pods-RxSwiftTutorials.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftTutorials.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftTutorials/Pods-RxSwiftTutorials.release.xcconfig"; sourceTree = "<group>"; };
 		375841F4BCA5663AF299C617 /* Pods_RxSwiftTutorials.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwiftTutorials.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		855CB0201FC47A080063257B /* CombinationCocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinationCocoa.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 		EA4162691FAAD5E300DF29FF /* 2-GettingStarted */ = {
 			isa = PBXGroup;
 			children = (
+				0B791FBB1FC67F1A00B559A3 /* 2.3-Operator.swift */,
 				EA41626A1FAAD5E300DF29FF /* 2.1-Observable.swift */,
 				990755E21FB9AA4F006FB2C5 /* 2.2-Observer.swift */,
 			);
@@ -323,6 +326,8 @@
 				EA4162731FAAD77B00DF29FF /* 4.1-RxTest.swift in Sources */,
 				EA41626C1FAAD5F000DF29FF /* 1.2-Callback.swift in Sources */,
 				EA41627B1FAAD80D00DF29FF /* 3.1-Creation.swift in Sources */,
+				EADE849E1FA95DB5001DD029 /* ViewController.swift in Sources */,
+				0B791FBC1FC67F1B00B559A3 /* 2.3-Operator.swift in Sources */,
 				EA4162751FAAD78C00DF29FF /* 4.2-RxNimble.swift in Sources */,
 				85C133B31FB9F8E200079229 /* 3.2.2-Combination.swift in Sources */,
 				EA41626B1FAAD5F000DF29FF /* 1.1-Delegation.swift in Sources */,
