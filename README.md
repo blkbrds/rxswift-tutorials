@@ -547,11 +547,21 @@ Observable.repeatElement("🔴")
 🔴
 ```
 
+```swift
+// Need for iOS
+```
 
+#### 3.1.6. doOn
 
-#### 3.1.x. empty, never, of, generate, deferred, error
+Tạo một *Observable* 
 
-Tạo một *Observable* mà không phát ra bất kì events và cũng không kết thúc
+![do.c](resources/imgs/do.c.png)
+
+#### 3.1.7. empty, never, of, generate, deferred, error
+
+Ngoài ra có các operator khác để tạo **Observable**
+
+See `Creating Observables`: [Creating Observables](http://reactivex.io/documentation/operators.html#creating)
 
 ### 3.2. Operators
 
