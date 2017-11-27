@@ -160,11 +160,7 @@ dev.start(.implement(taskId: "123"))
     .catch { _ in dev.start(.report) }
 ```
 
-
-
 ### 1.5. Reactive
-
-
 
 ## 2. Getting Started
 
@@ -253,7 +249,95 @@ import UIKit
 // Need examples for iOS
 ```
 
-#### 3.1.2. of
+#### 3.1.3. create
+
+Tạo một custom **Observable** với input bất kỳ với **create**.
+
+![create.c](resources/imgs/create.c.png)
+
+Tạo một custom **Observable** với đầu vào bất kì, và custom lúc nào gọi **observer** handle sự kiện (onNext, onError, onComplete)
+
+Examples**
+
+```swift
+import RxSwift
+
+let disposeBag = DisposeBag()    
+let myJust = { (element: String) -> Observable<String> in
+    // return một Observable custom
+    return Observable.create { observer in
+        // Biến đổi input element
+        let newElement = "New: \(element)"
+        
+        // Gọi observer handle sự kiện next
+        observer.on(.next(newElement))
+        // Gọi observer handle sự kiện completion
+        observer.on(.completed)
+        return Disposables.create()
+    }
+}
+myJust("🔴")
+.subscribe { print($0) }
+.disposed(by: disposeBag)
+```
+
+```swift
+// Kết quả
+next(New: 🔴)
+completed
+```
+
+```swift
+import RxSwift
+import RxCocoa
+import UIKit
+
+weak var usernameTextField: UITextField!
+weak var passwordTextField: UITextField!
+weak var loginButton: UIButton!
+
+// Custom một Observable
+let userObservable = { (username, password) -> Observable<User> in
+    return Observable.create { observer in 
+               let user = User(username: username, password: password)
+               observer.onNext(user)
+               return Disposables.create()
+           }
+}
+
+func setupObservable() {
+  // Observables
+  let username = usernameTextField.rx.text.orEmpty
+  let password = passwordTextField.rx.text.orEmpty
+  let loginTap = loginButton.rx.tap.asObservable()
+  
+  // Đọc thêm phần combineLatest
+  let combineLastestData = Observable.combineLatest(username, password) { ($0, $1) }
+  
+  let loginObservable: Observable<User> = loginTap
+                                          .withLatestFrom(combineLastestData)
+                                          .flatMapLatest { (username, password) in
+                                              return userObservable(username, password) 
+                                          }
+
+  loginObservable.bind { [weak self] user in
+      // Call API With User
+  }.dispose()
+}
+
+final class User {
+    let username: String = ""
+    var password: String?
+
+    init(username: String, password: String? = nil) {
+        self.username = username
+        self.password = password
+    }
+}
+
+```
+
+#### 3.1.x. of
 
 #### 3.1.x. empty
 
