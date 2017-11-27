@@ -1063,10 +1063,46 @@ Nhắc đến *Filtering* trong RxSwift thì ta có một số phép toán sau: 
 
 Sau đây là một số ví dụ để hiểu rõ hơn về các phép toán này
 
--	**Ignoring operators**
-- 	**Skipping operators**
--  **Taking operators**
--  **Distinct operators**
+##### Ignoring operators
+-	`ignoreElemens()`
+
+	Bỏ qua tất cả các events được phát ra. Nhưng vẫn cho phép xử lý sự kiện **.completed** và **.error**.
+	
+	![Ignore Elements](./resources/images/3.2.3/ignoreElements.png)
+	
+```swift  let strikes = PublishSubject<String>()  let disposeBag = DisposeBag()// Đăng ký lắng nghe những events được phát ra nhưng lại ignore chúng đi.  strikes    .ignoreElements()    .subscribe { _ in
+     print("You're out!")    }    .disposed(by: disposeBag)}
+```
+
+```swift
+strikes.onNext("X")strikes.onNext("Y")strikes.onNext("Z")
+strikes.onCompleted()
+
+--- Output ---
+You're out!
+```
+-	`elementAt()`
+
+	Đôi lúc chúng ta lại muốn xử lý sự kiện tại một thời điểm nào đó. `elementAt(n)` cho phép xử lý sự kiện được phát ra tại lần phát thứ n và sẽ bỏ qua tất cả sự kiện khác.
+	
+![ElementAt](./resources/images/3.2.3/elementAt.png)
+
+```swift  let strikes = PublishSubject<String>()  let disposeBag = DisposeBag()  strikes    .elementAt(2)    .subscribe(onNext: { item in      print(item)    })    .disposed(by: disposeBag)
+  }
+```
+
+```swift
+strikes.onNext("A")strikes.onNext("B")strikes.onNext("C")
+
+--- Output ---
+C
+```
+	
+	
+
+##### Skipping operators
+##### Taking operators
+##### Distinct operators
 
 #### 3.2.4. Mathematical
 
