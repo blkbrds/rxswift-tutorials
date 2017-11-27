@@ -220,11 +220,40 @@ func setupLabel() {
 }
 ```
 
+#### 3.1.2. from
+
+Tạo một *Observable* từ một *Sequence* như Array, Dictionary hay Set.
+
+![from.c](resources/imgs/from.c.png)
+
+Một hàm khởi tạo *Observable* quan trọng, khi làm việc với *Observable* có thể dễ dàng biểu diễn dự liệu của ứng dụng sang **Observable**.
+
+**Examples**
+
+```swift
+import RxSwift
+Observable.from(["🐶", "🐱", "🐭", "🐹"])
+    .subscribe(onNext: { print($0) })
+    .dispose()
+```
+
+```swift
+// Kết quả
+🐶
+🐱
+🐭
+🐹
+```
+
+```swift
+import RxSwift
+import RxCocoa
+import UIKit
+
+// Need examples for iOS
+```
+
 #### 3.1.2. of
-
-
-
-
 
 #### 3.1.x. empty
 
