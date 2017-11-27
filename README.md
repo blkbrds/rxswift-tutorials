@@ -178,9 +178,9 @@ dev.start(.implement(taskId: "123"))
 
 - Trong [ReactiveX](http://reactivex.io/documentation/observable.html), một `observer` đăng ký một `Observable` sau đó `observer` sẽ phản ứng lại bất cứ item hay chuỗi các item mà `Observable` phát ra. Phần nãy sẽ giải thích reactive parttern là gì? `Observables`, `observers` là gì? và làm thế nào các `observers` đăng ký với `Observables`. 
 
-####2.1.1 Mở đầu
+#### 2.1.1 Mở đầu
 
-- Có nhiều rất nhiều thuật ngữ dùng để mô tả mô hình và thiết kế của lập trình bất đồng bộ. Trong tài liệu này sẽ thông nhất sử dụng những thuật ngữ sau: Một `observer` đăng ký với `Observable`. Một `Observerable` phát ra các items hoặc gửi các notifications đến các `observers` bằng cách gọi các `observers` methods, trong các tài liệu khác hoặc các ngữ cảnh khác, đôi lúc chúng ta gọi `observer` là một `subscriber`, `watcher` hoặc `reactor`. Mô hình thường được gọi là [reactor pattern](https://en.wikipedia.org/wiki/Reactor_pattern)
+- Có nhiều rất nhiều thuật ngữ dùng để mô tả mô hình và thiết kế của lập trình bất đồng bộ. Trong tài liệu này sẽ thống nhất sử dụng những thuật ngữ sau: Một `observer` đăng ký với `Observable`. Một `Observable` phát ra các items hoặc gửi các notifications đến các `observers` bằng cách gọi các `observers` methods, trong các tài liệu khác hoặc các ngữ cảnh khác, đôi lúc chúng ta gọi `observer` là một `subscriber`, `watcher` hoặc `reactor`. Mô hình thường được gọi là [reactor pattern](https://en.wikipedia.org/wiki/Reactor_pattern)
 
 #### 2.1.2 Khởi tạo `Observers`
 
@@ -204,7 +204,7 @@ dev.start(.implement(taskId: "123"))
 
 - **onNext, onCompleted, và onErrror**
 
-  ​	[The `Subscribe` method](http://reactivex.io/documentation/operators/subscribe.html)  là cách bạn kết nối `observer` với `Observable`. 		observer implement của bạn là tập hợp các methods dưới đây:
+  ​	[The `Subscribe` method](http://reactivex.io/documentation/operators/subscribe.html) là cách bạn kết nối `observer` với `Observable`. observer implement của bạn là tập hợp các methods dưới đây:
 
   `onNext`: `Observable` gọi hàm này bất cứ khi nào `Observable` phát đi item. Hàm này có tham số là item được phát ra bởi `Observable`.
 
@@ -225,7 +225,7 @@ dev.start(.implement(taskId: "123"))
 
 - **"Hot" và "Cold" Observable**
 
-  Khi nào observable phát ra chuối các items? Điều đó phụ thuộc vào observable. Một "hot" Observable có thể bắt đầu phát các items ngay khi nó được tạo ra, và sau đó bất kỳ observer sau đó đăng ký tới observable có thể bắt đầu observing. "Cold" observable
+  Khi nào observable phát ra chuối các items? Điều đó phụ thuộc vào observable. Một "hot" Observable có thể bắt đầu phát các items ngay khi nó được tạo ra, và sau đó bất kỳ observer sau đó đăng ký tới observable có thể bắt đầu observing. "Cold" observable thì chờ cho đến khi một observer đăng kí vào observable trước khi nó bắt đầu phát ra các items.
 
   [Read more](http://reactivex.io/documentation/observable.html)
 
