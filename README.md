@@ -164,6 +164,53 @@ dev.start(.implement(taskId: "123"))
 
 ### 1.5. Reactive
 
+**Reactive programming là gì?**
+
+Có rất nhiều các định nghĩa, giải thích trên mạng khiến chúng ta rất dễ nhầm lẫn, rối trí. [Wikipedia](https://en.wikipedia.org/wiki/Reactive_programming) quá chung chúng và thường tập trung nhiều vào lý thuyết, các câu trả lời kinh điểm từ [Stackoverflow](https://stackoverflow.com/questions/1028250/what-is-functional-reactive-programming) thì không phù hợp cho người mới bắt đầu tìm hiểu, tài liệu [Reactive Manifesto](https://www.reactivemanifesto.org/) thì lại phù hơn với các PM hay các businessmen.  Microsoft's [Rx terminology](https://rx.codeplex.com/) "Rx = Observables + LINQ + Schedulers" thì quá nặng nề dẫn tới việc dễ bị nhầm lẫn, rối trí. Thuật ngữ `reactive` và `propagation of change`(lan truyền thay đổi) thì lại truyền tải được điều gì đặc biệt. Do đó phần nội dung dưới này sẽ tập trung cắt nghĩa, diễn dải từng phần nhỏ:
+
+ **Reactive programming is programming with asynchronous data streams.**
+
+Reactive programming là một mô hình lập trình bất đồng bộ liên quan tới các luồng dữ liệu (data streams) và sự lan truyền thay đổi (the propagation of change). Khái niệm luồng (stream) phổ biến, bạn có thể tạo luồng dữ liệu (data streams) từ bất cứ thứ gì (anything can be a stream): các biến (variables), giá trị đầu vào từ người dùng (user inputs), properties, caches, data structures, etc.
+
+Streams là trung tâm của `reactive`, mô hình dưới đây là luồng sự kiện "click vào 1 button"
+
+![reactive](./Images/reactive.png)
+
+Một luồng là một dãy (sequence) các sự kiện đang diễn ra được sắp xếp theo thời gian. Nó có thể phát ra 3 thứ: một giá trị, một error, hoặc một `completed`. Ở đây tín hiệu giúp ta biết được khi nào luồng sự kiện click `completed` là khi window hoặc view chứa button bị đóng lại.
+
+Chúng ta bắt các sự kiện đã phát ra **không đồng bộ** bằng cách define một function execute khi một giá trị được phát ra, một function khác khi error được phát ra, tương tự với `completed`. Các function chúng ta define là các observes, luồng (stream) là một observable (or subject) đang được quan sát(observed)
+
+Xem sét sơ đồ được vẽ bằng ASCII sau:
+
+```
+--a---b-c---d---X---|->
+
+a, b, c, d là các giá trị được phát ra
+X là một error nào đó
+| là một signal 'completed'
+----> is the timeline
+```
+
+Xem sét một ví dụ khác cụ thể hơn chi tiết hơn: 
+
+Trước tiên, tạo một bộ đếm (counter stream) dùng để đếm số lần button được clicked. Mỗi stream sẽ có nhiều các function kèm theo như là `map`,`filter`, `scan`, etc. Khi bạn gọi một trong các function kém theo đó, ví dụ như `clickStream.map(f)`, nó return một **luồng mới** dựa trên luồng click.
+
+```groovy
+  clickStream: ---c----c--c----c------c--> // c means click
+               vvvvv map(c becomes 1) vvvv
+               ---1----1--1----1------1-->
+               vvvvvvvvv scan(+) vvvvvvvvv
+counterStream: ---1----2--3----4------5-->
+```
+
+`map(f)` là function thay thế mỗi value được phát ra bằng một hàm `f` , hàm `f` là hàm mà bạn cung cấp, ở ví dụ trên, thì chúng ta ánh xạ (mapped) số 1 từ mỗi click. Hàm `scan(g)` tổng hợp tất cả các giá trị trước đó vào một luồng, `x = g(accumulated, current)`, với `g` là một hàm tính tổng, `counterStream` phát ra tổng số lượng click mỗi khi sự kiện click diễn ra.
+
+Để thấy được sức mạnh của `Reactive`, chúng ta sẽ làm thêm 1 ví dụ nữa phức tạp hơn với các sự kiện double click và triple click or multiple clicks, giả sử nếu chúng ta không sử dụng tới reactive, khi đó chắc chắn chúng cần 1 biến để kiểm tra trạng thái (state) và một vài biến khác để kiểm tra khoảng thời gian giữa mỗi lần click chuột.
+
+Đối với reactive thì nó khá là đơn giản để thực hiện việc này (just [4 lines of code](http://jsfiddle.net/staltz/4gGgs/27/)). Nhưng tạm bỏ qua phần code và tập trung hơn vào các sơ đồ dưới đây để hiểu hơn streams![clickStreamReactive](./Images/clickStreamReactive.png)
+
+Các hình chữ nhật màu xám là các hàm biến đổi một luồng này sang một luồng khác. Đầu tiên là luồng các sự kiện click chuột, bất cứ khi nào luồng click chuột đó thoả mãn điều kiện trong cái hộp xám `buffer(...)` thì sự kiện click chuột được đưa xuống luồng bên dưới, nơi tập hợp một list các sự kiện click chuột lại thành các nhóm (hiện tại chúng ta chưa đi chi tiết vào phần code). Với kết quả có được tiếp dụng apply hàm `map()` vào mỗi list để lấy độ dài của mỗi list. Cuối cùng làm hàm `filter(x >= 2)` nơi bỏ qua các list có độ dài nhỏ hơn 2. Done. That's it.
+
 
 
 ## 2. Getting Started
@@ -306,7 +353,7 @@ let newObservable = observable.filter { $0 > 10 } // 2
 
 **Example 2:**
 	Ở ví dụ này chúng ta sử dụng phép filter vào việc tìm kiếm bằng UISearchBar control
-	
+
 ```swift	
 let observable = searchBar.rx.text.orEmpty.asObservable() // 1   
 
