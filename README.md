@@ -521,9 +521,35 @@ import UIKit
 // Examples for iOS
 ```
 
-#### 
+#### 3.1.5. repeatElement
 
-#### 3.1.x. empty, never, of
+Tạo một *Observable* mà phát ra một element nhiều lần
+
+![repeat.c](resources/imgs/repeat.c.png)
+
+Sau khi khởi tạo *Observable* với **repeatElement**, Observable sẽ phát liên tục với element input
+
+**Examples**
+
+```swift
+import RxSwift
+
+Observable.repeatElement("🔴")
+          .take(3) // Sử dụng operator này để nhận 3 lần phát từ Observable, nếu không sử dụng, thì Observable sẽ phát liên tục
+          .subscribe(onNext: { print($0) })
+          .dispose()
+```
+
+```swift
+// Kết quả
+🔴
+🔴
+🔴
+```
+
+
+
+#### 3.1.x. empty, never, of, generate, deferred, error
 
 Tạo một *Observable* mà không phát ra bất kì events và cũng không kết thúc
 
