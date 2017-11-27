@@ -306,7 +306,7 @@ let newObservable = observable.filter { $0 > 10 } // 2
 
 **Example 2:**
 	Ở ví dụ này chúng ta sử dụng phép filter vào việc tìm kiếm bằng UISearchBar control
-	
+
 ```swift	
 let observable = searchBar.rx.text.orEmpty.asObservable() // 1   
 
@@ -794,6 +794,30 @@ Chạy code trên ta được điều cần chứng minh: :D
 #### 3.2.4. Mathematical
 
 #### 3.2.5. Transformation
+
+Rất vui khi chúng ta đã đi qua hơn một nữa chặn đường tìm hiểu về `RxSwift`. Tới đây thì chúng ta cảm thấy `RxSwift` không quá khó đúng không?
+
+> Phần này được coi là một trong những phần quan trọng nhất của `Rxswift` nhé.
+
+Sơ lượt, những toán tử thuộc *Transformation* giúp chúng ta biến đổi một **observable**.
+
+Vâng... giúp biến đổi, nhưng biến đổi thành cái gì và biến đổi như thế nào ???
+
+Còn tùy… OK, mình sẽ dẫn chứng cho các bạn biết vì sao lại *còn tùy*.
+
+Có một điều là lâu nay mọi người vẫn đang và đã sài vài phép biến đổi này trong *Swift*, *chúng nó* là **hàm** *native* do **Apple** cung cấp hẳn hoi nhé.
+
+Một số *toàn tử* đó là **map**, **flatMap**, …. Đấy, nếu dùng rồi thì mọi người sẽ nhận ra rằng biến đổi thành gì và như thế nào rõ ràng là do chính bạn, bạn mong muốn gì thì bạn làm thôi.
+
+> Trên đó chỉ là một cách dẫn chứng cho mọi người có thể dễ dàng hình dung về **Transformation** thôi.
+>
+> Chứ trong thực tế **map**, **flatMap** hay một vài hàm khác do *Apple* cung cấp khác với các toán tử cùng tên trong `RxSwift` nha. Sau khi xong phần này mọi người tự so sánh để biết được khác biệt đó ở đâu nha.
+
+
+
+OK,,, bắt đầu với **Transformation** nào.
+
+**`toArray()`**:
 
 #### 3.2.6. Time Based
 
