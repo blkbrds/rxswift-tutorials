@@ -553,9 +553,37 @@ Observable.repeatElement("🔴")
 
 #### 3.1.6. doOn
 
-Tạo một *Observable* 
+Tạo một *Observable* kèm operator **doOn** có thể chèn thêm logic vào trước các event methods của **Observer** đã định nghĩa.
 
 ![do.c](resources/imgs/do.c.png)
+
+**Examples**:
+
+```swift
+import RxSwift
+
+Observable.from([1, 2, 3, 5, 7]).do(onNext: { (number) in
+            print("doOn      -----> \(number)")
+        }).subscribe(onNext: { (number) in
+            print("subscribe -----> \(number)")
+        }).dispose()
+```
+
+```swift
+// Kết quả
+doOn      -----> 1
+subscribe -----> 1
+doOn      -----> 2
+subscribe -----> 2
+doOn      -----> 3
+subscribe -----> 3
+doOn      -----> 5
+subscribe -----> 5
+doOn      -----> 7
+subscribe -----> 7
+```
+
+
 
 #### 3.1.7. empty, never, of, generate, deferred, error
 

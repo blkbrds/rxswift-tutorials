@@ -13,21 +13,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let myJust = { (element: String) -> Observable<String> in
-            return Observable.create { observer in
-                let a = element + "a"
-                observer.on(.next(a))
-                observer.on(.completed)
-                return Disposables.create()
-            }
-        }
-
-        myJust("abc").do(onNext: { (str) in
-            print("do ----->" + str)
-        }).subscribe(onNext: { (str) in
-            print("subscribe ------>" + str)
-        }).dispose()
-
     }
 
     override func didReceiveMemoryWarning() {
