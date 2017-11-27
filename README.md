@@ -302,7 +302,7 @@ let newObservable = observable.filter { $0 > 10 } // 2
 
 **Example 2:**
 	Ở ví dụ này chúng ta sử dụng phép filter vào việc tìm kiếm bằng UISearchBar control
-	
+
 ```swift	
 let observable = searchBar.rx.text.orEmpty.asObservable() // 1   
 
@@ -403,7 +403,7 @@ Tạo một custom **Observable** với input bất kỳ với **create**.
 
 Tạo một custom **Observable** với đầu vào bất kì, và custom lúc nào gọi **observer** handle sự kiện (onNext, onError, onComplete)
 
-Examples**
+**Examples**
 
 ```swift
 import RxSwift
@@ -480,16 +480,50 @@ final class User {
         self.password = password
     }
 }
-
 ```
 
-#### 3.1.x. of
+#### 3.1.4. range
 
-#### 3.1.x. empty
+Tạo một *Observable* mà phát ra một dãy các số nguyên tuần tự
 
-Tạo một *Observable* mà chỉ phát ra một **Completed** event.
+![range.c](resources/imgs/range.c.png)
 
-#### 3.1.x. never
+**Examples**
+
+```swift
+import RxSwift
+
+Observable.range(start: 1, count: 10)
+          .subscribe { print($0) }
+          .dispose()
+```
+
+```swift
+// Kết quả
+next(1)
+next(2)
+next(3)
+next(4)
+next(5)
+next(6)
+next(7)
+next(8)
+next(9)
+next(10)
+completed
+```
+
+```swift
+import RxSwift
+import RxCocoa
+import UIKit
+
+// Examples for iOS
+```
+
+#### 
+
+#### 3.1.x. empty, never, of
 
 Tạo một *Observable* mà không phát ra bất kì events và cũng không kết thúc
 
