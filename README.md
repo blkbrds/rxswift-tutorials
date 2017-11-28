@@ -170,7 +170,7 @@ dev.start(.implement(taskId: "123"))
 
 - Diagrams dưới đây đại diện cho  `Observables` và quá trình biến đổi của `Observables`:
 
-![Observable-diagram](./Images/Observable-diagram.png)
+![Observable-diagram](./resources/images/2.1/Observable-diagram.png)
 
 - Trong [ReactiveX](http://reactivex.io/documentation/observable.html), một `observer` đăng ký một `Observable` sau đó `observer` sẽ phản ứng lại bất cứ item hay chuỗi các item mà `Observable` phát ra. Phần nãy sẽ giải thích reactive parttern là gì? `Observables`, `observers` là gì? và làm thế nào các `observers` đăng ký với `Observables`. 
 
@@ -288,7 +288,7 @@ Một số operators cơ bản trong RxSwift được liệt kê tại mục 3.2
 
 **Example 1:**
 
-![Filter](./3.2.2.png)
+![Filter](./resources/images/2.3/2.3.png)
 
 ```swift
 let observable = Observable.of(2,30,22,5,60,1) // 1
@@ -326,7 +326,7 @@ Có một vài cách để tạo **Observable**
 
 Tạo một *Observable* với một *single element*.
 
-![just.c](resources/imgs/just.c.png)
+![just.c](resources/images/3.1/just.c.png)
 
 `just` chuyển đổi một *item* vào trong một **Observable** mà sẽ phát ra chính *item* đó.
 
@@ -366,7 +366,7 @@ func setupLabel() {
 
 Tạo một *Observable* từ một *Sequence* như Array, Dictionary hay Set.
 
-![from.c](resources/imgs/from.c.png)
+![from.c](resources/images/3.1/from.c.png)
 
 Một hàm khởi tạo *Observable* quan trọng, khi làm việc với *Observable* có thể dễ dàng biểu diễn dự liệu của ứng dụng sang **Observable**.
 
@@ -399,7 +399,7 @@ import UIKit
 
 Tạo một custom **Observable** với input bất kỳ với **create**.
 
-![create.c](resources/imgs/create.c.png)
+![create.c](resources/images/3.1/create.c.png)
 
 Tạo một custom **Observable** với đầu vào bất kì, và custom lúc nào gọi **observer** handle sự kiện (onNext, onError, onComplete)
 
@@ -486,7 +486,7 @@ final class User {
 
 Tạo một *Observable* mà phát ra một dãy các số nguyên tuần tự
 
-![range.c](resources/imgs/range.c.png)
+![range.c](resources/images/3.1/range.c.png)
 
 **Examples**
 
@@ -525,7 +525,7 @@ import UIKit
 
 Tạo một *Observable* mà phát ra một element nhiều lần
 
-![repeat.c](resources/imgs/repeat.c.png)
+![repeat.c](resources/images/3.1/repeat.c.png)
 
 Sau khi khởi tạo *Observable* với **repeatElement**, Observable sẽ phát liên tục với element input
 
@@ -555,7 +555,7 @@ Observable.repeatElement("🔴")
 
 Tạo một *Observable* kèm operator **doOn** có thể chèn thêm logic vào trước các event methods của **Observer** đã định nghĩa.
 
-![do.c](resources/imgs/do.c.png)
+![do.c](resources/images/3.1/do.c.png)
 
 **Examples**:
 
