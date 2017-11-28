@@ -178,7 +178,7 @@ Streams là trung tâm của `reactive`, mô hình dưới đây là luồng s�
 
 Một luồng là một dãy (sequence) các sự kiện đang diễn ra được sắp xếp theo thời gian. Nó có thể phát ra 3 thứ: một giá trị, một error, hoặc một `completed`. Ở đây tín hiệu giúp ta biết được khi nào luồng sự kiện click `completed` là khi window hoặc view chứa button bị đóng lại.
 
-Chúng ta bắt các sự kiện đã phát ra **không đồng bộ** bằng cách define một function execute khi một giá trị được phát ra, một function khác khi error được phát ra, tương tự với `completed`. Các function chúng ta define là các observers, luồng (stream) là một observable (or subject) đang được quan sát(observed)
+Chúng ta bắt các sự kiện đã phát ra **không đồng bộ** bằng cách define một function execute khi một giá trị được phát ra, một function khác khi error được phát ra, tương tự với `completed`. Các function chúng ta define là các observers, luồng(stream) là chủ thể đang được lắng nghe(being observed) hay còn gọi là observable.
 
 Xem sét sơ đồ được vẽ bằng ASCII sau:
 
