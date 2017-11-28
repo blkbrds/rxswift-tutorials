@@ -160,11 +160,7 @@ dev.start(.implement(taskId: "123"))
     .catch { _ in dev.start(.report) }
 ```
 
-
-
 ### 1.5. Reactive
-
-
 
 ## 2. Getting Started
 
@@ -186,12 +182,12 @@ dev.start(.implement(taskId: "123"))
 
 - Trong mô hình bất đồng bộ, flow sẽ giống như sau:
 
-  1. Define a method that does something useful with the return value from the asynchronous call; this method is part of the `*observer*`.
-  2. Define the asynchronous call itself as an `*Observable*`.
-  3. Attach the observer to that Observable by *subscribing* it (this also initiates the actions of the Observable).
-  4. Go on with your business; whenever the call returns, the observer’s method will begin to operate on its return value or values — the *items* emitted by the Observable.
+  1. Khai báo một method có giá trị được trả về từ một hàm gọi bất đồng bộ; method này là một phần của `*observer*`.
+  2. Khai báo một `*Observable*`, 
+  3. Gán `observer` vào `Observable` bằng cách đăng kí nó (*subscribing* it) .
+  4. Xử lý các business logic bất cứ khi nào cuộc gọi trả về(whenever the call returns), method của `observer`  sẽ bắt đầu xử lý trên dựa trên giá trị trả về hoặc các giá trị (items) được phát ra bởi `Observerble`.
 
-  ```
+  ```groovy
   // Khai báo, nhưng không gọi, handler onNext của Subscriber
   // Trong ví dụ này, observer rất đơn giản và chỉ có onNext handler
   def myOnNext = { it -> do sth usefull with it }
@@ -214,7 +210,7 @@ dev.start(.implement(taskId: "123"))
 
   A more complete `subscribe` call example looks like this:
 
-  ```
+  ```groovy
   def myOnNext = { item -> /* do something useful with item */ };
   def myError = { throwable -> /* react sensibly to a failed call */ };
   def myComplete = { /* clean up after the final response */ };
@@ -225,7 +221,7 @@ dev.start(.implement(taskId: "123"))
 
 - **"Hot" và "Cold" Observable**
 
-  Khi nào observable phát ra chuối các items? Điều đó phụ thuộc vào observable. Một "hot" Observable có thể bắt đầu phát các items ngay khi nó được tạo ra, và sau đó bất kỳ observer sau đó đăng ký tới observable có thể bắt đầu observing. "Cold" observable thì chờ cho đến khi một observer đăng kí vào observable trước khi nó bắt đầu phát ra các items.
+  Khi nào `observable` phát ra chuỗi các `items`? Điều đó phụ thuộc vào `Observable`. Một "hot" Observable có thể bắt đầu phát các items ngay khi nó được tạo ra, và sau đó bất kỳ `Observer` nào đăng ký tới `observable` đều có thể bắt đầu quan sát (observing) từ khoản giữa của tiến trình . Trái lại, "Cold" observable thì chờ cho đến khi một `observer` nào đó đăng kí vào `observable` trước khi nó bắt đầu phát ra các items, và do đó `observer` có thể đảm bảo được việc quan sát từ toàn bộ các tiến trình từ lúc bắt đầu ( to see the whole sequence from the beginning.)
 
   [Read more](http://reactivex.io/documentation/observable.html)
 
@@ -323,6 +319,277 @@ observable.filter { $0.hasPrefix("Number") } // 2
 ## 3. Deep Dive
 
 ### 3.1. Creation
+
+Có một vài cách để tạo **Observable**
+
+#### 3.1.1. just
+
+Tạo một *Observable* với một *single element*.
+
+![just.c](resources/imgs/just.c.png)
+
+`just` chuyển đổi một *item* vào trong một **Observable** mà sẽ phát ra chính *item* đó.
+
+**Examples**
+
+```swift
+import RxSwift
+
+Observable.just("🔴")
+    .subscribe { event in
+        print(event)
+    }.dispose()
+```
+
+```swift
+// Kết quả
+next(🔴)
+completed
+```
+
+```swift
+import RxSwift
+import RxCocoa
+import UIKit
+
+weak var label: UILabel!
+
+func setupLabel() {
+	let observable = Observable.just("This is text")
+    .subscribe(onNext: { text in
+        label.text = text
+    })
+}
+```
+
+#### 3.1.2. from
+
+Tạo một *Observable* từ một *Sequence* như Array, Dictionary hay Set.
+
+![from.c](resources/imgs/from.c.png)
+
+Một hàm khởi tạo *Observable* quan trọng, khi làm việc với *Observable* có thể dễ dàng biểu diễn dự liệu của ứng dụng sang **Observable**.
+
+**Examples**
+
+```swift
+import RxSwift
+Observable.from(["🐶", "🐱", "🐭", "🐹"])
+    .subscribe(onNext: { print($0) })
+    .dispose()
+```
+
+```swift
+// Kết quả
+🐶
+🐱
+🐭
+🐹
+```
+
+```swift
+import RxSwift
+import RxCocoa
+import UIKit
+
+// Need examples for iOS
+```
+
+#### 3.1.3. create
+
+Tạo một custom **Observable** với input bất kỳ với **create**.
+
+![create.c](resources/imgs/create.c.png)
+
+Tạo một custom **Observable** với đầu vào bất kì, và custom lúc nào gọi **observer** handle sự kiện (onNext, onError, onComplete)
+
+**Examples**
+
+```swift
+import RxSwift
+
+let disposeBag = DisposeBag()    
+let myJust = { (element: String) -> Observable<String> in
+    // return một Observable custom
+    return Observable.create { observer in
+        // Biến đổi input element
+        let newElement = "New: \(element)"
+        
+        // Gọi observer handle sự kiện next
+        observer.on(.next(newElement))
+        // Gọi observer handle sự kiện completion
+        observer.on(.completed)
+        return Disposables.create()
+    }
+}
+myJust("🔴")
+.subscribe { print($0) }
+.disposed(by: disposeBag)
+```
+
+```swift
+// Kết quả
+next(New: 🔴)
+completed
+```
+
+```swift
+import RxSwift
+import RxCocoa
+import UIKit
+
+weak var usernameTextField: UITextField!
+weak var passwordTextField: UITextField!
+weak var loginButton: UIButton!
+
+// Custom một Observable
+let userObservable = { (username, password) -> Observable<User> in
+    return Observable.create { observer in 
+               let user = User(username: username, password: password)
+               observer.onNext(user)
+               return Disposables.create()
+           }
+}
+
+func setupObservable() {
+  // Observables
+  let username = usernameTextField.rx.text.orEmpty
+  let password = passwordTextField.rx.text.orEmpty
+  let loginTap = loginButton.rx.tap.asObservable()
+  
+  // Đọc thêm phần combineLatest
+  let combineLastestData = Observable.combineLatest(username, password) { ($0, $1) }
+  
+  let loginObservable: Observable<User> = loginTap
+                                          .withLatestFrom(combineLastestData)
+                                          .flatMapLatest { (username, password) in
+                                              return userObservable(username, password) 
+                                          }
+
+  loginObservable.bind { [weak self] user in
+      // Call API With User
+  }.dispose()
+}
+
+final class User {
+    let username: String = ""
+    var password: String?
+
+    init(username: String, password: String? = nil) {
+        self.username = username
+        self.password = password
+    }
+}
+```
+
+#### 3.1.4. range
+
+Tạo một *Observable* mà phát ra một dãy các số nguyên tuần tự
+
+![range.c](resources/imgs/range.c.png)
+
+**Examples**
+
+```swift
+import RxSwift
+
+Observable.range(start: 1, count: 10)
+          .subscribe { print($0) }
+          .dispose()
+```
+
+```swift
+// Kết quả
+next(1)
+next(2)
+next(3)
+next(4)
+next(5)
+next(6)
+next(7)
+next(8)
+next(9)
+next(10)
+completed
+```
+
+```swift
+import RxSwift
+import RxCocoa
+import UIKit
+
+// Examples for iOS
+```
+
+#### 3.1.5. repeatElement
+
+Tạo một *Observable* mà phát ra một element nhiều lần
+
+![repeat.c](resources/imgs/repeat.c.png)
+
+Sau khi khởi tạo *Observable* với **repeatElement**, Observable sẽ phát liên tục với element input
+
+**Examples**
+
+```swift
+import RxSwift
+
+Observable.repeatElement("🔴")
+          .take(3) // Sử dụng operator này để nhận 3 lần phát từ Observable, nếu không sử dụng, thì Observable sẽ phát liên tục
+          .subscribe(onNext: { print($0) })
+          .dispose()
+```
+
+```swift
+// Kết quả
+🔴
+🔴
+🔴
+```
+
+```swift
+// Need for iOS
+```
+
+#### 3.1.6. doOn
+
+Tạo một *Observable* kèm operator **doOn** có thể chèn thêm logic vào trước các event methods của **Observer** đã định nghĩa.
+
+![do.c](resources/imgs/do.c.png)
+
+**Examples**:
+
+```swift
+import RxSwift
+
+Observable.from([1, 2, 3, 5, 7]).do(onNext: { (number) in
+            print("doOn      -----> \(number)")
+        }).subscribe(onNext: { (number) in
+            print("subscribe -----> \(number)")
+        }).dispose()
+```
+
+```swift
+// Kết quả
+doOn      -----> 1
+subscribe -----> 1
+doOn      -----> 2
+subscribe -----> 2
+doOn      -----> 3
+subscribe -----> 3
+doOn      -----> 5
+subscribe -----> 5
+doOn      -----> 7
+subscribe -----> 7
+```
+
+
+
+#### 3.1.7. empty, never, of, generate, deferred, error
+
+Ngoài ra có các operator khác để tạo **Observable**
+
+See `Creating Observables`: [Creating Observables](http://reactivex.io/documentation/operators.html#creating)
 
 ### 3.2. Operators
 
