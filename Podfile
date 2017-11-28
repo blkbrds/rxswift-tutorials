@@ -17,4 +17,6 @@ end
 target 'FS' do
 	project 'FS/FS'
 	shared_pods
+	pod 'MVVM'
+    pod 'SwiftUtils', '~> 2.1.1'
 end
