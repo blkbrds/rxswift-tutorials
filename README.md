@@ -1077,7 +1077,8 @@ let dueTime: RxTimeInterval = 3
 // Khởi tạo 1 PublishSubject.
 let publicSubject = PublishSubject<Int>()
 
-// Áp dụng timeout vào publishSubject, sau khi subscribe nếu trong vòng 3s mà không có event nào phát đi kể từ lần cuối phát event hay subscribe thì sẽ trả về timeout error và ngắt observable.
+// Áp dụng timeout vào publishSubject.
+// Sau khi subscribe nếu trong vòng 3s mà không có event nào phát đi kể từ lần cuối phát event hay subscribe thì sẽ trả về timeout error và ngắt observable.
 _ = publicSubject.timeout(dueTime, scheduler: MainScheduler.instance)
 	.subscribe(onNext: {
 		print("Element: ", $0)
@@ -1122,7 +1123,8 @@ let delayInSeconds: RxTimeInterval = 3
 // Khởi tạo 1 PublicSubject
 let publicSubject = PublishSubject<Int>()
 
-// Áp dụng delay vào publishSubject với dueTime = 3. Nghĩa là sau khi subscribe, nếu publishSubject phát ra event thì sau 3s subsribe mới nhận được event.
+// Áp dụng delay vào publishSubject với dueTime = 3. 
+// Nghĩa là sau khi subscribe, nếu publishSubject phát ra event thì sau 3s subsribe mới nhận được event.
 _ = publicSubject.delay(delayInSeconds, scheduler: MainScheduler.instance).subscribe({
 	print($0)
 })
@@ -1149,7 +1151,8 @@ let bufferMaxCount = 2
 // Khởi tạo 1 PublicSubject
 let publicSubject = PublishSubject<Int>()
 
-// Áp dụng window vào publishSubject với bufferTimeSpan = 3 và bufferMaxCount = 2. Nghĩa là sau mỗi 3s sẽ tách ra 1 observable con chứa những event được phát ra trong khoảng 3s đó từ observable mẹ (Tối đa là 2 event).
+// Áp dụng window vào publishSubject với bufferTimeSpan = 3 và bufferMaxCount = 2. 
+// Nghĩa là sau mỗi 3s sẽ tách ra 1 observable con chứa những event được phát ra trong khoảng 3s đó từ observable mẹ (Tối đa là 2 event).
 _ = publicSubject.window(timeSpan: bufferTimeSpan, count: bufferMaxCount, scheduler: MainScheduler.instance).subscribe({
 	if let element = $0.element {
 		print("New Observable")
@@ -1200,7 +1203,8 @@ let replayedElements = 3
 // Khởi tạo 1 PublicSubject
 let publicSubject = PublishSubject<Int>()
 
-// Áp dụng replay vào publishSubject với replayedElements = 3. Nghĩa là sau khi subscribe sẽ nhận lại được tối đa 3 event trước đó nếu có.
+// Áp dụng replay vào publishSubject với replayedElements = 3. 
+// Nghĩa là sau khi subscribe sẽ nhận lại được tối đa 3 event trước đó nếu có.
 let replayObservable = publicSubject.replay(replayedElements)
 _ = replayObservable.connect()
 
@@ -1240,7 +1244,8 @@ let bufferMaxCount = 3
 // Khởi tạo 1 PublicSubject
 let publicSubject = PublishSubject<Int>()
 
-// Áp dụng buffer vào publishSubject với timeSpan = 3 và count = 3. Nghĩa là sau khi subscribe sẽ nhận được tập hợp những event được phát đi trong khoảng 3 giây và tối đa là 3 event.
+// Áp dụng buffer vào publishSubject với timeSpan = 3 và count = 3. 
+// Nghĩa là sau khi subscribe sẽ nhận được tập hợp những event được phát đi trong khoảng 3 giây và tối đa là 3 event.
 _ = publicSubject.buffer(timeSpan: bufferTimeSpan, count: bufferMaxCount, scheduler: MainScheduler.instance).subscribe({
 	print($0)
 })
