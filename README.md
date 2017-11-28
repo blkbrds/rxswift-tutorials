@@ -1101,7 +1101,109 @@ C
 	
 
 ##### Skipping operators
+-	`skip(n)`
+
+	**Skip** operator cho phép bạn bỏ các phần tử từ vị trí 1 đến n.
+	
+```swift
+let disposeBag = DisposeBag()Observable.of("A", "B", "C", "D", "E", "F")// Bỏ qua các phần tử từ vị trí 1 đến 3.  .skip(3)  .subscribe(onNext: {	  print($0) })  .disposed(by: disposeBag)
+```
+
+```swift
+--- Output ----
+DEF
+```
+
+-	`skipWhile()`
+
+	`skipWhile()` nó cũng tương tự như `filter`. Nó cho phép đưa ra một điều kiện để xác định những sự kiện nào sẽ được bỏ qua. Tuy nhiên, có một sự khác biệt giữa chúng. Trong khi `filter` sẽ lọc qua tất cả phần tử, thì `skipWhile` chỉ bỏ qua cho đến khi có một phần tử nào không thoã điều kiện nữa. Nó sẽ dừng việc bỏ qua và cho phép mọi thứ thông qua từ thời điểm đó.
+	
+```swift
+let disposeBag = DisposeBag()Observable.of(2, 2, 3, 4, 4)  // Sẽ bỏ qua những phần tử chia hết cho 2 cho đến khi nó gặp 1 phần từ không thoã mãn.  .skipWhile { integer in    integer % 2 == 0  }  .subscribe(onNext: {    print($0)}).disposed(by: disposeBag)
+```
+
+```swift
+--- Output ----
+344
+```
+
+-	`skipUntil()`
+
+	Nó sẽ bỏ qua các sự kiện được phát ra từ **source observable** cho đến khi **trigger observable** phát sự kiện đầu tiên.
+
+```swift
+let disposeBag = DisposeBag()// subject sẽ phát ra các sự kiện
+// trigger được dùng như là 1 cái cò để báo dừng việc bỏ qua 
+	các sự kiện được phát ra từ subject  let subject = PublishSubject<String>()  let trigger = PublishSubject<String>()subject  .skipUntil(trigger)  .subscribe(onNext: {			print($0) })  .disposed(by: disposeBag)
+```
+
+```swift
+// Đầu tiên subject sẽ phát đi 2 sự kiện. Nhưng không có gì được in ra.
+	Vì chúng ta đang skip nó.
+subject.onNext("A")subject.onNext("B")
+
+// Khi trigger phát đi 1 sự kiện thì việc bỏ qua sự kiện phát ra bởi
+   subject sẽ được ngăn chặn. Có nghĩa là từ thời điểm đó mọi sự kiện
+   được phát ra từ subject được thông qua.
+trigger.onNext("X")
+
+subject.onNext("C")
+```
+
+```swift
+--- Output --- 
+C
+```
+	
+	
 ##### Taking operators
+- `take()`
+
+	Đối lập với **skiping** thì ta có phép **taking**. Nếu `skip(n)` cho phép bỏ qua sự kiện được phát từ lần phát thứ 1 đến thứ n. Thì `take(n)` cho phép nhận sự kiện được phát từ lần phát thứ 1 đến thứ n.
+	
+```swift
+let disposeBag = DisposeBag()Observable.of(1, 2, 3, 4, 5, 6)  // Nhận các sự kiện từ lần phát thứ 1 đến thứ 3  .take(3)  .subscribe(onNext: {     print($0) })  .disposed(by: disposeBag)}
+```
+
+```swift
+--- Output ---
+123
+```
+
+- `takeWhileWithIndex()`
+
+	Ở phần **skiping operator** chúng ta có định nghĩa `skipWhile()` thì tương tự ở phần này chúng ta cũng sẽ có `takeWhile()`. Mở rộng hơn một chút, đôi lúc chúng ta lại muốn sử dụng chỉ số (index) của phần tử (element) được phát ra để thoã mãn điều kiện lọc nào đó. `takeWhileWithIndex()` sẽ giải quyết vấn đề này.
+	
+```swift
+let disposeBag = DisposeBag()Observable.of(2, 2, 4, 4, 6, 6)
+  // Chỉ lấy những phần tử là số chẵn và có index < 3   .takeWhileWithIndex { integer, index in    integer % 2 == 0 && index < 3  }  .subscribe(onNext: {    print($0)})  .disposed(by: disposeBag)
+```
+
+```swift
+--- Output ---
+224
+```
+
+- `takeUntil()`
+
+ Tương tự `skipUntil()` ở đây chúng ta cũng sẽ có `takeUntil()`. Sẽ nhận những sự kiện được phát ra từ **source observable** cho đến khi **trigger observable** phát ra sự kiện đầu tiên.
+ 
+```swift
+let disposeBag = DisposeBag()// subject sẽ phát ra các sự kiện
+// trigger được dùng như là 1 cái cò để báo dừng việc nhận 
+	các sự kiện được phát ra từ subject  let subject = PublishSubject<String>()  let trigger = PublishSubject<String>()subject  .takeUntil(trigger)  .subscribe(onNext: {			print($0) })  .disposed(by: disposeBag)
+  
+subject.onNext("1")subject.onNext("2")
+trigger.onNext("Stop")
+subject.onNext("3")
+subject.onNext("4")
+```
+
+```swift
+--- Output ---
+12
+```
+
 ##### Distinct operators
 
 #### 3.2.4. Mathematical
