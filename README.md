@@ -316,6 +316,154 @@ observable.filter { $0.hasPrefix("Number") } // 2
 2. Lọc nội dụng bắt đầu bằng chuỗi `Number`
 3. Subcrible một observable để có thể xử lý mỗi khi nội dung search bar thay đổi
 
+### 2.4. Subjects
+
+​	Trong Reactive Programming, Observable là nơi khởi nguồn, là gốc của  mọi stream. Nhưngcó những trường hợp, chúng ta không thể đơn thuần bọc một đối tượng bên trong một Observable, sau đó phát ra những tín hiệu.
+
+​	Chẳng hạn khi sử dụng UIImagePickerController, ngoài việc quan tâm tới các hình ảnh mà người dùng chọn (stream), ứng dụng cần tương tác với chính UIImagePickerController để ẩn, hiển, … như vậy không thể bọc UIImagePickerController bên trong Observable. Khi đó, Subject sẽ đóng vai trò cầu nối, giúp chuyển đổi các tương tác của người dùng thành các Observable tương ứng.
+
+#### 2.4.1. PublishSubject
+
+​	PublishSubject là các phần tử có thể được phát ngay sau khi Subject được khởi tạo, bất chấp chưa có đối tượng nào subscribe tới nó (hot observable). Observer sẽ không nhận được các phần tử phát ra trước thời điểm subscribe.
+
+![PublishSubject-diagram](./resources/images/2.4/PublishSubject-diagram.png)
+
+```swift
+let subject = PublishSubject<String>()
+subject.onNext("Is anyone listening?")
+
+let subscriptionOne = subject.subscribe(onNext: { string in
+	print("1)", string)
+})
+subject.on(.next("1"))
+subject.onNext("2")
+
+let subscriptionTwo = subject.subscribe { event in
+	print("2)", event.element ?? event)
+}
+
+subject.onNext("3")
+subscriptionOne.dispose()
+subject.onNext("4")
+subscriptionTwo.dispose()
+```
+
+```swift
+// Ouput:
+1) 1
+1) 2
+1) 3
+2) 3
+2) 4
+```
+
+#### 2.4.2. BehaviorSubject
+
+​	BehaviorSubject có cơ chế hoạt động gần giống với PublishSubject, nhưng Observer sẽ nhận được giá trị mặc định hoặc giá trị ngay trước thời điểm subscribe. Observer sẽ nhận được ít nhất một giá trị.
+
+​	Chẳng hạn, nếu coi việc cuộn thanh trượt của UIScrollView là một observable (offset là giá trị của các phần tử trong stream), thì ngay khi subscribe vào observable, chúng ta cần biết vị trí offset hiện tại của UIScrollView, do vậy chúng ta cần sử dụng BehaviorSubject
+
+#### ![BehaviorSubject-diagram](./resources/images/2.4/BehaviorSubject-diagram.png)
+
+```swift
+let disposeBag = DisposeBag()
+let subject = BehaviorSubject(value: "Initial value")
+
+subject.onNext("1")
+subject.subscribe {
+		print("1)", $0)
+	}
+	.disposed(by: disposeBag)
+
+subject.onNext("2")
+subject.subscribe {
+		print("2)", $0)
+	}
+	.disposed(by: disposeBag)
+subject.onNext("3")
+```
+
+```swift
+// Output:
+1) 1
+1) 2
+2) 2
+1) 3
+2) 3
+```
+
+#### 2.4.3. ReplaySubject
+
+​	ReplaySubject tương tự như BehaviorSubject nhưng thay vì phát thêm duy nhất một phần tử trước đó, ReplaySubject cho phép ta chỉ định số lượng phần tử tối đa được phát lại khi subscribe. Ngoài ra, khi khởi tạo ReplaySubject, chúng ta không cần khai báo giá trị mặc định như BehaviorSubject.
+
+![ReplaySubject-diagram](./resources/images/2.4/ReplaySubject-diagram.png)
+
+```swift
+let disposeBag = DisposeBag()
+let subject = ReplaySubject<String>.create(bufferSize: 2)
+
+subject.onNext("1")
+subject.onNext("2")
+subject.onNext("3")
+
+subject.subscribe {
+		print("1)", $0)
+	}
+	.disposed(by: disposeBag)
+
+subject.subscribe {
+		print("2)", $0) 
+	}
+	.disposed(by: disposeBag)
+
+subject.onNext("4")
+subject.dispose()
+```
+
+```swift
+// Ouput:
+1) 2
+1) 3
+2) 2
+2) 3
+1) 4
+2) 4
+
+```
+
+#### 2.4.4. Variable
+
+​	Variable là behaviour subject được gói lại để các lập trình viên mới làm quen với react có thể dễ tiếp cận hơn.
+
+```swift
+let disposeBag = DisposeBag()
+let variable = Variable("Initial value")
+
+variable.value = "New initial value"
+variable.asObservable()
+		.subscribe {
+			print("1)", $0)
+		}
+		.disposed(by: disposeBag)
+
+variable.value = "1"
+variable.asObservable()
+		.subscribe {
+			print("2)", $0)
+		}
+		.disposed(by: disposeBag)
+
+variable.value = "2"
+```
+
+```swift
+1) next(New initial value)
+1) next(1)
+2) next(1)
+1) next(2)
+2) next(2)
+```
+
 ## 3. Deep Dive
 
 ### 3.1. Creation
