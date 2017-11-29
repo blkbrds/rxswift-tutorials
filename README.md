@@ -162,6 +162,33 @@ dev.start(.implement(taskId: "123"))
 
 ### 1.5. Reactive
 
+**Reactive programming là gì?**
+
+Có rất nhiều các định nghĩa, giải thích trên mạng khiến chúng ta rất dễ nhầm lẫn, rối trí. [Wikipedia](https://en.wikipedia.org/wiki/Reactive_programming) quá chung chung và thường tập trung nhiều vào lý thuyết, các câu trả lời kinh điển từ [Stackoverflow](https://stackoverflow.com/questions/1028250/what-is-functional-reactive-programming) thì không phù hợp cho người mới bắt đầu tìm hiểu, tài liệu [Reactive Manifesto](https://www.reactivemanifesto.org/) thì lại phù hơn với các PM hay các businessmen.  Microsoft's [Rx terminology](https://rx.codeplex.com/) "Rx = Observables + LINQ + Schedulers" thì quá nặng nề dẫn tới việc dễ bị nhầm lẫn, rối trí. Thuật ngữ `reactive` và `propagation of change`(lan truyền thay đổi) thì không truyền tải được điều gì đặc biệt. Do đó phần nội dung dưới này sẽ tập trung cắt nghĩa, diễn dải từng phần nhỏ:
+
+ **Reactive programming is programming with asynchronous data streams.**
+
+*Reactive programming* là lập trình với các luồng dữ liệu bất đồng bộ  và sự lan truyền thay đổi (the propagation of change). Khái niệm luồng (stream) phổ biến, bạn có thể tạo luồng dữ liệu (data streams) từ bất cứ thứ gì (anything can be a stream): các biến (variables), giá trị đầu vào từ người dùng (user inputs), properties, caches, data structures, etc.
+
+Streams là trung tâm của `reactive`, mô hình dưới đây là luồng sự kiện "click vào 1 button"
+
+![reactive](./Images/reactive.png)
+
+Một luồng là một dãy (sequence) các sự kiện đang diễn ra được sắp xếp theo. thời gian. Nó có thể phát ra 3 thứ: một giá trị, một error, hoặc một `completed`. Ở đây tín hiệu giúp ta biết được khi nào luồng sự kiện click `completed` là khi window hoặc view chứa button bị đóng lại.
+
+Chúng ta bắt các sự kiện đã phát ra **không đồng bộ** bằng cách define một function execute khi một giá trị được phát ra, một function khác khi error được phát ra, tương tự với `completed`. Các function chúng ta define là các observers, luồng(stream) là chủ thể đang được lắng nghe(being observed) hay còn gọi là observable.
+
+Xem sét sơ đồ được vẽ bằng ASCII sau:
+
+```groovy
+--a---b-c---d---X---|->
+
+a, b, c, d là các giá trị được phát ra
+X là một error nào đó
+| là một signal 'completed'
+----> is the timeline
+```
+
 ## 2. Getting Started
 
 ### 2.1. Observable - starter
