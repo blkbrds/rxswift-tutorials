@@ -1,38 +1,35 @@
 **Một bài viết tổng hợp các kiến thức từ basic đến advance về Reactive programming bằng ngôn ngữ Swift**
 
-### `Mọi chia sẻ hay sao chép phải được cấp phép, tác quyền thuộc team iOS - Asian Tech, Inc`
+#### `Mọi chia sẻ hay sao chép phải được cấp phép, tác quyền thuộc team iOS - Asian Tech, Inc`
 
 # Contents
 1. [Approach](#Approach)
- 
- [1.1. Delegation](#Delegation)
- [1.2. Callback](#Callback)
- [1.3. Functional](#Functional)
- [1.4. Promise](#Promise)
- [1.5. Reactive](#Reactive)
+
+ 	[1.1. Delegation](#Delegation)
+ 	[1.2. Callback](#Callback)
+ 	[1.3. Functional](#Functional)
+	[1.4. Promise](#Promise)
+	[1.5. Reactive](#Reactive)
 
 2. [Get Started](#get-started)
-
- [2.1. Observable - starter](#Observable-starter)
- [2.2. Observer - handler](#Observer-handler)
- [2.3. Operator - man in the middle](#Operator-man-in-the-middle)
- [2.4. Subjects](#Subjects)
+	 [2.1. Observable - starter](#Observable-starter)
+	 [2.2. Observer - handler](#Observer-handler)
+	 [2.3. Operator - man in the middle](#Operator-man-in-the-middle)
+	 [2.4. Subjects](#Subjects)
 
 3. [Deep Dive](#deep-dive)
-
- [3.1. Creation](#Creation)
- [3.2. Operators](#Operators)
- [3.3. MVVM](#MVVM)
- [3.4. Intermediate](#Intermediate) (Update later)
+	[3.1. Creation](#Creation)
+	[3.2. Operators](#Operators)
+	[3.3. MVVM](#MVVM)
+	[3.4. Intermediate](#Intermediate) (Update later)
  
 4. [Testing](#testing)
-
- [4.1. RxTest](#Creation)
- [4.2. RxNimble](#RxNimble)
+	[4.1. RxTest](#Creation)
+	[4.2. RxNimble](#RxNimble)
 
 5. [References](#References)
 
-## 1. Approach
+## 1. Approach <a name="Approach"></a>
 
 ### 1.1. Delegation
 
