@@ -1260,7 +1260,6 @@ Chạy code trên ta được điều cần chứng minh: :D
   1235 em có đánh rơi nhịp nào không? [1, 2, 3, 5]
   ```
 
-  ​
 
 
 - **reduce**
@@ -1282,7 +1281,6 @@ Chạy code trên ta được điều cần chứng minh: :D
   15
   ```
 
-  ​
 
 #### 3.2.5. Transformation
 
