@@ -5,27 +5,28 @@
 # Contents
 1. [Approach](#Approach)
 
- 	[1.1. Delegation](#Delegation)
- 	[1.2. Callback](#Callback)
- 	[1.3. Functional](#Functional)
-	[1.4. Promise](#Promise)
-	[1.5. Reactive](#Reactive)
+ 	1. [1.1. Delegation](#Delegation)
+ 	2. [1.2. Callback](#Callback)
+ 	3. [1.3. Functional](#Functional)
+ 	4. [1.4. Promise](#Promise)
+	5. [1.5. Reactive](#Reactive)
 
 2. [Get Started](#get-started)
-	 [2.1. Observable - starter](#Observable-starter)
-	 [2.2. Observer - handler](#Observer-handler)
-	 [2.3. Operator - man in the middle](#Operator-man-in-the-middle)
-	 [2.4. Subjects](#Subjects)
+
+	 1. [2.1. Observable - starter](#Observable-starter)
+	 2. [2.2. Observer - handler](#Observer-handler)
+	 3. [2.3. Operator - man in the middle](#Operator-man-in-the-middle)
+	 4. [2.4. Subjects](#Subjects)
 
 3. [Deep Dive](#deep-dive)
-	[3.1. Creation](#Creation)
-	[3.2. Operators](#Operators)
-	[3.3. MVVM](#MVVM)
-	[3.4. Intermediate](#Intermediate) (Update later)
+	1. [3.1. Creation](#Creation)
+	2. [3.2. Operators](#Operators)
+	3. [3.3. MVVM](#MVVM)
+	4. [3.4. Intermediate](#Intermediate) (Update later)
  
 4. [Testing](#testing)
-	[4.1. RxTest](#RxTest)
-	[4.2. RxNimble](#RxNimble)
+	1. [4.1. RxTest](#RxTest)
+	2. [4.2. RxNimble](#RxNimble)
 
 5. [References](#References)
 
