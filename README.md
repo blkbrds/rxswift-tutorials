@@ -168,7 +168,7 @@ Có rất nhiều các định nghĩa, giải thích trên mạng khiến chúng
 
  **Reactive programming is programming with asynchronous data streams.**
 
-*Reactive programming* là hình lập trình với các luồng dữ liệu bất đồng bộ  và sự lan truyền thay đổi (the propagation of change). Khái niệm luồng (stream) phổ biến, bạn có thể tạo luồng dữ liệu (data streams) từ bất cứ thứ gì (anything can be a stream): các biến (variables), giá trị đầu vào từ người dùng (user inputs), properties, caches, data structures, etc.
+*Reactive programming* là lập trình với các luồng dữ liệu bất đồng bộ  và sự lan truyền thay đổi (the propagation of change). Khái niệm luồng (stream) phổ biến, bạn có thể tạo luồng dữ liệu (data streams) từ bất cứ thứ gì (anything can be a stream): các biến (variables), giá trị đầu vào từ người dùng (user inputs), properties, caches, data structures, etc.
 
 Streams là trung tâm của `reactive`, mô hình dưới đây là luồng sự kiện "click vào 1 button"
 
