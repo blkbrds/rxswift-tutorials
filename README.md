@@ -31,7 +31,7 @@
 
 ## 1. Approach <a name="Approach"></a>
 
-### 1.1. Delegation
+### 1.1. Delegation <a name="Delegation"></a>
 
 ```swift
 let dev = Developer()
@@ -78,7 +78,7 @@ private class Developer {
 
 
 
-### 1.2. Callback
+### 1.2. Callback <a name="Callback"></a>
 
 The delegation is clear enough.
 
@@ -103,7 +103,7 @@ dev.start(.implement(taskId: "123"), completion: { result in
 
 
 
-### 1.3. Functional
+### 1.3. Functional <a name="Functional"></a>
 
 ```swift
 typealias Minutes = Double
@@ -143,7 +143,7 @@ extension Array where Element == Ride {
 
 
 
-### 1.4. Promise
+### 1.4. Promise <a name="Promise"></a>
 
 Promise - the golden path keeper & nested callback avoiding.
 
@@ -187,7 +187,7 @@ dev.start(.implement(taskId: "123"))
     .catch { _ in dev.start(.report) }
 ```
 
-### 1.5. Reactive
+### 1.5. Reactive <a name="Reactive"></a>
 
 **Reactive programming là gì?**
 
@@ -218,9 +218,9 @@ X là một error nào đó
 
 
 
-## 2. Getting Started
+## 2. Getting Started <a name="get-started"></a>
 
-### 2.1. Observable - starter
+### 2.1. Observable - starter <a name="Observable-starter"></a>
 
 > Khái niệm observable đến từ observer design pattern là một đối tượng thông báo cho các đối tượng theo dõi về một điều gì đó đang diễn ra. [source](https://xgrommx.github.io/rx-book/content/observable/index.html#)
 
@@ -281,7 +281,7 @@ X là một error nào đó
 
   [Read more](http://reactivex.io/documentation/observable.html)
 
-### 2.2. Observer - handler
+### 2.2. Observer - handler <a name="Approach"></a>
 
 Sau khi đã khởi tạo **Observable**, thì subcribes **Observable** để nhận các sự kiện (events). Và ở đây, **Observer** dùng để nhận sự kiện mỗi khi có sự kiện phát ra.
 
@@ -337,7 +337,7 @@ override func viewDidLoad() {
 
 
 
-### 2.3. Operator - man in the middle
+### 2.3. Operator - man in the middle <a name="Approach"></a>
 Operators là những phép toán cho phép biển đổi observable thành observable mới để phù hợp với nhu cầu sử dụng
 
 Một số operators cơ bản trong RxSwift được liệt kê tại mục 3.2
@@ -372,9 +372,9 @@ observable.filter { $0.hasPrefix("Number") } // 2
 2. Lọc nội dụng bắt đầu bằng chuỗi `Number`
 3. Subcrible một observable để có thể xử lý mỗi khi nội dung search bar thay đổi
 
-## 3. Deep Dive
+## 3. Deep Dive <a name="Approach"></a>
 
-### 3.1. Creation
+### 3.1. Creation <a name="Approach"></a>
 
 Có một vài cách để tạo **Observable**
 
@@ -647,7 +647,7 @@ Ngoài ra có các operator khác để tạo **Observable**
 
 See `Creating Observables`: [Creating Observables](http://reactivex.io/documentation/operators.html#creating)
 
-### 3.2. Operators
+### 3.2. Operators <a name="Approach"></a>
 
 #### 3.2.1. Conditional
 
@@ -1575,15 +1575,15 @@ Event nhận được sau khi buffer:  next([3, 4, 5])
 
 
 
-## 4. Testing
+## 4. Testing <a name="Approach"></a>
 
-### 4.1. RxTest
+### 4.1. RxTest <a name="Approach"></a>
 
-### 4.2. RxNimble
+### 4.2. RxNimble <a name="Approach"></a>
 
 https://academy.realm.io/posts/testing-functional-reactive-programming-code/
 
-## 5. References
+## 5. References <a name="Approach"></a>
 
 
 
