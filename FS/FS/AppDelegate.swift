@@ -15,7 +15,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.main.bounds)
+
+        let homeController = HomeViewController()
+        let homeNavigation = UINavigationController(rootViewController: homeController)
+        let searchController = SearchViewController()
+        let searchNavigation = UINavigationController(rootViewController: searchController)
+        let favoriteController = FavoriteViewController()
+        let favoriteNavigation = UINavigationController(rootViewController: favoriteController)
+        let profileController = ProfileViewController()
+        let profileNavigation = UINavigationController(rootViewController: profileController)
+
+        let tabbarController = UITabBarController()
+        tabbarController.viewControllers = [homeNavigation, searchNavigation, favoriteNavigation, profileNavigation]
+        window?.rootViewController = tabbarController
+        window?.makeKeyAndVisible()
         return true
     }
 

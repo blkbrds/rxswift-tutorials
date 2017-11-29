@@ -7,7 +7,17 @@
 //
 
 import Foundation
+import ObjectMapper
 
-class Venue {
+class Venue: Mappable {
+    required init?(map: Map) {
+        
+    }
 
+    var id: String?
+    var name = "name"
+    func mapping(map: Map) {
+        id <- map["id"]
+        name <- map["name"]
+    }
 }

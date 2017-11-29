@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  FavoriteViewController.swift
 //  FS
 //
 //  Created by at-thinhuv on 11/28/17.
@@ -7,12 +7,8 @@
 //
 
 import UIKit
-import MVVM
-import RxSwift
 
-class ViewController: UIViewController, MVVM.View {
-
-    var disposeBag: DisposeBag = DisposeBag()
+class FavoriteViewController: ViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -10,14 +10,20 @@
 		3A34B4751FCD632E007A4CC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34B4741FCD632E007A4CC6 /* AppDelegate.swift */; };
 		3A34B4931FCD6A98007A4CC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A34B4871FCD6A98007A4CC6 /* Assets.xcassets */; };
 		3A34B4951FCD6A98007A4CC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A34B48E1FCD6A98007A4CC6 /* LaunchScreen.storyboard */; };
-		3A34B4961FCD6A98007A4CC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A34B4901FCD6A98007A4CC6 /* Main.storyboard */; };
-		3A34B4971FCD6A98007A4CC6 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A34B4921FCD6A98007A4CC6 /* Info.plist */; };
 		3A34B4A71FCD6B7C007A4CC6 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34B4A01FCD6B7C007A4CC6 /* Venue.swift */; };
 		3A34B4A81FCD6B7C007A4CC6 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34B4A21FCD6B7C007A4CC6 /* API.swift */; };
 		3A34B4A91FCD6B7C007A4CC6 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34B4A31FCD6B7C007A4CC6 /* DataManager.swift */; };
 		3A34B4AD1FCD6BF6007A4CC6 /* Reactive+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34B4AC1FCD6BF6007A4CC6 /* Reactive+Extension.swift */; };
 		3A34B4B31FCD6D51007A4CC6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34B4B21FCD6D50007A4CC6 /* HomeViewController.swift */; };
 		3A34B4B61FCD6D88007A4CC6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34B4B51FCD6D88007A4CC6 /* ViewController.swift */; };
+		3A34B4BC1FCDB261007A4CC6 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A34B4BB1FCDB261007A4CC6 /* HomeViewController.xib */; };
+		3A34B4BF1FCDBA99007A4CC6 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34B4BD1FCDBA99007A4CC6 /* FavoriteViewController.swift */; };
+		3A34B4C01FCDBA99007A4CC6 /* FavoriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A34B4BE1FCDBA99007A4CC6 /* FavoriteViewController.xib */; };
+		3A34B4C31FCDBAA5007A4CC6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34B4C11FCDBAA5007A4CC6 /* ProfileViewController.swift */; };
+		3A34B4C41FCDBAA5007A4CC6 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A34B4C21FCDBAA5007A4CC6 /* ProfileViewController.xib */; };
+		3A34B4CB1FCDBAD3007A4CC6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34B4C91FCDBAD3007A4CC6 /* SearchViewController.swift */; };
+		3A34B4CC1FCDBAD3007A4CC6 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A34B4CA1FCDBAD3007A4CC6 /* SearchViewController.xib */; };
+		3A34B4CE1FCDC139007A4CC6 /* API.Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34B4CD1FCDC139007A4CC6 /* API.Venue.swift */; };
 		BC299787FDEF5E07CEA25D41 /* Pods_FS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23EE476810737E93C6EACB9 /* Pods_FS.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,7 +33,6 @@
 		3A34B4741FCD632E007A4CC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A34B4871FCD6A98007A4CC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A34B48F1FCD6A98007A4CC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		3A34B4911FCD6A98007A4CC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A34B4921FCD6A98007A4CC6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A34B4A01FCD6B7C007A4CC6 /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		3A34B4A21FCD6B7C007A4CC6 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -35,6 +40,14 @@
 		3A34B4AC1FCD6BF6007A4CC6 /* Reactive+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+Extension.swift"; sourceTree = "<group>"; };
 		3A34B4B21FCD6D50007A4CC6 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3A34B4B51FCD6D88007A4CC6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3A34B4BB1FCDB261007A4CC6 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		3A34B4BD1FCDBA99007A4CC6 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		3A34B4BE1FCDBA99007A4CC6 /* FavoriteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteViewController.xib; sourceTree = "<group>"; };
+		3A34B4C11FCDBAA5007A4CC6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		3A34B4C21FCDBAA5007A4CC6 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		3A34B4C91FCDBAD3007A4CC6 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		3A34B4CA1FCDBAD3007A4CC6 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		3A34B4CD1FCDC139007A4CC6 /* API.Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.Venue.swift; sourceTree = "<group>"; };
 		8333D11530D63CCEE689C9B8 /* Pods-FS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FS.release.xcconfig"; path = "../Pods/Target Support Files/Pods-FS/Pods-FS.release.xcconfig"; sourceTree = "<group>"; };
 		A23EE476810737E93C6EACB9 /* Pods_FS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -92,7 +105,6 @@
 			isa = PBXGroup;
 			children = (
 				3A34B48E1FCD6A98007A4CC6 /* LaunchScreen.storyboard */,
-				3A34B4901FCD6A98007A4CC6 /* Main.storyboard */,
 				3A34B4921FCD6A98007A4CC6 /* Info.plist */,
 			);
 			path = Configuration;
@@ -121,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				3A34B4A21FCD6B7C007A4CC6 /* API.swift */,
+				3A34B4CD1FCDC139007A4CC6 /* API.Venue.swift */,
 				3A34B4A31FCD6B7C007A4CC6 /* DataManager.swift */,
 			);
 			path = Service;
@@ -138,10 +151,10 @@
 			isa = PBXGroup;
 			children = (
 				3A34B4B41FCD6D73007A4CC6 /* Base */,
-				3A34B4B11FCD6CBE007A4CC6 /* Profile */,
-				3A34B4B01FCD6CB7007A4CC6 /* Search */,
 				3A34B4AF1FCD6CAE007A4CC6 /* Favorite */,
 				3A34B4AE1FCD6CA7007A4CC6 /* Home */,
+				3A34B4B11FCD6CBE007A4CC6 /* Profile */,
+				3A34B4B01FCD6CB7007A4CC6 /* Search */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -158,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				3A34B4B21FCD6D50007A4CC6 /* HomeViewController.swift */,
+				3A34B4BB1FCDB261007A4CC6 /* HomeViewController.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -165,6 +179,8 @@
 		3A34B4AF1FCD6CAE007A4CC6 /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
+				3A34B4BD1FCDBA99007A4CC6 /* FavoriteViewController.swift */,
+				3A34B4BE1FCDBA99007A4CC6 /* FavoriteViewController.xib */,
 			);
 			path = Favorite;
 			sourceTree = "<group>";
@@ -172,6 +188,8 @@
 		3A34B4B01FCD6CB7007A4CC6 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				3A34B4C91FCDBAD3007A4CC6 /* SearchViewController.swift */,
+				3A34B4CA1FCDBAD3007A4CC6 /* SearchViewController.xib */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -179,6 +197,8 @@
 		3A34B4B11FCD6CBE007A4CC6 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				3A34B4C11FCDBAA5007A4CC6 /* ProfileViewController.swift */,
+				3A34B4C21FCDBAA5007A4CC6 /* ProfileViewController.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -270,9 +290,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A34B4971FCD6A98007A4CC6 /* Info.plist in Resources */,
-				3A34B4961FCD6A98007A4CC6 /* Main.storyboard in Resources */,
+				3A34B4C41FCDBAA5007A4CC6 /* ProfileViewController.xib in Resources */,
+				3A34B4C01FCDBA99007A4CC6 /* FavoriteViewController.xib in Resources */,
+				3A34B4BC1FCDB261007A4CC6 /* HomeViewController.xib in Resources */,
 				3A34B4931FCD6A98007A4CC6 /* Assets.xcassets in Resources */,
+				3A34B4CC1FCDBAD3007A4CC6 /* SearchViewController.xib in Resources */,
 				3A34B4951FCD6A98007A4CC6 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,18 +327,18 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/../Pods/Target Support Files/Pods-FS/Pods-FS-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/MVVM/MVVM.framework",
+				"${BUILT_PRODUCTS_DIR}/MVVM-Swift/MVVM.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftUtils/SwiftUtils.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MVVM.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftUtils.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -346,12 +368,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A34B4CB1FCDBAD3007A4CC6 /* SearchViewController.swift in Sources */,
 				3A34B4B31FCD6D51007A4CC6 /* HomeViewController.swift in Sources */,
 				3A34B4751FCD632E007A4CC6 /* AppDelegate.swift in Sources */,
 				3A34B4A91FCD6B7C007A4CC6 /* DataManager.swift in Sources */,
 				3A34B4A81FCD6B7C007A4CC6 /* API.swift in Sources */,
+				3A34B4CE1FCDC139007A4CC6 /* API.Venue.swift in Sources */,
 				3A34B4B61FCD6D88007A4CC6 /* ViewController.swift in Sources */,
 				3A34B4AD1FCD6BF6007A4CC6 /* Reactive+Extension.swift in Sources */,
+				3A34B4C31FCDBAA5007A4CC6 /* ProfileViewController.swift in Sources */,
+				3A34B4BF1FCDBA99007A4CC6 /* FavoriteViewController.swift in Sources */,
 				3A34B4A71FCD6B7C007A4CC6 /* Venue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,14 +391,6 @@
 				3A34B48F1FCD6A98007A4CC6 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		3A34B4901FCD6A98007A4CC6 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3A34B4911FCD6A98007A4CC6 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -432,6 +450,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -481,6 +500,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -491,11 +511,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = FS/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/FS/Configuration/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinhxavi.FS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -506,11 +527,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = FS/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/FS/Configuration/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinhxavi.FS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
