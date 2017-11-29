@@ -24,7 +24,7 @@
 	[3.4. Intermediate](#Intermediate) (Update later)
  
 4. [Testing](#testing)
-	[4.1. RxTest](#Creation)
+	[4.1. RxTest](#RxTest)
 	[4.2. RxNimble](#RxNimble)
 
 5. [References](#References)
@@ -281,7 +281,7 @@ X là một error nào đó
 
   [Read more](http://reactivex.io/documentation/observable.html)
 
-### 2.2. Observer - handler <a name="Approach"></a>
+### 2.2. Observer - handler <a name="Observer-handler"></a>
 
 Sau khi đã khởi tạo **Observable**, thì subcribes **Observable** để nhận các sự kiện (events). Và ở đây, **Observer** dùng để nhận sự kiện mỗi khi có sự kiện phát ra.
 
@@ -337,7 +337,7 @@ override func viewDidLoad() {
 
 
 
-### 2.3. Operator - man in the middle <a name="Approach"></a>
+### 2.3. Operator - man in the middle <a name="Operator-man-in-the-middle"></a>
 Operators là những phép toán cho phép biển đổi observable thành observable mới để phù hợp với nhu cầu sử dụng
 
 Một số operators cơ bản trong RxSwift được liệt kê tại mục 3.2
@@ -372,9 +372,11 @@ observable.filter { $0.hasPrefix("Number") } // 2
 2. Lọc nội dụng bắt đầu bằng chuỗi `Number`
 3. Subcrible một observable để có thể xử lý mỗi khi nội dung search bar thay đổi
 
-## 3. Deep Dive <a name="Approach"></a>
+### 2.3. Subject <a name="Subject"></a>
 
-### 3.1. Creation <a name="Approach"></a>
+## 3. Deep Dive <a name="deep-dive"></a>
+
+### 3.1. Creation <a name="Creation"></a>
 
 Có một vài cách để tạo **Observable**
 
@@ -647,7 +649,7 @@ Ngoài ra có các operator khác để tạo **Observable**
 
 See `Creating Observables`: [Creating Observables](http://reactivex.io/documentation/operators.html#creating)
 
-### 3.2. Operators <a name="Approach"></a>
+### 3.2. Operators <a name="Operators"></a>
 
 #### 3.2.1. Conditional
 
@@ -1573,17 +1575,20 @@ Event nhận được sau khi buffer:  next([0, 1, 2])
 Event nhận được sau khi buffer:  next([3, 4, 5])
 ```
 
+### 3.3. MVVM <a name="MVVM"></a>
+### 3.4. Intermediate RxTest <a name="Intermediate"></a>
 
 
-## 4. Testing <a name="Approach"></a>
 
-### 4.1. RxTest <a name="Approach"></a>
+## 4. Testing <a name="testing"></a>
 
-### 4.2. RxNimble <a name="Approach"></a>
+### 4.1. RxTest <a name="RxTest"></a>
+
+### 4.2. RxNimble <a name="RxNimble"></a>
 
 https://academy.realm.io/posts/testing-functional-reactive-programming-code/
 
-## 5. References <a name="Approach"></a>
+## 5. References <a name="References"></a>
 
 
 
