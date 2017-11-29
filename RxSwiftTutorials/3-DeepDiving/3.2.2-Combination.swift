@@ -22,7 +22,7 @@ final class Combination {
     private func startWith() {
         let observable = Observable.of(1, 2, 3)
         let newObservable = observable.startWith(-1, 0)
-        newObservable.subscribe(onNext: { value in
+        _ = newObservable.subscribe(onNext: { value in
             print(value)
         })
     }
