@@ -1121,7 +1121,7 @@ next([39, 40, 41, 42, 43, 44, 45, 46, 47, 48])
 
 **`map`**:
 
-Biến đổi từng *item* được bắn ra.
+Biến đổi từng *item* của một **observable** để trở thành một **observable** mới.
 
 ![map](./resources/images/3.2.5/map.png)
 
@@ -1189,7 +1189,7 @@ score: 800
 
 **`groupBy`**:
 
-Chia một **observable** thành một tập các **observable** khác, những **observable** mới này sẽ có các *item* là thuộc **observable** ban đầu chỉ là chúng được nhóm lại theo một điều kiện nào đó.
+Chia một **observable** thành một tập các **observable** khác theo một điều kiện nào đó.
 
 ![groupBy](./resources/images/3.2.5/groupBy.png)
 
