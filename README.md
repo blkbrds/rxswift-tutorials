@@ -4,29 +4,30 @@
 
 # Contents
 1. [Approach](#Approach)
-
-   1. [1.1. Delegation](#Delegation)
-    2. [1.2. Callback](#Callback)
-    3. [1.3. Functional](#Functional)
-    4. [1.4. Promise](#Promise)
-   5. [1.5. Reactive](#Reactive)
+ 	
+ 	1. [1.1. Delegation](#Delegation)
+ 	2. [1.2. Callback](#Callback)
+ 	3. [1.3. Functional](#Functional)
+ 	4. [1.4. Promise](#Promise)
+ 	5. [1.5. Reactive](#Reactive)
 
 2. [Get Started](#get-started)
 
-   1. [2.1. Observable - starter](#Observable-starter)
-    2. [2.2. Observer - handler](#Observer-handler)
-    3. [2.3. Operator - man in the middle](#Operator-man-in-the-middle)
-    4. [2.4. Subjects](#Subjects)
+    	1. [2.1. Observable - starter](#Observable-starter)
+    	2. [2.2. Observer - handler](#Observer-handler)
+    	3. [2.3. Operator - man in the middle](#Operator-man-in-the-middle)
+    	4. [2.4. Subjects](#Subjects)
 
 3. [Deep Dive](#deep-dive)
-  1. [3.1. Creation](#Creation)
-  2. [3.2. Operators](#Operators)
-  3. [3.3. MVVM](#MVVM)
-  4. [3.4. Intermediate](#Intermediate) (Update later)
+
+ 	1. [3.1. Creation](#Creation)
+  	2. [3.2. Operators](#Operators)
+  	3. [3.3. MVVM](#MVVM) 
+  	4. [3.4. Intermediate](#Intermediate) (Update later)
 
 4. [Testing](#testing)
-  1. [4.1. RxTest](#RxTest)
-  2. [4.2. RxNimble](#RxNimble)
+   	1. [4.1. RxTest](#RxTest)
+     	2. [4.2. RxNimble](#RxNimble)
 
 5. [References](#References)
 
@@ -102,8 +103,6 @@ dev.start(.implement(taskId: "123"), completion: { result in
 })
 ```
 
-
-
 ### 1.3. Functional <a name="Functional"></a>
 
 ```swift
@@ -141,8 +140,6 @@ extension Array where Element == Ride {
     }
 }
 ```
-
-
 
 ### 1.4. Promise <a name="Promise"></a>
 
@@ -2057,8 +2054,6 @@ Event nhận được sau khi buffer:  next([3, 4, 5])
 ### 3.3. MVVM <a name="MVVM"></a>
 ### 3.4. Intermediate RxTest <a name="Intermediate"></a>
 
-
-
 ## 4. Testing <a name="testing"></a>
 
 ### 4.1. RxTest <a name="RxTest"></a>
@@ -2068,6 +2063,3 @@ Event nhận được sau khi buffer:  next([3, 4, 5])
 https://academy.realm.io/posts/testing-functional-reactive-programming-code/
 
 ## 5. References <a name="References"></a>
-
-
-
