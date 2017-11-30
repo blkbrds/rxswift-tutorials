@@ -18,7 +18,7 @@ extension API {
                 let venues: [Venue] = []
                 // Parse venues here
                 observer.onNext(venues)
-//                observer.onCompleted()
+                observer.onCompleted()
             })
             return Disposables.create()
         }

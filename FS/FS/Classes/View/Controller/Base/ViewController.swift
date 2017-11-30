@@ -19,7 +19,6 @@ class ViewController: UIViewController, MVVM.View {
     }
 
     deinit {
-        print("Deinit \(self)")
         disposeBag = nil
     }
 }
