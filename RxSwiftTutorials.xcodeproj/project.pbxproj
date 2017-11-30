@@ -157,7 +157,7 @@
 			path = "3-DeepDiving";
 			sourceTree = "<group>";
 		};
-		EA6E92E11FA8E5F70042EBF8 /* _ */ = {
+		EA6E92E11FA8E5F70042EBF8 /* 0-Launcher */ = {
 			isa = PBXGroup;
 			children = (
 				EA6E92E21FA8E5F70042EBF8 /* AppDelegate.swift */,
@@ -166,7 +166,7 @@
 				857EE1451FC5B06500C9F6E2 /* MenuViewController.swift */,
 				857EE1461FC5B06500C9F6E2 /* MenuViewController.xib */,
 			);
-			path = _;
+			path = "0-Launcher";
 			sourceTree = "<group>";
 		};
 		EA7BE2F31F78EB72008A494A = {
@@ -194,7 +194,7 @@
 				EA4162691FAAD5E300DF29FF /* 2-GettingStarted */,
 				EA4162781FAAD80A00DF29FF /* 3-DeepDiving */,
 				EA4162681FAAD5E300DF29FF /* 4-Testing */,
-				EA6E92E11FA8E5F70042EBF8 /* _ */,
+				EA6E92E11FA8E5F70042EBF8 /* 0-Launcher */,
 			);
 			path = RxSwiftTutorials;
 			sourceTree = "<group>";
@@ -415,6 +415,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -464,6 +465,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -475,11 +477,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = "$(SRCROOT)/RxSwiftTutorials/_/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/RxSwiftTutorials/0-Launcher/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "github.blkbrds.rxswift-tutorials";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -491,11 +493,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = "$(SRCROOT)/RxSwiftTutorials/_/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/RxSwiftTutorials/0-Launcher/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "github.blkbrds.rxswift-tutorials";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

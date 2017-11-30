@@ -1,21 +1,30 @@
 PODS:
-  - PromiseKit/CorePromise (4.4.3)
-  - PromiseKit/Foundation (4.4.3):
+  - MVVM-Swift (1.1.0)
+  - ObjectMapper (2.2.6)
+  - PromiseKit/CorePromise (4.5.0)
+  - PromiseKit/Foundation (4.5.0):
     - PromiseKit/CorePromise
-  - RxCocoa (4.0.0):
-    - RxSwift (~> 4.0)
-  - RxSwift (4.0.0)
+  - RxCocoa (3.6.1):
+    - RxSwift (~> 3.6)
+  - RxSwift (3.6.1)
+  - SwiftUtils (2.0.0)
 
 DEPENDENCIES:
-  - PromiseKit/Foundation (~> 4.4)
-  - RxCocoa (~> 4.0)
-  - RxSwift (~> 4.0)
+  - MVVM-Swift (~> 1.1.0)
+  - ObjectMapper (= 2.2.6)
+  - PromiseKit/Foundation (~> 4.0)
+  - RxCocoa (= 3.6.1)
+  - RxSwift (= 3.6.1)
+  - SwiftUtils (= 2.0.0)
 
 SPEC CHECKSUMS:
-  PromiseKit: fbb52a0d154402c57eeb6eccd36dd7724fcf6117
-  RxCocoa: d62846ca96495d862fa4c59ea7d87e5031d7340e
-  RxSwift: fd680d75283beb5e2559486f3c0ff852f0d35334
+  MVVM-Swift: 54749cc12bb30af41632f30a2c576a18bf9e4bc8
+  ObjectMapper: 042708195cc46c20871cbcbec0453826398273fd
+  PromiseKit: 9c1d9f6d7b65e3951a90bea7f407c56972be5d8e
+  RxCocoa: 84a08739ab186248c7f31ce4ee92d6f8a947d690
+  RxSwift: f9de85ea20cd2f7716ee5409fc13523dc638e4e4
+  SwiftUtils: c65508375277ddba9984b514704e9ecd11e26ff8
 
-PODFILE CHECKSUM: f9f00db6362caf2c2546fbbcb6d4d7ab43bb1df3
+PODFILE CHECKSUM: f7677b9ec560b782444daf9ceefc844c7c0da27e
 
 COCOAPODS: 1.3.1

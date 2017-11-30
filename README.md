@@ -164,7 +164,7 @@ dev.start(.implement(taskId: "123"))
 
 **Reactive programming là gì?**
 
-Có rất nhiều các định nghĩa, giải thích trên mạng khiến chúng ta rất dễ nhầm lẫn, rối trí. [Wikipedia](https://en.wikipedia.org/wiki/Reactive_programming) quá chung chung và thường tập trung nhiều vào lý thuyết, các câu trả lời kinh điển từ [Stackoverflow](https://stackoverflow.com/questions/1028250/what-is-functional-reactive-programming) thì không phù hợp cho người mới bắt đầu tìm hiểu, tài liệu [Reactive Manifesto](https://www.reactivemanifesto.org/) thì lại phù hơn với các PM hay các businessmen.  Microsoft's [Rx terminology](https://rx.codeplex.com/) "Rx = Observables + LINQ + Schedulers" thì quá nặng nề dẫn tới việc dễ bị nhầm lẫn, rối trí. Thuật ngữ `reactive` và `propagation of change`(lan truyền thay đổi) thì không truyền tải được điều gì đặc biệt. Do đó phần nội dung dưới này sẽ tập trung cắt nghĩa, diễn dải từng phần nhỏ:
+Có rất nhiều các định nghĩa, giải thích trên mạng khiến chúng ta rất dễ nhầm lẫn, rối trí. [Wikipedia](https://en.wikipedia.org/wiki/Reactive_programming) quá chung chung và thường tập trung nhiều vào lý thuyết, các câu trả lời kinh điển từ [Stackoverflow](https://stackoverflow.com/questions/1028250/what-is-functional-reactive-programming) thì không phù hợp cho người mới bắt đầu tìm hiểu, tài liệu [Reactive Manifesto](https://www.reactivemanifesto.org/) thì lại phù hơn với các PM hay các businessman.  Microsoft's [Rx terminology](https://rx.codeplex.com/) "Rx = Observables + LINQ + Schedulers" thì quá nặng nề dẫn tới việc dễ bị nhầm lẫn, rối trí. Thuật ngữ `reactive` và `propagation of change`(lan truyền thay đổi) thì không truyền tải được điều gì đặc biệt. Do đó phần nội dung dưới này sẽ tập trung cắt nghĩa, diễn dải từng phần nhỏ:
 
  **Reactive programming is programming with asynchronous data streams.**
 
@@ -172,7 +172,7 @@ Có rất nhiều các định nghĩa, giải thích trên mạng khiến chúng
 
 Streams là trung tâm của `reactive`, mô hình dưới đây là luồng sự kiện "click vào 1 button"
 
-![reactive](./Images/reactive.png)
+![reactive](./resources/images/1.5/reactive.png)
 
 Một luồng là một dãy (sequence) các sự kiện đang diễn ra được sắp xếp theo thời gian. Nó có thể phát ra 3 thứ: một giá trị, một error, hoặc một `completed`. Ở đây tín hiệu giúp ta biết được khi nào luồng sự kiện click `completed` là khi window hoặc view chứa button bị đóng lại.
 
@@ -197,7 +197,7 @@ X là một error nào đó
 
 - Diagrams dưới đây đại diện cho  `Observables` và quá trình biến đổi của `Observables`:
 
-![Observable-diagram](./Images/Observable-diagram.png)
+![Observable-diagram](./resources/images/2.1/Observable-diagram.png)
 
 - Trong [ReactiveX](http://reactivex.io/documentation/observable.html), một `observer` đăng ký một `Observable` sau đó `observer` sẽ phản ứng lại bất cứ item hay chuỗi các item mà `Observable` phát ra. Phần nãy sẽ giải thích reactive parttern là gì? `Observables`, `observers` là gì? và làm thế nào các `observers` đăng ký với `Observables`. 
 
@@ -315,7 +315,7 @@ Một số operators cơ bản trong RxSwift được liệt kê tại mục 3.2
 
 **Example 1:**
 
-![Filter](./3.2.2.png)
+![Filter](./resources/images/2.3/2.3.png)
 
 ```swift
 let observable = Observable.of(2,30,22,5,60,1) // 1
@@ -534,7 +534,7 @@ Có một vài cách để tạo **Observable**
 
 Tạo một *Observable* với một *single element*.
 
-![just.c](resources/imgs/just.c.png)
+![just.c](resources/images/3.1/just.c.png)
 
 `just` chuyển đổi một *item* vào trong một **Observable** mà sẽ phát ra chính *item* đó.
 
@@ -574,7 +574,7 @@ func setupLabel() {
 
 Tạo một *Observable* từ một *Sequence* như Array, Dictionary hay Set.
 
-![from.c](resources/imgs/from.c.png)
+![from.c](resources/images/3.1/from.c.png)
 
 Một hàm khởi tạo *Observable* quan trọng, khi làm việc với *Observable* có thể dễ dàng biểu diễn dự liệu của ứng dụng sang **Observable**.
 
@@ -607,7 +607,7 @@ import UIKit
 
 Tạo một custom **Observable** với input bất kỳ với **create**.
 
-![create.c](resources/imgs/create.c.png)
+![create.c](resources/images/3.1/create.c.png)
 
 Tạo một custom **Observable** với đầu vào bất kì, và custom lúc nào gọi **observer** handle sự kiện (onNext, onError, onComplete)
 
@@ -694,7 +694,7 @@ final class User {
 
 Tạo một *Observable* mà phát ra một dãy các số nguyên tuần tự
 
-![range.c](resources/imgs/range.c.png)
+![range.c](resources/images/3.1/range.c.png)
 
 **Examples**
 
@@ -733,7 +733,7 @@ import UIKit
 
 Tạo một *Observable* mà phát ra một element nhiều lần
 
-![repeat.c](resources/imgs/repeat.c.png)
+![repeat.c](resources/images/3.1/repeat.c.png)
 
 Sau khi khởi tạo *Observable* với **repeatElement**, Observable sẽ phát liên tục với element input
 
@@ -763,7 +763,7 @@ Observable.repeatElement("🔴")
 
 Tạo một *Observable* kèm operator **doOn** có thể chèn thêm logic vào trước các event methods của **Observer** đã định nghĩa.
 
-![do.c](resources/imgs/do.c.png)
+![do.c](resources/images/3.1/do.c.png)
 
 **Examples**:
 
@@ -1272,87 +1272,136 @@ Nhắc đến *Filtering* trong RxSwift thì ta có một số operators sau: **
 Sau đây là một số ví dụ để hiểu rõ hơn về các operators này
 
 ##### Ignoring operators
--	`ignoreElemens()`
+-  `ignoreElemens()`
 
-	Bỏ qua tất cả các items được phát ra. Nhưng vẫn cho phép xử lý sự kiện **.completed** và **.error**.
-	
-	![Ignore Elements](./resources/images/3.2.3/ignoreElements.png)
-	
-```swift  let strikes = PublishSubject<String>()  let disposeBag = DisposeBag()  // Đăng ký lắng nghe những items được phát ra nhưng lại ignore chúng đi.  strikes    .ignoreElements()    .subscribe { _ in
-     print("You're out!")    }    .disposed(by: disposeBag)
+  Bỏ qua tất cả các items được phát ra. Nhưng vẫn cho phép xử lý sự kiện **.completed** và **.error**.
+
+  ![Ignore Elements](./resources/images/3.2.3/ignoreElements.png)
+
+```swift
+  let strikes = PublishSubject<String>()
+  let disposeBag = DisposeBag()
+  // Đăng ký lắng nghe những items được phát ra nhưng lại ignore chúng đi.
+  strikes
+    .ignoreElements()
+    .subscribe { _ in
+     print("You're out!")
+    }
+    .disposed(by: disposeBag)
 ```
 
 ```swift
-strikes.onNext("X")strikes.onNext("Y")strikes.onNext("Z")
+strikes.onNext("X")
+strikes.onNext("Y")
+strikes.onNext("Z")
 strikes.onCompleted()
 
 --- Output ---
 You're out!
 ```
--	`elementAt()`
+-  `elementAt()`
 
-	Đôi lúc chúng ta lại muốn xử lý sự kiện tại một thời điểm nào đó. `elementAt(n)` cho phép xử lý sự kiện được phát ra tại lần phát thứ n và sẽ bỏ qua tất cả sự kiện khác.
-	
+  Đôi lúc chúng ta lại muốn xử lý sự kiện tại một thời điểm nào đó. `elementAt(n)` cho phép xử lý sự kiện được phát ra tại lần phát thứ n và sẽ bỏ qua tất cả sự kiện khác.
+
 ![ElementAt](./resources/images/3.2.3/elementAt.png)
 
-```swift  let strikes = PublishSubject<String>()  let disposeBag = DisposeBag()  strikes    .elementAt(2)    .subscribe(onNext: { item in      print(item)    })    .disposed(by: disposeBag)
+```swift
+  let strikes = PublishSubject<String>()
+  let disposeBag = DisposeBag()
+
+  strikes
+    .elementAt(2)
+    .subscribe(onNext: { item in
+      print(item)
+    })
+    .disposed(by: disposeBag)
 ```
 
 ```swift
-strikes.onNext("A")strikes.onNext("B")strikes.onNext("C")
+strikes.onNext("A")
+strikes.onNext("B")
+strikes.onNext("C")
 
 --- Output ---
 C
 ```
-	
-	
+
+​	
 
 ##### Skipping operators
--	`skip(n)`
+-  `skip(n)`
 
-	**Skip** operator cho phép bạn bỏ qua các items được phát ra từ lần phát thứ 1 đến n.
-	
-	![Skip](./resources/images/3.2.3/skip.png)
-	
+  **Skip** operator cho phép bạn bỏ qua các items được phát ra từ lần phát thứ 1 đến n.
+
+  ![Skip](./resources/images/3.2.3/skip.png)
+
 ```swift
-let disposeBag = DisposeBag()Observable.of("A", "B", "C", "D", "E", "F")  // Bỏ qua các items được phát từ lần phát thứ 1 đến 3.  .skip(3)  .subscribe(onNext: {	  print($0) })  .disposed(by: disposeBag)
+let disposeBag = DisposeBag()
+Observable.of("A", "B", "C", "D", "E", "F")
+  // Bỏ qua các items được phát từ lần phát thứ 1 đến 3.
+  .skip(3)
+  .subscribe(onNext: {
+	  print($0) })
+  .disposed(by: disposeBag)
 ```
 
 ```swift
 --- Output ----
-DEF
+D
+E
+F
 ```
 
--	`skipWhile()`
+-  `skipWhile()`
 
-	`skipWhile()` nó cũng tương tự như `filter`. Nó cho phép đưa ra một điều kiện cụ thể để xác định những items nào sẽ được bỏ qua. Tuy nhiên, có một sự khác biệt giữa chúng. Trong khi `filter` sẽ lọc qua tất cả items, thì `skipWhile` chỉ bỏ qua cho đến khi có một item nào đó không thoả điều kiện nữa. Nó sẽ dừng việc bỏ qua và cho phép mọi thứ thông qua từ thời điểm đó.
-	
-	![SkipWhile](./resources/images/3.2.3/skipWhile.png)
-		
+  `skipWhile()` nó cũng tương tự như `filter`. Nó cho phép đưa ra một điều kiện cụ thể để xác định những items nào sẽ được bỏ qua. Tuy nhiên, có một sự khác biệt giữa chúng. Trong khi `filter` sẽ lọc qua tất cả items, thì `skipWhile` chỉ bỏ qua cho đến khi có một item nào đó không thoả điều kiện nữa. Nó sẽ dừng việc bỏ qua và cho phép mọi thứ thông qua từ thời điểm đó.
+
+  ![SkipWhile](./resources/images/3.2.3/skipWhile.png)
+  ​	
 ```swift
-let disposeBag = DisposeBag()Observable.of(2, 2, 3, 4, 4)  // Sẽ bỏ qua những items chia hết cho 2 cho đến khi nó gặp 1 item không thoả mãn.  .skipWhile { integer in    integer % 2 == 0  }  .subscribe(onNext: {    print($0)}).disposed(by: disposeBag)
+let disposeBag = DisposeBag()
+Observable.of(2, 2, 3, 4, 4)
+  // Sẽ bỏ qua những items chia hết cho 2 cho đến khi nó gặp 1 item không thoả mãn.
+  .skipWhile { integer in
+    integer % 2 == 0
+  }
+  .subscribe(onNext: {
+    print($0)
+}).disposed(by: disposeBag)
 ```
 
 ```swift
 --- Output ----
-344
+3
+4
+4
 ```
 
--	`skipUntil()`
+-  `skipUntil()`
 
-	Nó sẽ bỏ qua những items được phát ra từ **source observable** cho đến khi **trigger observable** phát item đầu tiên.
-	
-	![SkipUntil](./resources/images/3.2.3/skipUntil.png)
+  Nó sẽ bỏ qua những items được phát ra từ **source observable** cho đến khi **trigger observable** phát item đầu tiên.
+
+  ![SkipUntil](./resources/images/3.2.3/skipUntil.png)
 
 ```swift
-let disposeBag = DisposeBag()// subject sẽ phát ra các items
-// trigger được dùng như là 1 cái cò để báo dừng việc bỏ qua các items đó  let subject = PublishSubject<String>()  let trigger = PublishSubject<String>()subject  .skipUntil(trigger)  .subscribe(onNext: {			print($0) })  .disposed(by: disposeBag)
+let disposeBag = DisposeBag()
+// subject sẽ phát ra các items
+// trigger được dùng như là 1 cái cò để báo dừng việc bỏ qua các items đó
+  let subject = PublishSubject<String>()
+  let trigger = PublishSubject<String>()
+
+subject
+  .skipUntil(trigger)
+  .subscribe(onNext: {	
+		print($0) })
+  .disposed(by: disposeBag)
 ```
 
 ```swift
 // Đầu tiên subject sẽ phát đi 2 items. Nhưng không có gì được in ra.
 	Vì chúng đang được skip.
-subject.onNext("A")subject.onNext("B")
+subject.onNext("A")
+subject.onNext("B")
 
 // Khi trigger phát đi 1 item thì việc bỏ qua những item phát ra bởi
    subject sẽ được ngăn chặn. Có nghĩa là từ thời điểm đó mọi sự kiện
@@ -1366,50 +1415,78 @@ subject.onNext("C")
 --- Output --- 
 C
 ```
-	
-	
+
+
 ##### Taking operators
 - `take()`
 
-	Đối lập với **skiping** thì ta có phép **taking**. Nếu `skip(n)` cho phép bỏ qua những items được phát từ lần phát thứ 1 đến thứ n. Thì `take(n)` cho phép nhận những items được phát từ lần phát thứ 1 đến thứ n.
-	
+  Đối lập với **skiping** thì ta có phép **taking**. Nếu `skip(n)` cho phép bỏ qua những items được phát từ lần phát thứ 1 đến thứ n. Thì `take(n)` cho phép nhận những items được phát từ lần phát thứ 1 đến thứ n.
+
 ```swift
-let disposeBag = DisposeBag()Observable.of(1, 2, 3, 4, 5, 6)  // Nhận các items từ lần phát thứ 1 đến thứ 3  .take(3)  .subscribe(onNext: {     print($0) })  .disposed(by: disposeBag)
+let disposeBag = DisposeBag()
+Observable.of(1, 2, 3, 4, 5, 6)
+  // Nhận các items từ lần phát thứ 1 đến thứ 3
+  .take(3)
+  .subscribe(onNext: {
+     print($0) })
+  .disposed(by: disposeBag)
 ```
 
 ```swift
 --- Output ---
-123
+1
+2
+3
 ```
 
 - `takeWhileWithIndex()`
 
-	Ở phần **skiping operator** chúng ta có định nghĩa `skipWhile()` thì tương tự ở phần này chúng ta cũng sẽ có `takeWhile()`. Mở rộng hơn một chút, đôi lúc chúng ta lại muốn sử dụng chỉ số (index) của item được phát ra để thoả mãn điều kiện lọc nào đó. `takeWhileWithIndex()` sẽ giải quyết vấn đề này.
-	
-	![Take](./resources/images/3.2.3/take.png)
-		
+  Ở phần **skiping operator** chúng ta có định nghĩa `skipWhile()` thì tương tự ở phần này chúng ta cũng sẽ có `takeWhile()`. Mở rộng hơn một chút, đôi lúc chúng ta lại muốn sử dụng chỉ số (index) của item được phát ra để thoả mãn điều kiện lọc nào đó. `takeWhileWithIndex()` sẽ giải quyết vấn đề này.
+
+  ![Take](./resources/images/3.2.3/take.png)
+  ​	
 ```swift
-let disposeBag = DisposeBag()Observable.of(2, 2, 4, 4, 6, 6)
-  // Chỉ lấy những item là số chẵn và có index < 3   .takeWhileWithIndex { integer, index in    integer % 2 == 0 && index < 3  }  .subscribe(onNext: {    print($0)})  .disposed(by: disposeBag)
+let disposeBag = DisposeBag()
+Observable.of(2, 2, 4, 4, 6, 6)
+  // Chỉ lấy những item là số chẵn và có index < 3 
+  .takeWhileWithIndex { integer, index in
+    integer % 2 == 0 && index < 3
+  }
+  .subscribe(onNext: {
+    print($0)
+})
+  .disposed(by: disposeBag)
 ```
 
 ```swift
 --- Output ---
-224
+2
+2
+4
 ```
 
 - `takeUntil()`
 
  Tương tự `skipUntil()` ở đây chúng ta cũng sẽ có `takeUntil()`. Sẽ nhận những item được phát ra từ **source observable** cho đến khi **trigger observable** phát ra item đầu tiên.
- 
+
 ![TakeUntil](./resources/images/3.2.3/takeUntil.png)
-	
+​	
 ```swift
-let disposeBag = DisposeBag()// subject sẽ phát ra các items
+let disposeBag = DisposeBag()
+// subject sẽ phát ra các items
 // trigger được dùng như là 1 cái cò để báo dừng việc nhận 
-	các items được phát ra từ subject  let subject = PublishSubject<String>()  let trigger = PublishSubject<String>()subject  .takeUntil(trigger)  .subscribe(onNext: {			print($0) })  .disposed(by: disposeBag)
+	các items được phát ra từ subject
+  let subject = PublishSubject<String>()
+  let trigger = PublishSubject<String>()
+
+subject
+  .takeUntil(trigger)
+  .subscribe(onNext: {	
+		print($0) })
+  .disposed(by: disposeBag)
   
-subject.onNext("1")subject.onNext("2")
+subject.onNext("1")
+subject.onNext("2")
 trigger.onNext("Stop")
 subject.onNext("3")
 subject.onNext("4")
@@ -1417,28 +1494,36 @@ subject.onNext("4")
 
 ```swift
 --- Output ---
-12
+1
+2
 ```
 
 ##### Distinct operators
 
--	`distinctUntilChanged()`
+-  `distinctUntilChanged()`
 
-	`distinctUntilChanged` sẽ bỏ qua việc những items bị duplicate nằm **liền kề nhau**. 
-	
-	Chúng ta có thể hiểu đơn giản như sau: Nếu trong một khoảng thời gian một observable phát đi những event liên tiếp giống nhau. Thì `distinctUntilChanged` sẽ chỉ nhận 1 item đầu tiên và sẽ bỏ qua tất cả items trùng lặp **nằm liền kề** phía sau đó. 
-	
-	 Như *marble diagram* thì ta có thấy `distinctUntilChanged` chỉ giữ item **2** được phát ra lần đầu tiên và sẽ bỏ qua những item **2** nằm liền kề bên phải nó.
+  `distinctUntilChanged` sẽ bỏ qua việc những items bị duplicate nằm **liền kề nhau**. 
 
-	![Distinct](./resources/images/3.2.3/distinct.png)
-	
+  Chúng ta có thể hiểu đơn giản như sau: Nếu trong một khoảng thời gian một observable phát đi những event liên tiếp giống nhau. Thì `distinctUntilChanged` sẽ chỉ nhận 1 item đầu tiên và sẽ bỏ qua tất cả items trùng lặp **nằm liền kề** phía sau đó. 
+
+   Như *marble diagram* thì ta có thấy `distinctUntilChanged` chỉ giữ item **2** được phát ra lần đầu tiên và sẽ bỏ qua những item **2** nằm liền kề bên phải nó.
+
+  ![Distinct](./resources/images/3.2.3/distinct.png)
+
 ```swift
-let disposeBag = DisposeBag()Observable.of("A", "A", "B", "B", "A")  .distinctUntilChanged()  .subscribe(onNext: {    print($0) })  .disposed(by: disposeBag)
+let disposeBag = DisposeBag()
+Observable.of("A", "A", "B", "B", "A")
+  .distinctUntilChanged()
+  .subscribe(onNext: {
+    print($0) })
+  .disposed(by: disposeBag)
 ```
 
 ```swift
 --- Output ---
-ABA
+A
+B
+A
 ```
 
 

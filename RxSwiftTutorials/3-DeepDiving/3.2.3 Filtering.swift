@@ -10,7 +10,7 @@ import RxSwift
 
 final class Filtering {
     init() {
-        execute()
+        ignoreElemens()
     }
 
     func execute() {
@@ -33,14 +33,15 @@ extension Filtering {
     func ignoreElemens() {
         let strikes = PublishSubject<String>()
         let disposeBag = DisposeBag()
-        // Đăng ký lắng nghe những items được phát ra nhưng lại ignore chúng đi.
+
+        // Subscribe tất cả các events được phát ra từ strike nhưng bỏ qua tất cả các sự kiện .next
+
         strikes
             .ignoreElements()
-            .subscribe(onCompleted: {
+            .subscribe { _ in
                 print("You're out!")
-            }) { (error) in
-                print(error.localizedDescription)
-            }.disposed(by: disposeBag)
+            }
+            .disposed(by: disposeBag)
 
         strikes.onNext("X")
         strikes.onNext("Y")
