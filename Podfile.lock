@@ -7,6 +7,7 @@ PODS:
   - RxCocoa (3.6.1):
     - RxSwift (~> 3.6)
   - RxSwift (3.6.1)
+  - SnapKit (3.2.0)
   - SwiftUtils (2.0.0)
 
 DEPENDENCIES:
@@ -15,6 +16,7 @@ DEPENDENCIES:
   - PromiseKit/Foundation (~> 4.0)
   - RxCocoa (= 3.6.1)
   - RxSwift (= 3.6.1)
+  - SnapKit (= 3.2.0)
   - SwiftUtils (= 2.0.0)
 
 SPEC CHECKSUMS:
@@ -23,8 +25,9 @@ SPEC CHECKSUMS:
   PromiseKit: 9c1d9f6d7b65e3951a90bea7f407c56972be5d8e
   RxCocoa: 84a08739ab186248c7f31ce4ee92d6f8a947d690
   RxSwift: f9de85ea20cd2f7716ee5409fc13523dc638e4e4
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SwiftUtils: c65508375277ddba9984b514704e9ecd11e26ff8
 
-PODFILE CHECKSUM: f7677b9ec560b782444daf9ceefc844c7c0da27e
+PODFILE CHECKSUM: 9ffad17194c0c28503636dca7e96ecaaccac9853
 
 COCOAPODS: 1.3.1
