@@ -5,28 +5,28 @@
 # Contents
 1. [Approach](#Approach)
 
- 	1. [1.1. Delegation](#Delegation)
- 	2. [1.2. Callback](#Callback)
- 	3. [1.3. Functional](#Functional)
- 	4. [1.4. Promise](#Promise)
-	5. [1.5. Reactive](#Reactive)
+   1. [1.1. Delegation](#Delegation)
+    2. [1.2. Callback](#Callback)
+    3. [1.3. Functional](#Functional)
+    4. [1.4. Promise](#Promise)
+   5. [1.5. Reactive](#Reactive)
 
 2. [Get Started](#get-started)
 
-	 1. [2.1. Observable - starter](#Observable-starter)
-	 2. [2.2. Observer - handler](#Observer-handler)
-	 3. [2.3. Operator - man in the middle](#Operator-man-in-the-middle)
-	 4. [2.4. Subjects](#Subjects)
+   1. [2.1. Observable - starter](#Observable-starter)
+    2. [2.2. Observer - handler](#Observer-handler)
+    3. [2.3. Operator - man in the middle](#Operator-man-in-the-middle)
+    4. [2.4. Subjects](#Subjects)
 
 3. [Deep Dive](#deep-dive)
-	1. [3.1. Creation](#Creation)
-	2. [3.2. Operators](#Operators)
-	3. [3.3. MVVM](#MVVM)
-	4. [3.4. Intermediate](#Intermediate) (Update later)
- 
+  1. [3.1. Creation](#Creation)
+  2. [3.2. Operators](#Operators)
+  3. [3.3. MVVM](#MVVM)
+  4. [3.4. Intermediate](#Intermediate) (Update later)
+
 4. [Testing](#testing)
-	1. [4.1. RxTest](#RxTest)
-	2. [4.2. RxNimble](#RxNimble)
+  1. [4.1. RxTest](#RxTest)
+  2. [4.2. RxNimble](#RxNimble)
 
 5. [References](#References)
 
@@ -371,10 +371,188 @@ observable.filter { $0.hasPrefix("Number") } // 2
 2. Lọc nội dụng bắt đầu bằng chuỗi `Number`
 3. Subcrible một observable để có thể xử lý mỗi khi nội dung search bar thay đổi
 
-### 2.3. Subject <a name="Subject"></a>
+### 2.4. Subjects <a name="Subjects"></a>
 
-## 3. Deep Dive <a name="deep-dive"></a>
+​	Một đối tượng vừa có thể là Observable vừa có thể là Observer được gọi là Subject.
 
+​	Chẳng hạn khi sử dụng UIImagePickerController, ngoài việc quan tâm tới các hình ảnh mà người dùng chọn, ứng dụng cần tương tác với chính UIImagePickerController để ẩn, hiển, … như vậy không thể bọc UIImagePickerController bên trong Observable. Khi đó, Subject sẽ đóng vai trò cầu nối, giúp chuyển đổi các tương tác của người dùng thành các Observable tương ứng.
+
+#### 2.4.1. PublishSubject
+
+​	PublishSubject là các phần tử có thể được phát ngay sau khi Subject được khởi tạo, bất chấp chưa có đối tượng nào subscribe tới nó (hot observable). Observer sẽ không nhận được các phần tử phát ra trước thời điểm subscribe.
+
+![PublishSubject-diagram](./resources/images/2.4/PublishSubject-diagram.png)
+
+```swift
+// Khởi tạo đối tượng PublishSubject.
+let subject = PublishSubject<String>()
+
+// subject phát đi event.
+subject.onNext("Is anyone listening?")
+
+// subscriptionOne đăng ký lắng nge đối tượng subject trên.
+let subscriptionOne = subject.subscribe(onNext: { string in
+	print("1)", string)
+})
+
+subject.onNext("1")
+subject.onNext("2")
+
+// subscriptionTwo đăng ký lắng nge đối tượng subject trên.
+let subscriptionTwo = subject.subscribe { event in
+	print("2)", event.element ?? event)
+}
+
+subject.onNext("3")
+
+// deinit subscriptionOne
+subscriptionOne.dispose()
+
+subject.onNext("4")
+
+// deinit subscriptionTwo
+subscriptionTwo.dispose()
+```
+
+```swift
+// Ouput:
+1) 1
+1) 2
+1) 3
+2) 3
+2) 4
+```
+
+#### 2.4.2. BehaviorSubject
+
+​	BehaviorSubject có cơ chế hoạt động gần giống với PublishSubject, nhưng Observer sẽ nhận được giá trị mặc định hoặc giá trị ngay trước thời điểm subscribe. Observer sẽ nhận được ít nhất một giá trị.
+
+​	Chẳng hạn, nếu coi việc cuộn thanh trượt của UIScrollView là một observable (offset là giá trị của các phần tử trong stream), thì ngay khi subscribe vào observable, chúng ta cần biết vị trí offset hiện tại của UIScrollView, do vậy chúng ta cần sử dụng BehaviorSubject
+
+#### ![BehaviorSubject-diagram](./resources/images/2.4/BehaviorSubject-diagram.png)
+
+```swift
+let disposeBag = DisposeBag()
+
+// Khởi tạo đối tượng BehaviorSubject.
+let subject = BehaviorSubject(value: "Initial value")
+
+// subject phát đi event.
+subject.onNext("1")
+
+// Đăng ký lắng nge đối tượng subject trên.
+subject.subscribe {
+		print("1)", $0)
+	}
+	.disposed(by: disposeBag)
+
+subject.onNext("2")
+
+// Đăng ký lắng nge đối tượng subject trên.
+subject.subscribe {
+		print("2)", $0)
+	}
+	.disposed(by: disposeBag)
+
+subject.onNext("3")
+```
+
+```swift
+// Output:
+1) 1
+1) 2
+2) 2
+1) 3
+2) 3
+```
+
+#### 2.4.3. ReplaySubject
+
+​	ReplaySubject tương tự như BehaviorSubject nhưng thay vì phát thêm duy nhất một phần tử trước đó, ReplaySubject cho phép ta chỉ định số lượng phần tử tối đa được phát lại khi subscribe. Ngoài ra, khi khởi tạo ReplaySubject, chúng ta không cần khai báo giá trị mặc định như BehaviorSubject.
+
+![ReplaySubject-diagram](./resources/images/2.4/ReplaySubject-diagram.png)
+
+```swift
+let disposeBag = DisposeBag()
+
+// Khởi tạo đối tượng BehaviorSubject.
+let subject = ReplaySubject<String>.create(bufferSize: 2)
+
+// subject phát đi event.
+subject.onNext("1")
+subject.onNext("2")
+subject.onNext("3")
+
+// Đăng ký lắng nge đối tượng subject trên.
+subject.subscribe {
+		print("1)", $0)
+	}
+	.disposed(by: disposeBag)
+
+// Đăng ký lắng nge đối tượng subject trên.
+subject.subscribe {
+		print("2)", $0) 
+	}
+	.disposed(by: disposeBag)
+
+subject.onNext("4")
+
+// deinit subject
+subject.dispose()
+```
+
+```swift
+// Ouput:
+1) 2
+1) 3
+2) 2
+2) 3
+1) 4
+2) 4
+
+```
+
+#### 2.4.4. Variable
+
+​	Variable là behaviour subject được gói lại để các lập trình viên mới làm quen với react có thể dễ tiếp cận hơn.
+
+```swift
+let disposeBag = DisposeBag()
+
+// Khởi tạo đối tượng BehaviorSubject.
+let variable = Variable("Initial value")
+
+// subject phát đi event.
+variable.value = "New initial value"
+
+// Đăng ký lắng nge đối tượng subject trên.
+variable.asObservable()
+		.subscribe {
+			print("1)", $0)
+		}
+		.disposed(by: disposeBag)
+
+variable.value = "1"
+
+// Đăng ký lắng nge đối tượng subject trên.
+variable.asObservable()
+		.subscribe {
+			print("2)", $0)
+		}
+		.disposed(by: disposeBag)
+
+variable.value = "2"
+```
+
+```swift
+1) next(New initial value)
+1) next(1)
+2) next(1)
+1) next(2)
+2) next(2)
+```
+
+## 3. Deep Dive
 ### 3.1. Creation <a name="Creation"></a>
 
 Có một vài cách để tạo **Observable**
@@ -1377,6 +1555,47 @@ A
 
 
 #### 3.2.4. Mathematical
+
+- **toArray**
+
+  Chuyển một chuỗi có thể quan sát được thành một mảng tập hợp. 
+
+  ![toArray-diagram](./resources/images/3.2.4/toArray-diagram.png)
+
+  ```swift
+  let disposeBag = DisposeBag()
+  Observable.of(1, 2, 3, 5)
+            .toArray()
+            .subscribe({ print("1235 em có đánh rơi nhịp nào không?", $0) })
+            .disposed(by: disposeBag)
+  ```
+
+  ```swift
+  // Output:
+  1235 em có đánh rơi nhịp nào không? [1, 2, 3, 5]
+  ```
+
+
+
+- **reduce**
+
+  Tính toán dựa trên giá trị ban đầu và các toán tử +, -, *, /, … chuyển đổi thành một observable 
+
+  ![reduce-diagram](./resources/images/3.2.4/reduce-diagram.png)
+
+  ```swift
+  let disposeBag = DisposeBag()
+  Observable.of(1, 2, 3, 4, 5)
+            .reduce(1, accumulator: +)
+            .subscribe(onNext: {print($0)})
+            .disposed(by: disposeBag)
+  ```
+
+  ```swift
+  // Output:
+  15
+  ```
+
 
 #### 3.2.5. Transformation
 
