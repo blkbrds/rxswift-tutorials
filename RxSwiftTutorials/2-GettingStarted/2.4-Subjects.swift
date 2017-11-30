@@ -23,7 +23,7 @@ final class Subjects {
             .subscribe(onNext: { string in
                 print("1)", string)
             })
-        subject.on(.next("1"))
+        subject.onNext("1")
         subject.onNext("2")
 
         let subscriptionTwo = subject

@@ -347,9 +347,9 @@ observable.filter { $0.hasPrefix("Number") } // 2
 
 ### 2.4. Subjects
 
-​	Trong Reactive Programming, Observable là nơi khởi nguồn, là gốc của  mọi stream. Nhưngcó những trường hợp, chúng ta không thể đơn thuần bọc một đối tượng bên trong một Observable, sau đó phát ra những tín hiệu.
+​	Một đối tượng vừa có thể là Observable vừa có thể là Observer được gọi là Subject.
 
-​	Chẳng hạn khi sử dụng UIImagePickerController, ngoài việc quan tâm tới các hình ảnh mà người dùng chọn (stream), ứng dụng cần tương tác với chính UIImagePickerController để ẩn, hiển, … như vậy không thể bọc UIImagePickerController bên trong Observable. Khi đó, Subject sẽ đóng vai trò cầu nối, giúp chuyển đổi các tương tác của người dùng thành các Observable tương ứng.
+​	Chẳng hạn khi sử dụng UIImagePickerController, ngoài việc quan tâm tới các hình ảnh mà người dùng chọn, ứng dụng cần tương tác với chính UIImagePickerController để ẩn, hiển, … như vậy không thể bọc UIImagePickerController bên trong Observable. Khi đó, Subject sẽ đóng vai trò cầu nối, giúp chuyển đổi các tương tác của người dùng thành các Observable tương ứng.
 
 #### 2.4.1. PublishSubject
 
@@ -358,22 +358,33 @@ observable.filter { $0.hasPrefix("Number") } // 2
 ![PublishSubject-diagram](./resources/images/2.4/PublishSubject-diagram.png)
 
 ```swift
+// Khởi tạo đối tượng PublishSubject.
 let subject = PublishSubject<String>()
+
+// subject phát đi event.
 subject.onNext("Is anyone listening?")
 
+// subscriptionOne đăng ký lắng nge đối tượng subject trên.
 let subscriptionOne = subject.subscribe(onNext: { string in
 	print("1)", string)
 })
-subject.on(.next("1"))
+
+subject.onNext("1")
 subject.onNext("2")
 
+// subscriptionTwo đăng ký lắng nge đối tượng subject trên.
 let subscriptionTwo = subject.subscribe { event in
 	print("2)", event.element ?? event)
 }
 
 subject.onNext("3")
+
+// deinit subscriptionOne
 subscriptionOne.dispose()
+
 subject.onNext("4")
+
+// deinit subscriptionTwo
 subscriptionTwo.dispose()
 ```
 
@@ -396,19 +407,27 @@ subscriptionTwo.dispose()
 
 ```swift
 let disposeBag = DisposeBag()
+
+// Khởi tạo đối tượng BehaviorSubject.
 let subject = BehaviorSubject(value: "Initial value")
 
+// subject phát đi event.
 subject.onNext("1")
+
+// Đăng ký lắng nge đối tượng subject trên.
 subject.subscribe {
 		print("1)", $0)
 	}
 	.disposed(by: disposeBag)
 
 subject.onNext("2")
+
+// Đăng ký lắng nge đối tượng subject trên.
 subject.subscribe {
 		print("2)", $0)
 	}
 	.disposed(by: disposeBag)
+
 subject.onNext("3")
 ```
 
@@ -429,23 +448,30 @@ subject.onNext("3")
 
 ```swift
 let disposeBag = DisposeBag()
+
+// Khởi tạo đối tượng BehaviorSubject.
 let subject = ReplaySubject<String>.create(bufferSize: 2)
 
+// subject phát đi event.
 subject.onNext("1")
 subject.onNext("2")
 subject.onNext("3")
 
+// Đăng ký lắng nge đối tượng subject trên.
 subject.subscribe {
 		print("1)", $0)
 	}
 	.disposed(by: disposeBag)
 
+// Đăng ký lắng nge đối tượng subject trên.
 subject.subscribe {
 		print("2)", $0) 
 	}
 	.disposed(by: disposeBag)
 
 subject.onNext("4")
+
+// deinit subject
 subject.dispose()
 ```
 
@@ -466,9 +492,14 @@ subject.dispose()
 
 ```swift
 let disposeBag = DisposeBag()
+
+// Khởi tạo đối tượng BehaviorSubject.
 let variable = Variable("Initial value")
 
+// subject phát đi event.
 variable.value = "New initial value"
+
+// Đăng ký lắng nge đối tượng subject trên.
 variable.asObservable()
 		.subscribe {
 			print("1)", $0)
@@ -476,6 +507,8 @@ variable.asObservable()
 		.disposed(by: disposeBag)
 
 variable.value = "1"
+
+// Đăng ký lắng nge đối tượng subject trên.
 variable.asObservable()
 		.subscribe {
 			print("2)", $0)
@@ -1236,10 +1269,6 @@ Chạy code trên ta được điều cần chứng minh: :D
 #### 3.2.3. Filtering
 
 #### 3.2.4. Mathematical
-
-- **concat**
-
-  reference `3.2.2. Combination`
 
 - **toArray**
 
