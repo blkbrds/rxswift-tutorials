@@ -10,6 +10,7 @@ end
 
 target 'RxSwiftTutorials' do
 	project 'RxSwiftTutorials'
+    pod 'PromiseKit/Foundation', '~> 4.0'
 	shared_pods
 end
 
