@@ -47,6 +47,7 @@ final class DeepDiveViewController: UIViewController {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         setupData()
+       _ = Filtering()
     }
 
     private func setupData() {
