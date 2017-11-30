@@ -16,6 +16,6 @@ class HomeViewController: ViewController {
         API.getVenues(params: [:]).subscribe { (event) in
             print(event)
         }
-        .disposed(by: self.disposeBag)
+        .disposed(by: disposeBag)
     }
 }
