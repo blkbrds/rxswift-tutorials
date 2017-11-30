@@ -1098,7 +1098,7 @@ Sau đây là một số ví dụ để hiểu rõ hơn về các operators này
 	![Ignore Elements](./resources/images/3.2.3/ignoreElements.png)
 	
 ```swift  let strikes = PublishSubject<String>()  let disposeBag = DisposeBag()  // Đăng ký lắng nghe những items được phát ra nhưng lại ignore chúng đi.  strikes    .ignoreElements()    .subscribe { _ in
-     print("You're out!")    }    .disposed(by: disposeBag)}
+     print("You're out!")    }    .disposed(by: disposeBag)
 ```
 
 ```swift
@@ -1115,7 +1115,6 @@ You're out!
 ![ElementAt](./resources/images/3.2.3/elementAt.png)
 
 ```swift  let strikes = PublishSubject<String>()  let disposeBag = DisposeBag()  strikes    .elementAt(2)    .subscribe(onNext: { item in      print(item)    })    .disposed(by: disposeBag)
-  }
 ```
 
 ```swift
@@ -1194,7 +1193,7 @@ C
 	Đối lập với **skiping** thì ta có phép **taking**. Nếu `skip(n)` cho phép bỏ qua những items được phát từ lần phát thứ 1 đến thứ n. Thì `take(n)` cho phép nhận những items được phát từ lần phát thứ 1 đến thứ n.
 	
 ```swift
-let disposeBag = DisposeBag()Observable.of(1, 2, 3, 4, 5, 6)  // Nhận các items từ lần phát thứ 1 đến thứ 3  .take(3)  .subscribe(onNext: {     print($0) })  .disposed(by: disposeBag)}
+let disposeBag = DisposeBag()Observable.of(1, 2, 3, 4, 5, 6)  // Nhận các items từ lần phát thứ 1 đến thứ 3  .take(3)  .subscribe(onNext: {     print($0) })  .disposed(by: disposeBag)
 ```
 
 ```swift
