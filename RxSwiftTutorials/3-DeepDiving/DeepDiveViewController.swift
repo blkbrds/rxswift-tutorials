@@ -68,6 +68,8 @@ final class DeepDiveViewController: UIViewController {
             case .combination:
                 let controller = CombinationCocoa()
                 this.navigationController?.pushViewController(controller, animated: true)
+            case .transformation:
+                _ = Transformation()
             default: break
                 // TODO: implement then
             }
