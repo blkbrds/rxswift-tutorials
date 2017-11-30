@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		08704267EBB53661E87A8C65 /* Pods_RxSwiftTutorials.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 375841F4BCA5663AF299C617 /* Pods_RxSwiftTutorials.framework */; };
+		0B1C36B71FCF96A8007E7F6C /* 3.2.3 Filtering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C36B61FCF96A8007E7F6C /* 3.2.3 Filtering.swift */; };
 		0B791FBC1FC67F1B00B559A3 /* 2.3-Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B791FBB1FC67F1A00B559A3 /* 2.3-Operator.swift */; };
-		C8F5C30C1FBD6BA800FBCFA6 /* 3.2.6-TimeBased.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F5C30B1FBD6BA800FBCFA6 /* 3.2.6-TimeBased.swift */; };
 		855CB0221FC47A080063257B /* CombinationCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855CB0201FC47A080063257B /* CombinationCocoa.swift */; };
 		855CB0231FC47A080063257B /* CombinationCocoa.xib in Resources */ = {isa = PBXBuildFile; fileRef = 855CB0211FC47A080063257B /* CombinationCocoa.xib */; };
 		857EE1471FC5B06500C9F6E2 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857EE1451FC5B06500C9F6E2 /* MenuViewController.swift */; };
@@ -35,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B1C36B61FCF96A8007E7F6C /* 3.2.3 Filtering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "3.2.3 Filtering.swift"; sourceTree = "<group>"; };
 		0B791FBB1FC67F1A00B559A3 /* 2.3-Operator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "2.3-Operator.swift"; sourceTree = "<group>"; };
 		291D3F0777DE23565023DF3B /* Pods-RxSwiftTutorials.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftTutorials.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftTutorials/Pods-RxSwiftTutorials.release.xcconfig"; sourceTree = "<group>"; };
 		375841F4BCA5663AF299C617 /* Pods_RxSwiftTutorials.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwiftTutorials.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +138,7 @@
 		EA4162781FAAD80A00DF29FF /* 3-DeepDiving */ = {
 			isa = PBXGroup;
 			children = (
+				0B1C36B61FCF96A8007E7F6C /* 3.2.3 Filtering.swift */,
 				EA4162791FAAD80A00DF29FF /* 3.1-Creation.swift */,
 				EA41627A1FAAD80A00DF29FF /* 3.2-Operators.swift */,
 				855CB01F1FC479CA0063257B /* 3.2.2 */,
@@ -323,6 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B1C36B71FCF96A8007E7F6C /* 3.2.3 Filtering.swift in Sources */,
 				EA41627C1FAAD80F00DF29FF /* 3.2-Operators.swift in Sources */,
 				EA41627E1FAAD88500DF29FF /* 1.5-Reactive.swift in Sources */,
 				EA41626F1FAAD5F300DF29FF /* 2.1-Observable.swift in Sources */,
