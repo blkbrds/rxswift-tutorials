@@ -16,14 +16,14 @@
   	3. [2.3. Operator - man in the middle](#Operator-man-in-the-middle)
   	4. [2.4. Subjects](#Subjects)
 
-3. [Deep Dive](../blob/master/docs/Deep-dive/Deep-dive.md)
-	1. [3.1. Creation](../blob/master/docs/Deep-dive/Creation.md)
-	2. [3.2. Operators](../blob/master/docs/Deep-dive)
-	3. [3.3. MVVM](../blob/master/docs/Deep-dive/MVVM.md)
+3. [Deep Dive](docs/Deep-dive/Deep-dive.md)
+	1. [3.1. Creation](docs/Deep-dive/Creation.md)
+	2. [3.2. Operators](docs/Deep-dive)
+	3. [3.3. MVVM](docs/Deep-dive/MVVM.md)
 
 4. Intermediate(Update later)
 
-5. [Testing](../blob/master/docs/Testing.md)
+5. [Testing](docs/Testing.md)
 	1. [5.1. RxTest](#RxTest)
     	2. [5.2. RxNimble](#RxNimble)
 6. [References](#References)
