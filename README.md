@@ -1,33 +1,31 @@
 **Một bài viết tổng hợp các kiến thức từ basic đến advance về Reactive programming bằng ngôn ngữ Swift**
 
-#### `Mọi chia sẻ hay sao chép phải được cấp phép, tác quyền thuộc team iOS - Asian Tech, Inc`
+##### `Mọi chia sẻ hay sao chép phải được cấp phép, tác quyền thuộc team iOS - Asian Tech, Inc`
 
 # Contents
 1. [Approach](#Approach)
- 	1. [1.1. Delegation](#Delegation)
- 	2. [1.2. Callback](#Callback)
- 	3. [1.3. Functional](#Functional)
- 	4. [1.4. Promise](#Promise)
- 	5. [1.5. Reactive](#Reactive)
+   1. [1.1. Delegation](#Delegation)
+    2. [1.2. Callback](#Callback)
+    3. [1.3. Functional](#Functional)
+    4. [1.4. Promise](#Promise)
+    5. [1.5. Reactive](#Reactive)
 2. [Get Started](#get-started)
-	1. [2.1. Observable - starter](#Observable-starter)
-	2. [2.2  Observer - handler](#Observer-handler)
-	3. [2.3. Operator - man in the middle](#Operator-man-in-the-middle)
-	4. [2.4. Subjects](#Subjects)
+  1. [2.1. Observable - starter](#Observable-starter)
+  2. [2.2  Observer - handler](#Observer-handler)
+  3. [2.3. Operator - man in the middle](#Operator-man-in-the-middle)
+  4. [2.4. Subjects](#Subjects)
+3. [Deep Dive](../docs/Deep-dive/Deep-dive.md)
+   1. [3.1. Creation](../docs/Deep-dive/Creation.md)
+     2. [3.2. Operators](../docs/Deep-dive)
+     3. [3.3. MVVM](../docs/Deep-dive/MVVM.md)
 
-
-3. [Deep Dive](#deep-dive)
- 	1. [3.1. Creation](#Creation)
-  	2. [3.2. Operators](#Operators)
-  	3. [3.3. MVVM](#MVVM) 
-  	4. [3.4. Intermediate](#Intermediate) (Update later)
-4. [Testing](#testing)
-	1. [4.1. RxTest](#RxTest)
-	2. [4.2. RxNimble](#RxNimble)
-5. [References](#References)
+ 4. Intermediate(Update later)
+ 5. [Testing](../docs/Testing.md)
+    1. [5.1. RxTest](#RxTest)
+     2. [5.2. RxNimble](#RxNimble)
+ 6. [References](#References)
 
 ## 1. Approach <a name="Approach"></a>
-
 ### 1.1. Delegation <a name="Delegation"></a>
 
 ```swift
@@ -73,10 +71,7 @@ private class Developer {
 }
 ```
 
-
-
 ### 1.2. Callback <a name="Callback"></a>
-
 The delegation is clear enough.
 
 But, sometime:

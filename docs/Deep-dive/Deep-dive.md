@@ -7,4 +7,3 @@
 #### 3.2.4. Mathematical
 #### 3.2.5. Transformation
 ### 3.3. MVVM <a name="MVVM"></a>
-### 3.4. Intermediate RxTest <a name="Intermediate"></a>
