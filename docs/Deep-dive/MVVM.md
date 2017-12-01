@@ -1,7 +1,7 @@
 ### MVVM with RxSwift
 
 #### MVVM
-![](/Users/at-thinhuv/Desktop/MVVM-structure.png)
+![MVVM-structure](./Operators/resources/images/3.3/MVVM-structure.png)
 
 ViewModel là trung tâm của mô hình MVVM, nó tập trung vào xử lý bussiness logic, có thể tương tác với cả model và view
 - Model không tương tác trực tiếp với View mặc dù nó có thể emit các event khi có thay đổi data
@@ -15,7 +15,7 @@ ViewModel là trung tâm của mô hình MVVM, nó tập trung vào xử lý bus
 
 Mô hình MVVM làm việc rất tốt với RxSwift vì nó có khả năng binding observables vào UI component
 
-```
+```swift
 struct HomeViewModel {
 	var venues: Variable<[Venue]> = Variable([])
 	
@@ -51,13 +51,16 @@ class HomeViewController: UIViewController {
 }
 ```
 
+
+
 Chúng ta cũng có thể binding ngược lại từ UI component vào ViewMdel bằng cách dùng thư viện *RxCocoa]*
 
-```
+```swift
         usernameTextField.rx.text.bindTo(viewModel.username)
 ```
+
+
 
 #### Input and output
 - Thường thì chúng ta dùng hàm `init` với các tham số để khởi tạo ViewModel, hoặc dùng các `public property`
 - Dùng các functions có kiểu trả về là `Observable<T>` hoặc `public property` có kiểu `Observable<T>` để Model hoặc View có thể subscribe và xử lý khi có event được phát ra
- 
