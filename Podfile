@@ -20,5 +20,6 @@ target 'FS' do
     pod 'MVVM-Swift', '~> 1.1.0'
     pod 'SwiftUtils', '2.0.0'
     pod 'ObjectMapper', '2.2.6'
+    pod 'SnapKit', '3.2.0'
 end
 
