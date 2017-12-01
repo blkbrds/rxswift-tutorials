@@ -5,7 +5,7 @@
 
 ViewModel là trung tâm của mô hình MVVM, nó tập trung vào xử lý bussiness logic, có thể tương tác với cả model và view
 - Model không tương tác trực tiếp với View mặc dù nó có thể emit các event khi có thay đổi data
-- ViewModel tương tác, subscribe Model và phát sự kiện để đẩy dữ liệu đến View Controllers
+- ViewModel tương tác và lắng nghe Model sau đó phát sự kiện đẩy dữ liệu đến View(Controller) để update UI component
 - View Controllers chỉ tương tác với ViewModel và View qua các tác vụ như xử lý lifecycle của View và bind data vào UI controls bằng đăng ký lắng nghe các sự kiện từ ViewModel
 - View chỉ notify ViewController về sự kiện như touch, tap, didSelect cell ..., chỗ này có thể dùng theo những cách thông thường như NotificationCenter, Delegate ... hoặc có cũng có thể dùng `Observable<T>` với T là kiểu sự kiện được định nghĩa.(Tham khảo *RxCocoa*)
 
@@ -53,7 +53,7 @@ class HomeViewController: UIViewController {
 
 
 
-Chúng ta cũng có thể binding ngược lại từ UI component vào ViewMdel bằng cách dùng thư viện *RxCocoa]*
+Chúng ta cũng có thể binding ngược lại từ UI component vào ViewModel bằng cách dùng thư viện *RxCocoa*
 
 ```swift
         usernameTextField.rx.text.bindTo(viewModel.username)
