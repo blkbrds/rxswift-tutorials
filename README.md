@@ -5,10 +5,10 @@
 # Contents
 1. [Approach](#Approach)
 	1. [1.1. Delegation](#Delegation)
-   	2. [1.2. Callback](#Callback)
-    	3. [1.3. Functional](#Functional)
-    	4. [1.4. Promise](#Promise)
-    	5. [1.5. Reactive](#Reactive)
+	2. [1.2. Callback](#Callback)
+	3. [1.3. Functional](#Functional)
+	4. [1.4. Promise](#Promise)
+	5. [1.5. Reactive](#Reactive)
 
 2. [Get Started](#get-started)
 	1. [2.1. Observable - starter](#Observable-starter)
@@ -16,14 +16,14 @@
   	3. [2.3. Operator - man in the middle](#Operator-man-in-the-middle)
   	4. [2.4. Subjects](#Subjects)
 
-3. [Deep Dive](../blob/docs/Deep-dive/Deep-dive.md)
-	1. [3.1. Creation](../blob/docs/Deep-dive/Creation.md)
-	2. [3.2. Operators](../blob/docs/Deep-dive)
-	3. [3.3. MVVM](../blob/docs/Deep-dive/MVVM.md)
+3. [Deep Dive](../blob/master/docs/Deep-dive/Deep-dive.md)
+	1. [3.1. Creation](../blob/master/docs/Deep-dive/Creation.md)
+	2. [3.2. Operators](../blob/master/docs/Deep-dive)
+	3. [3.3. MVVM](../blob/master/docs/Deep-dive/MVVM.md)
 
 4. Intermediate(Update later)
 
-5. [Testing](../blob/docs/Testing.md)
+5. [Testing](../blob/master/docs/Testing.md)
 	1. [5.1. RxTest](#RxTest)
     	2. [5.2. RxNimble](#RxNimble)
 6. [References](#References)
