@@ -4,28 +4,28 @@
 
 # Contents
 1. [Approach](#Approach)
-	1. [1.1. Delegation](#Delegation)
-	2. [1.2. Callback](#Callback)
-	3. [1.3. Functional](#Functional)
-	4. [1.4. Promise](#Promise)
-	5. [1.5. Reactive](#Reactive)
+	1. [Delegation](#Delegation)
+	2. [Callback](#Callback)
+	3. [Functional](#Functional)
+	4. [Promise](#Promise)
+	5. [Reactive](#Reactive)
 
 2. [Get Started](#get-started)
-	1. [2.1. Observable - starter](#Observable-starter)
-  	2. [2.2  Observer - handler](#Observer-handler)
-  	3. [2.3. Operator - man in the middle](#Operator-man-in-the-middle)
-  	4. [2.4. Subjects](#Subjects)
+	1. [Observable - starter](#Observable-starter)
+  	2. [Observer - handler](#Observer-handler)
+  	3. [Operator - man in the middle](#Operator-man-in-the-middle)
+  	4. [Subjects](#Subjects)
 
 3. [Deep Dive](docs/Deep-dive)
-	1. [3.1. Creation](docs/Deep-dive/Creation.md)
-	2. [3.2. Operators](docs/Deep-dive/Operators)
-	3. [3.3. MVVM](docs/Deep-dive/MVVM.md)
+	1. [Creation](docs/Deep-dive/Creation.md)
+	2. [Operators](docs/Deep-dive/Operators)
+	3. [MVVM](docs/Deep-dive/MVVM.md)
 
 4. Intermediate(Update later)
 
 5. [Testing](docs/Testing.md)
-	1. [5.1. RxTest](#RxTest)
-	2. [5.2. RxNimble](#RxNimble)
+	1. [RxTest](#RxTest)
+	2. [RxNimble](#RxNimble)
 6. [References](#References)
 
 ## 1. Approach <a name="Approach"></a>
@@ -548,6 +548,7 @@ variable.value = "2"
 
 ### 4.2. RxNimble <a name="RxNimble"></a>
 
-https://academy.realm.io/posts/testing-functional-reactive-programming-code/
-
 ## 5. References <a name="References"></a>
+
+https://github.com/ReactiveX/RxSwift
+http://rxmarbles.com/
