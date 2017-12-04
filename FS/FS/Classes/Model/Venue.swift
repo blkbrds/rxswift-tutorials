@@ -10,15 +10,16 @@ import Foundation
 import ObjectMapper
 
 class Venue: Mappable {
-    required init?(map: Map) {
 
-    }
-
-    var id: String?
+    var id = ""
     var name = ""
 
+    required init?(map: Map) {
+        guard let id: String = map["id"].value() else { return nil }
+        self.id = id
+    }
+
     func mapping(map: Map) {
-        id <- map["id"]
         name <- map["name"]
     }
 }
