@@ -260,13 +260,21 @@
 		99311FEC1FD4EF8C00C4F426 /* FSTests */ = {
 			isa = PBXGroup;
 			children = (
+				994CC6031FD54C450064C395 /* Examples */,
+				99311FEF1FD4EF8C00C4F426 /* Info.plist */,
+			);
+			path = FSTests;
+			sourceTree = "<group>";
+		};
+		994CC6031FD54C450064C395 /* Examples */ = {
+			isa = PBXGroup;
+			children = (
 				99311FED1FD4EF8C00C4F426 /* FSTests.swift */,
 				99311FF71FD52FE400C4F426 /* ViewModelTests.swift */,
 				99311FF91FD52FF500C4F426 /* ViewModel.swift */,
 				99311FFB1FD53F2300C4F426 /* Services.swift */,
-				99311FEF1FD4EF8C00C4F426 /* Info.plist */,
 			);
-			path = FSTests;
+			path = Examples;
 			sourceTree = "<group>";
 		};
 		E8C8B913836B9715A0E73E54 /* Pods */ = {
