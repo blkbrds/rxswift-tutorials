@@ -12,27 +12,52 @@ import RxCocoa
 import RxTest
 
 class FSTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
+
+    let disposeBag = DisposeBag()
     
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+
+        // 1. Khởi tạo TestScheduler với initial virtual time 0
+        let scheduler = TestScheduler(initialClock: 0)
+
+        // 2. Khởi tạo TestableObservable với type Int
+        // và định nghĩa `virtual time` cùng với `value`
+        let observable = scheduler.createHotObservable([
+            next(150, 1),  // (virtual time, value)
+            next(210, 0),
+            next(240, 4),
+            completed(300)
+            ])
+
+        // 3. Khởi tạo TestableObserver
+        let observer = scheduler.createObserver(Int.self)
+
+        // 4. Subcribe `Observable` tại thời điểm 200 (virtual time)
+        scheduler.scheduleAt(200) {
+            observable.map { $0 * 2 }
+                .subscribe(observer)
+                .addDisposableTo(self.disposeBag)
         }
+
+        // 5. Start `scheduler`
+        scheduler.start()
+
+        // Events mong muốn
+        let expectedEvents = [
+            next(210, 0 * 2),
+            next(240, 4 * 2),
+            completed(300)
+        ]
+
+        // 6-1. So sánh events mà observer nhận được và events mong muốn
+        XCTAssertEqual(observer.events, expectedEvents)
+
+        // Thời gian subcribed và unsubcribed mong muốn
+        let expectedSubscriptions = [
+            Subscription(200, 300)
+        ]
+
+        // 6-2. So sánh virtual times khi `observable` subscribed và unsubscribed
+        XCTAssertEqual(observable.subscriptions, expectedSubscriptions)
     }
-    
 }
