@@ -7,6 +7,7 @@ def shared_pods
     pod 'RxSwift', '3.6.1'
     pod 'RxCocoa', '3.6.1'
     pod 'RxTest', '3.6.1'
+    pod 'RxBlocking', '3.6.1'
 end
 
 target 'RxSwiftTutorials' do

@@ -9,6 +9,7 @@
 import XCTest
 import RxSwift
 import RxTest
+import RxBlocking
 
 class ViewModelTests: XCTestCase {
 
@@ -33,7 +34,7 @@ class ViewModelTests: XCTestCase {
         }
 
         scheduler.scheduleAt(200) {
-            viewModel.fetch()
+            _ = viewModel.fetch()
         }
 
         scheduler.start()
@@ -44,5 +45,12 @@ class ViewModelTests: XCTestCase {
             next(300, State.loaded(999))
         ]
         XCTAssertEqual(observer.events, expectedEvents)
+    }
+
+    func testBlocking() {
+        let service = NumberService()
+        let viewModel = ViewModel(service: service)
+        let result = try! viewModel.fetch().toBlocking().last()
+        XCTAssertEqual(result, 1)
     }
 }

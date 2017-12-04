@@ -22,14 +22,15 @@ final class ViewModel {
     }
 
     // Action method to search followers
-    func fetch() {
+    func fetch() -> Observable<Int> {
         state.value = .loading
-        service.fetch()
-            .subscribe(onNext: { (number) in
+        let observable = service.fetch()
+        observable.subscribe(onNext: { (number) in
                 self.state.value = .loaded(number)
             }, onError: { (error) in
                 self.state.value = .error(error)
             }).disposed(by: disposeBag)
+        return observable
     }
 }
 

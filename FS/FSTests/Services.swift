@@ -6,10 +6,10 @@
 //  Copyright © 2017 thinhxavi. All rights reserved.
 //
 
-@testable import FS
 import Foundation
 import RxSwift
 import RxTest
+import RxCocoa
 
 class NumberService {
     func fetch() -> Observable<Int> {
@@ -37,5 +37,30 @@ final class MockNumberService: NumberService {
 
     override func fetch() -> Observable<Int> {
         return observable.asObservable()
+    }
+}
+
+typealias JSObject = [String: Any]
+
+class API {
+    class func request(path: String) -> Observable<JSObject> {
+        guard let url = URL(string: path) else { return .empty() }
+        return Observable<JSObject>.create({ (observer) -> Disposable in
+            _ = URLSession.shared.rx.json(url: url)
+                .observeOn(MainScheduler.instance)
+                .map{ js -> JSObject in
+                    guard let json = js as? JSObject else {
+                        observer.onError(RxError.unknown)
+                        observer.onCompleted()
+                        return [:]
+                    }
+                    return json
+                }
+                .subscribe(onNext: { (json) in
+                    observer.onNext(json)
+                    observer.onCompleted()
+                })
+            return Disposables.create()
+        })
     }
 }
