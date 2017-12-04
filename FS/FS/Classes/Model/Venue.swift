@@ -14,10 +14,11 @@ class Venue: Mappable {
 
     }
 
-    var id = ""
+    var id: String?
     var name = ""
 
     func mapping(map: Map) {
+        id <- map["id"]
         name <- map["name"]
     }
 }
