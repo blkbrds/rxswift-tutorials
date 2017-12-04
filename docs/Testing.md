@@ -110,8 +110,3 @@ func testDataWhenFetchAPI() {
 }
 ```
 
-
-
-### 
-
-### 
