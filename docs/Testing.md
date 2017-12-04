@@ -93,6 +93,8 @@ class FSTests: XCTestCase {
 }
 ```
 
+Có thể xem thêm ví dụ ở [ViewModelTests](FS/FSTests/ViewModelTests.swift)
+
 ## RxBlocking
 
 Hiện tại áp dụng `RxBlocking` cho việc testing API Request.
