@@ -1,9 +1,9 @@
 //
 //  ViewModel.swift
-//  FSTests
+//  RxSwiftTutorialsTests
 //
 //  Created by Mylo Ho on 12/4/17.
-//  Copyright © 2017 thinhxavi. All rights reserved.
+//  Copyright © 2017 Asian Tech Inc. All rights reserved.
 //
 
 import Foundation
@@ -26,10 +26,10 @@ final class ViewModel {
         state.value = .loading
         let observable = service.fetch()
         observable.subscribe(onNext: { (number) in
-                self.state.value = .loaded(number)
-            }, onError: { (error) in
-                self.state.value = .error(error)
-            }).disposed(by: disposeBag)
+            self.state.value = .loaded(number)
+        }, onError: { (error) in
+            self.state.value = .error(error)
+        }).disposed(by: disposeBag)
         return observable
     }
 }

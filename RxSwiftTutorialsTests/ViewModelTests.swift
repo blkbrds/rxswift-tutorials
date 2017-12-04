@@ -1,9 +1,9 @@
 //
 //  ViewModelTests.swift
-//  FSTests
+//  RxSwiftTutorialsTests
 //
 //  Created by Mylo Ho on 12/4/17.
-//  Copyright © 2017 thinhxavi. All rights reserved.
+//  Copyright © 2017 Asian Tech Inc. All rights reserved.
 //
 
 import XCTest
@@ -22,7 +22,7 @@ class ViewModelTests: XCTestCase {
 
         let observable = scheduler.createColdObservable([
             next(100, 999)
-        ])
+            ])
 
         let service = MockNumberService(observable: observable)
         let viewModel = ViewModel(service: service)
@@ -54,3 +54,4 @@ class ViewModelTests: XCTestCase {
         XCTAssertEqual(result, 42)
     }
 }
+

@@ -13,8 +13,12 @@ end
 target 'RxSwiftTutorials' do
     project 'RxSwiftTutorials'
     pod 'PromiseKit/Foundation', '~> 4.0'
-
     shared_pods
+
+    target 'RxSwiftTutorialsTests' do
+        inherit! :search_paths
+        shared_pods
+    end
 end
 
 target 'FS' do
