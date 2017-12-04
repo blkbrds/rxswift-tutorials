@@ -47,10 +47,10 @@ class ViewModelTests: XCTestCase {
         XCTAssertEqual(observer.events, expectedEvents)
     }
 
-    func testBlocking() {
+    func testDataWhenFetchAPI() {
         let service = NumberService()
         let viewModel = ViewModel(service: service)
         let result = try! viewModel.fetch().toBlocking().last()
-        XCTAssertEqual(result, 1)
+        XCTAssertEqual(result, 42)
     }
 }

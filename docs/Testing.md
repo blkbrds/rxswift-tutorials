@@ -93,6 +93,21 @@ class FSTests: XCTestCase {
 }
 ```
 
+## RxBlocking
+
+Hiện tại áp dụng `RxBlocking` cho việc testing API Request.
+
+Sử dụng method `toBlocking()` của **RxBlocking** để *block* thread hiện tại, và đợi Observable hoàn thành.
+
+```swift
+func testDataWhenFetchAPI() {
+        let service = NumberService()
+        let viewModel = ViewModel(service: service)
+        let result = try! viewModel.fetch().toBlocking().last()
+        XCTAssertEqual(result, 1)
+}
+```
+
 
 
 ### 

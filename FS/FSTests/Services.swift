@@ -13,7 +13,7 @@ import RxCocoa
 
 class NumberService {
     func fetch() -> Observable<Int> {
-        let path = "http://numbersapi.com/random/year?json"
+        let path = "http://numbersapi.com/42?json"
         return Observable<Int>.create({ (observer) -> Disposable in
             _ = API.request(path: path).subscribe({ (json) in
                 if let data = json.element {
