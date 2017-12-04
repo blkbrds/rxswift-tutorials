@@ -27,6 +27,9 @@
 		3ADAFC711FCFEBAF0003CD8E /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADAFC701FCFEBAF0003CD8E /* TabbarController.swift */; };
 		744324C1E404DA52AFA7BF76 /* Pods_FSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2C5EB88A78E6F7081EA827C /* Pods_FSTests.framework */; };
 		99311FEE1FD4EF8C00C4F426 /* FSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99311FED1FD4EF8C00C4F426 /* FSTests.swift */; };
+		99311FF81FD52FE400C4F426 /* ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99311FF71FD52FE400C4F426 /* ViewModelTests.swift */; };
+		99311FFA1FD52FF500C4F426 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99311FF91FD52FF500C4F426 /* ViewModel.swift */; };
+		99311FFC1FD53F2300C4F426 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99311FFB1FD53F2300C4F426 /* Services.swift */; };
 		BC299787FDEF5E07CEA25D41 /* Pods_FS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23EE476810737E93C6EACB9 /* Pods_FS.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +71,9 @@
 		99311FEB1FD4EF8C00C4F426 /* FSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99311FED1FD4EF8C00C4F426 /* FSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSTests.swift; sourceTree = "<group>"; };
 		99311FEF1FD4EF8C00C4F426 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99311FF71FD52FE400C4F426 /* ViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTests.swift; sourceTree = "<group>"; };
+		99311FF91FD52FF500C4F426 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		99311FFB1FD53F2300C4F426 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		A23EE476810737E93C6EACB9 /* Pods_FS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2C5EB88A78E6F7081EA827C /* Pods_FSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -255,6 +261,9 @@
 			isa = PBXGroup;
 			children = (
 				99311FED1FD4EF8C00C4F426 /* FSTests.swift */,
+				99311FF71FD52FE400C4F426 /* ViewModelTests.swift */,
+				99311FF91FD52FF500C4F426 /* ViewModel.swift */,
+				99311FFB1FD53F2300C4F426 /* Services.swift */,
 				99311FEF1FD4EF8C00C4F426 /* Info.plist */,
 			);
 			path = FSTests;
@@ -523,6 +532,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99311FF81FD52FE400C4F426 /* ViewModelTests.swift in Sources */,
+				99311FFC1FD53F2300C4F426 /* Services.swift in Sources */,
+				99311FFA1FD52FF500C4F426 /* ViewModel.swift in Sources */,
 				99311FEE1FD4EF8C00C4F426 /* FSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

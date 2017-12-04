@@ -8,14 +8,13 @@
 
 import XCTest
 import RxSwift
-import RxCocoa
 import RxTest
 
 class FSTests: XCTestCase {
 
     let disposeBag = DisposeBag()
     
-    func testExample() {
+    func testMapObservable() {
 
         // 1. Khởi tạo TestScheduler với initial virtual time 0
         let scheduler = TestScheduler(initialClock: 0)
@@ -32,7 +31,7 @@ class FSTests: XCTestCase {
         // 3. Khởi tạo TestableObserver
         let observer = scheduler.createObserver(Int.self)
 
-        // 4. Subcribe `Observable` tại thời điểm 200 (virtual time)
+        // 4. Sẽ thực hiện subcribe `Observable` tại thời điểm 200 (virtual time)
         scheduler.scheduleAt(200) {
             observable.map { $0 * 2 }
                 .subscribe(observer)

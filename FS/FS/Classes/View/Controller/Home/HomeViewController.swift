@@ -15,7 +15,6 @@ class HomeViewController: ViewController {
         title = "Home"
         API.getVenues(params: [:]).subscribe { (event) in
             print(event)
-            }
-            .disposed(by: disposeBag)
+        }.disposed(by: disposeBag)
     }
 }
