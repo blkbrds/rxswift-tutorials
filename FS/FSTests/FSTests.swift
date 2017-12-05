@@ -1,19 +1,19 @@
 //
-//  4.1-RxTest.swift
-//  RxSwiftTutorials
+//  FSTests.swift
+//  FSTests
 //
-//  Created by Deploy on 11/2/17.
-//  Copyright © 2017 Asian Tech Inc. All rights reserved.
+//  Created by Mylo Ho on 12/4/17.
+//  Copyright © 2017 thinhxavi. All rights reserved.
 //
 
-//import XCTest
+import XCTest
 import RxSwift
 import RxTest
 
-class FSTests/*: XCTestCase*/ {
+class FSTests: XCTestCase {
 
     let disposeBag = DisposeBag()
-
+    
     func testMapObservable() {
 
         // 1. Khởi tạo TestScheduler với initial virtual time 0
@@ -52,12 +52,11 @@ class FSTests/*: XCTestCase*/ {
         XCTAssertEqual(observer.events, expectedEvents)
 
         // Thời gian subcribed và unsubcribed mong muốn
-        // let expectedSubscriptions = [
-        //     Subscription(200, 300)
-        // ]
+        let expectedSubscriptions = [
+            Subscription(200, 300)
+        ]
 
         // 6-2. So sánh virtual times khi `observable` subscribed và unsubscribed
-        // XCTAssertEqual(observable.subscriptions, expectedSubscriptions)
+        XCTAssertEqual(observable.subscriptions, expectedSubscriptions)
     }
 }
-
