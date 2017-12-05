@@ -12,9 +12,9 @@
 
 2. [Get Started](#get-started)
 	1. [Observable - starter](#Observable-starter)
-		2. [Observer - handler](#Observer-handler)
-		3. [Operator - man in the middle](#Operator-man-in-the-middle)
-		4. [Subjects](#Subjects)
+	2. [Observer - handler](#Observer-handler)
+	3. [Operator - man in the middle](#Operator-man-in-the-middle)
+	4. [Subjects](#Subjects)
 
 3. [Deep Dive](docs/Deep-dive)
 	1. [Creation](docs/Deep-dive/Creation.md)
