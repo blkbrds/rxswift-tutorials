@@ -16,15 +16,18 @@ Dưới đây ví dụ cho một toán tử `defaultIfEmpty`, nhưng trong *RxSw
 
 **`ifEmpty`**:
 
-Nếu như một **observable** mà rỗng thì sẽ *emit* ra một giá trị mặt định.
+Nếu như một **observable** mà rỗng thì sẽ *emit* ra một giá trị mặc định.
 
 ![ifEmpty](./resources/images/3.2.1/ifEmpty.png)
 
 Sau đây là code ví dụ:
 
 ```swift
+// Tạo một observable rỗng kiểu Int
 let observable = Observable<Int>.of()
+// Nếu observable rỗng thì emit giá trị mặc định là `42`
 let evaluateObservable = observable.ifEmpty(default: 42)
+
 evaluateObservable.subscribe(onNext: { print($0) }).dispose()
 ```
 
