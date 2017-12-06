@@ -6,6 +6,9 @@ workspace 'RxSwiftTutorials'
 def shared_pods
     pod 'RxSwift', '3.6.1'
     pod 'RxCocoa', '3.6.1'
+end
+
+def test_pods
     pod 'RxTest', '3.6.1'
     pod 'RxBlocking', '3.6.1'
 end
@@ -18,6 +21,7 @@ target 'RxSwiftTutorials' do
     target 'RxSwiftTutorialsTests' do
         inherit! :search_paths
         shared_pods
+        test_pods
     end
 end
 
@@ -32,6 +36,7 @@ target 'FS' do
     target 'FSTests' do
         inherit! :search_paths
         shared_pods
+        test_pods
     end
 end
 
