@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B8CE17F1FD62F4D000FB024 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8CE17E1FD62F4D000FB024 /* DatabaseManager.swift */; };
+		0B8CE1811FD63F8D000FB024 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8CE1801FD63F8D000FB024 /* FavoriteViewModel.swift */; };
+		0BA5A5D31FD53F5B008A1750 /* VenueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA5A5D11FD53F5B008A1750 /* VenueCell.swift */; };
+		0BA5A5D41FD53F5B008A1750 /* VenueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BA5A5D21FD53F5B008A1750 /* VenueCell.xib */; };
+		0BA5A5D61FD54B47008A1750 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA5A5D51FD54B47008A1750 /* Photo.swift */; };
+		0BA5A5DA1FD55027008A1750 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA5A5D91FD55027008A1750 /* String+Ext.swift */; };
+		0BA5A5DE1FD55F2D008A1750 /* VenueCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA5A5DD1FD55F2D008A1750 /* VenueCellViewModel.swift */; };
 		3A34B4751FCD632E007A4CC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34B4741FCD632E007A4CC6 /* AppDelegate.swift */; };
 		3A34B4931FCD6A98007A4CC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A34B4871FCD6A98007A4CC6 /* Assets.xcassets */; };
 		3A34B4951FCD6A98007A4CC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A34B48E1FCD6A98007A4CC6 /* LaunchScreen.storyboard */; };
@@ -41,6 +48,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B8CE17E1FD62F4D000FB024 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		0B8CE1801FD63F8D000FB024 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
+		0BA5A5D11FD53F5B008A1750 /* VenueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueCell.swift; sourceTree = "<group>"; };
+		0BA5A5D21FD53F5B008A1750 /* VenueCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VenueCell.xib; sourceTree = "<group>"; };
+		0BA5A5D51FD54B47008A1750 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		0BA5A5D91FD55027008A1750 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		0BA5A5DD1FD55F2D008A1750 /* VenueCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueCellViewModel.swift; sourceTree = "<group>"; };
 		31D5CF9CDE52140BCC14D669 /* Pods-FS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FS.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-FS/Pods-FS.debug.xcconfig"; sourceTree = "<group>"; };
 		3A34B4711FCD632E007A4CC6 /* FS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A34B4741FCD632E007A4CC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +106,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0BA5A5D01FD53EB8008A1750 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0BA5A5D11FD53F5B008A1750 /* VenueCell.swift */,
+				0BA5A5D21FD53F5B008A1750 /* VenueCell.xib */,
+				0BA5A5DD1FD55F2D008A1750 /* VenueCellViewModel.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		0BA5A5D71FD5500D008A1750 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				0BA5A5D81FD5501C008A1750 /* Ext */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		0BA5A5D81FD5501C008A1750 /* Ext */ = {
+			isa = PBXGroup;
+			children = (
+				0BA5A5D91FD55027008A1750 /* String+Ext.swift */,
+			);
+			path = Ext;
+			sourceTree = "<group>";
+		};
 		3A34B4681FCD632E007A4CC6 = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +183,7 @@
 		3A34B49E1FCD6B7C007A4CC6 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0BA5A5D71FD5500D008A1750 /* Library */,
 				3A34B49F1FCD6B7C007A4CC6 /* Model */,
 				3A34B4AB1FCD6BEA007A4CC6 /* Reactive+Extension */,
 				3A34B4A11FCD6B7C007A4CC6 /* Service */,
@@ -155,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				3A34B4A01FCD6B7C007A4CC6 /* Venue.swift */,
+				0BA5A5D51FD54B47008A1750 /* Photo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -165,6 +207,7 @@
 				3A34B4A21FCD6B7C007A4CC6 /* API.swift */,
 				3A34B4CD1FCDC139007A4CC6 /* API.Venue.swift */,
 				3A34B4A31FCD6B7C007A4CC6 /* DataManager.swift */,
+				0B8CE17E1FD62F4D000FB024 /* DatabaseManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -211,6 +254,8 @@
 			children = (
 				3A34B4BD1FCDBA99007A4CC6 /* FavoriteViewController.swift */,
 				3A34B4BE1FCDBA99007A4CC6 /* FavoriteViewController.xib */,
+				0B8CE1801FD63F8D000FB024 /* FavoriteViewModel.swift */,
+				0BA5A5D01FD53EB8008A1750 /* Cell */,
 			);
 			path = Favorite;
 			sourceTree = "<group>";
@@ -365,6 +410,7 @@
 				3A34B4BC1FCDB261007A4CC6 /* HomeViewController.xib in Resources */,
 				3A34B4931FCD6A98007A4CC6 /* Assets.xcassets in Resources */,
 				3A34B4CC1FCDBAD3007A4CC6 /* SearchViewController.xib in Resources */,
+				0BA5A5D41FD53F5B008A1750 /* VenueCell.xib in Resources */,
 				3A34B4951FCD6A98007A4CC6 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -452,6 +498,8 @@
 				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
 				"${BUILT_PRODUCTS_DIR}/MVVM-Swift/MVVM.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftUtils/SwiftUtils.framework",
 			);
@@ -463,6 +511,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MVVM.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftUtils.framework",
 			);
@@ -508,16 +558,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BA5A5D61FD54B47008A1750 /* Photo.swift in Sources */,
 				3A34B4CB1FCDBAD3007A4CC6 /* SearchViewController.swift in Sources */,
 				3ADAFC711FCFEBAF0003CD8E /* TabbarController.swift in Sources */,
 				3A34B4B31FCD6D51007A4CC6 /* HomeViewController.swift in Sources */,
 				3A34B4751FCD632E007A4CC6 /* AppDelegate.swift in Sources */,
+				0BA5A5D31FD53F5B008A1750 /* VenueCell.swift in Sources */,
 				3A34B4A91FCD6B7C007A4CC6 /* DataManager.swift in Sources */,
+				0B8CE1811FD63F8D000FB024 /* FavoriteViewModel.swift in Sources */,
+				0BA5A5DE1FD55F2D008A1750 /* VenueCellViewModel.swift in Sources */,
+				0B8CE17F1FD62F4D000FB024 /* DatabaseManager.swift in Sources */,
 				3A34B4A81FCD6B7C007A4CC6 /* API.swift in Sources */,
 				3A34B4CE1FCDC139007A4CC6 /* API.Venue.swift in Sources */,
 				3A34B4B61FCD6D88007A4CC6 /* ViewController.swift in Sources */,
 				3A34B4AD1FCD6BF6007A4CC6 /* Reactive+Extension.swift in Sources */,
 				3A34B4C31FCDBAA5007A4CC6 /* ProfileViewController.swift in Sources */,
+				0BA5A5DA1FD55027008A1750 /* String+Ext.swift in Sources */,
 				3A34B4BF1FCDBA99007A4CC6 /* FavoriteViewController.swift in Sources */,
 				3A34B4A71FCD6B7C007A4CC6 /* Venue.swift in Sources */,
 			);

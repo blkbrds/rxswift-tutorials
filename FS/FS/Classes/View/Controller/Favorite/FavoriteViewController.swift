@@ -7,10 +7,49 @@
 //
 
 import UIKit
+import RealmSwift
+import RxSwift
+import RxCocoa
+import SwiftUtils
 
-class FavoriteViewController: ViewController {
+final class FavoriteViewController: ViewController {
+    // MARK: - IBOutlets
+    @IBOutlet weak var tableView: UITableView!
 
+    // MARK: - Properties
+    var viewModel = FavoriteViewModel() {
+        didSet {
+            updateView()
+        }
+    }
+
+    // MARK: - Life circle
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Favorite"
+        configTableView()
+        updateView()
+    }
+
+    // MARK: - Private method
+    private func configTableView() {
+        tableView.register(UINib(nibName: VenueCell.identifier, bundle: nil),
+                           forCellReuseIdentifier: VenueCell.identifier)
+        tableView.rowHeight = 186
+    }
+
+    private func setupTableViewBinding() {
+        viewModel.dataObservable
+            .bind(to: tableView.rx.items(cellIdentifier: VenueCell.identifier)) {  [weak self] (row, _, cell) in
+                guard let this = self, let cell = cell as? VenueCell else { return }
+                cell.viewModel = this.viewModel.viewModelForItem(at: IndexPath(row: row, section: 0))
+            }
+            .disposed(by: disposeBag)
+    }
+
+    // MARK: - Public methods
+    func updateView() {
+        setupTableViewBinding()
+        tableView.reloadData()
     }
 }

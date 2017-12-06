@@ -28,6 +28,7 @@ target 'FS' do
     pod 'SwiftUtils', '2.0.0'
     pod 'ObjectMapper', '2.2.6'
     pod 'SnapKit', '3.2.0'
+    pod 'RealmSwift', '~> 3.0'
 
     target 'FSTests' do
         inherit! :search_paths

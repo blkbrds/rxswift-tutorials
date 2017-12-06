@@ -6,20 +6,53 @@
 //  Copyright © 2017 thinhxavi. All rights reserved.
 //
 
-import Foundation
 import ObjectMapper
+import RealmSwift
+import Realm
 
-class Venue: Mappable {
+final class Venue: Object, Mappable {
+    dynamic var id: String!
+    dynamic var name: String = ""
+    dynamic var latitude: Double = 0.0
+    dynamic var longitude: Double = 0.0
+    dynamic var isFavorite = false
+    dynamic var rating: Double = 0.0
+    dynamic var ratingColor: String = ""
+    dynamic var category: String = ""
+    dynamic var likes: String = ""
+    dynamic var phone: String = ""
+    private dynamic var address: String = ""
+    private dynamic var city: String = ""
 
-    var id = ""
-    var name = ""
+    override class func primaryKey() -> String? {
+        return "id"
+    }
 
-    required init?(map: Map) {
-        guard let id: String = map["id"].value() else { return nil }
-        self.id = id
+    var fullAddress: String {
+        if city.isEmpty {
+            return address
+        }
+        return address + ", " + city
+    }
+
+    var thumbnail: Photo?
+
+    required convenience init?(map: Map) {
+        self.init()
     }
 
     func mapping(map: Map) {
-        name <- map["name"]
+        id <- map["venue.id"]
+        name <- map["venue.name"]
+        latitude <- map["venue.location.lat"]
+        longitude <- map["venue.location.lng"]
+        city <- map["venue.location.city"]
+        address <- map["venue.location.address"]
+        rating <- map["venue.rating"]
+        ratingColor <- map["venue.ratingColor"]
+        category <- map["venue.categories.0.name"]
+        likes <- map["venue.likes.summary"]
+        phone <- map["venue.contact.phone"]
+        thumbnail <- map["venue.photos.groups.0.items.0"]
     }
 }
