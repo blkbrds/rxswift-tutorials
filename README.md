@@ -4,28 +4,28 @@
 
 # Contents
 1. [Approach](#Approach)
-	1. [Delegation](#Delegation)
-	2. [Callback](#Callback)
-	3. [Functional](#Functional)
-	4. [Promise](#Promise)
-	5. [Reactive](#Reactive)
+  1. [Delegation](#Delegation)
+  2. [Callback](#Callback)
+  3. [Functional](#Functional)
+  4. [Promise](#Promise)
+  5. [Reactive](#Reactive)
 
 2. [Get Started](#get-started)
-	1. [Observable - starter](#Observable-starter)
-	2. [Observer - handler](#Observer-handler)
-	3. [Operator - man in the middle](#Operator-man-in-the-middle)
-	4. [Subjects](#Subjects)
+  1. [Observable - starter](#Observable-starter)
+  2. [Observer - handler](#Observer-handler)
+  3. [Operator - man in the middle](#Operator-man-in-the-middle)
+  4. [Subjects](#Subjects)
 
 3. [Deep Dive](docs/Deep-dive)
-	1. [Creation](docs/Deep-dive/Creation.md)
-	2. [Operators](docs/Deep-dive/Operators)
-	3. [MVVM](docs/Deep-dive/MVVM.md)
+  1. [Creation](docs/Deep-dive/Creation.md)
+  2. [Operators](docs/Deep-dive/Operators)
+  3. [MVVM](docs/Deep-dive/MVVM.md)
 
 4. Intermediate(Update later)
 
 5. [Testing](docs/Testing.md)
-	1. [RxTest](#RxTest)
-	2. [RxNimble](#RxNimble)
+  1. [RxTest](#RxTest)
+  2. [RxNimble](#RxNimble)
 6. [References](#References)
 
 ## 1. Approach <a name="Approach"></a>
@@ -182,11 +182,9 @@ dev.start(.implement(taskId: "123"))
 
 **Reactive programming là gì?**
 
-Có rất nhiều các định nghĩa, giải thích trên mạng khiến chúng ta rất dễ nhầm lẫn, rối trí. [Wikipedia](https://en.wikipedia.org/wiki/Reactive_programming) quá chung chung và thường tập trung nhiều vào lý thuyết, các câu trả lời kinh điển từ [Stackoverflow](https://stackoverflow.com/questions/1028250/what-is-functional-reactive-programming) thì không phù hợp cho người mới bắt đầu tìm hiểu, tài liệu [Reactive Manifesto](https://www.reactivemanifesto.org/) thì lại phù hơn với các PM hay các businessman.  Microsoft's [Rx terminology](https://rx.codeplex.com/) "Rx = Observables + LINQ + Schedulers" thì quá nặng nề dẫn tới việc dễ bị nhầm lẫn, rối trí. Thuật ngữ `reactive` và `propagation of change`(lan truyền thay đổi) thì không truyền tải được điều gì đặc biệt. Do đó phần nội dung dưới này sẽ tập trung cắt nghĩa, diễn dải từng phần nhỏ:
-
  **Reactive programming is programming with asynchronous data streams.**
 
-*Reactive programming* là lập trình với các luồng dữ liệu bất đồng bộ  và sự lan truyền thay đổi (the propagation of change). Khái niệm luồng (stream) phổ biến, bạn có thể tạo luồng dữ liệu (data streams) từ bất cứ thứ gì (anything can be a stream): các biến (variables), giá trị đầu vào từ người dùng (user inputs), properties, caches, data structures, etc.
+*Reactive programming* là lập trình xử lý các luồng dữ liệu bất đồng bộ hay những thay đổi có tính lan truyền (the propagation of change). Khái niệm luồng (stream) phổ biến, bạn có thể tạo luồng dữ liệu (data streams) từ bất cứ thứ gì (anything can be a stream): các biến (variables), giá trị đầu vào từ người dùng (user inputs), properties, caches, data structures, etc.
 
 Streams là trung tâm của `reactive`, mô hình dưới đây là luồng sự kiện "click vào 1 button"
 
@@ -194,7 +192,7 @@ Streams là trung tâm của `reactive`, mô hình dưới đây là luồng s�
 
 Một luồng là một dãy (sequence) các sự kiện đang diễn ra được sắp xếp theo thời gian. Nó có thể phát ra 3 thứ: một giá trị, một error, hoặc một `completed`. Ở đây tín hiệu giúp ta biết được khi nào luồng sự kiện click `completed` là khi window hoặc view chứa button bị đóng lại.
 
-Chúng ta bắt các sự kiện đã phát ra **không đồng bộ** bằng cách define một function execute khi một giá trị được phát ra, một function khác khi error được phát ra, tương tự với `completed`. Các function chúng ta define là các observers, luồng(stream) là chủ thể đang được lắng nghe(being observed) hay còn gọi là observable.
+Chúng ta bắt các sự kiện **bất đồng bộ** bằng cách define một function execute khi một giá trị được phát ra, một function khác khi error được phát ra, tương tự với `completed`. Các function chúng ta define là các observer, luồng(stream) là chủ thể đang được lắng nghe(being observed) hay còn gọi là observable.
 
 Xem sét sơ đồ được vẽ bằng ASCII sau:
 
