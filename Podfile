@@ -32,6 +32,7 @@ target 'FS' do
     pod 'SwiftUtils', '2.0.0'
     pod 'ObjectMapper', '2.2.6'
     pod 'SnapKit', '3.2.0'
+    pod 'FSOAuth', '~> 1.2.1'
 
     target 'FSTests' do
         inherit! :search_paths

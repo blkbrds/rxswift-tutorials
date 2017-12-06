@@ -26,6 +26,7 @@
 		3A34B4CE1FCDC139007A4CC6 /* API.Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34B4CD1FCDC139007A4CC6 /* API.Venue.swift */; };
 		3ADAFC711FCFEBAF0003CD8E /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADAFC701FCFEBAF0003CD8E /* TabbarController.swift */; };
 		744324C1E404DA52AFA7BF76 /* Pods_FSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2C5EB88A78E6F7081EA827C /* Pods_FSTests.framework */; };
+		85E275E81FD792230083A4B3 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E275E71FD792230083A4B3 /* ProfileViewModel.swift */; };
 		99311FEE1FD4EF8C00C4F426 /* FSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99311FED1FD4EF8C00C4F426 /* FSTests.swift */; };
 		BC299787FDEF5E07CEA25D41 /* Pods_FS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23EE476810737E93C6EACB9 /* Pods_FS.framework */; };
 /* End PBXBuildFile section */
@@ -65,6 +66,7 @@
 		3DE95C4B5B5D250C09BD7B7F /* Pods-FSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FSTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-FSTests/Pods-FSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		43C70F45CF82EBFACC02B350 /* Pods-FSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FSTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-FSTests/Pods-FSTests.release.xcconfig"; sourceTree = "<group>"; };
 		8333D11530D63CCEE689C9B8 /* Pods-FS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FS.release.xcconfig"; path = "../Pods/Target Support Files/Pods-FS/Pods-FS.release.xcconfig"; sourceTree = "<group>"; };
+		85E275E71FD792230083A4B3 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		99311FEB1FD4EF8C00C4F426 /* FSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99311FED1FD4EF8C00C4F426 /* FSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSTests.swift; sourceTree = "<group>"; };
 		99311FEF1FD4EF8C00C4F426 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 			children = (
 				3A34B4C11FCDBAA5007A4CC6 /* ProfileViewController.swift */,
 				3A34B4C21FCDBAA5007A4CC6 /* ProfileViewController.xib */,
+				85E275E71FD792230083A4B3 /* ProfileViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				"${SRCROOT}/../Pods/Target Support Files/Pods-FS/Pods-FS-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/FSOAuth/FSOAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/MVVM-Swift/MVVM.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
@@ -457,6 +461,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSOAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MVVM.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
@@ -514,6 +519,7 @@
 				3A34B4B61FCD6D88007A4CC6 /* ViewController.swift in Sources */,
 				3A34B4AD1FCD6BF6007A4CC6 /* Reactive+Extension.swift in Sources */,
 				3A34B4C31FCDBAA5007A4CC6 /* ProfileViewController.swift in Sources */,
+				85E275E81FD792230083A4B3 /* ProfileViewModel.swift in Sources */,
 				3A34B4BF1FCDBA99007A4CC6 /* FavoriteViewController.swift in Sources */,
 				3A34B4A71FCD6B7C007A4CC6 /* Venue.swift in Sources */,
 			);
