@@ -25,9 +25,5 @@ class VenueDetailViewController: ViewController {
 
         }
         .disposed(by: disposeBag)
-        viewModel?.venue?
-            .map { $0.favorite }
-            .bind(to: button.rx.title())
-            .disposed(by: disposeBag)
     }
 }
