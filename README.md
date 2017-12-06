@@ -215,8 +215,7 @@ X là một error nào đó
 
 ![Observable-diagram](./resources/images/2.1/Observable-diagram.png)
 
-- Trong [ReactiveX](http://reactivex.io/documentation/observable.html), một `Observer` đăng ký một `Observable` sau đó `Observer` sẽ phản ứng lại bất cứ item hay chuỗi các item mà `Observable` phát ra. Phần này sẽ giải thích cụ thể reactive parttern là gì
-- ? `Observables`, `Observers` là gì? và làm thế nào các `Observers` đăng ký với `Observables`. 
+- Trong [ReactiveX](http://reactivex.io/documentation/observable.html), một `Observer` đăng ký một `Observable` sau đó `Observer` sẽ phản ứng lại bất cứ item hay chuỗi các item mà `Observable` phát ra. Phần này sẽ giải thích cụ thể reactive parttern là gì.
 
 #### 2.1.1 Mở đầu
 
