@@ -220,7 +220,9 @@ X là một error nào đó
 
 #### 2.1.1 Mở đầu
 
-- Có nhiều rất nhiều thuật ngữ dùng để mô tả mô hình và thiết kế của lập trình bất đồng bộ. Trong tài liệu này sẽ thống nhất sử dụng những thuật ngữ sau: Một `Observer` đăng ký với `Observable`. Một `Observable` phát ra các items hoặc gửi các notifications đến các `Observers` bằng cách gọi các `Observers` methods, trong các tài liệu khác hoặc các ngữ cảnh khác, đôi lúc chúng ta gọi `Observer` là một `subscriber`, `watcher` hoặc `reactor`.
+- Có nhiều rất nhiều thuật ngữ dùng để mô tả mô hình và thiết kế của lập trình bất đồng bộ. Trong tài liệu này sẽ thống nhất sử dụng những thuật ngữ sau: 
+  - Một `Observer` đăng ký với `Observable`.
+  -  Một `Observable` phát ra các items hoặc gửi các notifications đến các `Observers` bằng cách gọi các `Observers` methods.
 
 #### 2.1.2 Khởi tạo `Observers`
 
