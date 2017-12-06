@@ -13,7 +13,8 @@ class Venue: Mappable {
 
     var id = ""
     var name = ""
-
+    var favorite: Bool = false
+    
     required init?(map: Map) {
         guard let id: String = map["id"].value() else { return nil }
         self.id = id

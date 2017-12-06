@@ -13,15 +13,15 @@ import RxCocoa
 typealias JSObject = [String: Any]
 
 let apiEndpoint = "https://api.foursquare.com/v2/"
-
+let bag = DisposeBag()
 class API {
-    class func request(path: String) -> Observable<JSObject> {
+    class func request(path: String, showHUD: Bool = true) -> Observable<JSObject> {
         guard let url = URL(string: apiEndpoint + path) else { return .empty() }
-        return Observable<JSObject>.create({ (observer) -> Disposable in
+        let ob = Observable<JSObject>.create({ (observer) -> Disposable in
             _ = URLSession.shared.rx.json(url: url)
                 .observeOn(MainScheduler.instance)
                 .map{ js -> JSObject in
-                    guard let json = js as? JSObject else {
+                    guard let json = (js as? JSObject)?["response"] as? JSObject else {
                         observer.onError(RxError.unknown)
                         observer.onCompleted()
                         return [:]
@@ -34,5 +34,10 @@ class API {
                 })
             return Disposables.create()
         })
+        if showHUD {
+            ob.withHUD().subscribe()
+            .disposed(by: bag)
+        }
+        return ob
     }
 }

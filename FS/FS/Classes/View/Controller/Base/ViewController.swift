@@ -9,9 +9,9 @@
 import UIKit
 import MVVM
 import RxSwift
+import RxCocoa
 
 class ViewController: UIViewController, MVVM.View {
-
     var disposeBag: DisposeBag! = DisposeBag()
 
     override func viewDidLoad() {
