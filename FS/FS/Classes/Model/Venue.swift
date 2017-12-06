@@ -8,9 +8,8 @@
 
 import ObjectMapper
 import RealmSwift
-import Realm
 
-final class Venue: Object, Mappable {
+final class Venue: Object, StaticMappable {
     dynamic var id: String!
     dynamic var name: String = ""
     dynamic var latitude: Double = 0.0
@@ -23,10 +22,7 @@ final class Venue: Object, Mappable {
     dynamic var phone: String = ""
     private dynamic var address: String = ""
     private dynamic var city: String = ""
-
-    override class func primaryKey() -> String? {
-        return "id"
-    }
+    var thumbnail: Photo?
 
     var fullAddress: String {
         if city.isEmpty {
@@ -35,10 +31,15 @@ final class Venue: Object, Mappable {
         return address + ", " + city
     }
 
-    var thumbnail: Photo?
+    override class func primaryKey() -> String? {
+        return "id"
+    }
 
     required convenience init?(map: Map) {
         self.init()
+        if map.JSON["venue.id"] == nil {
+            return nil
+        }
     }
 
     func mapping(map: Map) {
@@ -54,5 +55,9 @@ final class Venue: Object, Mappable {
         likes <- map["venue.likes.summary"]
         phone <- map["venue.contact.phone"]
         thumbnail <- map["venue.photos.groups.0.items.0"]
+    }
+
+    static func objectForMapping(map: Map) -> BaseMappable? {
+        return DatabaseManager.shared.realm.object(ofType: self, forPrimaryKey: map)
     }
 }

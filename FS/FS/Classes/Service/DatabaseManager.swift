@@ -13,31 +13,19 @@ final class DatabaseManager {
     static let shared = DatabaseManager()
 
     var realm: Realm {
-        var realm: Realm!
         do {
-            realm = try Realm()
+            return try Realm()
         } catch {
-            let storePath = Realm.Configuration.defaultConfiguration.fileURL!.path
-            do {
-                try FileManager.default.removeItem(atPath: storePath)
-                realm = try! Realm()
-            } catch let error {
-                print(error.localizedDescription)
-            }
+            fatalError(error.localizedDescription)
         }
-        return realm
     }
 
     private init() { }
-
-    func documentPath() -> URL? {
-        return Realm.Configuration.defaultConfiguration.fileURL
-    }
 }
 
 extension DatabaseManager {
     //  MARK: - fetch object
-    open func object<T: Object>(_ type: T.Type, filter predicate: NSPredicate? = nil) -> T? {
+    func object<T: Object>(_ type: T.Type, filter predicate: NSPredicate? = nil) -> T? {
         let results: Results<T> = predicate != nil ? realm.objects(type).filter(predicate!) : realm.objects(type)
         if results.count > 0 {
             return results.first
@@ -46,7 +34,7 @@ extension DatabaseManager {
     }
 
     //  MARK: - fetch objects
-    open func objects<T: Object>(_ type: T.Type, filter predicate: NSPredicate? = nil, sortBy propertiesSort: [String: Bool]? = nil) -> Results<T> {
+    func objects<T: Object>(_ type: T.Type, filter predicate: NSPredicate? = nil, sortBy propertiesSort: [String: Bool]? = nil) -> Results<T> {
         var results = predicate != nil ? realm.objects(type).filter(predicate!) : realm.objects(type)
         if let propertiesSort = propertiesSort {
             for property in propertiesSort {
@@ -57,7 +45,7 @@ extension DatabaseManager {
     }
 
     //  MARK: - add object
-    open func addObject<T: Object>(_ object: T) {
+    func addObject<T: Object>(_ object: T) {
         do {
             realm.beginWrite()
             realm.add(object, update: true)
@@ -68,20 +56,20 @@ extension DatabaseManager {
     }
 
     //  MARK: - update object
-    open func updateObject(_ block:() -> ()) {
+    func updateObject(_ block:() -> ()) {
         try! realm.write {
             block()
         }
     }
 
     //  MARK: - remove object
-    open func deleteObject<T: Object>(_ object: T) {
+    func deleteObject<T: Object>(_ object: T) {
         try! realm.write {
             realm.delete(object)
         }
     }
 
-    open func deleteObjects<T: RealmSwift.Object, S: Sequence>(_ objects: S) where S.Iterator.Element == T {
+    func deleteObjects<T: RealmSwift.Object, S: Sequence>(_ objects: S) where S.Iterator.Element == T {
         try! realm.write {
             realm.delete(objects)
         }
