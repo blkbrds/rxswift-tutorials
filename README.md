@@ -4,7 +4,7 @@
 
 # Contents
 1. [Approach](#Approach)
-  1. [Delegation](#Delegation)
+	1. [Delegation](#Delegation)
   2. [Callback](#Callback)
   3. [Functional](#Functional)
   4. [Promise](#Promise)
