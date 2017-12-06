@@ -215,11 +215,12 @@ X là một error nào đó
 
 ![Observable-diagram](./resources/images/2.1/Observable-diagram.png)
 
-- Trong [ReactiveX](http://reactivex.io/documentation/observable.html), một `observer` đăng ký một `Observable` sau đó `observer` sẽ phản ứng lại bất cứ item hay chuỗi các item mà `Observable` phát ra. Phần nãy sẽ giải thích reactive parttern là gì? `Observables`, `observers` là gì? và làm thế nào các `observers` đăng ký với `Observables`. 
+- Trong [ReactiveX](http://reactivex.io/documentation/observable.html), một `Observer` đăng ký một `Observable` sau đó `Observer` sẽ phản ứng lại bất cứ item hay chuỗi các item mà `Observable` phát ra. Phần này sẽ giải thích cụ thể reactive parttern là gì
+- ? `Observables`, `Observers` là gì? và làm thế nào các `Observers` đăng ký với `Observables`. 
 
 #### 2.1.1 Mở đầu
 
-- Có nhiều rất nhiều thuật ngữ dùng để mô tả mô hình và thiết kế của lập trình bất đồng bộ. Trong tài liệu này sẽ thống nhất sử dụng những thuật ngữ sau: Một `observer` đăng ký với `Observable`. Một `Observable` phát ra các items hoặc gửi các notifications đến các `observers` bằng cách gọi các `observers` methods, trong các tài liệu khác hoặc các ngữ cảnh khác, đôi lúc chúng ta gọi `observer` là một `subscriber`, `watcher` hoặc `reactor`. Mô hình thường được gọi là [reactor pattern](https://en.wikipedia.org/wiki/Reactor_pattern)
+- Có nhiều rất nhiều thuật ngữ dùng để mô tả mô hình và thiết kế của lập trình bất đồng bộ. Trong tài liệu này sẽ thống nhất sử dụng những thuật ngữ sau: Một `Observer` đăng ký với `Observable`. Một `Observable` phát ra các items hoặc gửi các notifications đến các `Observers` bằng cách gọi các `Observers` methods, trong các tài liệu khác hoặc các ngữ cảnh khác, đôi lúc chúng ta gọi `Observer` là một `subscriber`, `watcher` hoặc `reactor`.
 
 #### 2.1.2 Khởi tạo `Observers`
 
