@@ -12,5 +12,6 @@ class FavoriteViewController: ViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Favorite"
     }
 }

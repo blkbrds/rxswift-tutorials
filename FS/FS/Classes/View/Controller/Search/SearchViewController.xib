@@ -1,13 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="FS" customModuleProvider="target">
             <connections>
+                <outlet property="searchBar" destination="QtW-46-td4" id="juV-Dm-FmG"/>
+                <outlet property="tableView" destination="9te-Yx-wrm" id="9b8-7x-1zb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,8 +20,64 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BWC-Os-17z">
+                    <rect key="frame" x="0.0" y="20" width="375" height="92.5"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jc2-bA-wEt">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="36.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What are you looking for?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZf-7g-a1X">
+                                    <rect key="frame" x="12" y="8" width="351" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" red="0.42513622154439157" green="0.30094064251741803" blue="0.16709009390120941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.96862745098039216" green="0.95686274509803915" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="pZf-7g-a1X" secondAttribute="trailing" constant="12" id="9Sn-i7-buD"/>
+                                <constraint firstItem="pZf-7g-a1X" firstAttribute="leading" secondItem="jc2-bA-wEt" secondAttribute="leading" constant="12" id="B4i-Vb-GyJ"/>
+                                <constraint firstAttribute="bottom" secondItem="pZf-7g-a1X" secondAttribute="bottom" constant="8" id="TAs-WY-f9F"/>
+                                <constraint firstItem="pZf-7g-a1X" firstAttribute="top" secondItem="jc2-bA-wEt" secondAttribute="top" constant="8" id="jjt-LR-kNv"/>
+                            </constraints>
+                        </view>
+                        <searchBar contentMode="redraw" backgroundImage="searchbar-bg" translatesAutoresizingMaskIntoConstraints="NO" id="QtW-46-td4">
+                            <rect key="frame" x="0.0" y="36.5" width="375" height="56"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
+                    </subviews>
+                    <color key="backgroundColor" red="0.96862745100000003" green="0.95686274510000002" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="jc2-bA-wEt" firstAttribute="top" secondItem="BWC-Os-17z" secondAttribute="top" id="4tD-i7-T5H"/>
+                        <constraint firstAttribute="bottom" secondItem="QtW-46-td4" secondAttribute="bottom" id="SlN-oI-Y9L"/>
+                        <constraint firstItem="jc2-bA-wEt" firstAttribute="leading" secondItem="BWC-Os-17z" secondAttribute="leading" id="Zt3-Lu-UB6"/>
+                        <constraint firstItem="QtW-46-td4" firstAttribute="leading" secondItem="BWC-Os-17z" secondAttribute="leading" id="a6A-1f-W3j"/>
+                        <constraint firstAttribute="trailing" secondItem="jc2-bA-wEt" secondAttribute="trailing" id="aO1-5A-XBa"/>
+                        <constraint firstAttribute="trailing" secondItem="QtW-46-td4" secondAttribute="trailing" id="aUs-ww-sdY"/>
+                        <constraint firstItem="QtW-46-td4" firstAttribute="top" secondItem="jc2-bA-wEt" secondAttribute="bottom" id="dsx-hB-pOz"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9te-Yx-wrm">
+                    <rect key="frame" x="0.0" y="112.5" width="375" height="554.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="9te-Yx-wrm" firstAttribute="top" secondItem="BWC-Os-17z" secondAttribute="bottom" id="3i9-74-mYz"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="9te-Yx-wrm" secondAttribute="bottom" id="6Cd-zi-3IA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9te-Yx-wrm" secondAttribute="trailing" id="X1n-Pv-fEZ"/>
+                <constraint firstItem="9te-Yx-wrm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="bcK-Uc-6Go"/>
+                <constraint firstItem="BWC-Os-17z" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="dB9-6r-1ra"/>
+                <constraint firstItem="BWC-Os-17z" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="eLX-T3-Aau"/>
+                <constraint firstItem="BWC-Os-17z" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="hfP-PN-jmc"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="-130" y="-25"/>
         </view>
     </objects>
+    <resources>
+        <image name="searchbar-bg" width="137" height="28"/>
+    </resources>
 </document>

@@ -27,6 +27,10 @@
 		3ADAFC711FCFEBAF0003CD8E /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADAFC701FCFEBAF0003CD8E /* TabbarController.swift */; };
 		744324C1E404DA52AFA7BF76 /* Pods_FSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2C5EB88A78E6F7081EA827C /* Pods_FSTests.framework */; };
 		99311FEE1FD4EF8C00C4F426 /* FSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99311FED1FD4EF8C00C4F426 /* FSTests.swift */; };
+		996528BB1FD8CE2800450534 /* API.Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996528BA1FD8CE2800450534 /* API.Search.swift */; };
+		996528BE1FD8E47600450534 /* SeachViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996528BD1FD8E47600450534 /* SeachViewModel.swift */; };
+		996528C41FD91A9400450534 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996528C21FD91A9400450534 /* SearchCell.swift */; };
+		996528C51FD91A9400450534 /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 996528C31FD91A9400450534 /* SearchCell.xib */; };
 		BC299787FDEF5E07CEA25D41 /* Pods_FS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23EE476810737E93C6EACB9 /* Pods_FS.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +72,10 @@
 		99311FEB1FD4EF8C00C4F426 /* FSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99311FED1FD4EF8C00C4F426 /* FSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSTests.swift; sourceTree = "<group>"; };
 		99311FEF1FD4EF8C00C4F426 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		996528BA1FD8CE2800450534 /* API.Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.Search.swift; sourceTree = "<group>"; };
+		996528BD1FD8E47600450534 /* SeachViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeachViewModel.swift; sourceTree = "<group>"; };
+		996528C21FD91A9400450534 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		996528C31FD91A9400450534 /* SearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
 		A23EE476810737E93C6EACB9 /* Pods_FS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2C5EB88A78E6F7081EA827C /* Pods_FSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -147,6 +155,7 @@
 				3A34B4AB1FCD6BEA007A4CC6 /* Reactive+Extension */,
 				3A34B4A11FCD6B7C007A4CC6 /* Service */,
 				3A34B4A41FCD6B7C007A4CC6 /* View */,
+				996528BC1FD8E45A00450534 /* ViewModel */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -162,6 +171,7 @@
 		3A34B4A11FCD6B7C007A4CC6 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				996528BA1FD8CE2800450534 /* API.Search.swift */,
 				3A34B4A21FCD6B7C007A4CC6 /* API.swift */,
 				3A34B4CD1FCDC139007A4CC6 /* API.Venue.swift */,
 				3A34B4A31FCD6B7C007A4CC6 /* DataManager.swift */,
@@ -172,6 +182,7 @@
 		3A34B4A41FCD6B7C007A4CC6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				996528C01FD91A6D00450534 /* Cell */,
 				3A34B4A51FCD6B7C007A4CC6 /* Controller */,
 			);
 			path = View;
@@ -258,6 +269,39 @@
 				99311FEF1FD4EF8C00C4F426 /* Info.plist */,
 			);
 			path = FSTests;
+			sourceTree = "<group>";
+		};
+		996528BC1FD8E45A00450534 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				996528BF1FD8E54A00450534 /* Search */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		996528BF1FD8E54A00450534 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				996528BD1FD8E47600450534 /* SeachViewModel.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		996528C01FD91A6D00450534 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				996528C11FD91A7300450534 /* Search */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		996528C11FD91A7300450534 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				996528C21FD91A9400450534 /* SearchCell.swift */,
+				996528C31FD91A9400450534 /* SearchCell.xib */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		E8C8B913836B9715A0E73E54 /* Pods */ = {
@@ -364,6 +408,7 @@
 				3A34B4C01FCDBA99007A4CC6 /* FavoriteViewController.xib in Resources */,
 				3A34B4BC1FCDB261007A4CC6 /* HomeViewController.xib in Resources */,
 				3A34B4931FCD6A98007A4CC6 /* Assets.xcassets in Resources */,
+				996528C51FD91A9400450534 /* SearchCell.xib in Resources */,
 				3A34B4CC1FCDBAD3007A4CC6 /* SearchViewController.xib in Resources */,
 				3A34B4951FCD6A98007A4CC6 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -386,6 +431,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/../Pods/Target Support Files/Pods-FSTests/Pods-FSTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
@@ -393,6 +440,8 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
@@ -446,6 +495,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/../Pods/Target Support Files/Pods-FS/Pods-FS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MVVM-Swift/MVVM.framework",
@@ -455,6 +506,8 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MVVM.framework",
@@ -505,6 +558,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A34B4CB1FCDBAD3007A4CC6 /* SearchViewController.swift in Sources */,
+				996528C41FD91A9400450534 /* SearchCell.swift in Sources */,
+				996528BE1FD8E47600450534 /* SeachViewModel.swift in Sources */,
+				996528BB1FD8CE2800450534 /* API.Search.swift in Sources */,
 				3ADAFC711FCFEBAF0003CD8E /* TabbarController.swift in Sources */,
 				3A34B4B31FCD6D51007A4CC6 /* HomeViewController.swift in Sources */,
 				3A34B4751FCD632E007A4CC6 /* AppDelegate.swift in Sources */,
