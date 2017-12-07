@@ -9,7 +9,7 @@
 import ObjectMapper
 import RealmSwift
 
-final class Photo: Object, StaticMappable {
+final class Photo: Object, Mappable {
     dynamic var id: String!
     dynamic var prefix: String = ""
     dynamic var suffix: String = ""
@@ -22,9 +22,7 @@ final class Photo: Object, StaticMappable {
 
     required convenience init?(map: Map) {
         self.init()
-        if map.JSON["id"] == nil {
-            return nil
-        }
+        guard let _ = map.JSON["id"] as? String else { return nil }
     }
 
     func mapping(map: Map) {
@@ -33,10 +31,6 @@ final class Photo: Object, StaticMappable {
         suffix <- map["suffix"]
         width <- map["width"]
         height <- map["height"]
-    }
-
-    static func objectForMapping(map: Map) -> BaseMappable? {
-        return DatabaseManager.shared.realm.object(ofType: self, forPrimaryKey: map)
     }
 
     func path(width: Int = 100, height: Int = 100) -> String {

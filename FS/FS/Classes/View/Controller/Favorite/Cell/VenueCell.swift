@@ -27,13 +27,13 @@ final class VenueCell: UITableViewCell {
     @IBOutlet weak var containerView: UIView!
 
     // MARK: - Properties
+    static let height: CGFloat = 187
+
     var viewModel = VenueCellViewModel() {
         didSet {
             updateView()
         }
     }
-
-    let disposeBag = DisposeBag()
 
     // MARK: - Life circle
     override func awakeFromNib() {
@@ -50,18 +50,8 @@ final class VenueCell: UITableViewCell {
     }
 
     private func updateView() {
-        viewModel.name.bind(to: nameLabel.rx.text).addDisposableTo(disposeBag)
-        viewModel.address.bind(to: addressLabel.rx.text).addDisposableTo(disposeBag)
-        viewModel.rating.bind(to: ratingLabel.rx.text).addDisposableTo(disposeBag)
-
-        guard let url = viewModel.photoURL else { return }
-        URLSession.shared.rx.data(request: URLRequest(url: url))
-            .subscribe(onNext: { [weak self] (data) in
-                guard let this = self else { return }
-                DispatchQueue.main.async {
-                    this.thumbnailImageView.image = UIImage(data: data)
-                }
-            })
-            .addDisposableTo(disposeBag)
+        nameLabel.text = viewModel.name
+        addressLabel.text = viewModel.address
+        ratingLabel.text = viewModel.rating
     }
 }

@@ -9,7 +9,7 @@
 import ObjectMapper
 import RealmSwift
 
-final class Venue: Object, StaticMappable {
+final class Venue: Object, Mappable {
     dynamic var id: String!
     dynamic var name: String = ""
     dynamic var latitude: Double = 0.0
@@ -37,27 +37,21 @@ final class Venue: Object, StaticMappable {
 
     required convenience init?(map: Map) {
         self.init()
-        if map.JSON["venue.id"] == nil {
-            return nil
-        }
+        guard let _ = map.JSON["id"] as? String else { return nil }
     }
 
     func mapping(map: Map) {
-        id <- map["venue.id"]
-        name <- map["venue.name"]
-        latitude <- map["venue.location.lat"]
-        longitude <- map["venue.location.lng"]
-        city <- map["venue.location.city"]
-        address <- map["venue.location.address"]
-        rating <- map["venue.rating"]
-        ratingColor <- map["venue.ratingColor"]
-        category <- map["venue.categories.0.name"]
-        likes <- map["venue.likes.summary"]
-        phone <- map["venue.contact.phone"]
-        thumbnail <- map["venue.photos.groups.0.items.0"]
-    }
-
-    static func objectForMapping(map: Map) -> BaseMappable? {
-        return DatabaseManager.shared.realm.object(ofType: self, forPrimaryKey: map)
+        id <- map["id"]
+        name <- map["name"]
+        latitude <- map["location.lat"]
+        longitude <- map["location.lng"]
+        city <- map["location.city"]
+        address <- map["location.address"]
+        rating <- map["rating"]
+        ratingColor <- map["ratingColor"]
+        category <- map["categories.0.name"]
+        likes <- map["likes.summary"]
+        phone <- map["contact.phone"]
+        thumbnail <- map["photos.groups.0.items.0"]
     }
 }

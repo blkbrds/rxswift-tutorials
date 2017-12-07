@@ -56,8 +56,8 @@ extension FavoriteViewModel {
         venue3.rating = 9.8
         venue3.isFavorite = true
 
-        DatabaseManager.shared.addObject(venue1)
-        DatabaseManager.shared.addObject(venue2)
-        DatabaseManager.shared.addObject(venue3)
+//        DatabaseManager.shared.addObject(venue1)
+//        DatabaseManager.shared.addObject(venue2)
+//        DatabaseManager.shared.addObject(venue3)
     }
 }
