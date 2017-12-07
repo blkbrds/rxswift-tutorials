@@ -95,15 +95,6 @@ X là một 'error' nào đó
 
   **onCompleted**: **Observable** gọi hàm này sau khi hàm **onNext** cuối cùng được gọi, nếu không có bất kì lỗi nào xảy ra.
 
-  **Ví dụ bằng code giả:**
-
-  ```groovy
-  def myOnNext = { item -> /* xử lý business logic với giá trị item được phát ra bởi Observerble */ };
-  def myError = { throwable -> /* xử lý business logic với error được phát ra bởi Observerble */ };
-  def myComplete = { /* xử lý business logic khi hoàn thành */ };
-  def myObservable = someMethod(itsParameters);
-  myObservable.subscribe(myOnNext, myError, myComplete);
-  ```
   **Ví dụ bằng code swift:**
 
   ```swift
