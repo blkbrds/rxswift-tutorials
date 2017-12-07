@@ -8,13 +8,6 @@
 
 import UIKit
 import RxSwift
-import SwiftUtils
-
-extension UITableViewCell {
-    static var identifier: String {
-        return String(describing: self)
-    }
-}
 
 final class VenueCell: UITableViewCell {
 
@@ -46,10 +39,7 @@ final class VenueCell: UITableViewCell {
 
     // MARK: - Private
     private func configUI() {
-        containerView.corner = 10
-        containerView.border(color: .black, width: 1)
-        containerView.shadow(color: .black, offset: .zero, opacity: 1.0, radius: 3.0)
-        ratingLabel.corner = 10
+        ratingLabel.layer.cornerRadius = 10
     }
 
     private func updateView() {

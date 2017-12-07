@@ -17,11 +17,11 @@ extension API {
         let ob = Observable<[Venue]>.create { (observer) -> Disposable in
             _ = API.request(path: path).subscribe({ (json) in
                 var venues: [Venue] = []
-                guard let groups = json.element?["groups"] as? [JSObject] else {
+                guard let groups = json.element?["groups"] as? JSArray else {
                     observer.onError(RxError.noElements)
                     return
                 }
-                guard let items = groups.first?["items"] as? [JSObject] else {
+                guard let items = groups.first?["items"] as? JSArray else {
                     observer.onError(RxError.noElements)
                     return
                 }

@@ -24,16 +24,15 @@ class HomeViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Home"
-        configTableView()
-        setup()
+        setupUI()
+        setupData()
     }
 
     // MARK: - Private funtions
-    private func configTableView() {
+    private func setupUI() {
         let nib = UINib(nibName: "VenueCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "VenueCell")
         tableView.rowHeight = 143.0
-        tableView.separatorStyle = .none
         tableView.addSubview(refreshControl)
 
         tableView.rx.itemSelected
@@ -41,13 +40,31 @@ class HomeViewController: ViewController {
                 self.viewModel.venues.value[indexPath.row]
             }
             .subscribeOn(MainScheduler.instance)
-            .subscribe { (event) in
+            .subscribe { [weak self] (event) in
+                guard let this = self else { return }
                 switch event {
                 case .next(let venue):
+                    if let selectRowIndexPath = this.tableView.indexPathForSelectedRow {
+                        this.tableView.deselectRow(at: selectRowIndexPath, animated: true)
+                    }
                     let viewModel = VenueDetailViewModel(venueId: venue.id)
                     let detailController = VenueDetailViewController()
                     detailController.viewModel = viewModel
-                    self.navigationController?.pushViewController(detailController, animated: true)
+                    this.navigationController?.pushViewController(detailController, animated: true)
+                case .error(let error):
+                    print("dkm", error.localizedDescription)
+                default:
+                    break
+                }
+            }
+            .disposed(by: disposeBag)
+        tableView.rx.willDisplayCell
+            .subscribeOn(MainScheduler.instance)
+            .subscribe { (event) in
+                switch event {
+                case .next(let cell):
+                    // loadmore
+                    print(cell.indexPath.row)
                 default:
                     break
                 }
@@ -55,19 +72,21 @@ class HomeViewController: ViewController {
             .disposed(by: disposeBag)
     }
 
-    private func setup() {
+    private func setupData() {
         viewModel.venues.asObservable()
             .bind(to: tableView.rx.items(cellIdentifier: "VenueCell", cellType: VenueCell.self)) { (index, venue, cell) in
                 cell.viewModel = VenueCellViewModel(venue: venue)
+                print(index)
             }
             .disposed(by: disposeBag)
-        
+
         viewModel.isRefreshing.asDriver().drive(refreshControl.rx.isRefreshing)
             .addDisposableTo(disposeBag)
 
         refreshControl.rx.controlEvent(.valueChanged)
-            .subscribe(onNext: { (_) in
-                self.viewModel.refresh()
+            .subscribe(onNext: { [weak self] (_) in
+                guard let this = self else { return }
+                this.viewModel.refresh()
             })
             .disposed(by: disposeBag)
     }
@@ -78,12 +97,8 @@ extension SVProgressHUD {
     static var animating: AnyObserver<Bool> {
         return AnyObserver { event in
             MainScheduler.ensureExecutingOnScheduler()
-            if let element = event.element {
-                if element {
-                    self.show()
-                } else {
-                    self.dismiss()
-                }
+            if let element = event.element, element {
+                self.show()
             } else {
                 self.dismiss()
             }

@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 
 typealias JSObject = [String: Any]
+typealias JSArray = [JSObject]
 
 let apiEndpoint = "https://api.foursquare.com/v2/"
 let bag = DisposeBag()

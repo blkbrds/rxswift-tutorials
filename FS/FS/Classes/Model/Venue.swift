@@ -9,6 +9,7 @@
 import ObjectMapper
 
 final class Venue: Mappable {
+
     dynamic var id: String!
     dynamic var name: String = ""
     dynamic var latitude: Double = 0.0

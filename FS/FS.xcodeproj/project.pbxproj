@@ -232,6 +232,7 @@
 				3A34B4B21FCD6D50007A4CC6 /* HomeViewController.swift */,
 				3A34B4BB1FCDB261007A4CC6 /* HomeViewController.xib */,
 				3A16ECDB1FD655C0003ED842 /* HomeViewModel.swift */,
+				C867A7331FD8CF0D00847899 /* Cell */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -293,19 +294,18 @@
 		C867A7321FD8CEC300847899 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				C867A7331FD8CF0D00847899 /* VenueCell */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
 		};
-		C867A7331FD8CF0D00847899 /* VenueCell */ = {
+		C867A7331FD8CF0D00847899 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				C867A7341FD8CF2900847899 /* VenueCell.swift */,
 				C867A7351FD8CF2900847899 /* VenueCell.xib */,
 				C867A7361FD8CF2A00847899 /* VenueCellViewModel.swift */,
 			);
-			path = VenueCell;
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		E8C8B913836B9715A0E73E54 /* Pods */ = {
