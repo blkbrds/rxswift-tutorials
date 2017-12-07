@@ -29,11 +29,12 @@ target 'FS' do
     project 'FS/FS'
     shared_pods
     pod 'MVVM-Swift', '~> 1.1.0'
-    pod 'SwiftUtils', '2.0.0'
+    pod 'SwiftUtils'
     pod 'ObjectMapper', '2.2.6'
     pod 'SnapKit', '3.2.0'
     pod 'FSOAuth', '~> 1.2.1'
     pod 'SVProgressHUD'
+    pod 'SDWebImage'
 
     target 'FSTests' do
         inherit! :search_paths

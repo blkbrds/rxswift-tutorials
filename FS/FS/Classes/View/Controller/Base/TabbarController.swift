@@ -27,8 +27,9 @@ class TabbarController: UITabBarController {
         let favoriteController = FavoriteViewController()
         let favoriteNavigation = UINavigationController(rootViewController: favoriteController)
         let profileController = ProfileViewController()
+        profileController.title = "Profile"
         let profileNavigation = UINavigationController(rootViewController: profileController)
-
+        profileNavigation.tabBarItem = UITabBarItem(title: "Profile", image: #imageLiteral(resourceName: "ic_profile"), selectedImage: #imageLiteral(resourceName: "ic_profile"))
         viewControllers = [homeNavigation, searchNavigation, favoriteNavigation, profileNavigation]
     }
 }

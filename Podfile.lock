@@ -12,9 +12,12 @@ PODS:
   - RxSwift (3.6.1)
   - RxTest (3.6.1):
     - RxSwift (~> 3.6)
+  - SDWebImage (4.2.2):
+    - SDWebImage/Core (= 4.2.2)
+  - SDWebImage/Core (4.2.2)
   - SnapKit (3.2.0)
   - SVProgressHUD (2.2.2)
-  - SwiftUtils (2.0.0)
+  - SwiftUtils (2.1.1)
 
 DEPENDENCIES:
   - FSOAuth (~> 1.2.1)
@@ -25,9 +28,10 @@ DEPENDENCIES:
   - RxCocoa (= 3.6.1)
   - RxSwift (= 3.6.1)
   - RxTest (= 3.6.1)
+  - SDWebImage
   - SnapKit (= 3.2.0)
   - SVProgressHUD
-  - SwiftUtils (= 2.0.0)
+  - SwiftUtils
 
 SPEC CHECKSUMS:
   FSOAuth: abf5dc97e90d1da4cb6e04305653998088a223b3
@@ -38,10 +42,11 @@ SPEC CHECKSUMS:
   RxCocoa: 84a08739ab186248c7f31ce4ee92d6f8a947d690
   RxSwift: f9de85ea20cd2f7716ee5409fc13523dc638e4e4
   RxTest: 1d00348a7848c91ab5bf5d197d2378aa6b2bb356
+  SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
-  SwiftUtils: c65508375277ddba9984b514704e9ecd11e26ff8
+  SwiftUtils: 3f79be4fec34ac8b7c95d2ec15c9feebe81f1fc1
 
-PODFILE CHECKSUM: a31358fa49a4810c53ffd757f10b740178020250
+PODFILE CHECKSUM: cf539ccf14855fb8583861031b9d5af21fb0f845
 
 COCOAPODS: 1.3.1

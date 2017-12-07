@@ -5,13 +5,14 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="HiraginoKakuGothic.ttc">
-            <string>HiraginoSans-W3</string>
-            <string>HiraginoSans-W6</string>
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+            <string>HelveticaNeue-Bold</string>
         </array>
     </customFonts>
     <objects>
@@ -21,8 +22,9 @@
                 <outlet property="avatarImageView" destination="TOi-f3-hG9" id="oPz-Y6-CEr"/>
                 <outlet property="emailLabel" destination="7To-FN-l8B" id="Nqh-1R-Rlh"/>
                 <outlet property="loginButton" destination="CWU-bu-SJE" id="etC-1V-QSb"/>
+                <outlet property="loginView" destination="FbF-Su-5WS" id="apy-yZ-n2l"/>
+                <outlet property="logoutButton" destination="Jm8-LU-Xss" id="PxH-Aq-nQQ"/>
                 <outlet property="nameLabel" destination="CG9-sj-Z5C" id="Z19-wa-rsd"/>
-                <outlet property="phoneLabel" destination="1gA-8e-x4o" id="HMG-Us-N25"/>
                 <outlet property="sexLabel" destination="fEt-3t-Ddg" id="41P-Ij-NFs"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -47,7 +49,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="25" id="QXM-Pl-NY5"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="18"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -78,21 +80,11 @@
                                 <constraint firstAttribute="height" constant="1" id="yPv-Mp-MAS"/>
                             </constraints>
                         </view>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_phone" translatesAutoresizingMaskIntoConstraints="NO" id="HXM-G7-TTF">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_address" translatesAutoresizingMaskIntoConstraints="NO" id="FcY-TE-7pW">
                             <rect key="frame" x="45" y="286" width="25" height="25"/>
                         </imageView>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cGU-wl-bMz">
-                            <rect key="frame" x="100" y="321" width="255" height="1"/>
-                            <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="0.30229423420000001" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="1" id="LYL-N1-wV5"/>
-                            </constraints>
-                        </view>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_address" translatesAutoresizingMaskIntoConstraints="NO" id="FcY-TE-7pW">
-                            <rect key="frame" x="45" y="331" width="25" height="25"/>
-                        </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fzG-QN-wwt">
-                            <rect key="frame" x="20" y="366" width="335" height="1"/>
+                            <rect key="frame" x="20" y="321" width="335" height="1"/>
                             <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="0.30229423420000001" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="3At-Rw-V3j"/>
@@ -100,22 +92,16 @@
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEt-3t-Ddg">
                             <rect key="frame" x="103" y="209" width="0.0" height="0.0"/>
-                            <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="16"/>
-                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1gA-8e-x4o">
-                            <rect key="frame" x="103" y="299" width="0.0" height="0.0"/>
-                            <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="16"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gaj-QA-03d">
-                            <rect key="frame" x="103" y="335" width="0.0" height="18"/>
+                            <rect key="frame" x="103" y="290" width="0.0" height="18"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="18" id="Bww-cg-bCx"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="16"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -124,10 +110,25 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="18" id="J3W-yM-yQT"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="16"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jm8-LU-Xss">
+                            <rect key="frame" x="147" y="549" width="80" height="36"/>
+                            <color key="backgroundColor" red="0.83529411760000005" green="0.1647058824" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="80" id="3Z4-ax-lvL"/>
+                                <constraint firstAttribute="height" constant="36" id="mBA-bI-33j"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                            <state key="normal" title="Logout">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="logoutButtonTouchedUpInside:" destination="-1" eventType="touchUpInside" id="umU-M9-Wbf"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -137,14 +138,12 @@
                         <constraint firstAttribute="trailing" secondItem="cLg-bJ-UIt" secondAttribute="trailing" constant="20" id="5RG-XG-yv4"/>
                         <constraint firstItem="uYP-sD-hcn" firstAttribute="leading" secondItem="eiv-t6-DcR" secondAttribute="leading" constant="100" id="6lm-DK-R7s"/>
                         <constraint firstItem="FcY-TE-7pW" firstAttribute="leading" secondItem="eiv-t6-DcR" secondAttribute="leading" constant="45" id="8Gy-79-h6Y"/>
-                        <constraint firstItem="HXM-G7-TTF" firstAttribute="leading" secondItem="eiv-t6-DcR" secondAttribute="leading" constant="45" id="8Ot-4G-jV1"/>
                         <constraint firstItem="7To-FN-l8B" firstAttribute="leading" secondItem="ZrQ-F5-Wum" secondAttribute="trailing" constant="33" id="8ir-7L-t0a"/>
                         <constraint firstItem="XG6-9j-Ya3" firstAttribute="top" secondItem="CG9-sj-Z5C" secondAttribute="bottom" constant="30" id="95S-vB-GNT"/>
                         <constraint firstItem="TOi-f3-hG9" firstAttribute="top" secondItem="eiv-t6-DcR" secondAttribute="top" constant="20" id="AIU-wF-71Y"/>
                         <constraint firstItem="uYP-sD-hcn" firstAttribute="top" secondItem="hb5-K3-cxc" secondAttribute="bottom" constant="10" id="AWt-S0-EPt"/>
                         <constraint firstItem="Gaj-QA-03d" firstAttribute="leading" secondItem="FcY-TE-7pW" secondAttribute="trailing" constant="33" id="Axi-8K-3yl"/>
                         <constraint firstItem="fzG-QN-wwt" firstAttribute="top" secondItem="FcY-TE-7pW" secondAttribute="bottom" constant="10" id="DOX-Dx-s3x"/>
-                        <constraint firstItem="1gA-8e-x4o" firstAttribute="leading" secondItem="HXM-G7-TTF" secondAttribute="trailing" constant="33" id="GpG-Is-SJq"/>
                         <constraint firstItem="fEt-3t-Ddg" firstAttribute="leading" secondItem="hb5-K3-cxc" secondAttribute="trailing" constant="33" id="IDf-Al-x2z"/>
                         <constraint firstItem="XG6-9j-Ya3" firstAttribute="leading" secondItem="eiv-t6-DcR" secondAttribute="leading" constant="20" id="Mxi-0z-lVK"/>
                         <constraint firstAttribute="trailing" secondItem="XG6-9j-Ya3" secondAttribute="trailing" constant="20" id="PiG-Y7-yuz"/>
@@ -152,24 +151,21 @@
                         <constraint firstItem="TOi-f3-hG9" firstAttribute="centerX" secondItem="eiv-t6-DcR" secondAttribute="centerX" id="Tzb-ZT-Q6s"/>
                         <constraint firstAttribute="trailing" secondItem="uYP-sD-hcn" secondAttribute="trailing" constant="20" id="Uq7-bZ-upG"/>
                         <constraint firstItem="fzG-QN-wwt" firstAttribute="leading" secondItem="eiv-t6-DcR" secondAttribute="leading" constant="20" id="VaK-bz-wiW"/>
-                        <constraint firstItem="FcY-TE-7pW" firstAttribute="top" secondItem="cGU-wl-bMz" secondAttribute="top" constant="10" id="ZL1-SP-UMX"/>
+                        <constraint firstItem="FcY-TE-7pW" firstAttribute="top" secondItem="cLg-bJ-UIt" secondAttribute="top" constant="10" id="W0d-fO-8Zo"/>
                         <constraint firstItem="7To-FN-l8B" firstAttribute="centerY" secondItem="ZrQ-F5-Wum" secondAttribute="centerY" id="Zhl-3U-PNG"/>
                         <constraint firstItem="CG9-sj-Z5C" firstAttribute="top" secondItem="TOi-f3-hG9" secondAttribute="bottom" constant="10" id="afS-c8-CPy"/>
                         <constraint firstItem="CG9-sj-Z5C" firstAttribute="centerX" secondItem="eiv-t6-DcR" secondAttribute="centerX" id="akC-Cl-IbM"/>
-                        <constraint firstItem="1gA-8e-x4o" firstAttribute="centerY" secondItem="HXM-G7-TTF" secondAttribute="centerY" id="bJ1-15-0c2"/>
                         <constraint firstItem="ZrQ-F5-Wum" firstAttribute="leading" secondItem="eiv-t6-DcR" secondAttribute="leading" constant="45" id="frL-2C-ix2"/>
-                        <constraint firstItem="cGU-wl-bMz" firstAttribute="leading" secondItem="eiv-t6-DcR" secondAttribute="leading" constant="100" id="hSO-pW-iUT"/>
-                        <constraint firstItem="cGU-wl-bMz" firstAttribute="top" secondItem="HXM-G7-TTF" secondAttribute="bottom" constant="10" id="lcf-QN-yZa"/>
-                        <constraint firstItem="HXM-G7-TTF" firstAttribute="top" secondItem="cLg-bJ-UIt" secondAttribute="top" constant="10" id="pdh-N2-SRm"/>
+                        <constraint firstItem="Jm8-LU-Xss" firstAttribute="centerX" secondItem="eiv-t6-DcR" secondAttribute="centerX" id="lgw-Nz-P5y"/>
+                        <constraint firstItem="Jm8-LU-Xss" firstAttribute="centerY" secondItem="eiv-t6-DcR" secondAttribute="centerY" multiplier="1.7" id="pbc-u8-2N9"/>
                         <constraint firstItem="ZrQ-F5-Wum" firstAttribute="top" secondItem="uYP-sD-hcn" secondAttribute="top" constant="10" id="pwy-jY-rXD"/>
                         <constraint firstItem="Gaj-QA-03d" firstAttribute="centerY" secondItem="FcY-TE-7pW" secondAttribute="centerY" id="rrT-c5-upa"/>
                         <constraint firstItem="hb5-K3-cxc" firstAttribute="top" secondItem="XG6-9j-Ya3" secondAttribute="bottom" constant="10" id="tz6-yC-wcP"/>
-                        <constraint firstAttribute="trailing" secondItem="cGU-wl-bMz" secondAttribute="trailing" constant="20" id="vyU-aV-I45"/>
                         <constraint firstItem="cLg-bJ-UIt" firstAttribute="top" secondItem="ZrQ-F5-Wum" secondAttribute="bottom" constant="10" id="wkz-di-Hvx"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="sDT-MT-Mc6"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FbF-Su-5WS" userLabel="Login View">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FbF-Su-5WS" userLabel="Login View">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_login" translatesAutoresizingMaskIntoConstraints="NO" id="GZt-5I-y8v">
@@ -251,7 +247,6 @@
         <image name="bg_text" width="255" height="196"/>
         <image name="ic_address" width="25" height="25"/>
         <image name="ic_mail" width="25" height="25"/>
-        <image name="ic_phone" width="25" height="25"/>
         <image name="ic_sex" width="25" height="25"/>
     </resources>
 </document>

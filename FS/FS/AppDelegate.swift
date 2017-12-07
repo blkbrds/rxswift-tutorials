@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import FSOAuth
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabbarController = TabbarController()
         window?.rootViewController = tabbarController
         window?.makeKeyAndVisible()
+        return true
+    }
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        if url.scheme == API.User.urlScheme {
+            var errorCode: FSOAuthErrorCode = .none
+            if let accessCode = FSOAuth.accessCode(forFSOAuthURL: url, error: &errorCode),
+                errorCode == .none {
+                Helper.accessCode = accessCode
+            }
+        }
         return true
     }
 }

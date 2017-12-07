@@ -15,6 +15,12 @@ typealias JSObject = [String: Any]
 let apiEndpoint = "https://api.foursquare.com/v2/"
 let bag = DisposeBag()
 class API {
+    static let clientId = "J1G4TOY3HLH504HI42JQ3ACQTLYGOYZ4ARC2VBG3IE1DLTTX"
+    static let clientSecret = "S1HWM5P0CJKJZICFHSHLQ4SVINTWZINKNGCNYXOZRAN1JC3X"
+    static let version = "20171207"
+
+    struct User { }
+
     class func request(path: String, showHUD: Bool = true) -> Observable<JSObject> {
         guard let url = URL(string: apiEndpoint + path) else { return .empty() }
         let ob = Observable<JSObject>.create({ (observer) -> Disposable in
