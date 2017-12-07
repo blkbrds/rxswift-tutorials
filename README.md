@@ -55,7 +55,7 @@ X là một 'error' nào đó
 
 - Có rất nhiều thuật ngữ dùng để mô tả và thiết kế của lập trình bất đồng bộ. Trong tài liệu này sẽ chỉ sử dụng thuật ngữ **Observer** và **Observable**.
 
-####1.2.2 Observer và Observable là gì?
+#### 1.2.2 Observer và Observable là gì?
 
 - **Observer** lắng nghe **Observable**.
 - **Observable** phát ra các items hoặc gửi các notifications đến các **Observer** bằng cách gọi các **Observer** methods.
