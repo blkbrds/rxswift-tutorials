@@ -9,7 +9,6 @@
 	2. [Observable và Observer](#Observable-Observer)
 	3. [Operator - man in the middle](#Operator-man-in-the-middle)
 	4. [Subjects](#Subjects)
-	5. [Observable](#Observable)
 
 2. [Deep Dive](docs/Deep-dive)
 	1. [Creation](docs/Deep-dive/Creation.md)
@@ -375,9 +374,9 @@ variable.value = "2"
 ## 2. [Deep Dive](docs/Deep-dive)
 Sau khi tìm hiểu các khái niệm cơ bản của Reactive programming và RxSwift thì trong phần này, chúng ta sẽ đi sâu hơn vào cách hoạt động, xử lý và ứng dụng trong từng trường hợp cụ thể của chúng.
 
-  	1.[Creation](docs/Deep-dive/Creation.md)
-  	2.[Operators](docs/Deep-dive/Operators)
-  	3.[MVVM](docs/Deep-dive/MVVM.md)
+  	1. [Creation](docs/Deep-dive/Creation.md)
+  	2. [Operators](docs/Deep-dive/Operators)
+  	3. [MVVM](docs/Deep-dive/MVVM.md)
 
 ## 3. Advanced(Update later)
 
