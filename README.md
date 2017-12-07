@@ -3,198 +3,43 @@
 > Mọi chia sẻ hay sao chép phải được cấp phép, tác quyền thuộc team iOS - Asian Tech, Inc
 
 # Contents
-1. [Approach](#Approach)
-	1. [Delegation](#Delegation)
-	2. [Callback](#Callback)
-	3. [Functional](#Functional)
-	4. [Promise](#Promise)
-	5. [Reactive](#Reactive)
 
-2. [Get Started](#get-started)
-	1. [Observable - starter](#Observable-starter)
-	2. [Observer - handler](#Observer-handler)
-	3. [Operator - man in the middle](#Operator-man-in-the-middle)
-	4. [Subjects](#Subjects)
+1. [Get Started](#get-started)
+	1. [Reactive](#Reactive)
+	2. [Observable - starter](#Observable-starter)
+	3. [Observer - handler](#Observer-handler)
+	4. [Operator - man in the middle](#Operator-man-in-the-middle)
+	5. [Subjects](#Subjects)
 
-3. [Deep Dive](docs/Deep-dive)
+2. [Deep Dive](docs/Deep-dive)
 	1. [Creation](docs/Deep-dive/Creation.md)
 	2. [Operators](docs/Deep-dive/Operators)
 	3. [MVVM](docs/Deep-dive/MVVM.md)
 
-4. Intermediate(Update later)
+3. Advanced(Update later)
 
-5. [Testing](docs/Testing.md)
-	1. [RxTest](#RxTest)
-	2. [RxNimble](#RxNimble)
-6. [References](#References)
+4. [Testing](docs/Testing.md)
+	1. [RxTests](#RxTests)
+	2. [RxNimble](#RxNimble)(Update later)
 
-## 1. Approach <a name="Approach"></a>
-### 1.1. Delegation <a name="Delegation"></a>
-
-```swift
-let dev = Developer()
-// dev.leader = Leader()
-dev.start() // How can developer refer leader for decision making? 
-```
-
-```swift
-private protocol DeveloperDelegation {
-    func me(_ me: Developer, shouldStart task: Task) -> YesNo
-}
-```
-
-```swift
-private class Leader: DeveloperDelegation {
-    func me(_ me: Developer, shouldStart task: Task) -> YesNo {
-        switch task {
-        case .implement(_): return Yes
-        case .report:       return Yes
-        case .drinkBeer:    return No
-        }
-    }
-}
-```
-
-```swift
-private class Developer {
-    var leader: DeveloperDelegation!
-    var tasks: [Task] = [.implement(taskId: "123"), .implement(taskId: "456"), .report, .drinkBeer]
-    
-    func start() {
-        for task in tasks {
-            guard leader.me(self, shouldStart: task) else { continue }
-            start(task)
-        }
-        stop()
-    }
-    
-    func start(_ task: Task) { }
-    
-    func stop() { }
-}
-```
-
-### 1.2. Callback <a name="Callback"></a>
-The delegation is clear enough.
-
-But, sometime:
-
-- There's only one case in definition
-- The refer's process only, no referenced subject is needed
-
-Callback (completion block) is created for this.
-
-```swift
-let dev = Developer()
-dev.start(.implement(taskId: "123"), completion: { result in
-    switch result {
-    case .merged:
-        dev.start(.drinkBeer, completion: nil)
-    case .rejected:
-        dev.start(.report, completion: nil)
-    }
-})
-```
-
-### 1.3. Functional <a name="Functional"></a>
-
-```swift
-typealias Minutes = Double
-struct Ride {
-    let name: String
-    let categories: Set<RideCategory>
-    let waitTime: Minutes
-}
-```
-
-```swift
-extension Array where Element == Ride {
-    // imperative programming with insertion sort
-    func _sortedNames() -> [String] {
-        var names = [String]()
-        for ride in self {
-            names.append(ride.name)
-        }
-        for (i, name) in names.enumerated() {
-            for j in stride(from: i, to: -1, by: -1) {
-                if name.localizedCompare(names[j]) == .orderedAscending {
-                    names.remove(at: i)
-                    names.insert(name, at: j)
-                }
-            }
-        }
-        return names
-    }
-
-    // functional programming - what's order rule? that's all
-    func sortedNames() -> [String] {
-        return map { ride in ride.name }
-            .sorted { s1, s2 in s1.localizedCompare(s2) == .orderedAscending }
-    }
-}
-```
-
-### 1.4. Promise <a name="Promise"></a>
-
-Promise - the golden path keeper & nested callback avoiding.
-
-Implementation:
-
-```swift
-private class Developer {
-    // via regular way
-    func start(_ task: Task, completion: ((TaskResult) -> Void)?) {
-        completion(.merged) // or
-        completion(.rejected)
-    }
-
-    // via promise
-    @discardableResult
-    func start(_ task: Task) -> Promise<TaskResult> {
-        return Promise { fulfill, reject in
-            fulfill(.merged) // or
-            reject(Issue.bug)
-        }
-    }
-}
-```
-
-Usage:
-
-```swift
-let dev = Developer()
-// via regular way
-dev.start(.implement(taskId: "123"), completion: { result in
-    switch result {
-    case .merged:
-        dev.start(.drinkBeer, completion: nil)
-    case .rejected:
-        dev.start(.report, completion: nil)
-    }
-})
-// via promise
-dev.start(.implement(taskId: "123"))
-    .then { _ in dev.start(.drinkBeer) }
-    .catch { _ in dev.start(.report) }
-```
-
-### 1.5. Reactive <a name="Reactive"></a>
+## 1. Getting Started <a name="get-started"></a>
+### 1.1. Reactive <a name="Reactive"></a>
 
 **Reactive programming là gì?**
 
  **Reactive programming is programming with asynchronous data streams.**
 
-*Reactive programming* là lập trình xử lý các luồng dữ liệu bất đồng bộ hay những thay đổi có tính lan truyền (the propagation of change). Khái niệm luồng (stream) phổ biến, bạn có thể tạo luồng dữ liệu (data streams) từ bất cứ thứ gì (anything can be a stream): các biến (variables), giá trị đầu vào từ người dùng (user inputs), properties, caches, data structures, etc.
-
-Streams là trung tâm của `reactive`, mô hình dưới đây là luồng sự kiện "click vào 1 button"
-
+*Reactive programming* là phương pháp lập trình với luồng dữ liệu bất đồng bộ hay những thay đổi có tính lan truyền (the propagation of change). Khái niệm luồng (stream) rất phổ biến, bạn có thể tạo luồng dữ liệu (data streams) từ bất cứ thứ gì (anything can be a stream): các biến (variables), giá trị đầu vào từ người dùng (user inputs), properties, caches, data structures, etc.
+Streams là trung tâm của `reactive`.
+Để minh họa cho stream người ta hay dùng một loại biểu đồ gọi là [marble diagram](http://rxmarbles.com/), loại diagram này rất đơn giản, trực quan và dễ hiểu.
+Mô hình dưới đây là luồng sự kiện "click vào 1 button"
 ![reactive](./resources/images/1.5/reactive.png)
 
 Một luồng là một dãy (sequence) các sự kiện đang diễn ra được sắp xếp theo thời gian. Nó có thể phát ra 3 thứ: một giá trị, một error, hoặc một `completed`. Ở đây tín hiệu giúp ta biết được khi nào luồng sự kiện click `completed` là khi window hoặc view chứa button bị đóng lại.
 
 Chúng ta bắt các sự kiện **bất đồng bộ** bằng cách define một function execute khi một giá trị được phát ra, một function khác khi error được phát ra, tương tự với `completed`. Các function chúng ta define là các observer, luồng(stream) là chủ thể đang được lắng nghe(being observed) hay còn gọi là observable.
 
-Xem sét sơ đồ được vẽ bằng ASCII sau:
+Xem sét sơ đồ được vẽ bằng mã ASCII sau:
 
 ```groovy
 --a---b-c---d---X---|->
@@ -205,29 +50,27 @@ X là một error nào đó
 ----> is the timeline
 ```
 
-## 2. Getting Started <a name="get-started"></a>
-
-### 2.1. Observable - starter <a name="Observable-starter"></a>
+### 1.2. Observable - starter <a name="Observable-starter"></a>
 
 > Khái niệm observable đến từ observer design pattern là một đối tượng thông báo cho các đối tượng theo dõi về một điều gì đó đang diễn ra. [source](https://xgrommx.github.io/rx-book/content/observable/index.html#)
 
-- Diagrams dưới đây đại diện cho  `Observables` và quá trình biến đổi của `Observables`:
+- Diagrams dưới đây đại diện cho  `Observable` và quá trình biến đổi của `Observable`:
 
 ![Observable-diagram](./resources/images/2.1/Observable-diagram.png)
 
-- Trong [ReactiveX](http://reactivex.io/documentation/observable.html), một `Observer` đăng ký một `Observable` sau đó `Observer` sẽ phản ứng lại bất cứ item hay chuỗi các item mà `Observable` phát ra. Phần này sẽ giải thích cụ thể reactive parttern là gì.
+- Một `Observer` đăng ký lắng nghe một `Observable` sau đó `Observer` sẽ phản ứng lại bất cứ item hay chuỗi các item mà `Observable` phát ra. Phần này sẽ giải thích cụ thể reactive parttern là gì, cách thức hoạt động ra sao.
 
-#### 2.1.1 Mở đầu
+#### 1.2.1 Mở đầu
 
-- Có nhiều rất nhiều thuật ngữ dùng để mô tả mô hình và thiết kế của lập trình bất đồng bộ. Trong tài liệu này sẽ thống nhất sử dụng những thuật ngữ sau: 
+- Có rất nhiều thuật ngữ dùng để mô tả mô hình và thiết kế của lập trình bất đồng bộ. Trong tài liệu này sẽ thống nhất sử dụng những thuật ngữ sau: 
   - Một `Observer` đăng ký với `Observable`.
-  -  Một `Observable` phát ra các items hoặc gửi các notifications đến các `Observers` bằng cách gọi các `Observers` methods.
+  -  Một `Observable` phát ra các items hoặc gửi các notifications đến các `Observer` bằng cách gọi các `Observer` methods.
 
-#### 2.1.2 Khởi tạo `Observers`
+#### 1.2.2 Khởi tạo `Observer`
 
 - Trong mô hình bất đồng bộ, flow sẽ giống như sau:
 
-  1. Khai báo một method có giá trị được trả về từ một hàm gọi bất đồng bộ; method này là một phần của `*observer*`.
+  1. Khai báo một method có giá trị được trả về từ một hàm gọi bất đồng bộ, method này là một phần của `*observer*`.
   2. Khai báo một `*Observable*`, 
   3. Gán `observer` vào `Observable` bằng cách đăng kí nó (*subscribing* it) .
   4. Xử lý các business logic bất cứ khi nào cuộc gọi trả về(whenever the call returns), method của `observer`  sẽ bắt đầu xử lý trên dựa trên giá trị trả về hoặc các giá trị (items) được phát ra bởi `Observerble`.
@@ -245,7 +88,7 @@ X là một error nào đó
 
 - **onNext, onCompleted, và onErrror**
 
-  ​	[The `Subscribe` method](http://reactivex.io/documentation/operators/subscribe.html) là cách bạn kết nối `observer` với `Observable`. observer implement của bạn là tập hợp các methods dưới đây:
+  ​	[The `Subscribe` method](http://reactivex.io/documentation/operators/subscribe.html) là cách bạn kết nối `Observer` với `Observable`. Observer's implementation là tập hợp các methods dưới đây:
 
   `onNext`: `Observable` gọi hàm này bất cứ khi nào `Observable` phát đi item. Hàm này có tham số là item được phát ra bởi `Observable`.
 
@@ -266,11 +109,11 @@ X là một error nào đó
 
 - **"Hot" và "Cold" Observable**
 
-  Khi nào `observable` phát ra chuỗi các `items`? Điều đó phụ thuộc vào `Observable`. Một "hot" Observable có thể bắt đầu phát các items ngay khi nó được tạo ra, và sau đó bất kỳ `Observer` nào đăng ký tới `observable` đều có thể bắt đầu quan sát (observing) từ khoản giữa của tiến trình . Trái lại, "Cold" observable thì chờ cho đến khi một `observer` nào đó đăng kí vào `observable` trước khi nó bắt đầu phát ra các items, và do đó `observer` có thể đảm bảo được việc quan sát từ toàn bộ các tiến trình từ lúc bắt đầu ( to see the whole sequence from the beginning.)
+  Khi nào `observable` phát ra chuỗi các `items`? Điều đó phụ thuộc vào `Observable`. Một "hot" Observable có thể bắt đầu phát các items ngay khi nó được tạo ra, và sau đó bất kỳ `Observer` nào đăng ký tới `observable` đều có thể bắt đầu quan sát (observing) từ khoản giữa của tiến trình . Trái lại, "Cold" observable thì chờ cho đến khi một `observer` nào đó đăng kí vào `observable` trước khi nó bắt đầu phát ra các items, và do đó `observer` có thể đảm bảo được việc quan sát từ toàn bộ tiến trình từ lúc bắt đầu ( to see the whole sequence from the beginning.)
 
   [Read more](http://reactivex.io/documentation/observable.html)
 
-### 2.2. Observer - handler <a name="Observer-handler"></a>
+### 1.3. Observer - handler <a name="Observer-handler"></a>
 
 Sau khi đã khởi tạo **Observable**, thì subcribes **Observable** để nhận các sự kiện (events). Và ở đây, **Observer** dùng để nhận sự kiện mỗi khi có sự kiện phát ra.
 
@@ -326,7 +169,7 @@ override func viewDidLoad() {
 
 
 
-### 2.3. Operator - man in the middle <a name="Operator-man-in-the-middle"></a>
+### 1.4. Operator - man in the middle <a name="Operator-man-in-the-middle"></a>
 Operators là những phép toán cho phép biển đổi observable thành observable mới để phù hợp với nhu cầu sử dụng
 
 Một số operators cơ bản trong RxSwift được liệt kê tại mục 3.2
@@ -361,13 +204,13 @@ observable.filter { $0.hasPrefix("Number") } // 2
 2. Lọc nội dụng bắt đầu bằng chuỗi `Number`
 3. Subcrible một observable để có thể xử lý mỗi khi nội dung search bar thay đổi
 
-### 2.4. Subjects <a name="Subjects"></a>
+### 1.5. Subjects <a name="Subjects"></a>
 
 ​	Một đối tượng vừa có thể là Observable vừa có thể là Observer được gọi là Subject.
 
 ​	Chẳng hạn khi sử dụng UIImagePickerController, ngoài việc quan tâm tới các hình ảnh mà người dùng chọn, ứng dụng cần tương tác với chính UIImagePickerController để ẩn, hiển, … như vậy không thể bọc UIImagePickerController bên trong Observable. Khi đó, Subject sẽ đóng vai trò cầu nối, giúp chuyển đổi các tương tác của người dùng thành các Observable tương ứng.
 
-#### 2.4.1. PublishSubject
+#### 1.5.1. PublishSubject
 
 ​	PublishSubject là các phần tử có thể được phát ngay sau khi Subject được khởi tạo, bất chấp chưa có đối tượng nào subscribe tới nó (hot observable). Observer sẽ không nhận được các phần tử phát ra trước thời điểm subscribe.
 
@@ -413,7 +256,7 @@ subscriptionTwo.dispose()
 2) 4
 ```
 
-#### 2.4.2. BehaviorSubject
+#### 1.5.2. BehaviorSubject
 
 ​	BehaviorSubject có cơ chế hoạt động gần giống với PublishSubject, nhưng Observer sẽ nhận được giá trị mặc định hoặc giá trị ngay trước thời điểm subscribe. Observer sẽ nhận được ít nhất một giá trị.
 
@@ -456,7 +299,7 @@ subject.onNext("3")
 2) 3
 ```
 
-#### 2.4.3. ReplaySubject
+#### 1.5.3. ReplaySubject
 
 ​	ReplaySubject tương tự như BehaviorSubject nhưng thay vì phát thêm duy nhất một phần tử trước đó, ReplaySubject cho phép ta chỉ định số lượng phần tử tối đa được phát lại khi subscribe. Ngoài ra, khi khởi tạo ReplaySubject, chúng ta không cần khai báo giá trị mặc định như BehaviorSubject.
 
@@ -502,7 +345,7 @@ subject.dispose()
 
 ```
 
-#### 2.4.4. Variable
+#### 1.5.4. Variable
 
 ​	Variable là behaviour subject được gói lại để các lập trình viên mới làm quen với react có thể dễ tiếp cận hơn.
 
@@ -541,14 +384,23 @@ variable.value = "2"
 1) next(2)
 2) next(2)
 ```
+## 2. [Deep Dive](docs/Deep-dive)
+Sau khi tìm hiểu các khái niệm cơ bản của Reactive programming và RxSwift thì trong phần này, chúng ta sẽ đi sâu hơn vào cách hoạt động, xử lý và ứng dụng trong từng trường hợp cụ thể của chúng.
+
+  1. [Creation](docs/Deep-dive/Creation.md)
+  2. [Operators](docs/Deep-dive/Operators)
+  3. [MVVM](docs/Deep-dive/MVVM.md)
+
+## 3. Advanced(Update later)
 
 ## 4. Testing <a name="testing"></a>
+Phần này sẽ tập trung vào implement Unit-Testing bằng các framework trên RxSwift Community như `RxTests`, `RxBlocking`, `RxNimble`
 
-### 4.1. RxTest <a name="RxTest"></a>
+### 4.1. [RxTests](docs/Testing.md) <a name="RxTests"></a> 
 
-### 4.2. RxNimble <a name="RxNimble"></a>
+### 4.2. RxNimble <a name="RxNimble"></a> (Update later)
 
-## 5. References <a name="References"></a>
+## References <a name="References"></a>
 
 https://github.com/ReactiveX/RxSwift
 http://rxmarbles.com/
