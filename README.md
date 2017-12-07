@@ -6,10 +6,10 @@
 
 1. [Get Started](#get-started)
 	1. [Reactive](#Reactive)
-	2. [Observable - starter](#Observable-starter)
 	3. [Observer - handler](#Observer-handler)
 	4. [Operator - man in the middle](#Operator-man-in-the-middle)
 	5. [Subjects](#Subjects)
+  2. [Observable](#Observable)
 
 2. [Deep Dive](docs/Deep-dive)
 	1. [Creation](docs/Deep-dive/Creation.md)
@@ -54,7 +54,13 @@ X là một error nào đó
 ```
 > Ta có thể xem đây là một stream
 
-### 1.2. Observable - starter <a name="Observable-starter"></a>
+### 1.2. Observable <a name="Observable"></a>
+
+#### 1.2.1 Mở đầu
+
+- Có rất nhiều thuật ngữ dùng để mô tả và thiết kế của lập trình bất đồng bộ. Trong tài liệu này sẽ thống nhất sử dụng những thuật ngữ sau: 
+  - Một `Observer` đăng ký với `Observable`.
+  - Một `Observable` phát ra các items hoặc gửi các notifications đến các `Observer` bằng cách gọi các `Observer` methods.
 
 > Khái niệm Observable đến từ observer design pattern là một đối tượng thông báo cho các đối tượng theo dõi về một điều gì đó đang diễn ra. [source](https://xgrommx.github.io/rx-book/content/observable/index.html#)
 
@@ -63,12 +69,6 @@ X là một error nào đó
 ![Observable-diagram](./resources/images/2.1/Observable-diagram.png)
 
 - Một `Observer` đăng ký lắng nghe một `Observable` sau đó `Observer` sẽ phản ứng lại bất cứ item hay chuỗi các item mà `Observable` phát ra. Phần này sẽ giải thích cụ thể reactive parttern là gì, cách thức hoạt động ra sao.
-
-#### 1.2.1 Mở đầu
-
-- Có rất nhiều thuật ngữ dùng để mô tả mô hình và thiết kế của lập trình bất đồng bộ. Trong tài liệu này sẽ thống nhất sử dụng những thuật ngữ sau: 
-  - Một `Observer` đăng ký với `Observable`.
-  - Một `Observable` phát ra các items hoặc gửi các notifications đến các `Observer` bằng cách gọi các `Observer` methods.
 
 #### 1.2.2 Khởi tạo `Observer`
 
@@ -92,30 +92,30 @@ X là một error nào đó
 
 - **onNext, onCompleted, và onErrror**
 
-  ​	[`Subscribe` method](http://reactivex.io/documentation/operators/subscribe.html) là cách bạn kết nối `Observer` với `Observable`. Observer's implementation là tập hợp các methods dưới đây:
+  ​	[`Subscribe` method](http://reactivex.io/documentation/operators/subscribe.html) là cách kết nối `Observer` với `Observable`. Observer's implementation gồm các method:
 
-  `onNext`: `Observable` gọi hàm này bất cứ khi nào `Observable` phát đi item. Hàm này có tham số là item được phát ra bởi `Observable`.
+  `onNext`: `Observable` gọi hàm `onNext` có tham số là item, item này là một trong các tập items của `Observable`
 
-  `onError`: `Observable` gọi hàm này để biểu thị có lỗi phát sinh trong khi xử lý dữ liệu hoặc có một số lỗi khá. Nó sẽ không gọi thêm đến các hàm `onNext` hoặc `onCompleted`. 
+  `onError`: `Observable` gọi hàm này khi có lỗi trong quá trình chuyển đổi dữ, xử lý dữ liệu. Từ đây `Observable` sẽ không gọi các hàm `onNext` hoặc `onCompleted`. 
 
   `onCompleted`: `Observable` gọi hàm này sau khi hàm `onNext` cuối cùng được gọi, nếu không có bất kì lỗi nào xảy ra.
 
-  A more complete `subscribe` call example looks like this:
+  Ví dụ bằng code giả:
 
   ```groovy
-  def myOnNext = { item -> /* do something useful with item */ };
-  def myError = { throwable -> /* react sensibly to a failed call */ };
-  def myComplete = { /* clean up after the final response */ };
+  def myOnNext = { item -> /* xử lý business logic với giá trị item được phát ra bởi Observerble */ };
+  def myError = { throwable -> /* xử lý business logic với error được phát ra bởi Observerble */ };
+  def myComplete = { /* xử lý business logic khi hoàn thành */ };
   def myObservable = someMethod(itsParameters);
   myObservable.subscribe(myOnNext, myError, myComplete);
-  // go on about my business
+
   ```
 
 - **"Hot" và "Cold" Observable**
 
   Khi nào `observable` phát ra chuỗi các `items`? Điều đó phụ thuộc vào `Observable`. Một "hot" Observable có thể bắt đầu phát các items ngay khi nó được tạo ra, và sau đó bất kỳ `Observer` nào đăng ký tới `observable` đều có thể bắt đầu quan sát (observing) từ khoản giữa của tiến trình . Trái lại, "Cold" observable thì chờ cho đến khi một `observer` nào đó đăng kí vào `observable` trước khi nó bắt đầu phát ra các items, và do đó `observer` có thể đảm bảo được việc quan sát từ toàn bộ tiến trình từ lúc bắt đầu ( to see the whole sequence from the beginning.)
 
-  [Read more](http://reactivex.io/documentation/observable.html)
+  [Chi tiết](http://reactivex.io/documentation/observable.html)
 
 ### 1.3. Observer - handler <a name="Observer-handler"></a>
 
