@@ -33,6 +33,7 @@ target 'FS' do
     pod 'ObjectMapper', '2.2.6'
     pod 'SnapKit', '3.2.0'
     pod 'FSOAuth', '~> 1.2.1'
+    pod 'SVProgressHUD'
 
     target 'FSTests' do
         inherit! :search_paths

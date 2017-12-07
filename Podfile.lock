@@ -13,6 +13,7 @@ PODS:
   - RxTest (3.6.1):
     - RxSwift (~> 3.6)
   - SnapKit (3.2.0)
+  - SVProgressHUD (2.2.2)
   - SwiftUtils (2.0.0)
 
 DEPENDENCIES:
@@ -25,6 +26,7 @@ DEPENDENCIES:
   - RxSwift (= 3.6.1)
   - RxTest (= 3.6.1)
   - SnapKit (= 3.2.0)
+  - SVProgressHUD
   - SwiftUtils (= 2.0.0)
 
 SPEC CHECKSUMS:
@@ -37,8 +39,9 @@ SPEC CHECKSUMS:
   RxSwift: f9de85ea20cd2f7716ee5409fc13523dc638e4e4
   RxTest: 1d00348a7848c91ab5bf5d197d2378aa6b2bb356
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
   SwiftUtils: c65508375277ddba9984b514704e9ecd11e26ff8
 
-PODFILE CHECKSUM: bd3f6eff23371b0913071358a88f33b94015a336
+PODFILE CHECKSUM: a31358fa49a4810c53ffd757f10b740178020250
 
 COCOAPODS: 1.3.1
