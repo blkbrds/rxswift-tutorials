@@ -176,7 +176,7 @@ override func viewDidLoad() {
 ### 1.4. Operator - man in the middle <a name="Operator-man-in-the-middle"></a>
 Operators là những phép toán cho phép biển đổi observable thành observable mới để phù hợp với nhu cầu sử dụng
 
-Một số operators cơ bản trong RxSwift được liệt kê tại mục 3.2
+Một số operators cơ bản trong RxSwift được liệt kê [tại đây](docs/deep-dive/operators)
 
 **Example 1:**
 
@@ -210,10 +210,10 @@ observable.filter { $0.hasPrefix("Number") } // 2
 
 ### 1.5. Subjects <a name="Subjects"></a>
 
-​	Một đối tượng vừa có thể là Observable vừa có thể là Observer được gọi là Subject.
+> Một đối tượng vừa có thể là Observable vừa có thể là Observer được gọi là Subject.
 
-​	Chẳng hạn khi sử dụng UIImagePickerController, ngoài việc quan tâm tới các hình ảnh mà người dùng chọn, ứng dụng cần tương tác với chính UIImagePickerController để ẩn, hiển, … như vậy không thể bọc UIImagePickerController bên trong Observable. Khi đó, Subject sẽ đóng vai trò cầu nối, giúp chuyển đổi các tương tác của người dùng thành các Observable tương ứng.
-
+​Chẳng hạn khi sử dụng UIImagePickerController, ngoài việc quan tâm tới việc load hình ảnh từ Photos Library (lúc này UIImagePickerController là Observer) thì ứng dụng cần tương tác với chính UIImagePickerController để ẩn, hiển, chọn ảnh… (lúc này UIImagePickerController là Observable). Vậy ta có thể hiểu UIImagePickerController là một Subject
+​
 #### 1.5.1. PublishSubject
 
 ​	PublishSubject là các phần tử có thể được phát ngay sau khi Subject được khởi tạo, bất chấp chưa có đối tượng nào subscribe tới nó (hot observable). Observer sẽ không nhận được các phần tử phát ra trước thời điểm subscribe.
@@ -351,7 +351,12 @@ subject.dispose()
 
 #### 1.5.4. Variable
 
-​	Variable là behaviour subject được gói lại để các lập trình viên mới làm quen với react có thể dễ tiếp cận hơn.
+Variable là một kiểu của BehaviorSubject mà có thể lưu giữ giá trị(Value) hiện tại như một trạng thái(state). Chúng ta có thể truy cập vào giá trị hiện tại đó thông qua thuộc tính `value`, việc thay đổi `value` này tương đương với hàm `onNext` của các loại subject khác
+
+- Không thể add sự kiện error vào một Variable
+- Không thể add sự kiện completed vào một Variable, sự kiện này chỉ được phát ra khi nó bị deallocated
+
+Chúng ta rất hay dùng subject kiểu Variable, đặc biệt là trong các trường hợp không cần quan tâm tới việc khi nào có error và khi nào completed
 
 ```swift
 let disposeBag = DisposeBag()
