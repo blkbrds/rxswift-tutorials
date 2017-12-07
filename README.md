@@ -68,16 +68,16 @@ X là một error nào đó
 
 - Có rất nhiều thuật ngữ dùng để mô tả mô hình và thiết kế của lập trình bất đồng bộ. Trong tài liệu này sẽ thống nhất sử dụng những thuật ngữ sau: 
   - Một `Observer` đăng ký với `Observable`.
-  -  Một `Observable` phát ra các items hoặc gửi các notifications đến các `Observer` bằng cách gọi các `Observer` methods.
+  - Một `Observable` phát ra các items hoặc gửi các notifications đến các `Observer` bằng cách gọi các `Observer` methods.
 
 #### 1.2.2 Khởi tạo `Observer`
 
 - Trong mô hình bất đồng bộ, flow sẽ giống như sau:
 
-  1. Khai báo một method có giá trị được trả về từ một hàm gọi bất đồng bộ, method này là một phần của `*observer*`.
+  1. Khai báo một method có giá trị được trả về từ một hàm gọi bất đồng bộ, method này là một phần của `*Observer*`.
   2. Khai báo một `*Observable*`, 
-  3. Gán `observer` vào `Observable` bằng cách đăng kí nó (*subscribing* it) .
-  4. Xử lý các business logic bất cứ khi nào lời gọi có trả về(whenever the call returns), method của `observer`  sẽ bắt đầu xử lý dựa trên giá trị trả về hoặc các giá trị (items) được phát ra bởi `Observerble`.
+  3. Đăng kí `observer` vào `Observable`  (*subscribing* it) .
+  4. Method của `Observer` sẽ bắt đầu xử lý các business logic dựa trên giá trị trả về hoặc các giá trị được phát ra bởi `Observerble`.
 
   ```groovy
   // Khai báo, nhưng không gọi, handler onNext của Subscriber
@@ -92,7 +92,7 @@ X là một error nào đó
 
 - **onNext, onCompleted, và onErrror**
 
-  ​	[The `Subscribe` method](http://reactivex.io/documentation/operators/subscribe.html) là cách bạn kết nối `Observer` với `Observable`. Observer's implementation là tập hợp các methods dưới đây:
+  ​	[`Subscribe` method](http://reactivex.io/documentation/operators/subscribe.html) là cách bạn kết nối `Observer` với `Observable`. Observer's implementation là tập hợp các methods dưới đây:
 
   `onNext`: `Observable` gọi hàm này bất cứ khi nào `Observable` phát đi item. Hàm này có tham số là item được phát ra bởi `Observable`.
 
