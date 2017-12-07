@@ -31,15 +31,19 @@
 
 *Reactive programming* là phương pháp lập trình với luồng dữ liệu bất đồng bộ hay những thay đổi có tính lan truyền (the propagation of change). Khái niệm luồng (stream) rất phổ biến, bạn có thể tạo luồng dữ liệu (data streams) từ bất cứ thứ gì (anything can be a stream): các biến (variables), giá trị đầu vào từ người dùng (user inputs), properties, caches, data structures, etc.
 Streams là trung tâm của `reactive`.
+
+Một luồng là một dãy (sequence) các sự kiện đang diễn ra được sắp xếp theo thời gian. Nó có thể phát ra 3 thứ: một `value`, một `error`, hoặc một `completed`. 
+
 Để minh họa cho stream người ta hay dùng một loại biểu đồ gọi là [marble diagram](http://rxmarbles.com/), loại diagram này rất đơn giản, trực quan và dễ hiểu.
 Mô hình dưới đây là luồng sự kiện "click vào 1 button"
+
 ![reactive](./resources/images/1.5/reactive.png)
 
-Một luồng là một dãy (sequence) các sự kiện đang diễn ra được sắp xếp theo thời gian. Nó có thể phát ra 3 thứ: một giá trị, một error, hoặc một `completed`. Ở đây tín hiệu giúp ta biết được khi nào luồng sự kiện click `completed` là khi window hoặc view chứa button bị đóng lại.
+Ở đây tín hiệu giúp ta biết được khi nào luồng sự kiện click `completed` là khi window hoặc view chứa button bị đóng lại.
 
-Chúng ta bắt các sự kiện **bất đồng bộ** bằng cách define một function execute khi một giá trị được phát ra, một function khác khi error được phát ra, tương tự với `completed`. Các function chúng ta define là các observer, luồng(stream) là chủ thể đang được lắng nghe(being observed) hay còn gọi là observable.
+Chúng ta bắt các sự kiện **bất đồng bộ** (ví dụ như tap vào button, call API, ...) bằng cách define một function execute khi một giá trị được phát ra, một function khác khi error được phát ra, tương tự với `completed`. Các function chúng ta define là các observer, luồng(stream) là chủ thể đang được lắng nghe(being observed) hay còn gọi là `Observable`.
 
-Xem sét sơ đồ được vẽ bằng mã ASCII sau:
+Xem thêm một ví dụ được vẽ bằng mã ASCII sau:
 
 ```groovy
 --a---b-c---d---X---|->
@@ -47,14 +51,14 @@ Xem sét sơ đồ được vẽ bằng mã ASCII sau:
 a, b, c, d là các giá trị được phát ra
 X là một error nào đó
 | là một signal 'completed'
-----> is the timeline
 ```
+> Ta có thể xem đây là một stream
 
 ### 1.2. Observable - starter <a name="Observable-starter"></a>
 
-> Khái niệm observable đến từ observer design pattern là một đối tượng thông báo cho các đối tượng theo dõi về một điều gì đó đang diễn ra. [source](https://xgrommx.github.io/rx-book/content/observable/index.html#)
+> Khái niệm Observable đến từ observer design pattern là một đối tượng thông báo cho các đối tượng theo dõi về một điều gì đó đang diễn ra. [source](https://xgrommx.github.io/rx-book/content/observable/index.html#)
 
-- Diagrams dưới đây đại diện cho  `Observable` và quá trình biến đổi của `Observable`:
+- Diagram dưới đây biểu diễn  `Observable` và quá trình biến đổi của `Observable`:
 
 ![Observable-diagram](./resources/images/2.1/Observable-diagram.png)
 
@@ -73,7 +77,7 @@ X là một error nào đó
   1. Khai báo một method có giá trị được trả về từ một hàm gọi bất đồng bộ, method này là một phần của `*observer*`.
   2. Khai báo một `*Observable*`, 
   3. Gán `observer` vào `Observable` bằng cách đăng kí nó (*subscribing* it) .
-  4. Xử lý các business logic bất cứ khi nào cuộc gọi trả về(whenever the call returns), method của `observer`  sẽ bắt đầu xử lý trên dựa trên giá trị trả về hoặc các giá trị (items) được phát ra bởi `Observerble`.
+  4. Xử lý các business logic bất cứ khi nào lời gọi có trả về(whenever the call returns), method của `observer`  sẽ bắt đầu xử lý dựa trên giá trị trả về hoặc các giá trị (items) được phát ra bởi `Observerble`.
 
   ```groovy
   // Khai báo, nhưng không gọi, handler onNext của Subscriber
