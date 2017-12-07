@@ -5,22 +5,22 @@
 # Contents
 
 1. [Get Started](#get-started)
-  1. [Reactive](#Reactive)
-  2. [Observable và Observer](#Observable-Observer)
-  3. [Operator - man in the middle](#Operator-man-in-the-middle)
-  4. [Subjects](#Subjects)
-  5. [Observable](#Observable)
+	1. [Reactive](#Reactive)
+	2. [Observable và Observer](#Observable-Observer)
+	3. [Operator - man in the middle](#Operator-man-in-the-middle)
+	4. [Subjects](#Subjects)
+	5. [Observable](#Observable)
 
 2. [Deep Dive](docs/Deep-dive)
-  1. [Creation](docs/Deep-dive/Creation.md)
-  2. [Operators](docs/Deep-dive/Operators)
-  3. [MVVM](docs/Deep-dive/MVVM.md)
+	1. [Creation](docs/Deep-dive/Creation.md)
+	2. [Operators](docs/Deep-dive/Operators)
+	3. [MVVM](docs/Deep-dive/MVVM.md)
 
 3. Advanced(Update later)
 
 4. [Testing](docs/Testing.md)
-  1. [RxTests](#RxTests)
-  2. [RxNimble](#RxNimble)(Update later)
+	1. [RxTests](#RxTests)
+	2. [RxNimble](#RxNimble)(Update later)
 
 ## 1. Getting Started <a name="get-started"></a>
 ### 1.1. Reactive <a name="Reactive"></a>
