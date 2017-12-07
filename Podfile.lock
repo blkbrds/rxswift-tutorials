@@ -30,7 +30,7 @@ DEPENDENCIES:
   - RxSwift (= 3.6.1)
   - RxTest (= 3.6.1)
   - SnapKit (= 3.2.0)
-  - SVProgressHUD
+  - SVProgressHUD (= 2.2.2)
   - SwiftUtils (= 2.0.0)
 
 SPEC CHECKSUMS:
@@ -47,6 +47,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
   SwiftUtils: c65508375277ddba9984b514704e9ecd11e26ff8
 
-PODFILE CHECKSUM: b9981009706fc2abe4ba64ee50e2a52c2db5957f
+PODFILE CHECKSUM: bc4eb3b22e3482c4d056f609fc16ccff3ee280d6
 
 COCOAPODS: 1.3.1
