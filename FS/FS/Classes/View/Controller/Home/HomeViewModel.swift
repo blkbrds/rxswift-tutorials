@@ -12,6 +12,8 @@ import RxCocoa
 import MVVM
 
 struct HomeViewModel {
+
+    // MARK: - Properties
     var venues: Variable<[Venue]> = Variable([])
     var isLoading: PublishSubject<Bool> = PublishSubject()
     var isRefreshing: Variable<Bool> = Variable(false)
@@ -38,9 +40,8 @@ struct HomeViewModel {
             }
             .disposed(by: bag)
     }
-    
-    // MARK: Public functions
 
+    // MARK: Public functions
     func refresh() {
         if isRefreshing.value  {
             return

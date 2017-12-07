@@ -6,21 +6,47 @@
 //  Copyright © 2017 thinhxavi. All rights reserved.
 //
 
-import Foundation
 import ObjectMapper
 
-class Venue: Mappable {
+final class Venue: Mappable {
+    dynamic var id: String!
+    dynamic var name: String = ""
+    dynamic var latitude: Double = 0.0
+    dynamic var longitude: Double = 0.0
+    dynamic var isFavorite = false
+    dynamic var rating: Double = 0.0
+    dynamic var ratingColor: String = ""
+    dynamic var category: String = ""
+    dynamic var likes: String = ""
+    dynamic var phone: String = ""
+    private dynamic var address: String = ""
+    private dynamic var city: String = ""
+    var thumbnail: Photo?
+    var fullAddress: String {
+        if city.isEmpty {
+            return address
+        }
+        return address + ", " + city
+    }
 
-    var id = ""
-    var name = ""
-    var favorite: Bool = false
-    
+    init() {
+    }
+
     required init?(map: Map) {
-        guard let id: String = map["id"].value() else { return nil }
-        self.id = id
     }
 
     func mapping(map: Map) {
+        id <- map["id"]
         name <- map["name"]
+        latitude <- map["location.lat"]
+        longitude <- map["location.lng"]
+        city <- map["location.city"]
+        address <- map["location.address"]
+        rating <- map["rating"]
+        ratingColor <- map["ratingColor"]
+        category <- map["categories.0.name"]
+        likes <- map["likes.summary"]
+        phone <- map["contact.phone"]
+        thumbnail <- map["photos.groups.0.items.0"]
     }
 }

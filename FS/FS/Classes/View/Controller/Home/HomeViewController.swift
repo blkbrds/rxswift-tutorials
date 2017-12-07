@@ -7,48 +7,33 @@
 //
 
 import UIKit
-import SnapKit
 import RxSwift
 import RxCocoa
 import SVProgressHUD
 
 class HomeViewController: ViewController {
-    private var tableView = UITableView()
+
+    // MARK: - IBOutlets
+    @IBOutlet private weak var tableView: UITableView!
+
+    // MARK: - Properties
     private var refreshControl = UIRefreshControl()
     var viewModel = HomeViewModel()
 
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Home"
-        configureTableView()
+        navigationItem.title = "Home"
+        configTableView()
         setup()
     }
 
-    private func setup() {
-        viewModel.venues.asObservable()
-            .bind(to: tableView.rx.items(cellIdentifier: "HomeVenueCell", cellType: VenueCell.self)) { (index, venue, cell) in
-                let viewModel = VenueCellViewModel(title: venue.name, imageURLString: "")
-                cell.viewModel = viewModel
-            }
-            .disposed(by: disposeBag)
-        
-        viewModel.isRefreshing.asDriver().drive(refreshControl.rx.isRefreshing)
-            .addDisposableTo(disposeBag)
-
-        refreshControl.rx.controlEvent(.valueChanged)
-            .subscribe(onNext: { (_) in
-                self.viewModel.refresh()
-            })
-            .disposed(by: disposeBag)
-    }
-
-    private func configureTableView() {
-        view.addSubview(tableView)
-        tableView.snp.makeConstraints { (maker) in
-            maker.edges.equalToSuperview()
-        }
+    // MARK: - Private funtions
+    private func configTableView() {
         let nib = UINib(nibName: "VenueCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "HomeVenueCell")
+        tableView.register(nib, forCellReuseIdentifier: "VenueCell")
+        tableView.rowHeight = 143.0
+        tableView.separatorStyle = .none
         tableView.addSubview(refreshControl)
 
         tableView.rx.itemSelected
@@ -68,16 +53,27 @@ class HomeViewController: ViewController {
                 }
             }
             .disposed(by: disposeBag)
-        tableView.rx.setDelegate(self).disposed(by: disposeBag)
+    }
+
+    private func setup() {
+        viewModel.venues.asObservable()
+            .bind(to: tableView.rx.items(cellIdentifier: "VenueCell", cellType: VenueCell.self)) { (index, venue, cell) in
+                cell.viewModel = VenueCellViewModel(venue: venue)
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.isRefreshing.asDriver().drive(refreshControl.rx.isRefreshing)
+            .addDisposableTo(disposeBag)
+
+        refreshControl.rx.controlEvent(.valueChanged)
+            .subscribe(onNext: { (_) in
+                self.viewModel.refresh()
+            })
+            .disposed(by: disposeBag)
     }
 }
 
-extension HomeViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100.0
-    }
-}
-
+// MAKR: - SVProgressHUD
 extension SVProgressHUD {
     static var animating: AnyObserver<Bool> {
         return AnyObserver { event in
