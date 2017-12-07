@@ -69,12 +69,11 @@ X là một 'error' nào đó
 
 #### 1.2.2 Khởi tạo Observable và Observer
 
-Về cơ bản flow của việc khởi tạo đều trải qua các bước sau:
-
-	1. Khai báo một method có giá trị được trả về từ một hàm gọi bất đồng bộ, method này là một phần của **Observer**.
-	2. Khai báo một **Observable**.
-	3. Đăng kí **Observer** vào **Observable**.
-	4. Method của **Observer** sẽ bắt đầu xử lý các business logic dựa trên giá trị trả về hoặc các giá trị được phát ra bởi **Observerble**.
+- Về cơ bản flow của việc khởi tạo đều trải qua các bước sau:
+	- Khai báo một method có giá trị được trả về từ một hàm gọi bất đồng bộ, method này là một phần của **Observer**.
+	- Khai báo một **Observable**.
+	- Đăng kí **Observer** vào **Observable**.
+	- Method của **Observer** sẽ bắt đầu xử lý các business logic dựa trên giá trị trả về hoặc các giá trị được phát ra bởi **Observerble**.
 
   ```groovy
   // Khai báo một observer
