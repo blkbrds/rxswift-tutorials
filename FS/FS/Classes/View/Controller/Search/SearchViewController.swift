@@ -33,14 +33,18 @@ class SearchViewController: ViewController {
     private func setupUI() {
         title = "Search"
         setupTableView()
-        let textField = searchBar.value(forKey: "_searchField") as? UITextField
-        textField?.clearButtonMode = .never
+        setupSearchBar()
     }
 
     private func setupTableView() {
         tableView.registerNib(VenueCell.self)
         tableView.rowHeight = 143.0
         tableView.tableFooterView = UIView()
+    }
+
+    private func setupSearchBar() {
+        let textField = searchBar.value(forKey: "_searchField") as? UITextField
+        textField?.clearButtonMode = .never
     }
 
     private func setupViewModel() {

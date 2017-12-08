@@ -33,6 +33,7 @@ final class VenueCell: UITableViewCell {
     // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
+        selectionStyle = .none
         updateView()
         configUI()
     }
