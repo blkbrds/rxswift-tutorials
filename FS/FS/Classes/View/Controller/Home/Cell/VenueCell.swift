@@ -28,7 +28,7 @@ final class VenueCell: UITableViewCell {
         }
     }
 
-    var disposeBag = DisposeBag()
+    var bag = DisposeBag()
 
     // MARK: - Life cycle
     override func awakeFromNib() {
@@ -40,27 +40,18 @@ final class VenueCell: UITableViewCell {
 
     // MARK: - Private
     private func configUI() {
-        ratingLabel.layer.cornerRadius = 10
+        ratingLabel.layer.cornerRadius = 100
     }
 
     private func updateView() {
-        viewModel.name.bind(to: nameLabel.rx.text).addDisposableTo(disposeBag)
-        viewModel.address.bind(to: addressLabel.rx.text).addDisposableTo(disposeBag)
-        viewModel.rating.bind(to: ratingLabel.rx.text).addDisposableTo(disposeBag)
-
-        guard let url = viewModel.photoURL else { return }
-        URLSession.shared.rx.data(request: URLRequest(url: url))
-            .subscribe(onNext: { [weak self] (data) in
-                guard let this = self else { return }
-                DispatchQueue.main.async {
-                    this.thumbnailImageView.image = UIImage(data: data)
-                }
-            })
-            .addDisposableTo(disposeBag)
+        viewModel.name.bind(to: nameLabel.rx.text).disposed(by: bag)
+        viewModel.address.bind(to: addressLabel.rx.text).disposed(by: bag)
+        viewModel.rating.bind(to: ratingLabel.rx.text).disposed(by: bag)
+        viewModel.image.bind(to: thumbnailImageView.rx.image).disposed(by: bag)
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        disposeBag = DisposeBag()
+        bag = DisposeBag()
     }
 }
