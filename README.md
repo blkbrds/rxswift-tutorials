@@ -5,10 +5,10 @@
 # Contents
 
 1. [Get Started](#get-started)
-	1. [Reactive](#Reactive)
-	2. [Observable và Observer](#Observable-Observer)
-	3. [Operator - man in the middle](#Operator-man-in-the-middle)
-	4. [Subjects](#Subjects)
+  1. [Reactive](#Reactive)
+  2. [Observable và Observer](#Observable-Observer)
+  3. [Operator - man in the middle](#Operator-man-in-the-middle)
+  4. [Subjects](#Subjects)
 
 2. [Deep Dive](docs/Deep-dive)
 	1. [Creation](docs/Deep-dive/Creation.md)
