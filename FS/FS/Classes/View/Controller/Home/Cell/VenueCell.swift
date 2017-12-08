@@ -40,7 +40,7 @@ final class VenueCell: UITableViewCell {
 
     // MARK: - Private
     private func configUI() {
-        ratingLabel.layer.cornerRadius = 100
+        ratingLabel.layer.cornerRadius = 10
     }
 
     private func updateView() {
