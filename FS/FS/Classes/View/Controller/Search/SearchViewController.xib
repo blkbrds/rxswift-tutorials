@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="FS" customModuleProvider="target">
             <connections>
                 <outlet property="searchBar" destination="QtW-46-td4" id="juV-Dm-FmG"/>
+                <outlet property="searchView" destination="BWC-Os-17z" id="tYT-BC-K0V"/>
                 <outlet property="tableView" destination="9te-Yx-wrm" id="9b8-7x-1zb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,7 +22,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BWC-Os-17z">
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BWC-Os-17z">
                     <rect key="frame" x="0.0" y="20" width="375" height="92.5"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jc2-bA-wEt">
@@ -74,7 +75,7 @@
                 <constraint firstItem="BWC-Os-17z" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="hfP-PN-jmc"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="-130" y="-25"/>
+            <point key="canvasLocation" x="-563" y="-311"/>
         </view>
     </objects>
     <resources>

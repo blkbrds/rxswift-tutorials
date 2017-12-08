@@ -13,8 +13,11 @@ import SwiftUtils
 
 class SearchViewController: ViewController {
 
+    @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+
+    let searchViewHeight: CGFloat = 92.5
 
     var viewModel: SearchViewModel!
     let bag = DisposeBag()
@@ -40,10 +43,18 @@ class SearchViewController: ViewController {
     }
 
     private func setupObservables() {
-        viewModel.cellViewModels.drive(tableView.rx.items) { (tableView, index, cellViewModel) -> UITableViewCell in
-            let cell: SearchCell = tableView.dequeue(SearchCell.self)
-            cell.textLabel?.text = cellViewModel.venue.id
-            return cell
-        }.disposed(by: bag)
+        viewModel.cellViewModels
+            .drive(tableView.rx.items) { (tableView, index, cellViewModel) -> UITableViewCell in
+                let cell: SearchCell = tableView.dequeue(SearchCell.self)
+                cell.textLabel?.text = cellViewModel.venue.id
+                return cell
+            }.disposed(by: bag)
+
+        tableView.rx.contentOffset
+            .subscribe { (_) in
+                if self.searchBar.isFirstResponder {
+                    _ = self.searchBar.resignFirstResponder()
+                }
+            }.disposed(by: bag)
     }
 }
