@@ -12,30 +12,37 @@ import RxCocoa
 
 final class SearchViewModel {
 
-    let cellViewModels: Driver<[CellViewModel]>
+    let cellViewModels: Observable<[VenueCellViewModel]>
+    private let subject = PublishSubject<[VenueCellViewModel]>()
+    let bag = DisposeBag()
 
     init(searchControl: ControlProperty<String?>) {
-        cellViewModels = searchControl.orEmpty
+        cellViewModels = subject
+        searchControl.orEmpty
+            .debounce(0.5, scheduler: MainScheduler.instance)
             .filter { (str) -> Bool in
                 return str.count >= 3
             }
-            .debounce(0.5, scheduler: MainScheduler.instance)
-            .distinctUntilChanged()
             .flatMapLatest { (keyword) in
                 return API.search(with: keyword)
             }
-            .map({ (venues) -> [CellViewModel] in
-                return venues.map({ (venue) -> CellViewModel in
-                    return CellViewModel(venue: venue)
+            .map({ (venues) -> [VenueCellViewModel] in
+                return venues.map({ (venue) -> VenueCellViewModel in
+                    return VenueCellViewModel(venue: venue)
                 })
-            }).asDriver(onErrorJustReturn: [])
-    }
-}
+            })
+            .subscribe(onNext: { (viewModels) in
+                self.subject.onNext(viewModels)
+            })
+            .disposed(by: bag)
 
-class CellViewModel {
-    let venue: Venue
-
-    init(venue: Venue) {
-        self.venue = venue
+        searchControl.orEmpty
+            .filter { (str) -> Bool in
+                return str.count < 3
+            }
+            .subscribe(onNext: { _ in
+                self.subject.onNext([])
+            })
+            .addDisposableTo(bag)
     }
 }

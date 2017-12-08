@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="FS" customModuleProvider="target">
             <connections>
+                <outlet property="indicator" destination="ne6-DV-zBO" id="Tfe-0L-1uh"/>
                 <outlet property="searchBar" destination="QtW-46-td4" id="juV-Dm-FmG"/>
                 <outlet property="searchView" destination="BWC-Os-17z" id="tYT-BC-K0V"/>
                 <outlet property="tableView" destination="9te-Yx-wrm" id="9b8-7x-1zb"/>
@@ -47,6 +48,9 @@
                             <rect key="frame" x="0.0" y="36.5" width="375" height="56"/>
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
+                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ne6-DV-zBO">
+                            <rect key="frame" x="339" y="54" width="20" height="20"/>
+                        </activityIndicatorView>
                     </subviews>
                     <color key="backgroundColor" red="0.96862745100000003" green="0.95686274510000002" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -56,15 +60,17 @@
                         <constraint firstItem="QtW-46-td4" firstAttribute="leading" secondItem="BWC-Os-17z" secondAttribute="leading" id="a6A-1f-W3j"/>
                         <constraint firstAttribute="trailing" secondItem="jc2-bA-wEt" secondAttribute="trailing" id="aO1-5A-XBa"/>
                         <constraint firstAttribute="trailing" secondItem="QtW-46-td4" secondAttribute="trailing" id="aUs-ww-sdY"/>
+                        <constraint firstItem="ne6-DV-zBO" firstAttribute="centerY" secondItem="QtW-46-td4" secondAttribute="centerY" id="b48-Td-VJZ"/>
+                        <constraint firstItem="ne6-DV-zBO" firstAttribute="trailing" secondItem="QtW-46-td4" secondAttribute="trailing" constant="-16" id="buB-MI-CRb"/>
                         <constraint firstItem="QtW-46-td4" firstAttribute="top" secondItem="jc2-bA-wEt" secondAttribute="bottom" id="dsx-hB-pOz"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9te-Yx-wrm">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9te-Yx-wrm">
                     <rect key="frame" x="0.0" y="112.5" width="375" height="554.5"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.96862745100000003" green="0.95686274510000002" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.96862745100000003" green="0.95686274510000002" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="9te-Yx-wrm" firstAttribute="top" secondItem="BWC-Os-17z" secondAttribute="bottom" id="3i9-74-mYz"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="9te-Yx-wrm" secondAttribute="bottom" id="6Cd-zi-3IA"/>

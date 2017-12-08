@@ -28,7 +28,7 @@ final class VenueCell: UITableViewCell {
         }
     }
 
-    let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
 
     // MARK: - Life cycle
     override func awakeFromNib() {
@@ -56,5 +56,10 @@ final class VenueCell: UITableViewCell {
                 }
             })
             .addDisposableTo(disposeBag)
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
     }
 }

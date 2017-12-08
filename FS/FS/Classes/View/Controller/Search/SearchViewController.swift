@@ -16,6 +16,7 @@ class SearchViewController: ViewController {
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
 
     let searchViewHeight: CGFloat = 92.5
 
@@ -32,10 +33,14 @@ class SearchViewController: ViewController {
     private func setupUI() {
         title = "Search"
         setupTableView()
+        let textField = searchBar.value(forKey: "_searchField") as? UITextField
+        textField?.clearButtonMode = .never
     }
 
     private func setupTableView() {
-        tableView.registerClass(SearchCell.self)
+        tableView.registerNib(VenueCell.self)
+        tableView.rowHeight = 143.0
+        tableView.tableFooterView = UIView()
     }
 
     private func setupViewModel() {
@@ -44,10 +49,11 @@ class SearchViewController: ViewController {
 
     private func setupObservables() {
         viewModel.cellViewModels
-            .drive(tableView.rx.items) { (tableView, index, cellViewModel) -> UITableViewCell in
-                let cell: SearchCell = tableView.dequeue(SearchCell.self)
-                cell.textLabel?.text = cellViewModel.venue.id
-                return cell
+            .do(onNext: { (_) in
+                self.indicator.stopAnimating()
+            })
+            .bind(to: tableView.rx.items(cellIdentifier: "VenueCell", cellType: VenueCell.self)) { (index, cellViewModel, cell) in
+                cell.viewModel = cellViewModel
             }.disposed(by: bag)
 
         tableView.rx.contentOffset
@@ -55,6 +61,16 @@ class SearchViewController: ViewController {
                 if self.searchBar.isFirstResponder {
                     _ = self.searchBar.resignFirstResponder()
                 }
-            }.disposed(by: bag)
+            }
+            .disposed(by: bag)
+
+        searchBar.rx.text
+            .orEmpty
+            .map { (str) -> Bool in
+                return str.count >= 3
+            }
+            .debounce(0.5, scheduler: MainScheduler.instance)
+            .bind(to: indicator.rx.isAnimating)
+            .disposed(by: bag)
     }
 }
