@@ -70,10 +70,10 @@ class SearchViewController: ViewController {
 
         searchBar.rx.text
             .orEmpty
+            .debounce(0.5, scheduler: MainScheduler.instance)
             .map { (str) -> Bool in
                 return str.count >= 3
             }
-            .debounce(0.5, scheduler: MainScheduler.instance)
             .bind(to: indicator.rx.isAnimating)
             .disposed(by: bag)
     }
