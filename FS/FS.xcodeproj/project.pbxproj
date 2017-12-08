@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A16ECDC1FD655C0003ED842 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A16ECDB1FD655C0003ED842 /* HomeViewModel.swift */; };
+		3A16ECE41FD6B160003ED842 /* VenueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A16ECE21FD6B15F003ED842 /* VenueDetailViewController.swift */; };
+		3A16ECE51FD6B160003ED842 /* VenueDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A16ECE31FD6B15F003ED842 /* VenueDetailViewController.xib */; };
+		3A16ECE71FD6B196003ED842 /* VenueDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A16ECE61FD6B196003ED842 /* VenueDetailViewModel.swift */; };
 		3A34B4751FCD632E007A4CC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34B4741FCD632E007A4CC6 /* AppDelegate.swift */; };
 		3A34B4931FCD6A98007A4CC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A34B4871FCD6A98007A4CC6 /* Assets.xcassets */; };
 		3A34B4951FCD6A98007A4CC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A34B48E1FCD6A98007A4CC6 /* LaunchScreen.storyboard */; };
@@ -28,6 +32,10 @@
 		744324C1E404DA52AFA7BF76 /* Pods_FSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2C5EB88A78E6F7081EA827C /* Pods_FSTests.framework */; };
 		99311FEE1FD4EF8C00C4F426 /* FSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99311FED1FD4EF8C00C4F426 /* FSTests.swift */; };
 		BC299787FDEF5E07CEA25D41 /* Pods_FS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23EE476810737E93C6EACB9 /* Pods_FS.framework */; };
+		C867A7371FD8CF2A00847899 /* VenueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C867A7341FD8CF2900847899 /* VenueCell.swift */; };
+		C867A7381FD8CF2A00847899 /* VenueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C867A7351FD8CF2900847899 /* VenueCell.xib */; };
+		C867A7391FD8CF2A00847899 /* VenueCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C867A7361FD8CF2A00847899 /* VenueCellViewModel.swift */; };
+		C867A73C1FD8D0F100847899 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C867A73B1FD8D0F000847899 /* Photo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +50,10 @@
 
 /* Begin PBXFileReference section */
 		31D5CF9CDE52140BCC14D669 /* Pods-FS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FS.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-FS/Pods-FS.debug.xcconfig"; sourceTree = "<group>"; };
+		3A16ECDB1FD655C0003ED842 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		3A16ECE21FD6B15F003ED842 /* VenueDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueDetailViewController.swift; sourceTree = "<group>"; };
+		3A16ECE31FD6B15F003ED842 /* VenueDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VenueDetailViewController.xib; sourceTree = "<group>"; };
+		3A16ECE61FD6B196003ED842 /* VenueDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueDetailViewModel.swift; sourceTree = "<group>"; };
 		3A34B4711FCD632E007A4CC6 /* FS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A34B4741FCD632E007A4CC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A34B4871FCD6A98007A4CC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -70,6 +82,10 @@
 		99311FEF1FD4EF8C00C4F426 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A23EE476810737E93C6EACB9 /* Pods_FS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2C5EB88A78E6F7081EA827C /* Pods_FSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C867A7341FD8CF2900847899 /* VenueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueCell.swift; sourceTree = "<group>"; };
+		C867A7351FD8CF2900847899 /* VenueCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VenueCell.xib; sourceTree = "<group>"; };
+		C867A7361FD8CF2A00847899 /* VenueCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueCellViewModel.swift; sourceTree = "<group>"; };
+		C867A73B1FD8D0F000847899 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +108,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A16ECE11FD6B146003ED842 /* VenueDetail */ = {
+			isa = PBXGroup;
+			children = (
+				3A16ECE21FD6B15F003ED842 /* VenueDetailViewController.swift */,
+				3A16ECE31FD6B15F003ED842 /* VenueDetailViewController.xib */,
+				3A16ECE61FD6B196003ED842 /* VenueDetailViewModel.swift */,
+			);
+			path = VenueDetail;
+			sourceTree = "<group>";
+		};
 		3A34B4681FCD632E007A4CC6 = {
 			isa = PBXGroup;
 			children = (
@@ -143,9 +169,9 @@
 		3A34B49E1FCD6B7C007A4CC6 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				3A34B49F1FCD6B7C007A4CC6 /* Model */,
 				3A34B4AB1FCD6BEA007A4CC6 /* Reactive+Extension */,
 				3A34B4A11FCD6B7C007A4CC6 /* Service */,
+				3A34B49F1FCD6B7C007A4CC6 /* Model */,
 				3A34B4A41FCD6B7C007A4CC6 /* View */,
 			);
 			path = Classes;
@@ -155,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				3A34B4A01FCD6B7C007A4CC6 /* Venue.swift */,
+				C867A73B1FD8D0F000847899 /* Photo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -173,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				3A34B4A51FCD6B7C007A4CC6 /* Controller */,
+				C867A7321FD8CEC300847899 /* Controls */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -180,6 +208,7 @@
 		3A34B4A51FCD6B7C007A4CC6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				3A16ECE11FD6B146003ED842 /* VenueDetail */,
 				3A34B4B41FCD6D73007A4CC6 /* Base */,
 				3A34B4AF1FCD6CAE007A4CC6 /* Favorite */,
 				3A34B4AE1FCD6CA7007A4CC6 /* Home */,
@@ -200,8 +229,10 @@
 		3A34B4AE1FCD6CA7007A4CC6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				C867A7331FD8CF0D00847899 /* Cell */,
 				3A34B4B21FCD6D50007A4CC6 /* HomeViewController.swift */,
 				3A34B4BB1FCDB261007A4CC6 /* HomeViewController.xib */,
+				3A16ECDB1FD655C0003ED842 /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -258,6 +289,23 @@
 				99311FEF1FD4EF8C00C4F426 /* Info.plist */,
 			);
 			path = FSTests;
+			sourceTree = "<group>";
+		};
+		C867A7321FD8CEC300847899 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		C867A7331FD8CF0D00847899 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C867A7341FD8CF2900847899 /* VenueCell.swift */,
+				C867A7351FD8CF2900847899 /* VenueCell.xib */,
+				C867A7361FD8CF2A00847899 /* VenueCellViewModel.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		E8C8B913836B9715A0E73E54 /* Pods */ = {
@@ -361,8 +409,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A34B4C41FCDBAA5007A4CC6 /* ProfileViewController.xib in Resources */,
+				C867A7381FD8CF2A00847899 /* VenueCell.xib in Resources */,
 				3A34B4C01FCDBA99007A4CC6 /* FavoriteViewController.xib in Resources */,
 				3A34B4BC1FCDB261007A4CC6 /* HomeViewController.xib in Resources */,
+				3A16ECE51FD6B160003ED842 /* VenueDetailViewController.xib in Resources */,
 				3A34B4931FCD6A98007A4CC6 /* Assets.xcassets in Resources */,
 				3A34B4CC1FCDBAD3007A4CC6 /* SearchViewController.xib in Resources */,
 				3A34B4951FCD6A98007A4CC6 /* LaunchScreen.storyboard in Resources */,
@@ -450,6 +500,9 @@
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MVVM-Swift/MVVM.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftUtils/SwiftUtils.framework",
 			);
@@ -459,6 +512,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MVVM.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftUtils.framework",
 			);
@@ -509,11 +565,17 @@
 				3A34B4B31FCD6D51007A4CC6 /* HomeViewController.swift in Sources */,
 				3A34B4751FCD632E007A4CC6 /* AppDelegate.swift in Sources */,
 				3A34B4A91FCD6B7C007A4CC6 /* DataManager.swift in Sources */,
+				3A16ECE41FD6B160003ED842 /* VenueDetailViewController.swift in Sources */,
+				3A16ECE71FD6B196003ED842 /* VenueDetailViewModel.swift in Sources */,
+				C867A7391FD8CF2A00847899 /* VenueCellViewModel.swift in Sources */,
 				3A34B4A81FCD6B7C007A4CC6 /* API.swift in Sources */,
 				3A34B4CE1FCDC139007A4CC6 /* API.Venue.swift in Sources */,
 				3A34B4B61FCD6D88007A4CC6 /* ViewController.swift in Sources */,
+				3A16ECDC1FD655C0003ED842 /* HomeViewModel.swift in Sources */,
+				C867A73C1FD8D0F100847899 /* Photo.swift in Sources */,
 				3A34B4AD1FCD6BF6007A4CC6 /* Reactive+Extension.swift in Sources */,
 				3A34B4C31FCDBAA5007A4CC6 /* ProfileViewController.swift in Sources */,
+				C867A7371FD8CF2A00847899 /* VenueCell.swift in Sources */,
 				3A34B4BF1FCDBA99007A4CC6 /* FavoriteViewController.swift in Sources */,
 				3A34B4A71FCD6B7C007A4CC6 /* Venue.swift in Sources */,
 			);

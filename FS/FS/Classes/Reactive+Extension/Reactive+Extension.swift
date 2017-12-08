@@ -8,9 +8,21 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
+import SVProgressHUD
 
-// Just example
-
-extension Reactive where Base: UIView {
-
+public extension ObservableType {
+    public func withHUD() -> Observable<Self.E> {
+        return self.do(onNext: nil, onError: { (error) in
+            DispatchQueue.main.async {
+                SVProgressHUD.showInfo(withStatus: error.localizedDescription)
+            }
+        }, onCompleted: {
+            dismissHUD()
+        }, onSubscribe: nil, onSubscribed: {
+            showHUD()
+        }, onDispose: {
+            dismissHUD()
+        })
+    }
 }

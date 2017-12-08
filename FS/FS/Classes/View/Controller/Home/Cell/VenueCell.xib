@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HiraginoKakuGothic.ttc">
+            <string>HiraginoSans-W3</string>
+            <string>HiraginoSans-W6</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VenueCell" rowHeight="187" id="KGk-i7-Jjw" customClass="VenueCell" customModule="FS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="187"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="186.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zql-q3-F9o" userLabel="Venue Conten View">
+                        <rect key="frame" x="0.0" y="5" width="310" height="176.5"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f9w-kb-XZY">
+                                <rect key="frame" x="145" y="0.0" width="165" height="176.5"/>
+                                <color key="backgroundColor" red="0.66666666669999997" green="0.66666668650000005" blue="0.66666668650000005" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="165" id="Yj1-bU-FHL"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8.2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vdp-vm-yYy" userLabel="Rate">
+                                <rect key="frame" x="120" y="9" width="20" height="20"/>
+                                <color key="backgroundColor" red="0.49019607840000001" green="0.71764705880000002" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="OIt-aS-SBO"/>
+                                    <constraint firstAttribute="height" constant="20" id="cIU-Cv-c3o"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="8"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phố Xưa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NRs-2Y-vGc" userLabel="Name">
+                                <rect key="frame" x="10" y="9" width="105" height="23"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="0dG-gj-CgC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="14"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKD-JV-MGE" userLabel="Address">
+                                <rect key="frame" x="10" y="35" width="121" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="s3h-c8-4bz"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="17 Phan ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="HiraginoSans-W6"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="truncatingTail" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Đ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="LucidaGrande-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="truncatingTail" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">ình Phùng
+H</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="HiraginoSans-W6"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="truncatingTail" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="ả">
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="LucidaGrande-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="truncatingTail" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="i Châu, ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="HiraginoSans-W6"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="truncatingTail" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Đ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="LucidaGrande-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="truncatingTail" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="à N">
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="HiraginoSans-W6"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="truncatingTail" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="ẵ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="LucidaGrande-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="truncatingTail" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="ng">
+                                        <attributes>
+                                            <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="HiraginoSans-W6"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="truncatingTail" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coffee Shop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2na-Kt-aYw" userLabel="Category">
+                                <rect key="frame" x="10" y="77" width="121" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="2ba-wC-reX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="12"/>
+                                <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$$$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4U-ah-9FA" userLabel="Price">
+                                <rect key="frame" x="10" y="94" width="121" height="11"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="11" id="DIr-P7-IUX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="9"/>
+                                <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="300 m from here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rbs-oY-iX4" userLabel="Distance">
+                                <rect key="frame" x="10" y="110" width="121" height="11"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="11" id="QSQ-CP-PB6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="9"/>
+                                <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="f9w-kb-XZY" firstAttribute="leading" secondItem="2na-Kt-aYw" secondAttribute="trailing" constant="14" id="3LA-Sp-Idl"/>
+                            <constraint firstAttribute="bottom" secondItem="f9w-kb-XZY" secondAttribute="bottom" id="3cs-XD-Q10"/>
+                            <constraint firstItem="f9w-kb-XZY" firstAttribute="top" secondItem="Zql-q3-F9o" secondAttribute="top" id="6Yv-mv-ebq"/>
+                            <constraint firstAttribute="trailing" secondItem="f9w-kb-XZY" secondAttribute="trailing" id="AHl-sJ-RJ0"/>
+                            <constraint firstItem="mKD-JV-MGE" firstAttribute="leading" secondItem="Zql-q3-F9o" secondAttribute="leading" constant="10" id="BDD-R8-NfZ"/>
+                            <constraint firstItem="E4U-ah-9FA" firstAttribute="top" secondItem="2na-Kt-aYw" secondAttribute="bottom" constant="5" id="BzY-nt-VAm"/>
+                            <constraint firstItem="f9w-kb-XZY" firstAttribute="leading" secondItem="mKD-JV-MGE" secondAttribute="trailing" constant="14" id="Cpk-d9-0rD"/>
+                            <constraint firstItem="Rbs-oY-iX4" firstAttribute="leading" secondItem="Zql-q3-F9o" secondAttribute="leading" constant="10" id="FMM-A1-hvj"/>
+                            <constraint firstItem="mKD-JV-MGE" firstAttribute="top" secondItem="NRs-2Y-vGc" secondAttribute="bottom" constant="3" id="K9A-QD-j7Q"/>
+                            <constraint firstItem="f9w-kb-XZY" firstAttribute="leading" secondItem="E4U-ah-9FA" secondAttribute="trailing" constant="14" id="X60-oI-VJx"/>
+                            <constraint firstItem="NRs-2Y-vGc" firstAttribute="leading" secondItem="Zql-q3-F9o" secondAttribute="leading" constant="10" id="YSk-eK-Rtn"/>
+                            <constraint firstItem="Rbs-oY-iX4" firstAttribute="top" secondItem="E4U-ah-9FA" secondAttribute="bottom" constant="5" id="bnm-ZL-J6c"/>
+                            <constraint firstItem="E4U-ah-9FA" firstAttribute="leading" secondItem="Zql-q3-F9o" secondAttribute="leading" constant="10" id="m8s-yS-uQE"/>
+                            <constraint firstItem="f9w-kb-XZY" firstAttribute="leading" secondItem="Rbs-oY-iX4" secondAttribute="trailing" constant="14" id="qIY-bm-HO2"/>
+                            <constraint firstItem="Vdp-vm-yYy" firstAttribute="top" secondItem="Zql-q3-F9o" secondAttribute="top" constant="9" id="sM9-iK-1fr"/>
+                            <constraint firstItem="f9w-kb-XZY" firstAttribute="leading" secondItem="Vdp-vm-yYy" secondAttribute="trailing" constant="5" id="sjC-Df-4JE"/>
+                            <constraint firstItem="Vdp-vm-yYy" firstAttribute="leading" secondItem="NRs-2Y-vGc" secondAttribute="trailing" constant="5" id="skR-th-udF"/>
+                            <constraint firstItem="NRs-2Y-vGc" firstAttribute="top" secondItem="Zql-q3-F9o" secondAttribute="top" constant="9" id="tDC-iw-FCe"/>
+                            <constraint firstItem="2na-Kt-aYw" firstAttribute="top" secondItem="mKD-JV-MGE" secondAttribute="bottom" constant="8" id="vqG-3D-qPh"/>
+                            <constraint firstItem="2na-Kt-aYw" firstAttribute="leading" secondItem="Zql-q3-F9o" secondAttribute="leading" constant="10" id="zgH-OY-ycc"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="Zql-q3-F9o" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Mek-v8-6nU"/>
+                    <constraint firstItem="Zql-q3-F9o" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="iKb-hk-6Ti"/>
+                    <constraint firstAttribute="bottom" secondItem="Zql-q3-F9o" secondAttribute="bottom" constant="5" id="lee-kP-9OI"/>
+                    <constraint firstAttribute="trailing" secondItem="Zql-q3-F9o" secondAttribute="trailing" constant="10" id="t21-ps-1VM"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="addressLabel" destination="mKD-JV-MGE" id="zvB-ce-yHg"/>
+                <outlet property="categoryLabel" destination="2na-Kt-aYw" id="DS6-rb-fcp"/>
+                <outlet property="containerView" destination="Zql-q3-F9o" id="iqU-8b-DgQ"/>
+                <outlet property="distanceLabel" destination="Rbs-oY-iX4" id="1y8-D8-tfI"/>
+                <outlet property="nameLabel" destination="NRs-2Y-vGc" id="vgg-sL-dFc"/>
+                <outlet property="priceLabel" destination="E4U-ah-9FA" id="4gW-0t-gf1"/>
+                <outlet property="ratingLabel" destination="Vdp-vm-yYy" id="g4M-jz-3L2"/>
+                <outlet property="thumbnailImageView" destination="f9w-kb-XZY" id="tPt-5B-UND"/>
+            </connections>
+            <point key="canvasLocation" x="25" y="123.5"/>
+        </tableViewCell>
+    </objects>
+</document>
