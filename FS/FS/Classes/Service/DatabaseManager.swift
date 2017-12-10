@@ -55,6 +55,18 @@ extension DatabaseManager {
         }
     }
 
+    func addObjects<T: RealmSwift.Object, S: Sequence>(_ objects: S) where S.Iterator.Element == T {
+        do {
+            realm.beginWrite()
+            for item in objects {
+                realm.add(item, update: true)
+            }
+            try realm.commitWrite()
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+
     //  MARK: - update object
     func updateObject(_ block:() -> ()) {
         try! realm.write {
