@@ -13,31 +13,55 @@ import MVVM
 
 class HomeViewModel {
 
+    enum Section: Int {
+        case coffee = 0
+        case food
+
+        var name: String {
+            switch self {
+            case .coffee:
+                return "coffee"
+            case .food:
+                return "food"
+            }
+        }
+    }
+
     // MARK: - Properties
     var venues: Variable<[Venue]> = Variable([])
     var isLoading: PublishSubject<Bool> = PublishSubject()
     var isRefreshing: Variable<Bool> = Variable(false)
     var isLoadmore: Variable<Bool> = Variable(false)
-    var type: String = ""
+    var section: Variable<Section> = Variable(Section.coffee)
 
     private var bag = DisposeBag()
 
     init() {
         setup()
-        getVenues()
     }
 
+    // MARK: - Private
     private func setup() {
         isLoadmore.asObservable()
             .filter { $0 == true }
-            .subscribe(onNext: { (l) in
+            .subscribe(onNext: { (_) in
+                self.getVenues()
+            })
+            .disposed(by: bag)
+
+        section.asObservable()
+            .subscribe(onNext: { section in
+                self.venues.value.removeAll()
                 self.getVenues()
             })
             .disposed(by: bag)
     }
 
     private func getVenues() {
-        API.getVenues(params: [:]).withHUD()
+        var params: JSObject = [:]
+        params["section"] = section.value.name
+        params["offset"] = venues.value.count
+        API.getVenues(params: params).withHUD()
             .subscribe { (event) in
                 if let venues = event.element {
                     self.venues.value.append(contentsOf: venues)
@@ -48,11 +72,12 @@ class HomeViewModel {
                     }
                 }
                 self.isRefreshing.value = false
+                self.isLoadmore.value = false
             }
             .disposed(by: bag)
     }
 
-    // MARK: Public functions
+    // MARK: Public
     func refresh() {
         if isRefreshing.value  {
             return

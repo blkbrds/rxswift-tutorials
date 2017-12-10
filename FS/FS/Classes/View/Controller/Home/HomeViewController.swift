@@ -28,7 +28,7 @@ class HomeViewController: ViewController {
         setupData()
     }
 
-    // MARK: - Private funtions
+    // MARK: - Private
     private func setupUI() {
         let nib = UINib(nibName: "VenueCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "VenueCell")
@@ -75,6 +75,24 @@ class HomeViewController: ViewController {
                 self.viewModel.refresh()
             })
             .disposed(by: disposeBag)
+
+        tableView.rx.contentOffset
+            .subscribeOn(MainScheduler.instance)
+            .subscribe { (event) in
+                let maximumOffset = self.tableView.contentSize.height - self.tableView.frame.size.height
+                if !self.viewModel.isLoadmore.value, let currentOffset = event.element?.y, maximumOffset == currentOffset {
+                    self.viewModel.isLoadmore.value = true
+                }
+            }
+            .disposed(by: disposeBag)
+    }
+
+    // MARK: - Actions
+    @IBAction func segmentedTouchUpInside(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            viewModel.section.value = .coffee
+        } else {
+            viewModel.section.value = .food
+        }
     }
 }
-
