@@ -2,7 +2,7 @@
 //  Photo.swift
 //  FS
 //
-//  Created by Quang Phu C. M. on 12/4/17.
+//  Created by Linh Vo D. on 12/7/17.
 //  Copyright © 2017 thinhxavi. All rights reserved.
 //
 
@@ -22,7 +22,9 @@ final class Photo: Object, Mappable {
 
     required convenience init?(map: Map) {
         self.init()
-        guard let _ = map.JSON["id"] as? String else { return nil }
+        if map.JSON["id"] == nil {
+            return nil
+        }
     }
 
     func mapping(map: Map) {
@@ -33,8 +35,8 @@ final class Photo: Object, Mappable {
         height <- map["height"]
     }
 
-    func path(width: Int = 100, height: Int = 100) -> String {
-        let path = prefix + "\(width)" + "x" + "\(height)" + suffix
+    func path(ratioWith: Int = 2, ratioHeight: Int = 2) -> String {
+        let path = prefix + "\(width / ratioWith)" + "x" + "\(height / ratioHeight)" + suffix
         return path
     }
 }

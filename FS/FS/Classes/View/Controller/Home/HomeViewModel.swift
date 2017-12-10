@@ -11,20 +11,33 @@ import RxSwift
 import RxCocoa
 import MVVM
 
-struct HomeViewModel {
+class HomeViewModel {
+
+    // MARK: - Properties
     var venues: Variable<[Venue]> = Variable([])
     var isLoading: PublishSubject<Bool> = PublishSubject()
     var isRefreshing: Variable<Bool> = Variable(false)
+    var isLoadmore: Variable<Bool> = Variable(false)
     var type: String = ""
 
     private var bag = DisposeBag()
 
     init() {
+        setup()
         getVenues()
     }
 
+    private func setup() {
+        isLoadmore.asObservable()
+            .filter { $0 == true }
+            .subscribe(onNext: { (l) in
+                self.getVenues()
+            })
+            .disposed(by: bag)
+    }
+
     private func getVenues() {
-        API.getVenues(params: [:])
+        API.getVenues(params: [:]).withHUD()
             .subscribe { (event) in
                 if let venues = event.element {
                     self.venues.value.append(contentsOf: venues)
@@ -38,9 +51,7 @@ struct HomeViewModel {
             }
             .disposed(by: bag)
     }
-    
     // MARK: Public functions
-
     func refresh() {
         if isRefreshing.value  {
             return

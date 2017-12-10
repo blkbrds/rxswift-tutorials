@@ -16,6 +16,7 @@ class ViewController: UIViewController, MVVM.View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.isTranslucent = false
     }
 
     deinit {
