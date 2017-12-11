@@ -10,6 +10,7 @@ import UIKit
 import SwiftUtils
 import SDWebImage
 import RxSwift
+import SVProgressHUD
 
 final class ProfileViewController: ViewController {
     @IBOutlet private weak var avatarImageView: UIImageView!
@@ -39,6 +40,9 @@ final class ProfileViewController: ViewController {
         viewModel.avatarURL.bind(onNext: { [weak self] avatar in
             guard let this = self else { return }
             this.avatarImageView.sd_setImage(with: avatar)
+        }).disposed(by: disposeBag)
+        viewModel.error.subscribe(onNext: { error in
+            SVProgressHUD.showError(withStatus: error.localizedDescription)
         }).disposed(by: disposeBag)
     }
 

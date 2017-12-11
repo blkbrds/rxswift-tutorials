@@ -22,20 +22,20 @@ extension API.User {
                               allowShowingAppStore: true)
     }
 
-    static func getAccessToken() -> Observable<Void> {
-        let observable = Observable<Void>.create { (observer) -> Disposable in
+    static func getAccessToken() -> Completable {
+        let completable = Completable.create { (observer) -> Disposable in
             FSOAuth.requestAccessToken(forCode: Helper.accessCode, clientId: API.clientId, callbackURIString: callbackString, clientSecret: API.clientSecret) { (accessToken, isSuccess, errorCode) in
                 if let accessToken = accessToken, isSuccess {
                     Helper.accessToken = accessToken
                     Helper.isLogedIn = true
-                    observer.onCompleted()
+                    observer(.completed)
                 } else {
-                    observer.onError(RxError.unknown)
+                    observer(.error(RxError.unknown))
                 }
             }
             return Disposables.create()
         }
-        return observable
+        return completable
     }
 
     static func getProfile() -> Single<User> {

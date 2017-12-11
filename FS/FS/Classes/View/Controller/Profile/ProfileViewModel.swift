@@ -65,9 +65,13 @@ final class ProfileViewModel: ViewModel {
         accessCodeObservable.subscribe(onNext: { [weak self] isHas in
             guard let this = self else { return }
             if isHas {
-                let observable = API.User.getAccessToken()
-                observable.subscribe({ (value) in
-                    print(value)
+                API.User.getAccessToken()
+                    .observeOn(MainScheduler.instance)
+                    .subscribe({ (event) in
+                        switch event {
+                        case .error(let error): this.error.onNext(error)
+                        default: break
+                        }
                 }).disposed(by: this.disposeBag)
             }
         }).disposed(by: disposeBag)

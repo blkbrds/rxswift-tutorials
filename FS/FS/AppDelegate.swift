@@ -31,6 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let accessCode = FSOAuth.accessCode(forFSOAuthURL: url, error: &errorCode),
                 errorCode == .none {
                 Helper.accessCode = accessCode
+            } else {
+                SVProgressHUD.showError(withStatus: "Login failure!")
             }
         }
         return true
