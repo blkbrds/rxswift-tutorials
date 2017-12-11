@@ -11,15 +11,43 @@ import RxSwift
 
 final class ProfileViewModel: ViewModel {
     var isLogedIn: Observable<Bool> = Observable<Bool>.of()
-    var userObservable: Observable<User> = Observable<User>.of()
     var accessCodeObservable: Observable<Bool> = Observable<Bool>.of()
+    var error = PublishSubject<Error>()
+    var name = PublishSubject<String>()
+    var email = PublishSubject<String>()
+    var address = PublishSubject<String>()
+    var gender = PublishSubject<String>()
+    var avatarURL = PublishSubject<URL?>()
 
+    private var userObservable: Single<User> = Single<User>.never() {
+        didSet {
+            userObservable
+                .observeOn(MainScheduler.instance)
+                .subscribe({ [weak self] event in
+                    guard let this = self else { return }
+                    switch event {
+                    case .success(let user): this.receivedResponse(user: user)
+                    case .error(let error): this.error.onNext(error)
+                    }
+
+                })
+                .disposed(by: disposeBag)
+        }
+    }
     private let disposeBag = DisposeBag()
 
     init() {
         isLogedIn = Helper.logInObservable
         accessCodeObservable = Helper.accessCodeObservable
         setupObservable()
+    }
+
+    private func receivedResponse(user: User) {
+        name.onNext(user.name)
+        address.onNext(user.address)
+        email.onNext(user.email)
+        avatarURL.onNext(user.avatar)
+        gender.onNext(user.gender)
     }
 
     private func setupObservable() {

@@ -16,7 +16,6 @@ final class ProfileViewController: ViewController {
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var sexLabel: UILabel!
     @IBOutlet private weak var emailLabel: UILabel!
-    @IBOutlet private weak var phoneLabel: UILabel!
     @IBOutlet private weak var addressLabel: UILabel!
     @IBOutlet private weak var loginButton: UIButton!
     @IBOutlet private weak var loginView: UIView!
@@ -33,15 +32,13 @@ final class ProfileViewController: ViewController {
         viewModel.isLogedIn
             .observeOn(MainScheduler.instance)
             .bind(to: loginView.rx.isHidden).disposed(by: disposeBag)
-        viewModel.userObservable
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] user in
+        viewModel.name.bind(to: nameLabel.rx.text).disposed(by: disposeBag)
+        viewModel.address.bind(to: addressLabel.rx.text).disposed(by: disposeBag)
+        viewModel.gender.bind(to: sexLabel.rx.text).disposed(by: disposeBag)
+        viewModel.email.bind(to: emailLabel.rx.text).disposed(by: disposeBag)
+        viewModel.avatarURL.bind(onNext: { [weak self] avatar in
             guard let this = self else { return }
-            this.nameLabel.text = user.name
-            this.sexLabel.text = user.gender
-            this.emailLabel.text = user.email
-            this.addressLabel.text = user.address
-            this.avatarImageView.sd_setImage(with: user.avatar)
+            this.avatarImageView.sd_setImage(with: avatar)
         }).disposed(by: disposeBag)
     }
 

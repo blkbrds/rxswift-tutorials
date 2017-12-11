@@ -38,66 +38,20 @@ extension API.User {
         return observable
     }
 
-    static func getProfile() -> Observable<User> {
-        let observable = Observable<User>.create { (observer) -> Disposable in
+    static func getProfile() -> Single<User> {
+        let observable = Single<User>.create { (observer) -> Disposable in
             let path = profilePath + "?oauth_token=\(Helper.accessToken)&v=20171207"
             _ = API.request(path: path).subscribe({ (value) in
                 guard let json = value.element,
                     let userJson = json["user"] as? JSObject,
                     let user = Mapper<User>().map(JSON: userJson) else {
-                    observer.onError(RxError.noElements)
+                    observer(.error(RxError.noElements))
                         return
                 }
-                observer.onNext(user)
-                observer.onCompleted()
+                observer(.success(user))
             })
             return Disposables.create()
         }
         return observable
-    }
-}
-
-final class Helper {
-    static let logInObservable = BehaviorSubject<Bool>(value: isLogedIn)
-    private static var isLogedInKey: String { return "isLogedInKey" }
-    static var isLogedIn: Bool {
-        set {
-            UserDefaults.standard.set(newValue, forKey: isLogedInKey)
-            UserDefaults.standard.synchronize()
-            logInObservable.onNext(newValue)
-        }
-        get {
-            return UserDefaults.standard.bool(forKey: isLogedInKey)
-        }
-    }
-
-    private static var accessTokenKey: String { return "accessTokenKey" }
-    static var accessToken: String {
-        set {
-            UserDefaults.standard.set(newValue, forKey: accessTokenKey)
-            UserDefaults.standard.synchronize()
-        }
-        get {
-            if let token = UserDefaults.standard.string(forKey: accessTokenKey) {
-                 return token
-            }
-            return ""
-        }
-    }
-
-    static let accessCodeObservable = BehaviorSubject<Bool>(value: false)
-    private static var accessCodeKey: String { return "accessCodeKey" }
-    static var accessCode: String {
-        set {
-            UserDefaults.standard.set(newValue, forKey: accessCodeKey)
-            UserDefaults.standard.synchronize()
-            accessCodeObservable.onNext(true)
-        }
-        get {
-            if let code = UserDefaults.standard.string(forKey: accessCodeKey) {
-                return code
-            }
-            return ""
-        }
     }
 }

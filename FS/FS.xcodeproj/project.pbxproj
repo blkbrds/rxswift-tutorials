@@ -33,6 +33,7 @@
 		853C66B21FDE29950004A28F /* API.User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853C66B11FDE29950004A28F /* API.User.swift */; };
 		853C66B41FDE299E0004A28F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853C66B31FDE299E0004A28F /* User.swift */; };
 		853C66B61FDE29B40004A28F /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853C66B51FDE29B40004A28F /* ProfileViewModel.swift */; };
+		853C66B91FDE43CF0004A28F /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853C66B81FDE43CF0004A28F /* Helper.swift */; };
 		99311FEE1FD4EF8C00C4F426 /* FSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99311FED1FD4EF8C00C4F426 /* FSTests.swift */; };
 		BC299787FDEF5E07CEA25D41 /* Pods_FS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23EE476810737E93C6EACB9 /* Pods_FS.framework */; };
 		C867A7371FD8CF2A00847899 /* VenueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C867A7341FD8CF2900847899 /* VenueCell.swift */; };
@@ -83,6 +84,7 @@
 		853C66B11FDE29950004A28F /* API.User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.User.swift; sourceTree = "<group>"; };
 		853C66B31FDE299E0004A28F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		853C66B51FDE29B40004A28F /* ProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		853C66B81FDE43CF0004A28F /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		99311FEB1FD4EF8C00C4F426 /* FSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99311FED1FD4EF8C00C4F426 /* FSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSTests.swift; sourceTree = "<group>"; };
 		99311FEF1FD4EF8C00C4F426 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -175,9 +177,10 @@
 		3A34B49E1FCD6B7C007A4CC6 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				853C66B71FDE43BA0004A28F /* Define */,
+				3A34B49F1FCD6B7C007A4CC6 /* Model */,
 				3A34B4AB1FCD6BEA007A4CC6 /* Reactive+Extension */,
 				3A34B4A11FCD6B7C007A4CC6 /* Service */,
-				3A34B49F1FCD6B7C007A4CC6 /* Model */,
 				3A34B4A41FCD6B7C007A4CC6 /* View */,
 			);
 			path = Classes;
@@ -289,6 +292,14 @@
 				A2C5EB88A78E6F7081EA827C /* Pods_FSTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		853C66B71FDE43BA0004A28F /* Define */ = {
+			isa = PBXGroup;
+			children = (
+				853C66B81FDE43CF0004A28F /* Helper.swift */,
+			);
+			path = Define;
 			sourceTree = "<group>";
 		};
 		99311FEC1FD4EF8C00C4F426 /* FSTests */ = {
@@ -584,6 +595,7 @@
 				C867A7391FD8CF2A00847899 /* VenueCellViewModel.swift in Sources */,
 				853C66B41FDE299E0004A28F /* User.swift in Sources */,
 				3A34B4A81FCD6B7C007A4CC6 /* API.swift in Sources */,
+				853C66B91FDE43CF0004A28F /* Helper.swift in Sources */,
 				853C66B21FDE29950004A28F /* API.User.swift in Sources */,
 				3A34B4CE1FCDC139007A4CC6 /* API.Venue.swift in Sources */,
 				3A34B4B61FCD6D88007A4CC6 /* ViewController.swift in Sources */,
