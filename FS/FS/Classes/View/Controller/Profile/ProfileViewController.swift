@@ -9,6 +9,7 @@
 import UIKit
 import SwiftUtils
 import SDWebImage
+import RxSwift
 
 final class ProfileViewController: ViewController {
     @IBOutlet private weak var avatarImageView: UIImageView!
@@ -29,8 +30,12 @@ final class ProfileViewController: ViewController {
         avatarImageView.corner = avatarImageView.bounds.height / 2
         logoutButton.corner = logoutButton.bounds.height / 2
         loginButton.corner = loginButton.bounds.height / 2
-        viewModel.isLogedIn.bind(to: loginView.rx.isHidden).disposed(by: disposeBag)
-        viewModel.userObservable.subscribe(onNext: { [weak self] user in
+        viewModel.isLogedIn
+            .observeOn(MainScheduler.instance)
+            .bind(to: loginView.rx.isHidden).disposed(by: disposeBag)
+        viewModel.userObservable
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] user in
             guard let this = self else { return }
             this.nameLabel.text = user.name
             this.sexLabel.text = user.gender

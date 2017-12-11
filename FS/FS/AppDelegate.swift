@@ -38,13 +38,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 func showHUD() {
-    DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+    DispatchQueue.main.async {
         SVProgressHUD.show()
     }
 }
 
 func dismissHUD() {
-    DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+    DispatchQueue.main.async {
         SVProgressHUD.dismiss()
     }
 }
