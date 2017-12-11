@@ -52,21 +52,17 @@ class SearchViewController: ViewController {
     }
 
     private func setupObservables() {
-        viewModel.cellViewModels
+        viewModel.subject
             .do(onNext: { (_) in
+                self.indicator.stopAnimating()
+            }, onError: { (_) in
+                self.indicator.stopAnimating()
+            }, onCompleted: {
                 self.indicator.stopAnimating()
             })
             .bind(to: tableView.rx.items(cellIdentifier: "VenueCell", cellType: VenueCell.self)) { (index, cellViewModel, cell) in
                 cell.viewModel = cellViewModel
             }.disposed(by: bag)
-
-        tableView.rx.contentOffset
-            .subscribe { (_) in
-                if self.searchBar.isFirstResponder {
-                    _ = self.searchBar.resignFirstResponder()
-                }
-            }
-            .disposed(by: bag)
 
         searchBar.rx.text
             .orEmpty

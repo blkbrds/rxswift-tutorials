@@ -44,8 +44,7 @@ extension API {
                 }
                 observer.onNext(venues)
             }, onError: { (error) in
-                observer.onError(error)
-                observer.onCompleted()
+                observer.onNext([])
             }, onCompleted: {
                 observer.onCompleted()
             })

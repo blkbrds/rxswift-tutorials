@@ -12,12 +12,10 @@ import RxCocoa
 
 final class SearchViewModel {
 
-    let cellViewModels: Observable<[VenueCellViewModel]>
-    private let subject = PublishSubject<[VenueCellViewModel]>()
+    let subject = PublishSubject<[VenueCellViewModel]>()
     let bag = DisposeBag()
 
     init(searchControl: ControlProperty<String?>) {
-        cellViewModels = subject
         searchControl.orEmpty
             .debounce(0.5, scheduler: MainScheduler.instance)
             .filter { (str) -> Bool in
@@ -31,10 +29,17 @@ final class SearchViewModel {
                     return VenueCellViewModel(venue: venue)
                 })
             })
-            .subscribe(onNext: { (viewModels) in
-                self.subject.onNext(viewModels)
-            })
-            .disposed(by: bag)
+            .subscribeOn(MainScheduler.instance)
+            .subscribe({ (event) in
+                switch event {
+                case .next(let viewModels):
+                    self.subject.onNext(viewModels)
+                case .error(_):
+                    self.subject.onNext([])
+                case .completed:
+                    self.subject.onCompleted()
+                }
+            }).disposed(by: bag)
 
         searchControl.orEmpty
             .filter { (str) -> Bool in

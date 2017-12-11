@@ -49,7 +49,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ne6-DV-zBO">
-                            <rect key="frame" x="339" y="54" width="20" height="20"/>
+                            <rect key="frame" x="343" y="54" width="20" height="20"/>
                         </activityIndicatorView>
                     </subviews>
                     <color key="backgroundColor" red="0.96862745100000003" green="0.95686274510000002" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -61,11 +61,11 @@
                         <constraint firstAttribute="trailing" secondItem="jc2-bA-wEt" secondAttribute="trailing" id="aO1-5A-XBa"/>
                         <constraint firstAttribute="trailing" secondItem="QtW-46-td4" secondAttribute="trailing" id="aUs-ww-sdY"/>
                         <constraint firstItem="ne6-DV-zBO" firstAttribute="centerY" secondItem="QtW-46-td4" secondAttribute="centerY" id="b48-Td-VJZ"/>
-                        <constraint firstItem="ne6-DV-zBO" firstAttribute="trailing" secondItem="QtW-46-td4" secondAttribute="trailing" constant="-16" id="buB-MI-CRb"/>
+                        <constraint firstItem="ne6-DV-zBO" firstAttribute="trailing" secondItem="QtW-46-td4" secondAttribute="trailing" constant="-12" id="buB-MI-CRb"/>
                         <constraint firstItem="QtW-46-td4" firstAttribute="top" secondItem="jc2-bA-wEt" secondAttribute="bottom" id="dsx-hB-pOz"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9te-Yx-wrm">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9te-Yx-wrm">
                     <rect key="frame" x="0.0" y="112.5" width="375" height="554.5"/>
                     <color key="backgroundColor" red="0.96862745100000003" green="0.95686274510000002" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                 </tableView>
