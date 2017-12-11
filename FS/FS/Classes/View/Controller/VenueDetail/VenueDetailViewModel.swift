@@ -22,9 +22,13 @@ final class VenueDetailViewModel {
     }
 
     func toggleFavorite() {
-        DatabaseManager.shared.updateObject {
-            guard let venue = venue else { return }
-            venue.isFavorite = !venue.isFavorite
-        }
+        DatabaseManager.shared.write().subscribe({ (event) in
+            switch event {
+            case .completed:
+                guard let venue = self.venue else { return }
+                venue.isFavorite = !venue.isFavorite
+            default: break
+            }
+        }).dispose()
     }
 }

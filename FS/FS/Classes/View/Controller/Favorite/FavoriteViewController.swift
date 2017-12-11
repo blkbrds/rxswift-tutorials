@@ -41,9 +41,9 @@ final class FavoriteViewController: ViewController {
     private func setupTableViewBinding() {
         viewModel.venues
             .asObservable()
-            .bind(to: tableView.rx.items(cellIdentifier: VenueCell.identifier)) {  [weak self] (row, _, cell) in
-                guard let this = self, let cell = cell as? VenueCell else { return }
-                cell.viewModel = this.viewModel.viewModelForItem(at: IndexPath(row: row, section: 0))
+            .bind(to: tableView.rx.items(cellIdentifier: VenueCell.identifier)) { (row, _, cell) in
+                guard let cell = cell as? VenueCell else { return }
+                cell.viewModel = self.viewModel.viewModelForItem(at: IndexPath(row: row, section: 0))
             }
             .disposed(by: disposeBag)
     }

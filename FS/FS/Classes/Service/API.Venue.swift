@@ -29,12 +29,12 @@ extension API {
                     if let venueObject = item["venue"] as? JSObject {
                         if let venue = Mapper<Venue>().map(JSON: venueObject) {
                             venues.append(venue)
-                            DatabaseManager.shared.addObjects(venues)
                         }
                     }
                 }
                 observer.onNext(venues)
                 observer.onCompleted()
+                DatabaseManager.shared.addObjects(venues)
             })
             return Disposables.create()
         }

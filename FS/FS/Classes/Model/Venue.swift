@@ -20,9 +20,9 @@ final class Venue: Object, Mappable {
     dynamic var category: String = ""
     dynamic var likes: String = ""
     dynamic var phone: String = ""
+    dynamic var thumbnail: Photo?
     private dynamic var address: String = ""
     private dynamic var city: String = ""
-    var thumbnail: Photo?
 
     var fullAddress: String {
         if city.isEmpty {

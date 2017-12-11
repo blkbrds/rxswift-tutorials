@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import RxSwift
 
 final class DatabaseManager {
     static let shared = DatabaseManager()
@@ -68,10 +69,17 @@ extension DatabaseManager {
     }
 
     //  MARK: - update object
-    func updateObject(_ block:() -> ()) {
-        try! realm.write {
-            block()
-        }
+    func write() -> Observable<Void> {
+        return Observable.create({ (observer) -> Disposable in
+            do {
+                try self.realm.write {
+                    observer.onCompleted()
+                }
+            } catch {
+                observer.onError(error)
+            }
+            return Disposables.create()
+        })
     }
 
     //  MARK: - remove object

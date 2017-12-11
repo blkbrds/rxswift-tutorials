@@ -26,3 +26,9 @@ public extension ObservableType {
         })
     }
 }
+
+extension Observable {
+//    func onRealm() -> Observable<Self.E> {
+//        return Observable.empty()
+//    }
+}

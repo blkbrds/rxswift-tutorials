@@ -25,15 +25,14 @@ final class FavoriteViewModel: ViewModel {
         results = DatabaseManager.shared.objects(Venue.self, filter: pre)
 
         RealmObservable
-            .collection(from: results)
-            .subscribe({ [weak self] (event) in
-                guard let this = self else { return }
+            .changeset(from: results)
+            .subscribe { (event) in
                 switch event {
                 case .next(let element):
-                    this.venues.value = element
+                    self.venues.value = element.0
                 default: break
                 }
-        }).disposed(by: bag)
+            }.disposed(by: bag)
     }
 
     func viewModelForItem(at indexPath: IndexPath) -> VenueCellViewModel {
