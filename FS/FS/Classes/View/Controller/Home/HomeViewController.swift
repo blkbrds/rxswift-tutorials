@@ -52,7 +52,7 @@ class HomeViewController: ViewController {
                     detailController.viewModel = viewModel
                     this.navigationController?.pushViewController(detailController, animated: true)
                 case .error(let error):
-                    print("dkm", error.localizedDescription)
+                    print("error: ", error.localizedDescription)
                 default:
                     break
                 }
@@ -71,17 +71,19 @@ class HomeViewController: ViewController {
             .addDisposableTo(disposeBag)
 
         refreshControl.rx.controlEvent(.valueChanged)
-            .subscribe(onNext: { (_) in
-                self.viewModel.refresh()
+            .subscribe(onNext: { [weak self] (_) in
+                guard let this = self else { return }
+                this.viewModel.refresh()
             })
             .disposed(by: disposeBag)
 
         tableView.rx.contentOffset
             .subscribeOn(MainScheduler.instance)
-            .subscribe { (event) in
-                let maximumOffset = self.tableView.contentSize.height - self.tableView.frame.size.height
-                if !self.viewModel.isLoadmore.value, let currentOffset = event.element?.y, maximumOffset == currentOffset {
-                    self.viewModel.isLoadmore.value = true
+            .subscribe { [weak self] (event) in
+                guard let this = self else { return }
+                let maximumOffset = this.tableView.contentSize.height - this.tableView.frame.size.height
+                if !this.viewModel.isLoadmore.value, let currentOffset = event.element?.y, maximumOffset == currentOffset {
+                    this.viewModel.isLoadmore.value = true
                 }
             }
             .disposed(by: disposeBag)

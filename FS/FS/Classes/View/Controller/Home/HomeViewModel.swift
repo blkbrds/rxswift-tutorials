@@ -44,15 +44,19 @@ class HomeViewModel {
     private func setup() {
         isLoadmore.asObservable()
             .filter { $0 == true }
-            .subscribe(onNext: { (_) in
-                self.getVenues()
+            .subscribe(onNext: { [weak self] (_) in
+                guard let this = self else { return }
+                if this.venues.value.count % 10 == 0 {
+                    this.getVenues()
+                }
             })
             .disposed(by: bag)
 
         section.asObservable()
-            .subscribe(onNext: { section in
-                self.venues.value.removeAll()
-                self.getVenues()
+            .subscribe(onNext: { [weak self] (section) in
+                guard let this = self else { return }
+                this.venues.value.removeAll()
+                this.getVenues()
             })
             .disposed(by: bag)
     }
@@ -62,17 +66,18 @@ class HomeViewModel {
         params["section"] = section.value.name
         params["offset"] = venues.value.count
         API.getVenues(params: params).withHUD()
-            .subscribe { (event) in
+            .subscribe { [weak self] (event) in
+                guard let this = self else { return }
                 if let venues = event.element {
-                    self.venues.value.append(contentsOf: venues)
-                    self.isLoading.onCompleted()
+                    this.venues.value.append(contentsOf: venues)
+                    this.isLoading.onCompleted()
                 } else {
                     if let error = event.error {
-                        self.isLoading.onError(error)
+                        this.isLoading.onError(error)
                     }
                 }
-                self.isRefreshing.value = false
-                self.isLoadmore.value = false
+                this.isRefreshing.value = false
+                this.isLoadmore.value = false
             }
             .disposed(by: bag)
     }
