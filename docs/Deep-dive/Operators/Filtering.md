@@ -155,6 +155,8 @@ C
 
   Đối lập với **skiping** thì ta có phép **taking**. Nếu `skip(n)` cho phép bỏ qua những items được phát từ lần phát thứ 1 đến thứ n. Thì `take(n)` cho phép nhận những items được phát từ lần phát thứ 1 đến thứ n.
 
+  ![Take](./resources/images/3.2.3/take.png)
+  
 ```swift
 let disposeBag = DisposeBag()
 Observable.of(1, 2, 3, 4, 5, 6)
@@ -176,7 +178,7 @@ Observable.of(1, 2, 3, 4, 5, 6)
 
   Ở phần **skiping operator** chúng ta có định nghĩa `skipWhile()` thì tương tự ở phần này chúng ta cũng sẽ có `takeWhile()`. Mở rộng hơn một chút, đôi lúc chúng ta lại muốn sử dụng chỉ số (index) của item được phát ra để thoả mãn điều kiện lọc nào đó. `takeWhileWithIndex()` sẽ giải quyết vấn đề này.
 
-  ![Take](./resources/images/3.2.3/take.png)
+  ![TakeWhileWithIndex](./resources/images/3.2.3/takeWhileWithIndex.png)
   ​	
 ```swift
 let disposeBag = DisposeBag()
