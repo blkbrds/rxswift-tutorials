@@ -63,6 +63,11 @@ class HomeViewModel {
 }
 
 extension HomeViewModel {
+    func venue(at indexPath: IndexPath) -> Venue {
+        guard indexPath.row < venues.value.count else { return Venue() }
+        return venues.value[indexPath.row]
+    }
+
     func viewModelForItem(at indexPath: IndexPath) -> VenueCellViewModel {
         guard indexPath.count < venues.value.count else { return VenueCellViewModel() }
         let venue = venues.value[indexPath.row]

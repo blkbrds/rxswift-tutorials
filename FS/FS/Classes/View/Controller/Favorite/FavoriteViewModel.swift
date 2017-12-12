@@ -36,6 +36,11 @@ final class FavoriteViewModel: ViewModel {
             }.disposed(by: bag)
     }
 
+    func venue(at indexPath: IndexPath) -> Venue {
+        guard indexPath.row < venues.value.count else { return Venue() }
+        return venues.value[indexPath.row]
+    }
+
     func viewModelForItem(at indexPath: IndexPath) -> VenueCellViewModel {
         guard indexPath.row >= 0 && indexPath.row < venues.value.count else { return VenueCellViewModel() }
         return VenueCellViewModel(venue: venues.value[indexPath.row])

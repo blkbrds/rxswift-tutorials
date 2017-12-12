@@ -47,6 +47,7 @@ final class FavoriteViewController: ViewController {
             }
             .disposed(by: disposeBag)
 
+        // Handle item deleted
         tableView.rx.itemDeleted.subscribe { (event) in
             switch event {
             case .next(let element):
@@ -56,6 +57,32 @@ final class FavoriteViewController: ViewController {
             }
         }.disposed(by: disposeBag)
 
+        // Handle when did select cell
+        tableView.rx.itemSelected
+            .map { indexPath in
+                self.viewModel.venue(at: indexPath)
+            }
+            .subscribeOn(MainScheduler.instance)
+            .subscribe { [weak self] (event) in
+                guard let this = self else { return }
+                switch event {
+                case .next(let venue):
+                    if let selectRowIndexPath = this.tableView.indexPathForSelectedRow {
+                        this.tableView.deselectRow(at: selectRowIndexPath, animated: true)
+                    }
+                    let viewModel = VenueDetailViewModel(venueId: venue.id)
+                    let detailController = VenueDetailViewController()
+                    detailController.viewModel = viewModel
+                    this.navigationController?.pushViewController(detailController, animated: true)
+                case .error(let error):
+                    print(error.localizedDescription)
+                default:
+                    break
+                }
+            }
+            .disposed(by: disposeBag)
+
+        // Set delegate
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
     }
 

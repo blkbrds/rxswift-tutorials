@@ -37,7 +37,7 @@ final class HomeViewController: ViewController {
 
         tableView.rx.itemSelected
             .map { indexPath in
-                self.viewModel.venues.value[indexPath.row]
+                self.viewModel.venue(at: indexPath)
             }
             .subscribeOn(MainScheduler.instance)
             .subscribe { [weak self] (event) in
