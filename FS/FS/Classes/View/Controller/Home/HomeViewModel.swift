@@ -91,4 +91,12 @@ class HomeViewModel {
         venues.value.removeAll()
         getVenues()
     }
+
+    func venue(at indexPath: IndexPath) -> Venue?  {
+        if indexPath.row < venues.value.count {
+            return venues.value[indexPath.row]
+        } else {
+            return nil
+        }
+    }
 }

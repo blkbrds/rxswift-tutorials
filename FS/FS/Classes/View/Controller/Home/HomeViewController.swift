@@ -15,31 +15,39 @@ class HomeViewController: ViewController {
 
     // MARK: - IBOutlets
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var segmentedControl: UISegmentedControl!
 
     // MARK: - Properties
-    private var refreshControl = UIRefreshControl()
     var viewModel = HomeViewModel()
+    private var refreshControl = UIRefreshControl()
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Home"
-        setupUI()
-        setupData()
+        configuration()
     }
 
     // MARK: - Private
-    private func setupUI() {
+    private func configuration() {
         let nib = UINib(nibName: "VenueCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "VenueCell")
         tableView.rowHeight = 143.0
         tableView.addSubview(refreshControl)
 
+
+        // Bind tableview
+        viewModel.venues.asObservable()
+            .bind(to: tableView.rx.items(cellIdentifier: "VenueCell", cellType: VenueCell.self)) { (index, venue, cell) in
+                cell.viewModel = VenueCellViewModel(venue: venue)
+            }
+            .disposed(by: disposeBag)
+
+        // TableView itemSelected
         tableView.rx.itemSelected
             .map { indexPath in
-                self.viewModel.venues.value[indexPath.row]
+                self.viewModel.venue(at: indexPath)
             }
-            .subscribeOn(MainScheduler.instance)
             .subscribe { [weak self] (event) in
                 guard let this = self else { return }
                 switch event {
@@ -47,27 +55,38 @@ class HomeViewController: ViewController {
                     if let selectRowIndexPath = this.tableView.indexPathForSelectedRow {
                         this.tableView.deselectRow(at: selectRowIndexPath, animated: true)
                     }
+                    guard let venue = venue else { return }
                     let viewModel = VenueDetailViewModel(venueId: venue.id)
                     let detailController = VenueDetailViewController()
                     detailController.viewModel = viewModel
                     this.navigationController?.pushViewController(detailController, animated: true)
                 case .error(let error):
-                    print("error: ", error.localizedDescription)
+                    let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .actionSheet)
+                    let closeAction = UIAlertAction(title: "Close", style: .cancel, handler: nil)
+                    alert.addAction(closeAction)
+                    this.present(alert, animated: true, completion: nil)
                 default:
                     break
                 }
             }
             .disposed(by: disposeBag)
-    }
 
-    private func setupData() {
-        viewModel.venues.asObservable()
-            .bind(to: tableView.rx.items(cellIdentifier: "VenueCell", cellType: VenueCell.self)) { (index, venue, cell) in
-                cell.viewModel = VenueCellViewModel(venue: venue)
+        // selectedSegmentIndex
+        segmentedControl.rx.selectedSegmentIndex
+            .asObservable()
+            .subscribe { (event) in
+                guard let index = event.element else { return }
+                if index == 0 {
+                    self.viewModel.section.value = .coffee
+                } else {
+                    self.viewModel.section.value = .food
+                }
             }
-            .disposed(by: disposeBag)
+            .addDisposableTo(disposeBag)
 
-        viewModel.isRefreshing.asDriver().drive(refreshControl.rx.isRefreshing)
+        // Refresh
+        viewModel.isRefreshing.asDriver()
+            .drive(refreshControl.rx.isRefreshing)
             .addDisposableTo(disposeBag)
 
         refreshControl.rx.controlEvent(.valueChanged)
@@ -77,24 +96,17 @@ class HomeViewController: ViewController {
             })
             .disposed(by: disposeBag)
 
+        // ContentOffset
         tableView.rx.contentOffset
-            .subscribeOn(MainScheduler.instance)
-            .subscribe { [weak self] (event) in
-                guard let this = self else { return }
-                let maximumOffset = this.tableView.contentSize.height - this.tableView.frame.size.height
-                if !this.viewModel.isLoadmore.value, let currentOffset = event.element?.y, maximumOffset == currentOffset {
-                    this.viewModel.isLoadmore.value = true
+            .map { $0.y }
+            .subscribe { (event) in
+                if let y = event.element {
+                    let maximumOffset = self.tableView.contentSize.height - self.tableView.frame.size.height
+                    if !self.viewModel.isLoadmore.value && y == maximumOffset {
+                        self.viewModel.isLoadmore.value = true
+                    }
                 }
             }
             .disposed(by: disposeBag)
-    }
-
-    // MARK: - Actions
-    @IBAction func segmentedTouchUpInside(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0 {
-            viewModel.section.value = .coffee
-        } else {
-            viewModel.section.value = .food
-        }
     }
 }

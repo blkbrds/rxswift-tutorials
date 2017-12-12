@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="FS" customModuleProvider="target">
             <connections>
+                <outlet property="segmentedControl" destination="csJ-hK-QO5" id="WXw-NJ-MOG"/>
                 <outlet property="tableView" destination="4MU-0f-n9S" id="09t-TM-muO"/>
                 <outlet property="view" destination="iN0-l3-epB" id="89c-re-x8e"/>
             </connections>
@@ -31,9 +32,6 @@
                         <segment title="Drinks"/>
                         <segment title="Foods"/>
                     </segments>
-                    <connections>
-                        <action selector="segmentedTouchUpInside:" destination="-1" eventType="valueChanged" id="7bx-lg-e1H"/>
-                    </connections>
                 </segmentedControl>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
