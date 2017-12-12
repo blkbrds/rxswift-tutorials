@@ -7,19 +7,19 @@
 //
 
 import UIKit
+import SnapKit
 import RxSwift
 import RxCocoa
 import SVProgressHUD
 
-class HomeViewController: ViewController {
-
+final class HomeViewController: ViewController {
     // MARK: - IBOutlets
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var segmentedControl: UISegmentedControl!
 
     // MARK: - Properties
-    var viewModel = HomeViewModel()
     private var refreshControl = UIRefreshControl()
+    var viewModel = HomeViewModel()
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -46,7 +46,7 @@ class HomeViewController: ViewController {
         // TableView itemSelected
         tableView.rx.itemSelected
             .map { indexPath in
-                self.viewModel.venue(at: indexPath)
+                self.viewModel.venueItem(at: indexPath)
             }
             .subscribe { [weak self] (event) in
                 guard let this = self else { return }

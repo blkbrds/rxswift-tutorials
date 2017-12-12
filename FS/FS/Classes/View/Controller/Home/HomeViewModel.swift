@@ -82,7 +82,7 @@ class HomeViewModel {
             .disposed(by: bag)
     }
 
-    // MARK: Public
+    // MARK: Public functions
     func refresh() {
         if isRefreshing.value  {
             return
@@ -92,11 +92,24 @@ class HomeViewModel {
         getVenues()
     }
 
-    func venue(at indexPath: IndexPath) -> Venue?  {
+    func venueItem(at indexPath: IndexPath) -> Venue?  {
         if indexPath.row < venues.value.count {
             return venues.value[indexPath.row]
         } else {
             return nil
         }
+    }
+}
+
+extension HomeViewModel {
+    func venue(at indexPath: IndexPath) -> Venue {
+        guard indexPath.row < venues.value.count else { return Venue() }
+        return venues.value[indexPath.row]
+    }
+
+    func viewModelForItem(at indexPath: IndexPath) -> VenueCellViewModel {
+        guard indexPath.count < venues.value.count else { return VenueCellViewModel() }
+        let venue = venues.value[indexPath.row]
+        return VenueCellViewModel(venue: venue)
     }
 }
