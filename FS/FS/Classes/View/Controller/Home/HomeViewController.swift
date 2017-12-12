@@ -74,15 +74,12 @@ final class HomeViewController: ViewController {
         // selectedSegmentIndex
         segmentedControl.rx.selectedSegmentIndex
             .asObservable()
-            .subscribe { (event) in
-                guard let index = event.element else { return }
-                if index == 0 {
-                    self.viewModel.section.value = .coffee
-                } else {
-                    self.viewModel.section.value = .food
-                }
+            .map { rawValue -> HomeViewModel.Section? in
+                return HomeViewModel.Section(rawValue: rawValue)
             }
-            .addDisposableTo(disposeBag)
+            .unwrap()
+            .bind(to: viewModel.section)
+            .disposed(by: disposeBag)
 
         // Refresh
         viewModel.isRefreshing.asDriver()

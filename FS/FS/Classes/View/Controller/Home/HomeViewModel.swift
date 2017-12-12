@@ -53,6 +53,7 @@ class HomeViewModel {
             .disposed(by: bag)
 
         section.asObservable()
+            .skip(1)
             .subscribe(onNext: { [weak self] (section) in
                 guard let this = self else { return }
                 this.venues.value.removeAll()
