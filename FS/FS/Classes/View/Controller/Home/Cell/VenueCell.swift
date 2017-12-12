@@ -52,15 +52,12 @@ final class VenueCell: UITableViewCell {
         viewModel.name.bind(to: nameLabel.rx.text).addDisposableTo(disposeBag)
         viewModel.address.bind(to: addressLabel.rx.text).addDisposableTo(disposeBag)
         viewModel.rating.bind(to: ratingLabel.rx.text).addDisposableTo(disposeBag)
-
-        thumbnailImageView
-            .setImage(path: viewModel.photoPath)
-            .subscribe { event in
-                switch event {
-                case .next(_): print("next")
-                case .error(let error): print(error.localizedDescription)
-                case .completed: print("Complete")
-                }
-        }.disposed(by: disposeBag)
+        thumbnailImageView.setImage(path: viewModel.photoPath)
+        .subscribe()
+        .disposed(by: disposeBag)
     }
+}
+
+extension UIImageView {
+    
 }

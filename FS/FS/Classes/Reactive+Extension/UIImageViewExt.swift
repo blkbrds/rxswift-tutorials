@@ -10,21 +10,24 @@ import UIKit
 import RxSwift
 
 extension UIImageView {
-    func setImage(path: String?) -> Observable<UIImage?> {
-        return Observable<UIImage?>.create({ (observer) -> Disposable in
+    func setImage(path: String?) -> Observable<UIImage> {
+        return Observable<UIImage>.create({ (observer) -> Disposable in
 
             guard let url = URL(string: path ?? "") else {
                 let error = NSError(message: "Path is nil")
                 observer.onError(error)
                 return Disposables.create()
             }
-            let disposable = URLSession.shared.rx.data(request: URLRequest(url: url)).subscribe({ (event) in
+            let disposable = URLSession.shared.rx.data(request: URLRequest(url: url))
+                .observeOn(MainScheduler.instance)
+                .subscribe({ (event) in
                 switch event {
                 case .next(let data):
-                    DispatchQueue.main.async {
-                        let image = UIImage(data: data)
+                    if let image = UIImage(data: data) {
                         self.image = image
                         observer.onNext(image)
+                    } else {
+                        observer.onError(RxError.unknown)
                     }
                 case .error(let error):
                     observer.onError(error)

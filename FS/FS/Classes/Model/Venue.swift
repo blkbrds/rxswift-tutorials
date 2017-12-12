@@ -53,6 +53,9 @@ final class Venue: Object, Mappable {
         likes <- map["likes.summary"]
         phone <- map["contact.phone"]
         thumbnail <- map["photos.groups.0.items.0"]
+        if let venue = Venue.fetch(by: self.id) {
+            self.isFavorite = venue.isFavorite
+        }
     }
 }
 
