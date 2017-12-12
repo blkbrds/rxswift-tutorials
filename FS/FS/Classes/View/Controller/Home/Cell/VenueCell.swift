@@ -9,6 +9,12 @@
 import UIKit
 import RxSwift
 
+extension UIView {
+    static var identifier: String {
+        return String(describing: self)
+    }
+}
+
 final class VenueCell: UITableViewCell {
 
     // MARK: - IBOutlets
@@ -46,15 +52,12 @@ final class VenueCell: UITableViewCell {
         viewModel.name.bind(to: nameLabel.rx.text).addDisposableTo(disposeBag)
         viewModel.address.bind(to: addressLabel.rx.text).addDisposableTo(disposeBag)
         viewModel.rating.bind(to: ratingLabel.rx.text).addDisposableTo(disposeBag)
-
-        guard let url = viewModel.photoURL else { return }
-        URLSession.shared.rx.data(request: URLRequest(url: url))
-            .subscribe(onNext: { [weak self] (data) in
-                guard let this = self else { return }
-                DispatchQueue.main.async {
-                    this.thumbnailImageView.image = UIImage(data: data)
-                }
-            })
-            .addDisposableTo(disposeBag)
+        thumbnailImageView.setImage(path: viewModel.photoPath)
+        .subscribe()
+        .disposed(by: disposeBag)
     }
+}
+
+extension UIImageView {
+    
 }

@@ -26,6 +26,7 @@ final class ProfileViewController: ViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Profile"
         navigationController?.navigationBar.isTranslucent = false
         avatarImageView.corner = avatarImageView.bounds.height / 2
         logoutButton.corner = logoutButton.bounds.height / 2

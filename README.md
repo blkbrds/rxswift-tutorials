@@ -144,7 +144,7 @@ X là một 'error' nào đó
 ### 1.3. Operator - man in the middle <a name="Operator-man-in-the-middle"></a>
 Operators là những phép toán cho phép biển đổi observable thành observable mới để phù hợp với nhu cầu sử dụng
 
-Một số operators cơ bản trong RxSwift được liệt kê [tại đây](docs/deep-dive/operators)
+Một số operators cơ bản trong RxSwift được liệt kê [tại đây](docs/Deep-dive/Operators)
 
 **Example 1:**
 
