@@ -23,6 +23,7 @@ class TabbarController: UITabBarController {
         let homeController = HomeViewController()
         let homeNavigation = UINavigationController(rootViewController: homeController)
         let searchController = SearchViewController()
+        searchController.tabBarItem = UITabBarItem(title: "Search", image: UIImage(named: "ic-search-unselect"), selectedImage: UIImage(named: "ic-search-unselect"))
         let searchNavigation = UINavigationController(rootViewController: searchController)
         let favoriteController = FavoriteViewController()
         let favoriteNavigation = UINavigationController(rootViewController: favoriteController)

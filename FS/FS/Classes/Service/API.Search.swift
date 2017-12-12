@@ -23,31 +23,36 @@ extension API {
             "venuePhotos": 1
         ]
         return Observable<[Venue]>.create({ (observer) -> Disposable in
-            _ = RxAlamofire.json(.get, apiEndpoint + path, parameters: params).subscribe(onNext: { (data) in
-                var venues: [Venue] = []
-                guard let json = data as? JSObject,
-                    let response = json["response"] as? JSObject,
-                    let groups = response["groups"] as? JSArray else {
-                    observer.onError(RxError.noElements)
-                    return
-                }
-                guard let items = groups.first?["items"] as? JSArray else {
-                    observer.onError(RxError.noElements)
-                    return
-                }
-                for item in items {
-                    if let venueObject = item["venue"] as? JSObject {
-                        if let venue = Mapper<Venue>().map(JSON: venueObject) {
-                            venues.append(venue)
+            _ = RxAlamofire
+                .request(.get, "\(apiEndpoint)\(path)", parameters: params)
+                .flatMap({ (dataRequest) -> Observable<Any> in
+                    return dataRequest.validate(statusCode: 200..<300).rx.json()
+                })
+                .subscribe(onNext: { (data) in
+                    var venues: [Venue] = []
+                    guard let json = data as? JSObject,
+                        let response = json["response"] as? JSObject,
+                        let groups = response["groups"] as? JSArray else {
+                            observer.onError(RxError.noElements)
+                            return
+                    }
+                    guard let items = groups.first?["items"] as? JSArray else {
+                        observer.onError(RxError.noElements)
+                        return
+                    }
+                    for item in items {
+                        if let venueObject = item["venue"] as? JSObject {
+                            if let venue = Mapper<Venue>().map(JSON: venueObject) {
+                                venues.append(venue)
+                            }
                         }
                     }
-                }
-                observer.onNext(venues)
-            }, onError: { (error) in
-                observer.onNext([])
-            }, onCompleted: {
-                observer.onCompleted()
-            })
+                    observer.onNext(venues)
+                }, onError: { (error) in
+                    observer.onNext([])
+                }, onCompleted: {
+                    observer.onCompleted()
+                })
             return Disposables.create()
         })
     }
