@@ -8,18 +8,19 @@
 
 import MVVM
 import RxSwift
+import FSOAuth
 
 final class ProfileViewModel: ViewModel {
-    var isLogedIn: Observable<Bool> = Observable<Bool>.of()
-    var accessCodeObservable: Observable<Bool> = Observable<Bool>.of()
+    var isLogedIn: Observable<Bool>
+    var canLogIn: Observable<Bool>
     var error = PublishSubject<Error>()
-    var name = PublishSubject<String>()
-    var email = PublishSubject<String>()
-    var address = PublishSubject<String>()
-    var gender = PublishSubject<String>()
-    var avatarURL = PublishSubject<URL?>()
+    var name = BehaviorSubject<String>(value: "")
+    var email = BehaviorSubject<String>(value: "")
+    var address = BehaviorSubject<String>(value: "")
+    var gender = BehaviorSubject<String>(value: "")
+    var avatarURL = BehaviorSubject<URL?>(value: nil)
 
-    private var userObservable: Single<User> = Single<User>.never() {
+    private var userObservable = Single<User>.never() {
         didSet {
             userObservable
                 .observeOn(MainScheduler.instance)
@@ -29,7 +30,6 @@ final class ProfileViewModel: ViewModel {
                     case .success(let user): this.receivedResponse(user: user)
                     case .error(let error): this.error.onNext(error)
                     }
-
                 })
                 .disposed(by: disposeBag)
         }
@@ -38,8 +38,16 @@ final class ProfileViewModel: ViewModel {
 
     init() {
         isLogedIn = Helper.logInObservable
-        accessCodeObservable = Helper.accessCodeObservable
+        canLogIn = Helper.canLogIn
         setupObservable()
+    }
+
+    func clearData() {
+        name.onNext("")
+        address.onNext("")
+        email.onNext("")
+        avatarURL.onNext(nil)
+        gender.onNext("")
     }
 
     private func receivedResponse(user: User) {
@@ -51,29 +59,21 @@ final class ProfileViewModel: ViewModel {
     }
 
     private func setupObservable() {
-        isLogedIn.subscribe(onNext: { [weak self] isLoged in
-            guard let this = self else { return }
-            if isLoged {
-                this.userObservable = API.User.getProfile()
-            } else {
-                this.login()
-            }
+        isLogedIn.filter({ $0 })
+            .subscribe(onNext: { _ in
+                self.userObservable = API.User.getProfile()
         }).disposed(by: disposeBag)
-    }
 
-    private func login() {
-        accessCodeObservable.subscribe(onNext: { [weak self] isHas in
-            guard let this = self else { return }
-            if isHas {
-                API.User.getAccessToken()
-                    .observeOn(MainScheduler.instance)
-                    .subscribe({ (event) in
-                        switch event {
-                        case .error(let error): this.error.onNext(error)
-                        default: break
-                        }
-                }).disposed(by: this.disposeBag)
-            }
+        canLogIn.filter({ $0 })
+            .subscribe(onNext: { _ in
+            API.User.getAccessToken()
+                .observeOn(MainScheduler.instance)
+                .subscribe({ (event) in
+                    switch event {
+                    case .error(let error): self.error.onNext(error)
+                    default: break
+                    }
+                }).disposed(by: self.disposeBag)
         }).disposed(by: disposeBag)
     }
 }

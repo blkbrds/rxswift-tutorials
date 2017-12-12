@@ -36,13 +36,13 @@ final class Helper {
         }
     }
 
-    static let accessCodeObservable = BehaviorSubject<Bool>(value: false)
+    static let canLogIn = BehaviorSubject<Bool>(value: false)
     private static var accessCodeKey: String { return "accessCodeKey" }
-    static var accessCode: String {
+    static var accessCode: String? {
         set {
             UserDefaults.standard.set(newValue, forKey: accessCodeKey)
             UserDefaults.standard.synchronize()
-            accessCodeObservable.onNext(true)
+            canLogIn.onNext(newValue != nil)
         }
         get {
             if let code = UserDefaults.standard.string(forKey: accessCodeKey) {

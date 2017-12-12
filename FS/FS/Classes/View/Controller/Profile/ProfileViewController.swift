@@ -44,16 +44,19 @@ final class ProfileViewController: ViewController {
         viewModel.error.subscribe(onNext: { error in
             SVProgressHUD.showError(withStatus: error.localizedDescription)
         }).disposed(by: disposeBag)
+        setupAction()
     }
 
-    // MARK: Action
-    @IBAction private func loginButtonTouchedUpInside(_ sender: Any) {
-        API.User.login()
-    }
+    private func setupAction() {
+        loginButton.rx.tap.asObservable().subscribe(onNext: {
+            API.User.login()
+        }).disposed(by: disposeBag)
 
-    @IBAction func logoutButtonTouchedUpInside(_ sender: UIButton) {
-        Helper.accessCode = ""
-        Helper.accessToken = ""
-        Helper.isLogedIn = false
+        logoutButton.rx.tap.asObservable().subscribe(onNext: {
+            Helper.accessToken = ""
+            Helper.isLogedIn = false
+            Helper.accessCode = nil
+            self.viewModel.clearData()
+        }).disposed(by: disposeBag)
     }
 }

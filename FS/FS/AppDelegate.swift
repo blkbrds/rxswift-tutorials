@@ -28,12 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         if url.scheme == API.User.urlScheme {
             var errorCode: FSOAuthErrorCode = .none
-            if let accessCode = FSOAuth.accessCode(forFSOAuthURL: url, error: &errorCode),
-                errorCode == .none {
-                Helper.accessCode = accessCode
-            } else {
-                SVProgressHUD.showError(withStatus: "Login failure!")
-            }
+            let accessCode = FSOAuth.accessCode(forFSOAuthURL: url, error: &errorCode)
+            Helper.accessCode = accessCode
         }
         return true
     }

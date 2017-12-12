@@ -125,9 +125,6 @@
                             <state key="normal" title="Logout">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
-                            <connections>
-                                <action selector="logoutButtonTouchedUpInside:" destination="-1" eventType="touchUpInside" id="umU-M9-Wbf"/>
-                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -202,9 +199,6 @@
                             <state key="normal" title="Log in to Foursquare">
                                 <color key="titleColor" red="0.22352941179999999" green="0.3411764706" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
-                            <connections>
-                                <action selector="loginButtonTouchedUpInside:" destination="-1" eventType="touchUpInside" id="59U-pe-daQ"/>
-                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
