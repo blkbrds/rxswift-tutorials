@@ -12,5 +12,6 @@ class ProfileViewController: ViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Profile"
     }
 }

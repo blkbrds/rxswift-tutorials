@@ -51,7 +51,6 @@ class HomeViewModel {
             }
             .disposed(by: bag)
     }
-
     // MARK: Public functions
     func refresh() {
         if isRefreshing.value  {
@@ -60,5 +59,18 @@ class HomeViewModel {
         isRefreshing.value = true
         venues.value.removeAll()
         getVenues()
+    }
+}
+
+extension HomeViewModel {
+    func venue(at indexPath: IndexPath) -> Venue {
+        guard indexPath.row < venues.value.count else { return Venue() }
+        return venues.value[indexPath.row]
+    }
+
+    func viewModelForItem(at indexPath: IndexPath) -> VenueCellViewModel {
+        guard indexPath.count < venues.value.count else { return VenueCellViewModel() }
+        let venue = venues.value[indexPath.row]
+        return VenueCellViewModel(venue: venue)
     }
 }

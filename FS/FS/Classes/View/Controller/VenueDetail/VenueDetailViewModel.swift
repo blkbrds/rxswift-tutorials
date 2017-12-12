@@ -9,14 +9,21 @@
 import Foundation
 import RxSwift
 
-class VenueDetailViewModel {
-    var venue: Observable<Venue>?
+final class VenueDetailViewModel {
+    var venue: Venue?
+
     init(venueId: String) {
-        getDetail()
+        venue = Venue.fetch(by: venueId)
     }
 
-    private func getDetail() {
-
+    func toggleFavorite() {
+        DatabaseManager.shared.write().subscribe({ (event) in
+            switch event {
+            case .completed:
+                guard let venue = self.venue else { return }
+                venue.isFavorite = !venue.isFavorite
+            default: break
+            }
+        }).dispose()
     }
-
 }

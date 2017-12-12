@@ -7,23 +7,23 @@
 //
 
 import UIKit
+import SnapKit
 import RxSwift
 import RxCocoa
 import SVProgressHUD
 
-class HomeViewController: ViewController {
-
+final class HomeViewController: ViewController {
     // MARK: - IBOutlets
     @IBOutlet private weak var tableView: UITableView!
 
-    // MARK: - Properties
+    // MARK: - Propertie
     private var refreshControl = UIRefreshControl()
     var viewModel = HomeViewModel()
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Home"
+        title = "Home"
         setupUI()
         setupData()
     }
@@ -37,7 +37,7 @@ class HomeViewController: ViewController {
 
         tableView.rx.itemSelected
             .map { indexPath in
-                self.viewModel.venues.value[indexPath.row]
+                self.viewModel.venue(at: indexPath)
             }
             .subscribeOn(MainScheduler.instance)
             .subscribe { [weak self] (event) in
