@@ -42,3 +42,16 @@ target 'FS' do
     end
 end
 
+target 'Sample' do
+    project 'Sample/Sample'
+    shared_pods
+    pod 'SAMKeychain', '~> 1.5.1'
+    pod 'Alamofire', '~> 4.3.0'
+    pod 'Kingfisher', '~> 3.5.2'
+    pod 'SwiftLint', '~> 0.16.1'
+    pod 'RealmSwift',       '~> 3.0.2'
+    pod 'ObjectMapper', '2.2.6'
+    pod 'MVVM-Swift'
+    pod 'RxMapKit', '~> 1.1.0'
+end
+
