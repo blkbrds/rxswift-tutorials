@@ -13,7 +13,10 @@ import ObjectMapper
 extension API {
     // Just example
     class func getVenues(params: JSObject) -> Observable<[Venue]> {
-        let path = "venues/explore?client_secret=OMEDU0AA2GUBQSATQLRIHDSYYGC5JD0IPGU5II4IPDHWAYMO&limit=10&ll=16.054407,108.202167&client_id=ESKZ0I0VLGKYSV3KMT5FTDBS45E4HFNRYX4QFZJWMDAT3K1K&section=coffee&offset=0&v=20170503&venuePhotos=1"
+        var path = "venues/explore?client_secret=OMEDU0AA2GUBQSATQLRIHDSYYGC5JD0IPGU5II4IPDHWAYMO&limit=10&ll=16.054407,108.202167&client_id=ESKZ0I0VLGKYSV3KMT5FTDBS45E4HFNRYX4QFZJWMDAT3K1K&v=20170503&venuePhotos=1"
+        for param in params {
+            path += "&\(param.key)=\(String(describing: param.value))"
+        }
         let ob = Observable<[Venue]>.create { (observer) -> Disposable in
             _ = API.request(path: path).subscribe({ (json) in
                 var venues: [Venue] = []

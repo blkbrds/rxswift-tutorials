@@ -25,5 +25,9 @@ public extension ObservableType {
             dismissHUD()
         })
     }
+
+    public func unwrap<T>() -> Observable<T> where E == Optional<T> {
+        return self.filter { $0 != nil }.map { $0! }
+    }
 }
 
