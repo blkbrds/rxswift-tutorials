@@ -52,6 +52,18 @@ class SearchViewController: ViewController {
     }
 
     private func setupObservables() {
+
+        tableView.rx
+            .itemSelected
+            .map { indexPath in
+                // ABC XYZ
+            }
+            .subscribeOn(MainScheduler.instance)
+            .subscribe { (_) in
+                // ABC XYZ
+            }
+            .disposed(by: disposeBag)
+
         viewModel.subject
             .do(onNext: { (_) in
                 self.indicator.stopAnimating()
