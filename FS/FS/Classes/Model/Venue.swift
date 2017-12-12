@@ -7,9 +7,9 @@
 //
 
 import ObjectMapper
+import RealmSwift
 
-final class Venue: Mappable {
-
+final class Venue: Object, Mappable {
     dynamic var id: String!
     dynamic var name: String = ""
     dynamic var latitude: Double = 0.0
@@ -20,9 +20,10 @@ final class Venue: Mappable {
     dynamic var category: String = ""
     dynamic var likes: String = ""
     dynamic var phone: String = ""
+    dynamic var thumbnail: Photo?
     private dynamic var address: String = ""
     private dynamic var city: String = ""
-    var thumbnail: Photo?
+
     var fullAddress: String {
         if city.isEmpty {
             return address
@@ -30,10 +31,13 @@ final class Venue: Mappable {
         return address + ", " + city
     }
 
-    init() {
+    override class func primaryKey() -> String? {
+        return "id"
     }
 
-    required init?(map: Map) {
+    required convenience init?(map: Map) {
+        self.init()
+        guard let _ = map.JSON["id"] as? String else { return nil }
     }
 
     func mapping(map: Map) {
@@ -49,5 +53,15 @@ final class Venue: Mappable {
         likes <- map["likes.summary"]
         phone <- map["contact.phone"]
         thumbnail <- map["photos.groups.0.items.0"]
+        if let venue = Venue.fetch(by: self.id) {
+            self.isFavorite = venue.isFavorite
+        }
+    }
+}
+
+extension Venue {
+    static func fetch(by id: String) -> Venue? {
+        let pre = NSPredicate(format: "id = %@", id)
+        return DatabaseManager.shared.object(Venue.self, filter: pre)
     }
 }

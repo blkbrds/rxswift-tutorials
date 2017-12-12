@@ -28,12 +28,13 @@ end
 target 'FS' do
     project 'FS/FS'
     shared_pods
+
     pod 'MVVM-Swift',       '~> 1.1.0'
     pod 'SwiftUtils',       '2.0.0'
     pod 'ObjectMapper',     '2.2.6'
     pod 'SnapKit',          '3.2.0'
     pod 'SVProgressHUD',     '2.2.2'
-    pod 'RealmSwift',       '~> 3.0.2'
+    pod 'RealmSwift',       '~> 3.0'
 
     target 'FSTests' do
         inherit! :search_paths
@@ -49,9 +50,9 @@ target 'Sample' do
     pod 'Alamofire', '~> 4.3.0'
     pod 'Kingfisher', '~> 3.5.2'
     pod 'SwiftLint', '~> 0.16.1'
-    pod 'RealmSwift',       '~> 3.0.2'
+    pod 'RealmSwift',       '~> 3.0'
     pod 'ObjectMapper', '2.2.6'
-    pod 'MVVM-Swift'
+    pod 'MVVM-Swift', '~> 1.1.0'
     pod 'RxMapKit', '~> 1.1.0'
 end
 

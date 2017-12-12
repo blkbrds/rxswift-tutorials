@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B774C391FDD8D310069356D /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B774C381FDD8D310069356D /* DatabaseManager.swift */; };
+		0B774C3B1FDD8D410069356D /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B774C3A1FDD8D410069356D /* FavoriteViewModel.swift */; };
+		0B774C3D1FDD8D600069356D /* RealmObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B774C3C1FDD8D600069356D /* RealmObservable.swift */; };
+		0BEED9FA1FDFB17800D70D21 /* UIImageViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEED9F91FDFB17800D70D21 /* UIImageViewExt.swift */; };
 		3A16ECDC1FD655C0003ED842 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A16ECDB1FD655C0003ED842 /* HomeViewModel.swift */; };
 		3A16ECE41FD6B160003ED842 /* VenueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A16ECE21FD6B15F003ED842 /* VenueDetailViewController.swift */; };
 		3A16ECE51FD6B160003ED842 /* VenueDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A16ECE31FD6B15F003ED842 /* VenueDetailViewController.xib */; };
@@ -16,7 +20,6 @@
 		3A34B4951FCD6A98007A4CC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A34B48E1FCD6A98007A4CC6 /* LaunchScreen.storyboard */; };
 		3A34B4A71FCD6B7C007A4CC6 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34B4A01FCD6B7C007A4CC6 /* Venue.swift */; };
 		3A34B4A81FCD6B7C007A4CC6 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34B4A21FCD6B7C007A4CC6 /* API.swift */; };
-		3A34B4A91FCD6B7C007A4CC6 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34B4A31FCD6B7C007A4CC6 /* DataManager.swift */; };
 		3A34B4AD1FCD6BF6007A4CC6 /* Reactive+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34B4AC1FCD6BF6007A4CC6 /* Reactive+Extension.swift */; };
 		3A34B4B31FCD6D51007A4CC6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34B4B21FCD6D50007A4CC6 /* HomeViewController.swift */; };
 		3A34B4B61FCD6D88007A4CC6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A34B4B51FCD6D88007A4CC6 /* ViewController.swift */; };
@@ -49,6 +52,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B774C381FDD8D310069356D /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		0B774C3A1FDD8D410069356D /* FavoriteViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
+		0B774C3C1FDD8D600069356D /* RealmObservable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmObservable.swift; sourceTree = "<group>"; };
+		0BEED9F91FDFB17800D70D21 /* UIImageViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExt.swift; sourceTree = "<group>"; };
 		31D5CF9CDE52140BCC14D669 /* Pods-FS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FS.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-FS/Pods-FS.debug.xcconfig"; sourceTree = "<group>"; };
 		3A16ECDB1FD655C0003ED842 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		3A16ECE21FD6B15F003ED842 /* VenueDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueDetailViewController.swift; sourceTree = "<group>"; };
@@ -61,7 +68,6 @@
 		3A34B4921FCD6A98007A4CC6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A34B4A01FCD6B7C007A4CC6 /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		3A34B4A21FCD6B7C007A4CC6 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		3A34B4A31FCD6B7C007A4CC6 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		3A34B4AC1FCD6BF6007A4CC6 /* Reactive+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+Extension.swift"; sourceTree = "<group>"; };
 		3A34B4B21FCD6D50007A4CC6 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3A34B4B51FCD6D88007A4CC6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -189,9 +195,9 @@
 		3A34B4A11FCD6B7C007A4CC6 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				0B774C381FDD8D310069356D /* DatabaseManager.swift */,
 				3A34B4A21FCD6B7C007A4CC6 /* API.swift */,
 				3A34B4CD1FCDC139007A4CC6 /* API.Venue.swift */,
-				3A34B4A31FCD6B7C007A4CC6 /* DataManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -200,7 +206,6 @@
 			isa = PBXGroup;
 			children = (
 				3A34B4A51FCD6B7C007A4CC6 /* Controller */,
-				C867A7321FD8CEC300847899 /* Controls */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -221,7 +226,9 @@
 		3A34B4AB1FCD6BEA007A4CC6 /* Reactive+Extension */ = {
 			isa = PBXGroup;
 			children = (
+				0B774C3C1FDD8D600069356D /* RealmObservable.swift */,
 				3A34B4AC1FCD6BF6007A4CC6 /* Reactive+Extension.swift */,
+				0BEED9F91FDFB17800D70D21 /* UIImageViewExt.swift */,
 			);
 			path = "Reactive+Extension";
 			sourceTree = "<group>";
@@ -240,6 +247,7 @@
 		3A34B4AF1FCD6CAE007A4CC6 /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
+				0B774C3A1FDD8D410069356D /* FavoriteViewModel.swift */,
 				3A34B4BD1FCDBA99007A4CC6 /* FavoriteViewController.swift */,
 				3A34B4BE1FCDBA99007A4CC6 /* FavoriteViewController.xib */,
 			);
@@ -289,13 +297,6 @@
 				99311FEF1FD4EF8C00C4F426 /* Info.plist */,
 			);
 			path = FSTests;
-			sourceTree = "<group>";
-		};
-		C867A7321FD8CEC300847899 /* Controls */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controls;
 			sourceTree = "<group>";
 		};
 		C867A7331FD8CF0D00847899 /* Cell */ = {
@@ -564,7 +565,6 @@
 				3ADAFC711FCFEBAF0003CD8E /* TabbarController.swift in Sources */,
 				3A34B4B31FCD6D51007A4CC6 /* HomeViewController.swift in Sources */,
 				3A34B4751FCD632E007A4CC6 /* AppDelegate.swift in Sources */,
-				3A34B4A91FCD6B7C007A4CC6 /* DataManager.swift in Sources */,
 				3A16ECE41FD6B160003ED842 /* VenueDetailViewController.swift in Sources */,
 				3A16ECE71FD6B196003ED842 /* VenueDetailViewModel.swift in Sources */,
 				C867A7391FD8CF2A00847899 /* VenueCellViewModel.swift in Sources */,
@@ -574,9 +574,13 @@
 				3A16ECDC1FD655C0003ED842 /* HomeViewModel.swift in Sources */,
 				C867A73C1FD8D0F100847899 /* Photo.swift in Sources */,
 				3A34B4AD1FCD6BF6007A4CC6 /* Reactive+Extension.swift in Sources */,
+				0B774C391FDD8D310069356D /* DatabaseManager.swift in Sources */,
 				3A34B4C31FCDBAA5007A4CC6 /* ProfileViewController.swift in Sources */,
 				C867A7371FD8CF2A00847899 /* VenueCell.swift in Sources */,
 				3A34B4BF1FCDBA99007A4CC6 /* FavoriteViewController.swift in Sources */,
+				0B774C3D1FDD8D600069356D /* RealmObservable.swift in Sources */,
+				0B774C3B1FDD8D410069356D /* FavoriteViewModel.swift in Sources */,
+				0BEED9FA1FDFB17800D70D21 /* UIImageViewExt.swift in Sources */,
 				3A34B4A71FCD6B7C007A4CC6 /* Venue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

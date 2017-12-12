@@ -18,6 +18,7 @@ let apiEndpoint = "https://api.foursquare.com/v2/"
 class API {
     class func request(path: String) -> Observable<JSObject> {
         guard let url = URL(string: apiEndpoint + path) else { return .empty() }
+
         return Observable<JSObject>.create({ (observer) -> Disposable in
             _ = URLSession.shared.rx.data(request: URLRequest(url: url))
                 .catchError({ (error) -> Observable<Data> in
@@ -35,6 +36,7 @@ class API {
                 .observeOn(MainScheduler.instance)
                 .map{ js -> JSObject in
                     guard let json = js["response"] as? JSObject else {
+
                         observer.onError(RxError.unknown)
                         observer.onCompleted()
                         return [:]
