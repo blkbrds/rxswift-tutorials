@@ -11,6 +11,7 @@ import RxSwift
 
 class VenueDetailViewModel {
     var venue: Observable<Venue>?
+
     init(venueId: String) {
         getDetail()
     }

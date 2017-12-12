@@ -22,6 +22,12 @@ final class VenueCellViewModel {
         return URL(string: venue.thumbnail?.path() ?? "")
     }
 
+    var venueId: String {
+        get {
+            return venue.id
+        }
+    }
+
     init(venue: Venue = Venue()) {
         self.venue = venue
         name = BehaviorSubject<String>(value: venue.name)

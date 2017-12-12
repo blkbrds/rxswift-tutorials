@@ -12,7 +12,7 @@ import RxCocoa
 
 final class SearchViewModel {
 
-    let subject = PublishSubject<[VenueCellViewModel]>()
+    let variable = Variable<[VenueCellViewModel]>([])
     let bag = DisposeBag()
 
     init(searchControl: ControlProperty<String?>) {
@@ -33,11 +33,9 @@ final class SearchViewModel {
             .subscribe({ (event) in
                 switch event {
                 case .next(let viewModels):
-                    self.subject.onNext(viewModels)
-                case .error(_):
-                    self.subject.onNext([])
-                case .completed:
-                    self.subject.onCompleted()
+                    self.variable.value = viewModels
+                case .error(_), .completed:
+                    self.variable.value = []
                 }
             }).disposed(by: bag)
 
@@ -46,8 +44,17 @@ final class SearchViewModel {
                 return str.count < 3
             }
             .subscribe(onNext: { _ in
-                self.subject.onNext([])
+                self.variable.value = []
             })
             .addDisposableTo(bag)
+    }
+
+    func viewModelForItem(at indexPath: IndexPath) -> VenueDetailViewModel {
+        let viewModels = variable.value
+        let row = indexPath.row
+        guard row >= 0 && row < viewModels.count else { fatalError() }
+        let cellViewModel = viewModels[row]
+        let id = cellViewModel.venueId
+        return VenueDetailViewModel(venueId: id)
     }
 }

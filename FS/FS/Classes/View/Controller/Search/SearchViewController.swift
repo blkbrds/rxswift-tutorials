@@ -52,19 +52,21 @@ class SearchViewController: ViewController {
     }
 
     private func setupObservables() {
-
         tableView.rx
             .itemSelected
             .map { indexPath in
-                // ABC XYZ
+                return self.viewModel.viewModelForItem(at: indexPath)
             }
             .subscribeOn(MainScheduler.instance)
-            .subscribe { (_) in
-                // ABC XYZ
-            }
+            .subscribe(onNext: { (viewModel) in
+                let controller = VenueDetailViewController()
+                controller.viewModel = viewModel
+                self.navigationController?.pushViewController(controller, animated: true)
+            })
             .disposed(by: disposeBag)
 
-        viewModel.subject
+        viewModel.variable
+            .asObservable()
             .do(onNext: { (_) in
                 self.indicator.stopAnimating()
             }, onError: { (_) in
