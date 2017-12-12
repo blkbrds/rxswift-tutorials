@@ -13,12 +13,7 @@ final class VenueDetailViewModel {
     var venue: Venue?
 
     init(venueId: String) {
-        venue = getVenue(by: venueId)
-    }
-
-    private func getVenue(by id: String) -> Venue? {
-        let pre = NSPredicate(format: "id = %@", id)
-        return DatabaseManager.shared.object(Venue.self, filter: pre)
+        venue = Venue.fetch(by: venueId)
     }
 
     func toggleFavorite() {

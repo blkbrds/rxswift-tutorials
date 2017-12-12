@@ -46,11 +46,28 @@ final class FavoriteViewController: ViewController {
                 cell.viewModel = self.viewModel.viewModelForItem(at: IndexPath(row: row, section: 0))
             }
             .disposed(by: disposeBag)
+
+        tableView.rx.itemDeleted.subscribe { (event) in
+            switch event {
+            case .next(let element):
+                self.viewModel.removeFavorite(at: element)
+            default:
+                break
+            }
+        }.disposed(by: disposeBag)
+
+        tableView.rx.setDelegate(self).disposed(by: disposeBag)
     }
 
     // MARK: - Public methods
     func updateView() {
         setupTableViewBinding()
         tableView.reloadData()
+    }
+}
+
+extension FavoriteViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
 }

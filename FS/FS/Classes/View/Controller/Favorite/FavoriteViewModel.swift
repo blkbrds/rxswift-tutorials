@@ -29,6 +29,7 @@ final class FavoriteViewModel: ViewModel {
             .subscribe { (event) in
                 switch event {
                 case .next(let element):
+                    print("Delete")
                     self.venues.value = element.0
                 default: break
                 }
@@ -38,5 +39,17 @@ final class FavoriteViewModel: ViewModel {
     func viewModelForItem(at indexPath: IndexPath) -> VenueCellViewModel {
         guard indexPath.row >= 0 && indexPath.row < venues.value.count else { return VenueCellViewModel() }
         return VenueCellViewModel(venue: venues.value[indexPath.row])
+    }
+
+    func removeFavorite(at indexPath: IndexPath) {
+        guard indexPath.row < results.count else { return }
+        let venue = venues.value[indexPath.row]
+        DatabaseManager.shared.write().subscribe { (event) in
+            switch event {
+            case .completed:
+                venue.isFavorite = false
+            default: break
+            }
+        }.dispose()
     }
 }
