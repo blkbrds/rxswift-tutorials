@@ -23,7 +23,7 @@ final class HomeViewController: ViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Home"
+        title = "Home"
         setupUI()
         setupData()
     }
