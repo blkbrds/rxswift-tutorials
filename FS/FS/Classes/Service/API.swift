@@ -14,9 +14,9 @@ typealias JSObject = [String: Any]
 typealias JSArray = [JSObject]
 
 let apiEndpoint = "https://api.foursquare.com/v2/"
-let bag = DisposeBag()
+
 class API {
-    class func request(path: String, showHUD: Bool = true) -> Observable<JSObject> {
+    class func request(path: String) -> Observable<JSObject> {
         guard let url = URL(string: apiEndpoint + path) else { return .empty() }
 
         return Observable<JSObject>.create({ (observer) -> Disposable in

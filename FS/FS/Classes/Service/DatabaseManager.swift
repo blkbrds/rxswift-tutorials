@@ -13,7 +13,7 @@ import RxSwift
 final class DatabaseManager {
     static let shared = DatabaseManager()
 
-    var realm: Realm {
+    fileprivate var realm: Realm {
         do {
             return try Realm()
         } catch {
@@ -27,16 +27,28 @@ final class DatabaseManager {
 extension DatabaseManager {
     //  MARK: - fetch object
     func object<T: Object>(_ type: T.Type, filter predicate: NSPredicate? = nil) -> T? {
-        let results: Results<T> = predicate != nil ? realm.objects(type).filter(predicate!) : realm.objects(type)
-        if results.count > 0 {
-            return results.first
+        var results: Results<T>
+        if let pre = predicate {
+            results = realm.objects(type).filter(pre)
+        } else {
+            results = realm.objects(type)
         }
-        return nil
+
+        guard !results.isEmpty else {
+            return nil
+        }
+        return results.first
     }
 
     //  MARK: - fetch objects
     func objects<T: Object>(_ type: T.Type, filter predicate: NSPredicate? = nil, sortBy propertiesSort: [String: Bool]? = nil) -> Results<T> {
-        var results = predicate != nil ? realm.objects(type).filter(predicate!) : realm.objects(type)
+        var results: Results<T>
+        if let pre = predicate {
+            results = realm.objects(type).filter(pre)
+        } else {
+            results = realm.objects(type)
+        }
+
         if let propertiesSort = propertiesSort {
             for property in propertiesSort {
                 results = results.sorted(byKeyPath: property.0, ascending: property.1)
@@ -84,14 +96,22 @@ extension DatabaseManager {
 
     //  MARK: - remove object
     func deleteObject<T: Object>(_ object: T) {
-        try! realm.write {
-            realm.delete(object)
+        do {
+            try realm.write {
+                realm.delete(object)
+            }
+        } catch {
+            print(error.localizedDescription)
         }
     }
 
     func deleteObjects<T: RealmSwift.Object, S: Sequence>(_ objects: S) where S.Iterator.Element == T {
-        try! realm.write {
-            realm.delete(objects)
+        do {
+            try realm.write {
+                realm.delete(objects)
+            }
+        } catch {
+            print(error.localizedDescription)
         }
     }
 }

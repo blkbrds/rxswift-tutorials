@@ -5,7 +5,7 @@ Nhắc đến *Filtering* trong RxSwift thì ta có một số operators sau: **
 Sau đây là một số ví dụ để hiểu rõ hơn về các operators này
 
 ##### Ignoring operators
--  `ignoreElemens()`
+-  `ignoreElements()`
 
   Bỏ qua tất cả các items được phát ra. Nhưng vẫn cho phép xử lý sự kiện **.completed** và **.error**.
 

@@ -53,14 +53,14 @@ final class VenueCell: UITableViewCell {
         viewModel.address.bind(to: addressLabel.rx.text).addDisposableTo(disposeBag)
         viewModel.rating.bind(to: ratingLabel.rx.text).addDisposableTo(disposeBag)
 
-        guard let url = viewModel.photoURL else { return }
-        URLSession.shared.rx.data(request: URLRequest(url: url))
-            .subscribe(onNext: { [weak self] (data) in
-                guard let this = self else { return }
-                DispatchQueue.main.async {
-                    this.thumbnailImageView.image = UIImage(data: data)
+        thumbnailImageView
+            .setImage(path: viewModel.photoPath)
+            .subscribe { event in
+                switch event {
+                case .next(_): print("next")
+                case .error(let error): print(error.localizedDescription)
+                case .completed: print("Complete")
                 }
-            })
-            .addDisposableTo(disposeBag)
+        }.disposed(by: disposeBag)
     }
 }
