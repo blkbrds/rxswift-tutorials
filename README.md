@@ -142,9 +142,22 @@ X là một 'error' nào đó
 
 
 ### 1.3. Operator - man in the middle <a name="Operator-man-in-the-middle"></a>
-Operators là những phép toán cho phép biển đổi observable thành observable mới để phù hợp với nhu cầu sử dụng
+**Operators** là những phép toán cho phép biển đổi observable thành observable mới để phù hợp với nhu cầu sử dụng, chúng ta có thể tạo ra một chuỗi các phép toán để biến đổi observable
 
-Một số operators cơ bản trong RxSwift được liệt kê [tại đây](docs/Deep-dive/Operators)
+Phân loại các operators trong RxSwift:
+
+- **Creating Observables**: Gồm các phép toán dùng để khởi tạo observable.
+- **Transforming Observables**: Gồm các phép toán dùng để biến đổi các giá trị được phát ra bởi observable.
+- **Filtering Observables**: Gồm các phép toán dùng để chọn lọc các giá trị được phát ra bởi observable.
+- **Combining Observables**: Gồm các phép toán dùng để nhóm nhiều observables lại thành một observable.
+- **Error Handling Operators**: Gồm các phép toán dùng để thông báo lỗi từ observable.
+- **Observable Utility Operators**: Gồm các ultility hữu ích.
+- **Conditional and Boolean Operators**: Gồm các phép toán điều kiện.
+- **Mathematical and Aggregate Operators**: Gồm các phép toán tính toán số lượng các giá trị được phát ra.
+- **Connectable Observable Operators**: Gồm các phép toán có khả năng connect được observable.
+- **Operators to Convert Observables**: Gồm các phép toán dùng để convert observable thành object hoặc data structure.
+
+ ##### Chi tiết từng loại sẽ được trình bày [ở đây](docs/deep-dive/operators)
 
 **Example 1:**
 
@@ -364,9 +377,9 @@ variable.value = "2"
 ## 2. [Deep Dive](docs/Deep-dive)
 Sau khi tìm hiểu các khái niệm cơ bản của Reactive programming và RxSwift thì trong phần này, chúng ta sẽ đi sâu hơn vào cách hoạt động, xử lý và ứng dụng trong từng trường hợp cụ thể của chúng.
 
-  	1. [Creation](docs/Deep-dive/Creation.md)
-  	2. [Operators](docs/Deep-dive/Operators)
-  	3. [MVVM](docs/Deep-dive/MVVM.md)
+  1. [Creation](docs/Deep-dive/Creation.md)
+  2. [Operators](docs/Deep-dive/Operators)
+  3. [MVVM](docs/Deep-dive/MVVM.md)
 
 ## 3. Advanced(Update later)
 
@@ -380,4 +393,5 @@ Phần này sẽ tập trung vào implement Unit-Testing bằng các framework t
 ## References <a name="References"></a>
 
 https://github.com/ReactiveX/RxSwift
+
 http://rxmarbles.com/
