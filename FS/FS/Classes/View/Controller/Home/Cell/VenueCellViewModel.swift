@@ -18,6 +18,10 @@ final class VenueCellViewModel {
     var rating: BehaviorSubject<String>
     var image: BehaviorSubject<UIImage?>
 
+    var photoPath: String? {
+        return venue.thumbnail?.path()
+    }
+
     var photoURL: URL? {
         return URL(string: venue.thumbnail?.path() ?? "")
     }

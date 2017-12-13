@@ -9,6 +9,12 @@
 import UIKit
 import RxSwift
 
+extension UIView {
+    static var identifier: String {
+        return String(describing: self)
+    }
+}
+
 final class VenueCell: UITableViewCell {
 
     // MARK: - IBOutlets
@@ -28,12 +34,11 @@ final class VenueCell: UITableViewCell {
         }
     }
 
-    var bag = DisposeBag()
+    let disposeBag = DisposeBag()
 
     // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        selectionStyle = .none
         updateView()
         configUI()
     }
@@ -44,14 +49,15 @@ final class VenueCell: UITableViewCell {
     }
 
     private func updateView() {
-        viewModel.name.bind(to: nameLabel.rx.text).disposed(by: bag)
-        viewModel.address.bind(to: addressLabel.rx.text).disposed(by: bag)
-        viewModel.rating.bind(to: ratingLabel.rx.text).disposed(by: bag)
-        viewModel.image.bind(to: thumbnailImageView.rx.image).disposed(by: bag)
+        viewModel.name.bind(to: nameLabel.rx.text).addDisposableTo(disposeBag)
+        viewModel.address.bind(to: addressLabel.rx.text).addDisposableTo(disposeBag)
+        viewModel.rating.bind(to: ratingLabel.rx.text).addDisposableTo(disposeBag)
+        thumbnailImageView.setImage(path: viewModel.photoPath)
+        .subscribe()
+        .disposed(by: disposeBag)
     }
+}
 
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        bag = DisposeBag()
-    }
+extension UIImageView {
+    
 }

@@ -11,7 +11,7 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-class VenueDetailViewController: ViewController {
+final class VenueDetailViewController: ViewController {
     var viewModel: VenueDetailViewModel?
 
     override func viewDidLoad() {
@@ -21,8 +21,9 @@ class VenueDetailViewController: ViewController {
         view.addSubview(button)
         button.backgroundColor = .red
         button.setTitle("Favorite", for: .normal)
-        button.rx.tap.subscribe { (_) in
-
+        button.rx.tap.subscribe { [weak self] (_) in
+            guard let this = self else { return }
+            this.viewModel?.toggleFavorite()
         }
         .disposed(by: disposeBag)
     }

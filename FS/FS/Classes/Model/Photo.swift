@@ -10,7 +10,6 @@ import ObjectMapper
 import RealmSwift
 
 final class Photo: Object, Mappable {
-
     dynamic var id: String!
     dynamic var prefix: String = ""
     dynamic var suffix: String = ""

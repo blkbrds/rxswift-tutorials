@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Gallery Image View Controller-->
+        <scene sceneID="D0z-dh-SHg">
+            <objects>
+                <viewController storyboardIdentifier="GalleryImageViewController" id="NL5-CJ-ZuW" customClass="GalleryImageViewController" customModule="RxSwift_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sr7-NK-YHY"/>
+                        <viewControllerLayoutGuide type="bottom" id="lyw-fj-dix"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Hzy-jF-VRR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image0" translatesAutoresizingMaskIntoConstraints="NO" id="TkB-DV-PCh">
+                                <rect key="frame" x="16" y="50" width="343" height="225"/>
+                            </imageView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lLT-ob-EwR">
+                                <rect key="frame" x="16" y="380" width="343" height="29"/>
+                                <segments>
+                                    <segment title="ScaleToFill"/>
+                                    <segment title="AspectFit"/>
+                                    <segment title="AspectFill"/>
+                                    <segment title="Redraw"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lLT-ob-EwR" firstAttribute="leading" secondItem="Hzy-jF-VRR" secondAttribute="leadingMargin" id="0bj-Ij-V2V"/>
+                            <constraint firstItem="TkB-DV-PCh" firstAttribute="top" secondItem="sr7-NK-YHY" secondAttribute="bottom" constant="30" id="F4E-ja-RiG"/>
+                            <constraint firstItem="TkB-DV-PCh" firstAttribute="leading" secondItem="Hzy-jF-VRR" secondAttribute="leadingMargin" id="cAi-cw-hgy"/>
+                            <constraint firstItem="lLT-ob-EwR" firstAttribute="trailing" secondItem="Hzy-jF-VRR" secondAttribute="trailingMargin" id="hQy-Zs-K4O"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TkB-DV-PCh" secondAttribute="trailing" id="iIA-Zo-rNg"/>
+                            <constraint firstItem="lLT-ob-EwR" firstAttribute="centerY" secondItem="Hzy-jF-VRR" secondAttribute="centerY" constant="60" id="tkM-J0-Wfr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="TkB-DV-PCh" id="apm-Jc-Vv7"/>
+                        <outlet property="segmentedControl" destination="lLT-ob-EwR" id="vNE-49-oF7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YfQ-9S-PkD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="77.599999999999994" y="162.3688155922039"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="image0" width="300" height="225"/>
+    </resources>
+</document>
