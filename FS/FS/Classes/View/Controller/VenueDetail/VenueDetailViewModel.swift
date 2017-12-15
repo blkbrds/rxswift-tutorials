@@ -16,11 +16,24 @@ final class VenueDetailViewModel {
         venue = Venue.fetch(by: venueId)
     }
 
+    init(venue: Venue) {
+        if let _venue = Venue.fetch(by: venue.id) {
+            self.venue = _venue
+        } else {
+            self.venue = venue
+        }
+    }
+
     func toggleFavorite() {
+        guard let venue = self.venue else { return }
+        guard Venue.fetch(by: venue.id) != nil else {
+            venue.isFavorite = !venue.isFavorite
+            DatabaseManager.shared.addObject(venue)
+            return
+        }
         DatabaseManager.shared.write().subscribe({ (event) in
             switch event {
             case .completed:
-                guard let venue = self.venue else { return }
                 venue.isFavorite = !venue.isFavorite
             default: break
             }

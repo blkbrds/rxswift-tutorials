@@ -54,7 +54,7 @@ final class SearchViewModel {
         let row = indexPath.row
         guard row >= 0 && row < viewModels.count else { fatalError() }
         let cellViewModel = viewModels[row]
-        let id = cellViewModel.venueId
-        return VenueDetailViewModel(venueId: id)
+        let venue = cellViewModel.venue
+        return VenueDetailViewModel(venue: venue)
     }
 }

@@ -11,7 +11,7 @@ import RxSwift
 
 final class VenueCellViewModel {
 
-    private var venue: Venue
+    var venue: Venue
     let disposeBag = DisposeBag()
     var name: BehaviorSubject<String>
     var address: BehaviorSubject<String>
@@ -24,12 +24,6 @@ final class VenueCellViewModel {
 
     var photoURL: URL? {
         return URL(string: venue.thumbnail?.path() ?? "")
-    }
-
-    var venueId: String {
-        get {
-            return venue.id
-        }
     }
 
     init(venue: Venue = Venue()) {
