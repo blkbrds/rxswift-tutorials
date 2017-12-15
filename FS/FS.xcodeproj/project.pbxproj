@@ -38,6 +38,8 @@
 		853C66B61FDE29B40004A28F /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853C66B51FDE29B40004A28F /* ProfileViewModel.swift */; };
 		853C66B91FDE43CF0004A28F /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853C66B81FDE43CF0004A28F /* Helper.swift */; };
 		99311FEE1FD4EF8C00C4F426 /* FSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99311FED1FD4EF8C00C4F426 /* FSTests.swift */; };
+		99AF51331FDA3B55005BE96D /* SeachViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AF51321FDA3B55005BE96D /* SeachViewModel.swift */; };
+		99AF51351FDA3FD1005BE96D /* API.Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AF51341FDA3FD1005BE96D /* API.Search.swift */; };
 		BC299787FDEF5E07CEA25D41 /* Pods_FS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23EE476810737E93C6EACB9 /* Pods_FS.framework */; };
 		C867A7371FD8CF2A00847899 /* VenueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C867A7341FD8CF2900847899 /* VenueCell.swift */; };
 		C867A7381FD8CF2A00847899 /* VenueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C867A7351FD8CF2900847899 /* VenueCell.xib */; };
@@ -94,6 +96,8 @@
 		99311FEB1FD4EF8C00C4F426 /* FSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99311FED1FD4EF8C00C4F426 /* FSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSTests.swift; sourceTree = "<group>"; };
 		99311FEF1FD4EF8C00C4F426 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99AF51321FDA3B55005BE96D /* SeachViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeachViewModel.swift; sourceTree = "<group>"; };
+		99AF51341FDA3FD1005BE96D /* API.Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.Search.swift; sourceTree = "<group>"; };
 		A23EE476810737E93C6EACB9 /* Pods_FS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2C5EB88A78E6F7081EA827C /* Pods_FSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C867A7341FD8CF2900847899 /* VenueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueCell.swift; sourceTree = "<group>"; };
@@ -187,6 +191,8 @@
 				3A34B49F1FCD6B7C007A4CC6 /* Model */,
 				3A34B4AB1FCD6BEA007A4CC6 /* Reactive+Extension */,
 				3A34B4A11FCD6B7C007A4CC6 /* Service */,
+				3A34B49F1FCD6B7C007A4CC6 /* Model */,
+				99AF51301FDA3B55005BE96D /* ViewModel */,
 				3A34B4A41FCD6B7C007A4CC6 /* View */,
 			);
 			path = Classes;
@@ -205,6 +211,7 @@
 		3A34B4A11FCD6B7C007A4CC6 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				99AF51341FDA3FD1005BE96D /* API.Search.swift */,
 				0B774C381FDD8D310069356D /* DatabaseManager.swift */,
 				3A34B4A21FCD6B7C007A4CC6 /* API.swift */,
 				853C66B11FDE29950004A28F /* API.User.swift */,
@@ -310,6 +317,22 @@
 			path = Define;
 			sourceTree = "<group>";
 		};
+		99AF51301FDA3B55005BE96D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				99AF51311FDA3B55005BE96D /* Search */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		99AF51311FDA3B55005BE96D /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				99AF51321FDA3B55005BE96D /* SeachViewModel.swift */,
+			);
+			path = Search;
+            sourceTree = "<group>";
+        };
 		99311FEC1FD4EF8C00C4F426 /* FSTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -457,6 +480,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/../Pods/Target Support Files/Pods-FSTests/Pods-FSTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
@@ -464,6 +489,8 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
@@ -517,6 +544,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/../Pods/Target Support Files/Pods-FS/Pods-FS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/FSOAuth/FSOAuth.framework",
@@ -531,6 +560,8 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSOAuth.framework",
@@ -601,9 +632,11 @@
 				3A34B4B61FCD6D88007A4CC6 /* ViewController.swift in Sources */,
 				3A16ECDC1FD655C0003ED842 /* HomeViewModel.swift in Sources */,
 				C867A73C1FD8D0F100847899 /* Photo.swift in Sources */,
+				99AF51351FDA3FD1005BE96D /* API.Search.swift in Sources */,
 				3A34B4AD1FCD6BF6007A4CC6 /* Reactive+Extension.swift in Sources */,
 				0B774C391FDD8D310069356D /* DatabaseManager.swift in Sources */,
 				3A34B4C31FCDBAA5007A4CC6 /* ProfileViewController.swift in Sources */,
+				99AF51331FDA3B55005BE96D /* SeachViewModel.swift in Sources */,
 				C867A7371FD8CF2A00847899 /* VenueCell.swift in Sources */,
 				3A34B4BF1FCDBA99007A4CC6 /* FavoriteViewController.swift in Sources */,
 				0B774C3D1FDD8D600069356D /* RealmObservable.swift in Sources */,
