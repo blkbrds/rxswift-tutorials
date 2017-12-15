@@ -157,7 +157,7 @@ Phân loại các operators trong RxSwift:
 - **Connectable Observable Operators**: Gồm các phép toán có khả năng connect được observable.
 - **Operators to Convert Observables**: Gồm các phép toán dùng để convert observable thành object hoặc data structure.
 
- ##### Chi tiết từng loại sẽ được trình bày [ở đây](docs/deep-dive/operators)
+ ##### Chi tiết từng loại sẽ được trình bày [ở đây](docs/Deep-dive/Operators)
 
 **Example 1:**
 

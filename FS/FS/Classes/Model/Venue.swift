@@ -61,7 +61,7 @@ final class Venue: Object, Mappable {
 
 extension Venue {
     static func fetch(by id: String) -> Venue? {
-        let pre = NSPredicate(format: "id = %@", id)
-        return DatabaseManager.shared.object(Venue.self, filter: pre)
+        let predicate = NSPredicate(format: "id = %@", id)
+        return DataProvider.shared.object(Venue.self, filter: predicate).first
     }
 }

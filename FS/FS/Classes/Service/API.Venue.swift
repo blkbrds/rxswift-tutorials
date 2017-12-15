@@ -37,7 +37,7 @@ extension API {
                 }
                 observer.onNext(venues)
                 observer.onCompleted()
-                DatabaseManager.shared.addObjects(venues)
+                DataProvider.shared.add(venues)
             })
             return Disposables.create()
         }

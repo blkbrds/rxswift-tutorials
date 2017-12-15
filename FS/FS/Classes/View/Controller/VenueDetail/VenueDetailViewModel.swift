@@ -28,10 +28,10 @@ final class VenueDetailViewModel {
         guard let venue = self.venue else { return }
         guard Venue.fetch(by: venue.id) != nil else {
             venue.isFavorite = !venue.isFavorite
-            DatabaseManager.shared.addObject(venue)
+            DataProvider.shared.add(venue)
             return
         }
-        DatabaseManager.shared.write().subscribe({ (event) in
+        DataProvider.shared.write().subscribe({ (event) in
             switch event {
             case .completed:
                 venue.isFavorite = !venue.isFavorite
