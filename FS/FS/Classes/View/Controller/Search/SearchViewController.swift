@@ -21,7 +21,6 @@ class SearchViewController: ViewController {
     let searchViewHeight: CGFloat = 92.5
 
     var viewModel: SearchViewModel!
-    let bag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +75,7 @@ class SearchViewController: ViewController {
             })
             .bind(to: tableView.rx.items(cellIdentifier: "VenueCell", cellType: VenueCell.self)) { (index, cellViewModel, cell) in
                 cell.viewModel = cellViewModel
-            }.disposed(by: bag)
+            }.disposed(by: disposeBag)
 
         searchBar.rx.text
             .orEmpty
@@ -85,6 +84,6 @@ class SearchViewController: ViewController {
                 return str.count >= 3
             }
             .bind(to: indicator.rx.isAnimating)
-            .disposed(by: bag)
+            .disposed(by: disposeBag)
     }
 }
