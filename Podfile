@@ -6,6 +6,7 @@ workspace 'RxSwiftTutorials'
 def shared_pods
     pod 'RxSwift', '3.6.1'
     pod 'RxCocoa', '3.6.1'
+    pod 'RxAlamofire', '3.0.2'
 end
 
 def test_pods
