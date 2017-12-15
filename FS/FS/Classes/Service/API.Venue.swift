@@ -43,4 +43,23 @@ extension API {
         }
         return ob
     }
+
+    class func getDetailVanue(id: String) -> Observable<Venue> {
+        let path = "venues/\(id)?client_secret=\(clientSecret)&client_id=\(clientId)&v=\(version)"
+        return Observable<Venue>.create { observer -> Disposable in
+            _ = API.request(path: path).subscribe({ (event) in
+                var venue: Venue!
+                guard let json = event.element else {
+                    observer.onError(RxError.noElements)
+                    return
+                }
+                if let venueObject = json["venue"] as? JSObject {
+                    venue = Mapper<Venue>().map(JSON: venueObject)
+                }
+                observer.onNext(venue)
+                observer.onCompleted()
+            })
+            return Disposables.create()
+        }
+    }
 }

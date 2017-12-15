@@ -21,6 +21,8 @@ final class Venue: Object, Mappable {
     dynamic var likes: String = ""
     dynamic var phone: String = ""
     dynamic var thumbnail: Photo?
+    var photos = List<Photo>()
+ 	var tips: [Tip] = []
     private dynamic var address: String = ""
     private dynamic var city: String = ""
 
@@ -55,6 +57,10 @@ final class Venue: Object, Mappable {
         thumbnail <- map["photos.groups.0.items.0"]
         if let venue = Venue.fetch(by: self.id) {
             self.isFavorite = venue.isFavorite
+        }
+        tips <- map["tips.groups.0.items"]
+        if let objects = Mapper<Photo>().mapArray(JSONObject: map["photos.groups.0.items"].currentValue) {
+            photos.append(objectsIn: objects)
         }
     }
 }
