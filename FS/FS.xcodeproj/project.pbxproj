@@ -11,6 +11,8 @@
 		0B774C3B1FDD8D410069356D /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B774C3A1FDD8D410069356D /* FavoriteViewModel.swift */; };
 		0B774C3D1FDD8D600069356D /* RealmObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B774C3C1FDD8D600069356D /* RealmObservable.swift */; };
 		0BEED9FA1FDFB17800D70D21 /* UIImageViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEED9F91FDFB17800D70D21 /* UIImageViewExt.swift */; };
+		239FE24C1FE3BAB400E780C4 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239FE24B1FE3BAB400E780C4 /* Tip.swift */; };
+		23E70E831FE76B6A004623EB /* TransformOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E70E821FE76B6A004623EB /* TransformOperators.swift */; };
 		3A16ECDC1FD655C0003ED842 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A16ECDB1FD655C0003ED842 /* HomeViewModel.swift */; };
 		3A16ECE41FD6B160003ED842 /* VenueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A16ECE21FD6B15F003ED842 /* VenueDetailViewController.swift */; };
 		3A16ECE51FD6B160003ED842 /* VenueDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A16ECE31FD6B15F003ED842 /* VenueDetailViewController.xib */; };
@@ -62,6 +64,8 @@
 		0B774C3A1FDD8D410069356D /* FavoriteViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		0B774C3C1FDD8D600069356D /* RealmObservable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmObservable.swift; sourceTree = "<group>"; };
 		0BEED9F91FDFB17800D70D21 /* UIImageViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExt.swift; sourceTree = "<group>"; };
+		239FE24B1FE3BAB400E780C4 /* Tip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
+		23E70E821FE76B6A004623EB /* TransformOperators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformOperators.swift; sourceTree = "<group>"; };
 		31D5CF9CDE52140BCC14D669 /* Pods-FS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FS.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-FS/Pods-FS.debug.xcconfig"; sourceTree = "<group>"; };
 		3A16ECDB1FD655C0003ED842 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		3A16ECE21FD6B15F003ED842 /* VenueDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueDetailViewController.swift; sourceTree = "<group>"; };
@@ -188,7 +192,6 @@
 			isa = PBXGroup;
 			children = (
 				853C66B71FDE43BA0004A28F /* Define */,
-				3A34B49F1FCD6B7C007A4CC6 /* Model */,
 				3A34B4AB1FCD6BEA007A4CC6 /* Reactive+Extension */,
 				3A34B4A11FCD6B7C007A4CC6 /* Service */,
 				3A34B49F1FCD6B7C007A4CC6 /* Model */,
@@ -201,6 +204,7 @@
 		3A34B49F1FCD6B7C007A4CC6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				239FE24B1FE3BAB400E780C4 /* Tip.swift */,
 				C867A73B1FD8D0F000847899 /* Photo.swift */,
 				853C66B31FDE299E0004A28F /* User.swift */,
 				3A34B4A01FCD6B7C007A4CC6 /* Venue.swift */,
@@ -247,6 +251,7 @@
 				0B774C3C1FDD8D600069356D /* RealmObservable.swift */,
 				3A34B4AC1FCD6BF6007A4CC6 /* Reactive+Extension.swift */,
 				0BEED9F91FDFB17800D70D21 /* UIImageViewExt.swift */,
+				23E70E821FE76B6A004623EB /* TransformOperators.swift */,
 			);
 			path = "Reactive+Extension";
 			sourceTree = "<group>";
@@ -317,6 +322,15 @@
 			path = Define;
 			sourceTree = "<group>";
 		};
+		99311FEC1FD4EF8C00C4F426 /* FSTests */ = {
+			isa = PBXGroup;
+			children = (
+				99311FED1FD4EF8C00C4F426 /* FSTests.swift */,
+				99311FEF1FD4EF8C00C4F426 /* Info.plist */,
+			);
+			path = FSTests;
+			sourceTree = "<group>";
+		};
 		99AF51301FDA3B55005BE96D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,15 +345,6 @@
 				99AF51321FDA3B55005BE96D /* SeachViewModel.swift */,
 			);
 			path = Search;
-            sourceTree = "<group>";
-        };
-		99311FEC1FD4EF8C00C4F426 /* FSTests */ = {
-			isa = PBXGroup;
-			children = (
-				99311FED1FD4EF8C00C4F426 /* FSTests.swift */,
-				99311FEF1FD4EF8C00C4F426 /* Info.plist */,
-			);
-			path = FSTests;
 			sourceTree = "<group>";
 		};
 		C867A7331FD8CF0D00847899 /* Cell */ = {
@@ -516,7 +521,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		8E6DC6D7C5AF077095442AD3 /* [CP] Check Pods Manifest.lock */ = {
@@ -534,7 +539,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		B3E17B01E95EB6940D734471 /* [CP] Embed Pods Frameworks */ = {
@@ -633,6 +638,7 @@
 				3A16ECDC1FD655C0003ED842 /* HomeViewModel.swift in Sources */,
 				C867A73C1FD8D0F100847899 /* Photo.swift in Sources */,
 				99AF51351FDA3FD1005BE96D /* API.Search.swift in Sources */,
+				239FE24C1FE3BAB400E780C4 /* Tip.swift in Sources */,
 				3A34B4AD1FCD6BF6007A4CC6 /* Reactive+Extension.swift in Sources */,
 				0B774C391FDD8D310069356D /* DatabaseManager.swift in Sources */,
 				3A34B4C31FCDBAA5007A4CC6 /* ProfileViewController.swift in Sources */,
@@ -642,6 +648,7 @@
 				0B774C3D1FDD8D600069356D /* RealmObservable.swift in Sources */,
 				0B774C3B1FDD8D410069356D /* FavoriteViewModel.swift in Sources */,
 				0BEED9FA1FDFB17800D70D21 /* UIImageViewExt.swift in Sources */,
+				23E70E831FE76B6A004623EB /* TransformOperators.swift in Sources */,
 				3A34B4A71FCD6B7C007A4CC6 /* Venue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

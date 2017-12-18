@@ -49,12 +49,11 @@ final class SearchViewModel {
             .addDisposableTo(bag)
     }
 
-    func viewModelForItem(at indexPath: IndexPath) -> VenueDetailViewModel {
+    func viewModelForItem(at indexPath: IndexPath) -> VenueDetailViewModel? {
         let viewModels = variable.value
         let row = indexPath.row
         guard row >= 0 && row < viewModels.count else { fatalError() }
         let cellViewModel = viewModels[row]
-        let venue = cellViewModel.venue
-        return VenueDetailViewModel(venue: venue)
+        return VenueDetailViewModel(venueId: cellViewModel.venue.id )
     }
 }
