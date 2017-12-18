@@ -23,6 +23,7 @@ final class VenueDetailViewModel {
             self.venue = venue
         } else {
             self.venue.id = venueId
+            DataProvider.shared.add(self.venue)
         }
         getDetail()
     }
@@ -42,25 +43,32 @@ final class VenueDetailViewModel {
             .disposed(by: disposeBag)
     }
     
-    func toggleFavorite() {
-        guard Venue.fetch(by: venue.id) != nil else {
-            venue.isFavorite = !venue.isFavorite
-            DataProvider.shared.add(venue)
-            return
-        }
-        DataProvider.shared.write().subscribe({ (event) in
-            switch event {
-            case .completed:
-                self.venue.isFavorite = !self.venue.isFavorite
-            default: break
-            }
-        }).disposed(by: disposeBag)
-        
+    func toggleFavorite() -> Single<Bool> {
         DataProvider.shared.propertyChanges(from: self.venue)
-        .asObservable()
+            .asObservable()
+            .take(1)
             .subscribe { (event) in
                 print(event)
+            }
+            .disposed(by: disposeBag)
+        let single = Single<Bool>.create { [weak self](observer) -> Disposable in
+            guard let `self` = self else {
+                return Disposables.create()
+            }
+
+            DataProvider.shared.write()
+                .subscribe({ (event) in
+                    switch event {
+                    case .success(_):
+                        self.venue.isFavorited = !self.venue.isFavorited
+                        observer(.success(self.venue.isFavorited))
+                    default: break
+                    }
+                })
+                .disposed(by: self.disposeBag)
+
+            return Disposables.create()
         }
-        .disposed(by: disposeBag)
+        return single
     }
 }

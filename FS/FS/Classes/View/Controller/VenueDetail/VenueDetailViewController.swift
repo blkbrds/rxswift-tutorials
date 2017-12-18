@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
+import SVProgressHUD
 
 enum VenueSection: Int {
     case information
@@ -33,6 +34,8 @@ final class VenueDetailViewController: ViewController {
     @IBOutlet weak var tableView: UITableView!
     private var bag = DisposeBag()
     var viewModel: VenueDetailViewModel?
+    private var shareButtonItem: UIBarButtonItem!
+    private var favoriteButtonItem: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,29 +53,35 @@ final class VenueDetailViewController: ViewController {
 
 
     private func configRightBarButtonItems() {
-        let favoriteBarButton: UIBarButtonItem = UIBarButtonItem(
-            image: #imageLiteral(resourceName: "ic_favorite"),
-            style: .plain,
-            target: nil,
-            action: nil
-        )
-        favoriteBarButton.rx.tap
+        favoriteButtonItem = UIBarButtonItem()
+        favoriteButtonItem?.rx.tap
             .subscribe { event in
                 self.viewModel?.toggleFavorite()
+                .subscribe()
+                .disposed(by: self.disposeBag)
             }
             .disposed(by: disposeBag)
-        let shareBarButton: UIBarButtonItem = UIBarButtonItem(
+
+        self.viewModel?.toggleFavorite()
+            .map({ (value) -> String in
+                return value ? "Favorite" : "Unfavorite"
+            })
+            .asObservable()
+            .bind(to: favoriteButtonItem.rx.title)
+        .disposed(by: disposeBag)
+
+        shareButtonItem = UIBarButtonItem(
             barButtonSystemItem: .action,
             target: nil,
             action: nil
         )
-        shareBarButton.rx.tap
+        shareButtonItem?.rx.tap
             .subscribe { event in
 
             }
             .disposed(by: disposeBag)
         navigationItem.setRightBarButtonItems(
-            [favoriteBarButton, shareBarButton],
+            [favoriteButtonItem, shareButtonItem],
             animated: true
         )
     }

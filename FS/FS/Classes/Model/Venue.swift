@@ -14,7 +14,7 @@ final class Venue: Object, Mappable {
     dynamic var name: String = ""
     dynamic var latitude: Double = 0.0
     dynamic var longitude: Double = 0.0
-    dynamic var isFavorite = false
+    dynamic var isFavorited = false
     dynamic var rating: Double = 0.0
     dynamic var ratingColor: String = ""
     dynamic var category: String = ""
@@ -56,7 +56,7 @@ final class Venue: Object, Mappable {
         phone <- map["contact.phone"]
         thumbnail <- map["photos.groups.0.items.0"]
         if let venue = Venue.fetch(by: self.id) {
-            self.isFavorite = venue.isFavorite
+            self.isFavorited = venue.isFavorited
         }
         tips <- map["tips.groups.0.items"]
         photos <- map["photos.groups.0.items"]

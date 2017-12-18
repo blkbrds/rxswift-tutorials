@@ -68,14 +68,14 @@ final class DataProvider {
         }
     }
 
-    func write() -> Observable<Void> {
-        return Observable.create({ (observer) -> Disposable in
+    func write() -> Single<Void> {
+        return Single<Void>.create(subscribe: { (observer) -> Disposable in
             do {
                 try self.realm.write {
-                    observer.onCompleted()
+                    observer(.success())
                 }
-            } catch {
-                observer.onError(error)
+            } catch let error {
+                observer(.error(error))
             }
             return Disposables.create()
         })

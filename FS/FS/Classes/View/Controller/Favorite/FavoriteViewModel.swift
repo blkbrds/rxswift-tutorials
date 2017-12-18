@@ -21,7 +21,7 @@ final class FavoriteViewModel: ViewModel {
     }
 
     func fetchFavoriteVenues() {
-        let pre = NSPredicate(format: "isFavorite = true")
+        let pre = NSPredicate(format: "isFavorited = true")
         results = DataProvider.shared.objects(Venue.self, filter: pre)
 
         DataProvider.shared
@@ -50,8 +50,8 @@ final class FavoriteViewModel: ViewModel {
         let venue = venues.value[indexPath.row]
         DataProvider.shared.write().subscribe { (event) in
             switch event {
-            case .completed:
-                venue.isFavorite = false
+            case .success(_):
+                venue.isFavorited = false
             default: break
             }
         }.dispose()

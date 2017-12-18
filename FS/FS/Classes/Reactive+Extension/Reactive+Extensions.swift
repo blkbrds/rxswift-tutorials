@@ -31,3 +31,10 @@ public extension ObservableType {
     }
 }
 
+extension Reactive where Base: UIBarButtonItem {
+    public var title: UIBindingObserver<Base, String?> {
+        return UIBindingObserver(UIElement: self.base) { barButtonItem, title in
+            barButtonItem.title = title
+        }
+    }
+}
