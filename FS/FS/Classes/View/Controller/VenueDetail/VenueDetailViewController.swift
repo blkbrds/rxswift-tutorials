@@ -11,6 +11,7 @@ import SnapKit
 import RxSwift
 import RxCocoa
 import SVProgressHUD
+import RxDataSources
 
 enum VenueSection: Int {
     case information
@@ -49,6 +50,34 @@ final class VenueDetailViewController: ViewController {
         tableView.register(nib, forCellReuseIdentifier: "InformationCell")
         nib = UINib(nibName: "TipCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "TipCell")
+        tableView.estimatedRowHeight = 200
+        tableView.rowHeight = UITableViewAutomaticDimension
+
+        // Data source
+
+        let dataSource = RxTableViewSectionedReloadDataSource<DetailVenueSection>()
+        dataSource.configureCell = { (dataSource, tableView, indexPath, item) in
+            switch dataSource[indexPath] {
+            case .information(let viewModel):
+                guard let cell = tableView.dequeue(InformationCell.self) else { fatalError("Can not deque InformationCell")}
+                cell.viewModel = viewModel
+                return cell
+            case .tips(let viewModel):
+                guard let  cell = tableView.dequeue(TipCell.self) else { fatalError("Can not deque TipCell")}
+                cell.viewModel = viewModel
+                return cell
+            }
+        }
+        dataSource.titleForHeaderInSection = { dataSource, index in
+            if index == 0 {
+                return "Information"
+            }
+            return "Tips"
+        }
+        
+        viewModel?.dataSource.asObservable()
+            .bind(to: tableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
     }
 
 
@@ -77,9 +106,17 @@ final class VenueDetailViewController: ViewController {
         )
         shareButtonItem?.rx.tap
             .subscribe { event in
-
+                self.viewModel?.toggleFavorite()
+                .subscribe()
+                .disposed(by: self.disposeBag)
             }
             .disposed(by: disposeBag)
+        viewModel?.isFavorite.asObservable()
+            .bind(onNext: {
+                self.favoriteButtonItem.tintColor = $0 ? .red : self.shareButtonItem.tintColor
+            })
+            .disposed(by: disposeBag)
+
         navigationItem.setRightBarButtonItems(
             [favoriteButtonItem, shareButtonItem],
             animated: true
@@ -110,3 +147,4 @@ final class VenueDetailViewController: ViewController {
         self.collectionView = collectionView
     }
 }
+
