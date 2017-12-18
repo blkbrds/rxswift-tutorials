@@ -16,8 +16,6 @@
 		23B73D0F1FE77E0A00855458 /* InformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23B73D071FE77E0A00855458 /* InformationCell.xib */; };
 		23B73D121FE77E0A00855458 /* TipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B73D0C1FE77E0A00855458 /* TipCell.swift */; };
 		23B73D131FE77E0A00855458 /* TipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23B73D0D1FE77E0A00855458 /* TipCell.xib */; };
-		23B73D151FE77E2E00855458 /* InformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B73D141FE77E2E00855458 /* InformationViewModel.swift */; };
-		23B73D171FE77E6400855458 /* TipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B73D161FE77E6400855458 /* TipViewModel.swift */; };
 		23E70E831FE76B6A004623EB /* TransformOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E70E821FE76B6A004623EB /* TransformOperators.swift */; };
 		3A16ECDC1FD655C0003ED842 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A16ECDB1FD655C0003ED842 /* HomeViewModel.swift */; };
 		3A16ECE41FD6B160003ED842 /* VenueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A16ECE21FD6B15F003ED842 /* VenueDetailViewController.swift */; };
@@ -75,8 +73,6 @@
 		23B73D071FE77E0A00855458 /* InformationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InformationCell.xib; sourceTree = "<group>"; };
 		23B73D0C1FE77E0A00855458 /* TipCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipCell.swift; sourceTree = "<group>"; };
 		23B73D0D1FE77E0A00855458 /* TipCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TipCell.xib; sourceTree = "<group>"; };
-		23B73D141FE77E2E00855458 /* InformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewModel.swift; sourceTree = "<group>"; };
-		23B73D161FE77E6400855458 /* TipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipViewModel.swift; sourceTree = "<group>"; };
 		23E70E821FE76B6A004623EB /* TransformOperators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformOperators.swift; sourceTree = "<group>"; };
 		31D5CF9CDE52140BCC14D669 /* Pods-FS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FS.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-FS/Pods-FS.debug.xcconfig"; sourceTree = "<group>"; };
 		3A16ECDB1FD655C0003ED842 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -156,7 +152,6 @@
 			children = (
 				23B73D061FE77E0A00855458 /* InformationCell.swift */,
 				23B73D071FE77E0A00855458 /* InformationCell.xib */,
-				23B73D141FE77E2E00855458 /* InformationViewModel.swift */,
 			);
 			path = InformationCell;
 			sourceTree = "<group>";
@@ -166,7 +161,6 @@
 			children = (
 				23B73D0C1FE77E0A00855458 /* TipCell.swift */,
 				23B73D0D1FE77E0A00855458 /* TipCell.xib */,
-				23B73D161FE77E6400855458 /* TipViewModel.swift */,
 			);
 			path = TipCell;
 			sourceTree = "<group>";
@@ -277,12 +271,12 @@
 		3A34B4A51FCD6B7C007A4CC6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3A16ECE11FD6B146003ED842 /* VenueDetail */,
 				3A34B4B41FCD6D73007A4CC6 /* Base */,
 				3A34B4AF1FCD6CAE007A4CC6 /* Favorite */,
 				3A34B4AE1FCD6CA7007A4CC6 /* Home */,
 				3A34B4B11FCD6CBE007A4CC6 /* Profile */,
 				3A34B4B01FCD6CB7007A4CC6 /* Search */,
+				3A16ECE11FD6B146003ED842 /* VenueDetail */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -565,7 +559,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8E6DC6D7C5AF077095442AD3 /* [CP] Check Pods Manifest.lock */ = {
@@ -583,7 +577,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B3E17B01E95EB6940D734471 /* [CP] Embed Pods Frameworks */ = {
@@ -597,11 +591,13 @@
 				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/FSOAuth/FSOAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/MVVM-Swift/MVVM.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
@@ -613,11 +609,13 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSOAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MVVM.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
@@ -672,7 +670,6 @@
 				3A16ECE41FD6B160003ED842 /* VenueDetailViewController.swift in Sources */,
 				853C66B61FDE29B40004A28F /* ProfileViewModel.swift in Sources */,
 				23B73D121FE77E0A00855458 /* TipCell.swift in Sources */,
-				23B73D151FE77E2E00855458 /* InformationViewModel.swift in Sources */,
 				23B73D0E1FE77E0A00855458 /* InformationCell.swift in Sources */,
 				3A16ECE71FD6B196003ED842 /* VenueDetailViewModel.swift in Sources */,
 				C867A7391FD8CF2A00847899 /* VenueCellViewModel.swift in Sources */,
@@ -687,7 +684,6 @@
 				99AF51351FDA3FD1005BE96D /* API.Search.swift in Sources */,
 				239FE24C1FE3BAB400E780C4 /* Tip.swift in Sources */,
 				3A34B4AD1FCD6BF6007A4CC6 /* Reactive+Extension.swift in Sources */,
-				23B73D171FE77E6400855458 /* TipViewModel.swift in Sources */,
 				0B774C391FDD8D310069356D /* DatabaseManager.swift in Sources */,
 				3A34B4C31FCDBAA5007A4CC6 /* ProfileViewController.swift in Sources */,
 				99AF51331FDA3B55005BE96D /* SeachViewModel.swift in Sources */,

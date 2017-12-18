@@ -33,6 +33,9 @@ final class VenueDetailViewController: ViewController {
         tableView.register(nib, forCellReuseIdentifier: "TipCell")
         tableView.estimatedRowHeight = 200
         tableView.rowHeight = UITableViewAutomaticDimension
+
+        // Data source
+
         let dataSource = RxTableViewSectionedReloadDataSource<DetailVenueSection>()
         dataSource.configureCell = { (dataSource, tableView, indexPath, item) in
             switch dataSource[indexPath] {

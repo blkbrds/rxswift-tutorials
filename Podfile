@@ -38,6 +38,7 @@ target 'FS' do
     pod 'SDWebImage'
     pod 'FSOAuth', '~> 1.2.1'
     pod 'RealmSwift',       '~> 3.0'
+    pod 'RxDataSources', '2.0.2'
 
     target 'FSTests' do
         inherit! :search_paths
