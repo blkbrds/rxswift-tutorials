@@ -12,7 +12,6 @@ import RxSwift
 extension UIImageView {
     func setImage(path: String?) -> Observable<UIImage> {
         return Observable<UIImage>.create({ (observer) -> Disposable in
-
             guard let url = URL(string: path ?? "") else {
                 let error = NSError(message: "Path is nil")
                 observer.onError(error)

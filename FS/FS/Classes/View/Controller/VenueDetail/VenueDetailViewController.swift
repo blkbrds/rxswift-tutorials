@@ -10,7 +10,24 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
+import SVProgressHUD
 import RxDataSources
+
+enum VenueSection: Int {
+    case information
+    case tips
+
+    var count: Int { return VenueSection.tips.rawValue + 1 }
+}
+
+enum InformationItem: String {
+    case name
+    case address
+    case categories
+    case rating
+
+    var count: Int { return 4 }
+}
 
 final class VenueDetailViewController: ViewController {
     private weak var collectionView: UICollectionView!
@@ -18,6 +35,8 @@ final class VenueDetailViewController: ViewController {
     @IBOutlet weak var tableView: UITableView!
     private var bag = DisposeBag()
     var viewModel: VenueDetailViewModel?
+    private var shareButtonItem: UIBarButtonItem!
+    private var favoriteButtonItem: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,36 +82,43 @@ final class VenueDetailViewController: ViewController {
 
 
     private func configRightBarButtonItems() {
-        let shareBarButton: UIBarButtonItem = UIBarButtonItem(
+        favoriteButtonItem = UIBarButtonItem()
+        favoriteButtonItem?.rx.tap
+            .subscribe { event in
+                self.viewModel?.toggleFavorite()
+                .subscribe()
+                .disposed(by: self.disposeBag)
+            }
+            .disposed(by: disposeBag)
+
+        self.viewModel?.toggleFavorite()
+            .map({ (value) -> String in
+                return value ? "Favorite" : "Unfavorite"
+            })
+            .asObservable()
+            .bind(to: favoriteButtonItem.rx.title)
+        .disposed(by: disposeBag)
+
+        shareButtonItem = UIBarButtonItem(
             barButtonSystemItem: .action,
             target: nil,
             action: nil
         )
-        shareBarButton.rx.tap
-            .subscribe { event in
-                
-            }
-            .disposed(by: disposeBag)
-
-        let favoriteBarButton: UIBarButtonItem = UIBarButtonItem(
-            image: #imageLiteral(resourceName: "ic_favorite"),
-            style: .plain,
-            target: nil,
-            action: nil
-        )
-        favoriteBarButton.rx.tap
+        shareButtonItem?.rx.tap
             .subscribe { event in
                 self.viewModel?.toggleFavorite()
+                .subscribe()
+                .disposed(by: self.disposeBag)
             }
             .disposed(by: disposeBag)
         viewModel?.isFavorite.asObservable()
             .bind(onNext: {
-                favoriteBarButton.tintColor = $0 ? .red : shareBarButton.tintColor
+                self.favoriteButtonItem.tintColor = $0 ? .red : self.shareButtonItem.tintColor
             })
             .disposed(by: disposeBag)
 
         navigationItem.setRightBarButtonItems(
-            [favoriteBarButton, shareBarButton],
+            [favoriteButtonItem, shareButtonItem],
             animated: true
         )
     }

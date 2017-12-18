@@ -42,7 +42,6 @@ class API {
                 .observeOn(MainScheduler.instance)
                 .map{ js -> JSObject in
                     guard let json = js["response"] as? JSObject else {
-
                         observer.onError(RxError.unknown)
                         observer.onCompleted()
                         return [:]

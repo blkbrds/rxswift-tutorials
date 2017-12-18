@@ -21,15 +21,14 @@ final class FavoriteViewModel: ViewModel {
     }
 
     func fetchFavoriteVenues() {
-        let pre = NSPredicate(format: "isFavorite = true")
-        results = DatabaseManager.shared.objects(Venue.self, filter: pre)
+        let pre = NSPredicate(format: "isFavorited = true")
+        results = DataProvider.shared.objects(Venue.self, filter: pre)
 
-        RealmObservable
+        DataProvider.shared
             .changeset(from: results)
             .subscribe { (event) in
                 switch event {
                 case .next(let element):
-                    print("Delete")
                     self.venues.value = element.0
                 default: break
                 }
@@ -49,10 +48,10 @@ final class FavoriteViewModel: ViewModel {
     func removeFavorite(at indexPath: IndexPath) {
         guard indexPath.row < results.count else { return }
         let venue = venues.value[indexPath.row]
-        DatabaseManager.shared.write().subscribe { (event) in
+        DataProvider.shared.write().subscribe { (event) in
             switch event {
-            case .completed:
-                venue.isFavorite = false
+            case .success(_):
+                venue.isFavorited = false
             default: break
             }
         }.dispose()

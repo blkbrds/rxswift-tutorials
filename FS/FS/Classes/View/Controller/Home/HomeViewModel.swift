@@ -66,7 +66,8 @@ class HomeViewModel {
         var params: JSObject = [:]
         params["section"] = section.value.name
         params["offset"] = venues.value.count
-        API.getVenues(params: params).withHUD()
+        API.getVenues(params: params)
+            .withHUD()
             .subscribe { [weak self] (event) in
                 guard let this = self else { return }
                 if let venues = event.element {

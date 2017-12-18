@@ -57,9 +57,10 @@ final class VenueDetailViewModel {
             self.venue = venue
         } else {
             self.venue.id = venueId
+            DataProvider.shared.add(self.venue)
         }
         getDetail()
-        RealmObservable.propertyChanges(from: self.venue).asObservable()
+        DataProvider.shared.propertyChanges(from: self.venue).asObservable()
             .map({ (property) -> Bool? in
                 if property.name == "isFavorite" {
                     return property.newValue as? Bool
@@ -100,25 +101,39 @@ final class VenueDetailViewModel {
                         ),
                         DetailVenueSection.tips(title: "Tips", items: tipViewModels)
                     ]
-                    DatabaseManager.shared.addObject(self.venue)
+                    DataProvider.shared.add(self.venue)
                 default: break
                 }
             }
             .disposed(by: disposeBag)
     }
     
-    func toggleFavorite() {
-        guard Venue.fetch(by: venue.id) != nil else {
-            venue.isFavorite = !venue.isFavorite
-            DatabaseManager.shared.addObject(venue)
-            return
-        }
-        DatabaseManager.shared.write().subscribe({ (event) in
-            switch event {
-            case .completed:
-                self.venue.isFavorite = !self.venue.isFavorite
-            default: break
+    func toggleFavorite() -> Single<Bool> {
+        DataProvider.shared.propertyChanges(from: self.venue)
+            .asObservable()
+            .take(1)
+            .subscribe { (event) in
+                print(event)
             }
-        }).dispose()
+            .disposed(by: disposeBag)
+        let single = Single<Bool>.create { [weak self](observer) -> Disposable in
+            guard let `self` = self else {
+                return Disposables.create()
+            }
+
+            DataProvider.shared.write()
+                .subscribe({ (event) in
+                    switch event {
+                    case .success(_):
+                        self.venue.isFavorited = !self.venue.isFavorited
+                        observer(.success(self.venue.isFavorited))
+                    default: break
+                    }
+                })
+                .disposed(by: self.disposeBag)
+
+            return Disposables.create()
+        }
+        return single
     }
 }
