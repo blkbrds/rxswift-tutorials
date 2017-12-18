@@ -89,7 +89,8 @@ final class VenueDetailViewController: ViewController {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.isPagingEnabled = true
         collectionView.registerClass(UICollectionViewCell.self)
-        viewModel?.getPhotoUrls(size: CGSize(width: 300, height: 300))
+        collectionView.backgroundColor = .white
+        viewModel?.urlStrings.asObservable()
             .bind(to: collectionView.rx.items(cellIdentifier: "UICollectionViewCell", cellType: UICollectionViewCell.self)) { (row, url, cell) in
                 let imageView = UIImageView(frame: cell.bounds)
                 cell.addSubview(imageView)

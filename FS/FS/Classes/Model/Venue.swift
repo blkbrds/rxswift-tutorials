@@ -59,9 +59,7 @@ final class Venue: Object, Mappable {
             self.isFavorite = venue.isFavorite
         }
         tips <- map["tips.groups.0.items"]
-        if let objects = Mapper<Photo>().mapArray(JSONObject: map["photos.groups.0.items"].currentValue) {
-            photos.append(objectsIn: objects)
-        }
+        photos <- map["photos.groups.0.items"]
     }
 }
 
