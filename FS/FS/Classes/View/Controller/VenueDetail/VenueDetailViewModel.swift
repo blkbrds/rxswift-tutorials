@@ -84,7 +84,8 @@ final class VenueDetailViewModel {
                         return SectionItem.tips(viewModel: TipViewModel(
                             title: tip.user?.fullName ?? "",
                             subtitle: tip.text, thumbImage: "",
-                            timestamp: createdAt
+                            timestamp: createdAt,
+                            avatarUrl: tip.user?.avatar
                         ))
                     })
                     self.dataSource.value = [

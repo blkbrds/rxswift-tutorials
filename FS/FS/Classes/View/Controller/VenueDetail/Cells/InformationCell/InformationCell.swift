@@ -9,6 +9,11 @@
 import UIKit
 import RxSwift
 
+struct InformationViewModel {
+    var title: String
+    var content: String
+}
+
 final class InformationCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
@@ -23,6 +28,7 @@ final class InformationCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        selectionStyle = .none
     }
     
 }
