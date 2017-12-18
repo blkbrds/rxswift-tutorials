@@ -12,6 +12,12 @@
 		0B774C3D1FDD8D600069356D /* RealmObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B774C3C1FDD8D600069356D /* RealmObservable.swift */; };
 		0BEED9FA1FDFB17800D70D21 /* UIImageViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEED9F91FDFB17800D70D21 /* UIImageViewExt.swift */; };
 		239FE24C1FE3BAB400E780C4 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239FE24B1FE3BAB400E780C4 /* Tip.swift */; };
+		23B73D0E1FE77E0A00855458 /* InformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B73D061FE77E0A00855458 /* InformationCell.swift */; };
+		23B73D0F1FE77E0A00855458 /* InformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23B73D071FE77E0A00855458 /* InformationCell.xib */; };
+		23B73D121FE77E0A00855458 /* TipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B73D0C1FE77E0A00855458 /* TipCell.swift */; };
+		23B73D131FE77E0A00855458 /* TipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23B73D0D1FE77E0A00855458 /* TipCell.xib */; };
+		23B73D151FE77E2E00855458 /* InformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B73D141FE77E2E00855458 /* InformationViewModel.swift */; };
+		23B73D171FE77E6400855458 /* TipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B73D161FE77E6400855458 /* TipViewModel.swift */; };
 		23E70E831FE76B6A004623EB /* TransformOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E70E821FE76B6A004623EB /* TransformOperators.swift */; };
 		3A16ECDC1FD655C0003ED842 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A16ECDB1FD655C0003ED842 /* HomeViewModel.swift */; };
 		3A16ECE41FD6B160003ED842 /* VenueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A16ECE21FD6B15F003ED842 /* VenueDetailViewController.swift */; };
@@ -65,6 +71,12 @@
 		0B774C3C1FDD8D600069356D /* RealmObservable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmObservable.swift; sourceTree = "<group>"; };
 		0BEED9F91FDFB17800D70D21 /* UIImageViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExt.swift; sourceTree = "<group>"; };
 		239FE24B1FE3BAB400E780C4 /* Tip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
+		23B73D061FE77E0A00855458 /* InformationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationCell.swift; sourceTree = "<group>"; };
+		23B73D071FE77E0A00855458 /* InformationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InformationCell.xib; sourceTree = "<group>"; };
+		23B73D0C1FE77E0A00855458 /* TipCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipCell.swift; sourceTree = "<group>"; };
+		23B73D0D1FE77E0A00855458 /* TipCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TipCell.xib; sourceTree = "<group>"; };
+		23B73D141FE77E2E00855458 /* InformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewModel.swift; sourceTree = "<group>"; };
+		23B73D161FE77E6400855458 /* TipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipViewModel.swift; sourceTree = "<group>"; };
 		23E70E821FE76B6A004623EB /* TransformOperators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformOperators.swift; sourceTree = "<group>"; };
 		31D5CF9CDE52140BCC14D669 /* Pods-FS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FS.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-FS/Pods-FS.debug.xcconfig"; sourceTree = "<group>"; };
 		3A16ECDB1FD655C0003ED842 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -130,9 +142,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23B73D041FE77E0A00855458 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				23B73D051FE77E0A00855458 /* InformationCell */,
+				23B73D0B1FE77E0A00855458 /* TipCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		23B73D051FE77E0A00855458 /* InformationCell */ = {
+			isa = PBXGroup;
+			children = (
+				23B73D061FE77E0A00855458 /* InformationCell.swift */,
+				23B73D071FE77E0A00855458 /* InformationCell.xib */,
+				23B73D141FE77E2E00855458 /* InformationViewModel.swift */,
+			);
+			path = InformationCell;
+			sourceTree = "<group>";
+		};
+		23B73D0B1FE77E0A00855458 /* TipCell */ = {
+			isa = PBXGroup;
+			children = (
+				23B73D0C1FE77E0A00855458 /* TipCell.swift */,
+				23B73D0D1FE77E0A00855458 /* TipCell.xib */,
+				23B73D161FE77E6400855458 /* TipViewModel.swift */,
+			);
+			path = TipCell;
+			sourceTree = "<group>";
+		};
 		3A16ECE11FD6B146003ED842 /* VenueDetail */ = {
 			isa = PBXGroup;
 			children = (
+				23B73D041FE77E0A00855458 /* Cells */,
 				3A16ECE21FD6B15F003ED842 /* VenueDetailViewController.swift */,
 				3A16ECE31FD6B15F003ED842 /* VenueDetailViewController.xib */,
 				3A16ECE61FD6B196003ED842 /* VenueDetailViewModel.swift */,
@@ -457,10 +499,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23B73D0F1FE77E0A00855458 /* InformationCell.xib in Resources */,
 				3A34B4C41FCDBAA5007A4CC6 /* ProfileViewController.xib in Resources */,
 				C867A7381FD8CF2A00847899 /* VenueCell.xib in Resources */,
 				3A34B4C01FCDBA99007A4CC6 /* FavoriteViewController.xib in Resources */,
 				3A34B4BC1FCDB261007A4CC6 /* HomeViewController.xib in Resources */,
+				23B73D131FE77E0A00855458 /* TipCell.xib in Resources */,
 				3A16ECE51FD6B160003ED842 /* VenueDetailViewController.xib in Resources */,
 				3A34B4931FCD6A98007A4CC6 /* Assets.xcassets in Resources */,
 				3A34B4CC1FCDBAD3007A4CC6 /* SearchViewController.xib in Resources */,
@@ -627,6 +671,9 @@
 				3A34B4751FCD632E007A4CC6 /* AppDelegate.swift in Sources */,
 				3A16ECE41FD6B160003ED842 /* VenueDetailViewController.swift in Sources */,
 				853C66B61FDE29B40004A28F /* ProfileViewModel.swift in Sources */,
+				23B73D121FE77E0A00855458 /* TipCell.swift in Sources */,
+				23B73D151FE77E2E00855458 /* InformationViewModel.swift in Sources */,
+				23B73D0E1FE77E0A00855458 /* InformationCell.swift in Sources */,
 				3A16ECE71FD6B196003ED842 /* VenueDetailViewModel.swift in Sources */,
 				C867A7391FD8CF2A00847899 /* VenueCellViewModel.swift in Sources */,
 				853C66B41FDE299E0004A28F /* User.swift in Sources */,
@@ -640,6 +687,7 @@
 				99AF51351FDA3FD1005BE96D /* API.Search.swift in Sources */,
 				239FE24C1FE3BAB400E780C4 /* Tip.swift in Sources */,
 				3A34B4AD1FCD6BF6007A4CC6 /* Reactive+Extension.swift in Sources */,
+				23B73D171FE77E6400855458 /* TipViewModel.swift in Sources */,
 				0B774C391FDD8D310069356D /* DatabaseManager.swift in Sources */,
 				3A34B4C31FCDBAA5007A4CC6 /* ProfileViewController.swift in Sources */,
 				99AF51331FDA3B55005BE96D /* SeachViewModel.swift in Sources */,

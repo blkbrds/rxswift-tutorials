@@ -9,9 +9,17 @@
 import UIKit
 
 final class TipCell: UITableViewCell {
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var createdAtLabel: UILabel!
+    @IBOutlet weak var thumbImageView: UIImageView!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    var viewModel: TipViewModel? {
+        didSet {
+            titleLabel.text = viewModel?.title
+            subtitleLabel.text = viewModel?.subtitle
+            createdAtLabel.text = viewModel?.timestamp
+            thumbImageView.image = nil
+        }
     }
 }

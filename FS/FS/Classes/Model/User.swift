@@ -17,6 +17,9 @@ final class User: Mappable {
     var email: String = ""
     var photoPrefix: String = ""
     var photoSuffix: String = ""
+    var fullName: String {
+        return firstName + " " + lastName
+    }
 
     var avatar: URL? {
         return URL(string: photoPrefix + "width960" + photoSuffix)
