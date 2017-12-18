@@ -29,7 +29,7 @@
   ```swift
   let disposeBag = DisposeBag()
   Observable.of(1, 2, 3, 4, 5)
-            .reduce(1, accumulator: +)
+            .reduce(0, accumulator: +)
             .subscribe(onNext: {print($0)})
             .disposed(by: disposeBag)
   ```
