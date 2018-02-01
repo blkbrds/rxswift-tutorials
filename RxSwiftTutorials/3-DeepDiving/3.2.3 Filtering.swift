@@ -10,20 +10,24 @@ import RxSwift
 
 final class Filtering {
     init() {
-        ignoreElemens()
+        execute()
     }
 
     func execute() {
+        // Ignore operators
         ignoreElemens()
         elementAt(n: 3)
 
+        // Skip operators
         skip(n: 2)
         skipWhile()
         skipUntil()
 
+        // Take operators
         take(n: 4)
         takeUntil()
 
+        // Distinct operators
         distinctUntilChanged()
     }
 }
@@ -31,6 +35,7 @@ final class Filtering {
 // MARK: - Ignoring operators
 extension Filtering {
     func ignoreElemens() {
+        print("\n ---- ignoreElemens() ----")
         let strikes = PublishSubject<String>()
         let disposeBag = DisposeBag()
 
@@ -50,6 +55,8 @@ extension Filtering {
     }
 
     func elementAt(n: Int) {
+        print("\n ---- elementAt(\(n)) ----")
+        print("Observable: A - B - C - D - E")
         let strikes = PublishSubject<String>()
         let disposeBag = DisposeBag()
         // Cho phép nhận item được phát ra tại lần phát thứ n
@@ -63,12 +70,16 @@ extension Filtering {
         strikes.onNext("A")
         strikes.onNext("B")
         strikes.onNext("C")
+        strikes.onNext("D")
+        strikes.onNext("E")
     }
 }
 
 // MARK: - Skipping operators
 extension Filtering {
     func skip(n: Int) {
+        print("\n ---- skip(\(n)) ----")
+        print("Observable: A - B - C - D - E - F")
         let disposeBag = DisposeBag()
         Observable.of("A", "B", "C", "D", "E", "F")
             // Bỏ qua các items được phát từ lần phát thứ 1 đến 3.
@@ -79,8 +90,10 @@ extension Filtering {
     }
 
     func skipWhile() {
+        print("\n ---- skipWhile(item % 2 == 0) ----")
+        print("Observable: 2 - 3 - 3 - 4 - 4")
         let disposeBag = DisposeBag()
-        Observable.of(2, 2, 3, 4, 4)
+        Observable.of(2, 3, 3, 4, 4)
             // Sẽ bỏ qua những items chia hết cho 2 cho đến khi nó gặp 1 item không thoả mãn.
             .skipWhile { integer in
                 integer % 2 == 0
@@ -91,6 +104,7 @@ extension Filtering {
     }
 
     func skipUntil() {
+        print("\n ---- skipUntil() ----")
         let disposeBag = DisposeBag()
         // subject sẽ phát ra các items
         // trigger được dùng như là 1 cái cò để báo dừng việc bỏ qua các items đó
@@ -120,6 +134,8 @@ extension Filtering {
 // MARK: - Taking operators
 extension Filtering {
     func take(n: Int) {
+        print("\n ---- take(\(n)) ----")
+        print("Observable: 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9")
         let disposeBag = DisposeBag()
         Observable.of(1, 2, 3, 4, 5, 6, 7, 8, 9)
             // Nhận các items từ lần phát thứ 1 đến thứ n
@@ -130,6 +146,7 @@ extension Filtering {
     }
 
     func takeUntil() {
+        print("\n ---- takeUntil() ----")
         let disposeBag = DisposeBag()
         // subject sẽ phát ra các items
         // trigger được dùng như là 1 cái cò để báo dừng việc nhận
@@ -154,6 +171,8 @@ extension Filtering {
 // MARK: - Distinct operators
 extension Filtering {
     func distinctUntilChanged() {
+        print("\n ---- distinctUntilChanged() ----")
+        print("Observable: A - A - B - B - A")
         let disposeBag = DisposeBag()
         Observable.of("A", "A", "B", "B", "A")
             // Nó sẽ bỏ qua các items bị duplicate nằm liền kề nhau. Ở đây `A` tại index 1 và `B` tại index 3
